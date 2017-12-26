@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=MonoLabs
+Comment=Mono Theme for ArchLabs Linux
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+Name=MonoLabs
+GtkTheme=MonoLabs
+IconTheme=ArchLabs_Light_Flat
+MetacityTheme=ArchLabs_Light_Flat

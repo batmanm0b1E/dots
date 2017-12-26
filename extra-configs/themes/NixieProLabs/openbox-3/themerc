@@ -1,0 +1,156 @@
+# Name: Oomox (Numix fork) Openbox theme
+# Author: Satyajit Sahoo <satyajit.happy@gmail.com>
+# License: GPL-3.0+
+
+# @TODO: finish replacing the colors here
+
+
+# Menu
+menu.title.bg: 		            Flat Solid
+menu.title.bg.color: 		    #171717
+menu.title.text.color: 		    #af865a
+menu.title.text.justify: 	    Center
+menu.border.width: 		    10
+menu.border.color:                  #1f1f1f
+menu.overlap.x: 		   -14
+menu.overlap.y:			    0
+menu.items.bg: 			    Flat Solid
+menu.items.bg.color: 		    #1f1f1f
+menu.items.text.color: 		    #798C91
+menu.items.justify:                 left
+menu.items.disabled.text.color:	    #535C5C
+menu.items.active.bg: 		    Flat Solid
+menu.items.active.bg.color: 	    #1f1f1f
+menu.items.active.text.color: 	    #D17B49
+menu.separator.color:               #1f1f1f
+menu.separator.width: 		    1
+menu.separator.padding.width:       2
+menu.separator.padding.height:      4
+menu.overlap.x: 		    -20
+menu.overlap.y:			     0
+
+# Window focused
+window.active.title.separator.color: #171717
+
+# Active window
+window.active.border.color: #af865a
+
+
+window.active.title.bg: flat solid
+window.active.title.bg.color: #171717
+window.active.title.separator.color: #171717
+window.active.text.justify: center
+
+window.active.label.bg: parentrelative
+window.active.label.text.color: #798C91
+
+window.active.handle.bg: flat solid
+window.active.handle.bg.color: #171717
+
+window.active.grip.bg: flat solid
+window.active.grip.bg.color: #171717
+
+window.active.button.unpressed.bg: flat solid
+window.active.button.unpressed.bg.color: #171717
+window.active.button.unpressed.image.color: #798C91
+
+window.active.button.pressed.bg: flat solid
+window.active.button.pressed.bg.color: #af865a
+window.active.button.pressed.image.color: #798C91
+
+window.active.button.disabled.bg: flat solid
+window.active.button.disabled.bg.color: #171717
+window.active.button.disabled.image.color: #bec0c6
+
+window.active.button.hover.bg: flat solid
+window.active.button.hover.bg.color: #171717
+window.active.button.hover.image.color: #af865a
+
+#window.active.button.toggled.bg: #af865a
+#window.active.button.toggled.image.color: #798C91
+
+# Inactive window
+window.inactive.border.color: #171717
+
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #171717
+window.inactive.title.separator.color: #171717
+window.inactive.text.justify: center
+
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #171717
+
+window.inactive.handle.bg: flat solid
+window.inactive.handle.bg.color: #171717
+
+window.inactive.grip.bg: flat solid
+window.inactive.grip.bg.color: #171717
+
+window.inactive.button.unpressed.bg: flat solid
+window.inactive.button.unpressed.bg.color: #171717
+window.inactive.button.unpressed.image.color: #171717
+
+window.inactive.button.pressed.bg: flat solid
+window.inactive.button.pressed.bg.color: #af865a
+window.inactive.button.pressed.image.color: #798C91
+
+window.inactive.button.disabled.bg: flat solid
+window.inactive.button.disabled.bg.color: #bec0c6
+window.inactive.button.disabled.image.color: #171717
+
+window.inactive.button.hover.bg: flat solid
+window.inactive.button.hover.bg.color: #171717
+window.inactive.button.hover.image.color: #af865a
+
+
+# OSD
+osd.border.width: 1
+osd.border.color: #af865a
+
+osd.bg: flat solid
+osd.bg.color: #171717
+osd.label.bg: flat solid
+osd.label.bg.color: #171717
+osd.label.text.color: #798C91
+
+# OSD
+osd.bg: Solid Flat
+osd.bg.color: #171717
+osd.bg.shadow: 0
+
+osd.border.width: 2
+osd.hilight.bg: Solid Flat
+osd.hilight.bg.color: #af865a
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #1f1f1f
+
+osd.button.unpressed.bg: flat border
+osd.button.unpressed.bg.color: #1f1f1f
+#osd.button.unpressed.*.border.color: #171717
+
+osd.button.pressed.bg: flat border
+osd.button.pressed.bg.color: #af865a
+#osd.button.pressed.*.border.color: #798C91
+
+osd.button.focused.bg: flat solid border
+osd.button.focused.bg.color: #171717
+#osd.button.focused.*.border.color: #1f1f1f
+
+osd.button.focused.box.color: #af865a
+
+
+# Fonts
+window.active.label.text.font:shadow=n
+window.inactive.label.text.font:shadow=n
+menu.items.font:shadow=n
+menu.title.text.font:shadow=n
+
+
+# Everything else
+border.width: 1
+padding.width: 8
+padding.height: 3
+window.handle.width: 0
+window.client.padding.width: 0
+window.label.text.justify: left
+#menu.overlap: 0

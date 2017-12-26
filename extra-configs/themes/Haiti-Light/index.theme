@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Haiti-Light
+Comment=Haiti-Light Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+Name=Haiti-Light
+GtkTheme=Haiti-Light
+IconTheme=ArchLabs-Dark
+MetacityTheme=Haiti-Light
