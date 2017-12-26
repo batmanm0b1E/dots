@@ -1,3 +1,3 @@
 # dots
 
-Custom ArchLabs configs.
+Custom ArchLabs configs and other stuff.
