@@ -1,0 +1,215 @@
+# For commands above TEXT check:
+# http://conky.sourceforge.net/config_settings.html
+#
+# For commands available below TEXT check:
+# http://conky.sourceforge.net/variables.html
+
+# Bunsen Labs Conky help threads
+# http://crunchbang.org/forums/viewtopic.php?pid=371424#p371424
+
+# beta tested by: smacz
+# Enjoy! :)
+
+# pkill -xf "conky -q -c $HOME/.config/conky/BL100eft.conkyrc" &
+###  Begin Window Settings  #####################
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title Bunsen Labs Left Conky
+
+### ARGB can be used for real transparency
+### NOTE that a composite manager is required for real transparency.
+### This option will not work as desired (in most cases) in conjunction with
+### own_window_type normal
+# own_window_argb_visual yes # Options: yes or no
+
+### When ARGB visuals are enabled, this use this to modify the alpha value
+### Use: own_window_type normal
+### Use: own_window_transparent no
+### Valid range is 0-255, where 0 is 0% opacity, and 255 is 100% opacity.
+# own_window_argb_value 50
+
+minimum_size 222 500  ### width | height
+maximum_width 223
+
+#conkymove, original value for gap_x: 20
+gap_x 7
+#conkymove, original value for gap_y: 20
+gap_y 13
+
+alignment tl
+#######################  End Window Settings  ###
+###  Font Settings  #############################
+# Use Xft (anti-aliased font and stuff)
+use_xft yes
+#xftfont Liberation Mono:bold:size=9
+#xftfont Liberation Sans:size=10
+xftfont Monaco Regular:size=10
+
+# Alpha of Xft font. Must be a value at or between 1 and 0 ###
+xftalpha 1
+# Force UTF8? requires XFT ###
+override_utf8_locale yes
+
+uppercase no
+#########################  End Font Settings  ###
+
+###  Colour Settings  ###########################
+draw_shades no #yes
+default_shade_color 000000
+
+draw_outline no # amplifies text if yes
+default_outline_color 000000
+
+#default_color f13d42 # Naik-Red ;-)
+#default_color FAF6F5 # Salomon
+#default_color 656667 # Waldorf original colour
+#default_color E4E4E4 # Flame  & Bunsen Grey
+default_color 929292 # Labs Grey
+#default_color F13D42 # Silver
+color0 B0E0E6 # PowderBlue
+color1 778899 # LightSlateGray
+color2 D8BFD8 # Thistle
+color3 9ACD32 # YellowGreen
+color4 FFA07A # LightSalmon
+color5 FFDEAD # NavajoWhite
+color6 00BFFF # DeepSkyBlue
+color7 5F9EA0 # CadetBlue
+color8 BDB76B # DarkKhaki
+color9 CD5C5C # IndianRed
+#######################  End Colour Settings  ###
+
+###  Borders Section  ###########################
+draw_borders no
+# Stippled borders?
+stippled_borders 5
+# border margins
+border_inner_margin 5
+border_outer_margin 0
+# border width
+border_width 2
+# graph borders
+draw_graph_borders no
+default_graph_size 10,220
+########################  End Borders Secton  ###
+
+###  Miscellaneous Section  #####################
+# Boolean value, if true, Conky will be forked to background when started.
+background yes
+
+# Adds spaces around certain objects to stop them from moving other things
+# around, this only helps if you are using a mono font
+# Options: right, left or none
+use_spacer none
+
+# Default and Minimum size is 256 needs more for single commands that
+# "call" a lot of text IE: bash scripts
+text_buffer_size 6144
+
+# Subtract (file system) buffers from used memory?
+no_buffers yes
+
+# change GiB to G and MiB to M
+short_units yes
+
+# Like it says, ot pads the decimals on % values
+# doesn't seem to work since v1.7.1
+pad_percents 2
+
+# Imlib2 image cache size, in bytes. Default 4MiB Increase this value if you use
+# $image lots. Set to 0 to disable the image cache.
+imlib_cache_size 0
+
+# Use the Xdbe extension? (eliminates flicker)
+# It is highly recommended to use own window with this one
+# so double buffer won't be so big.
+double_buffer yes
+
+#   Maximum size of user text buffer, i.e. layout below TEXT line in config file
+#  (default is 16384 bytes)
+# max_user_text 16384
+
+# Desired output unit of all objects displaying a temperature. Parameters are
+# either "fahrenheit" or "celsius". The default unit is degree Celsius.
+# temperature_unit Fahrenheit
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface being solely up,
+# being up and having link or being up, having link and an assigned IP address. 
+if_up_strictness address
+
+# How often will conky be refreshed?
+# Values will be taken as seconds to next update
+update_interval 0.5
+update_interval_on_battery 2
+
+## │ ─ ┌ ┬ ┐ └ ┴ ┘ ├ ┼ ┤ 
+## ║ ═ ╔ ╦ ╗ ╚ ╩ ╝ ╠ ╬ ╣
+
+## ↑ ↓ → ← ↔ ► ◄ ▲ ▼ « »
+## ░  ▒  ▓ ☺ ☻ ♥ ♦ ♣ ♠
+## • ◘ ○ ◙ ♂ ♀ ♪ ♫ ☼
+## ¼ ½ ¾ ® ©
+
+#################  End Miscellaneous Section  ###
+
+TEXT
+${color f13d42}${font 1942 Report:size=42}${time %X}${font}${color}
+${font 1942 Report:size=27}${alignr}${time %x}
+${color f13d42}${font Monaco Regular:size=6}${offset 23}© nlinedesignz@web.de NC-BY-CC-3.0 \#!/AJL${font Monaco Regular:size=8}${color}
+${execi 7200 gcalcli --military --nocolor agenda}${font}
+
+${color f13d42}${alignc}${execi 14400 whoami} @ ${nodename}${color}
+
+${color f13d42}Uptime${color}${alignr}${uptime_short}
+${voffset 3}${color f13d42}OS${color}${alignr}ARCHLabs${voffset -4}${font Monaco Regular:size=8}+${font}3
+${font Monaco Regular:size=10}${color f13d42}Kernel${color}${alignr}${kernel}${font}
+
+${color f13d42}RAM${color}${alignr}${memperc}% = ${mem} / ${memmax}
+${font Monaco Regular:size=10}${color f13d42}Swap${color}${alignr}${swap} of ${swapmax}${font}
+
+
+${color f13d42}${alignc}${execi 720000 lscpu | grep 'Model name' | cut -c24-43} @ ${freq_g}GHz${color}
+
+${color f13d42}Core 1/2${color}${alignr}${cpu cpu0}% / ${cpu cpu1}%
+${font Monaco Regular:size=10}${color f13d42}Prozesse${color}${alignr}${running_processes}/${processes}${font}
+${font Monaco Regular:size=7}${offset 37}${top name 1}${alignr}${top cpu 1}%
+${offset 37}${top name 2}${alignr}${top cpu 2}%
+${offset 37}${top name 3}${alignr}${top cpu 3}%${font}
+${color f13d42}Temp${color}$alignr${execi 30 sensors | sed -n 18p | cut -c13-22}
+${color f13d42}Fan${color}$alignr${execi 30 sensors | sed -n 13p | cut -c13-21}
+${font Monaco Regular:size=10}${color f13d42}Entropie${color}$alignr${execi 7 cat /proc/sys/kernel/random/entropy_avail } / 4096 bits
+
+
+${color f13d42}${alignc}${execi 7200 hwinfo --gfxcard --short | sed -n 2p | cut -c43-56}${color}
+
+${color f13d42}Temp${color}${alignr}${execi 60 sensors | sed -n 25p | cut -c13-22}
+
+${color f13d42}VRS1${color}${alignr}${execi 7200 /usr/local/bin/voyager1}
+${color f13d42}VRS2${color}${alignr}${execi 7200 /usr/local/bin/voyager2}${font}
+
+${font Monaco Regular:size=10}/ROOT${alignr}${fs_used_perc /}% / ${fs_size /}
+${alignr}${diskiograph /dev/sda1 7,222 E4E4E4 F13D42 100 -l}
+/HOME${alignr}${fs_used_perc /home}% / ${fs_size /home}
+${alignr}${diskiograph /home 7,222  E4E4E4 F13D42 100 -l }
+${font Monaco Regular:size=9}/EXT${alignr}${fs_used_perc /run/media/dobbie/Music}% / ${fs_size /run/media/dobbie/Music}
+${alignr}${diskiograph /run/media/dobbie/Music 7,222  E4E4E4 F13D42 100 -l }${font}
+${font Monaco Regular:size=9}/USB${alignr}${fs_used_perc /run/media/dobbie/Important}% / ${fs_size /run/media/dobbie/Important}
+${alignr}${diskiograph /run/media/dobbie/Important 7,222  E4E4E4 F13D42 100 -l}${font}
+${voffset 7}
+${color f13d42}${font Monaco Regular:size=10}${alignc}${if_up enp3s0}KabelNetz${endif}${if_up wlan0}${wireless_essid wlan0} 
+${alignr}${wireless_link_qual_perc wlan0} % @ ${wireless_bitrate wlan0}${endif}${font}${color}
+
+${font Monaco Regular:size=9}${color f13d42}IP: ${color}${alignr}${if_existing /proc/net/route wlan0}${addr wlan0}${else}${if_existing /proc/net/route enp3s0}${addr enp3s0}${else}Keine IP${endif}${endif} / ${exec wget http://ipinfo.io/ip -qO -}
+${voffset 3}${color f13d42}TOR: ${color}${alignr}${exec  service tor status | grep 'Active:' | cut -c 12-18}
+
+${font Monaco Regular:size=10}Down${if_up enp3s0}${alignr}${downspeed enp3s0}${endif}${if_up wlan0}${alignr}${downspeed wlan0}${endif} 
+${if_up enp3s0}${downspeedgraph enp3s0 13,222  E4E4E4 F13D42 }${endif}${if_up wlan0}${downspeedgraph wlan0 13,222  E4E4E4 F13D42}${endif}
+UP${if_up enp3s0}${alignr}${upspeed enp3s0}${endif}${if_up wlan0}${alignr}${upspeed wlan0}${endif} 
+${if_up enp3s0}${upspeedgraph enp3s0 13,222  E4E4E4 F13D42 }${endif}${if_up wlan0}${upspeedgraph wlan0 13,222  E4E4E4 F13D42}${endif}${font}
+
+${if_running mocp}${color f13d42}MoC${color}${alignr}${moc_state}
+${alignr}${scroll 37 ${moc_artist} - ${moc_title} }${endif}

@@ -1,0 +1,66 @@
+
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window_colour 262729
+own_window  yes
+own_window_transparent no
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+use_spacer none
+
+
+#font snap-7
+xftfont silkscreen:size=6
+xftalpha 1
+text_buffer_size 2048 
+alignment bottom_left
+# Borders
+draw_borders no
+border_outer_margin 1
+
+# Contour
+draw_outline no
+
+# Shades
+draw_shades no
+default_shade_color 000000
+
+# Position
+gap_y 0
+gap_x 0
+
+# Alignment
+alignment bottom_left
+#alignment botton_left
+
+# Interval
+update_interval 1
+
+# Colors
+default_color FFFFFF
+color1 1793D1
+color2 535353
+color3 FFFFFF
+color4 D9D9D9
+color5 1793D1
+color6 00ff80
+
+# Font
+use_xft yes
+xftfont PF Tempesta Seven:pixelsize=8
+
+# Text alpha when using Xft
+#xftalpha 0.10
+
+# to prevent window from moving
+
+minimum_size 2000 20
+
+own_window_argb_value 0
+own_window_argb_visual no
+TEXT
+
+${voffset -7}${offset 23} |  ${color6}CPU1: ${color}${cpu cpu1}%  | ${color6} CPU2: ${color}${cpu cpu2}%  | ${color6} CPU3: ${color d3d3d3}${cpu cpu3}%  | ${color6} CPU4: ${color d3d3d3}${cpu cpu4}%  |  ${color6}CPU LOAD: ${color}${loadavg}  |  ${color6}RAM: ${color d3d3d3}${memperc}%  | ${color6} SWAP: ${color}${swapperc}%  |  ${color6}RAM PROC: ${color}${top_mem name 1} | ${color6} HOME: ${color}${font}${fs_used /home}/${fs_size /home}  | ${color6} SYSTEM: ${color}${font}${fs_used}/${fs_size}  | ${color6} DOWN: ${color}${downspeed enp2s0} |  ${color6}UP: ${color} ${upspeed enp2s0}|  ${color6}UP TOTAL: ${color} ${totalup enp2s0}|  ${color6}TOTAL DOWN: ${color} ${totaldown enp2s0}|  ${color6}UPDATES:${color} ${execi 3600 checkupdates | wc -l}  |

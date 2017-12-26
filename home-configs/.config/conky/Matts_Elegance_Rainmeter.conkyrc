@@ -1,0 +1,71 @@
+alignment top_right
+background no
+border_margin 5
+border_width 5
+default_color 454545  #454545 # grey 5f5f5f 3F3F3F 183149 3B3B3B 26211F
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 25
+gap_y 25
+maximum_width 650
+minimum_size 0 0
+no_buffers yes
+override_utf8_locale yes
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_title conky
+own_window_transparent yes
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+uppercase no
+use_xft yes
+xftalpha 1
+short_units no
+xftfont Raleway:pixelsize=9
+
+#	Distric-Thin			fonts
+#	Blue Highway
+#	Raleway
+#	Zekton
+#	Calibri
+#	Engebrechtre
+#	Opeln2001
+#	Raleway:weight=Light
+#	Raleway Light
+
+own_window_colour 000000 
+TEXT
+${color 454545}${font Raleway Light:pixelsize=180}${alignr}${time %H}
+${voffset -55}${font Raleway Light:pixelsize=180}${alignr}${color b72e3f}${time %M}
+${voffset -140}${color 454545}${font Raleway Light:pixelsize=30}${alignr}${time %A}  |  ${alignr}${time %B %d, %Y}
+
+${voffset -15}${color b72e3f}${font Raleway Light:pixelsize=20}${GOTO 200}net/up ${GOTO 300}${alignr}net/dwn
+${font Raleway Light:pixelsize=20}${GOTO 200}${color 454545}${upspeed enp2s0} ${GOTO 300}${alignr}${color 454545}${downspeed enp2s0}
+${color b72e3f}${font Raleway Light:pixelsize=20}${GOTO 200}total/up ${GOTO 300}${alignr}total/dwn
+${font Raleway Light:pixelsize=20}${GOTO 200}${color 454545}${totalup enp2s0} ${GOTO 300}${alignr}${color 454545}${totaldown enp2s0}
+${color b72e3f}${font Raleway Light:pixelsize=20}${GOTO 200}ram ${GOTO 300}${alignr}cpu
+${color 454545}${font Raleway Light:pixelsize=20}${GOTO 200}${color 454545}${mem} ${GOTO 300}${alignr}${color 454545}${cpu cpu0}%
+${color b72e3f}${font Raleway Light:pixelsize=20}${GOTO 200}cpu temp ${GOTO 300}${alignr}updates
+${color 454545}${font Raleway Light:pixelsize=20}${GOTO 200}${color 454545}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °c ${GOTO 300}${alignr 20}${color 454545}${execpi 60 checkupdates | wc -l}
+${alignr}ARCHLABS ${color b72e3f}R2-D2  ${color 454545}${kernel}
+
+${color 454545}${hr}${color 454545}
+${color 454545}${font Raleway Light:pixelsize=30}A R C H L I N U X${alignr}${color b72e3f}${font Raleway Light:pixelsize=30}A T O M F E E D
+${color 454545}${font Raleway Light:pixelsize=20}${voffset 2}${execi 300 $HOME/.config/conky/scripts/archlinux.sh}
+${color 454545}${hr}${color 454545}
+${color 454545}${font Raleway Light:pixelsize=30}B U N S E N L A B S${alignr}${color b72e3f}${font Raleway Light:pixelsize=30}A T O M F E E D
+${color 454545}${font Raleway Light:pixelsize=20}${voffset 2}${execi 300 $HOME/.config/conky/scripts/bl.sh}
+${color 454545}${hr}${color 454545}
+${color 454545}${font Raleway Light:pixelsize=30}A R C H L A B S${alignr}${color b72e3f}${font Raleway Light:pixelsize=30}A T O M F E E D
+${color 454545}${font Raleway Light:pixelsize=20}${voffset 2}${execi 300 $HOME/.config/conky/scripts/archlabs.sh}
+${color 454545}${hr}${color 454545}

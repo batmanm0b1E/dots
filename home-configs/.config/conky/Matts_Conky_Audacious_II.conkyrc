@@ -1,0 +1,49 @@
+alignment bottom_left
+background no
+border_margin 5
+border_width 5
+default_color ffffff  #ffffff # grey 5f5f5f 3F3F3F 183149 3B3B3B 26211F
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 10
+gap_y 10
+maximum_width 1500
+minimum_size 1920 150
+no_buffers yes
+override_utf8_locale yes
+# Create own window instead of using desktop (required in nautilus)
+background no
+own_window yes
+own_window_type desktop
+own_window_class Conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+own_window_argb_value 0
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+uppercase no
+use_xft yes
+xftalpha 1
+xftfont Raleway:pixelsize=9
+
+#	Distric-Thin			fonts
+#	Blue Highway
+#	Raleway
+#	Zekton
+#	Calibri
+#	Engebrechtre
+#	Opeln2001
+#	AvantGarde LT ExtraLight
+#	AvantGarde LT ExtraLight
+#4D6A86
+
+own_window_colour 000000
+TEXT
+${color #ffffff}${font Pindunk Regular:pixelsize=30}${if_running audacious}${exec audtool --current-song-tuple-data title| fold -s -w 500} 
+${GOTO 45}${voffset -25}${color #ffffff}${font Olympic Branding Regular:pixelsize=25}${if_running audacious}${exec audtool --current-song-tuple-data album| fold -s -w 500}
+${voffset -5}${color #6BAFDF}${font Honey Script:pixelsize=45}${if_running audacious}${exec audtool --current-song-tuple-data artist| fold -s -w 500}
+${voffset -25}${font Steelfish:pixelsize=15}${if_running audacious}${color #ffffff}${exec audtool --current-song-bitrate-kbps} kbps ${color #6BAFDF}| ${color #ffffff}${exec audtool --current-song-length}

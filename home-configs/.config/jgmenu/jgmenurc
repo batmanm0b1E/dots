@@ -1,0 +1,35 @@
+# .jgmenurc
+
+# these values are required to work with polybar
+stay_alive      = 0
+tint2_look      = 0
+
+
+#menu_halign     = right
+menu_valign     = top
+menu_margin_x  	= 3850
+menu_margin_y	  = 60
+
+menu_radius     = 0
+menu_border     = 2
+
+show_title      = 0
+item_margin_x   = 4
+item_margin_y	  = 4
+item_height	    = 24
+item_padding_x	= 8
+item_padding_y  = 4
+item_radius	    = 3
+item_border	    = 0
+sep_height	    = 4
+icon_size       = 22
+
+font		        = Pilcrow 20px
+#color_menu_bg   = #2b303b 100
+#color_menu_fg   = #c0c5ce 100
+#color_norm_bg   = #2b303b 100
+#color_norm_fg   = #c0c5ce 100
+#color_sel_bg    = #8fa1b3 100
+#color_sel_fg    = #c0c5ce 100
+#color_noprog_fg = #eeeeee 100
+#color_title_bg  = #2b303b 100

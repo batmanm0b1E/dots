@@ -1,0 +1,74 @@
+#!/usr/bin/conky -d -c
+##	.conkyrc configuration
+alignment mr
+background no
+border_margin 5
+border_width 5
+color0 555555			#
+color1 FCAF3E			# zolty
+color2 2a2a2a			# braz
+color3 a82553			# rozowy f71f84
+color4 5e1014			# bordowy
+color5 64574e			# braz
+color6 2a2a2a			# szary
+color7 8888CC			#  (COOL)
+color8 9d9c61			# zolto-szary
+color9 525276			# niebiesko-szary
+cpu_avg_samples 2
+default_color ffffff		# szary 5f5f5f
+default_outline_color 000000 	# Black
+default_shade_color 000000	# Black
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 50
+gap_y 0
+max_specials 1024
+max_user_text 10000
+maximum_width 1200
+minimum_size 100 100
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_type  desktop
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title ARCHLabs CB Right Conky
+pad_percents 2			# to co nizej, miejsc po przecinku
+short_units yes			# krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
+stippled_borders 3
+text_buffer_size 8000
+total_run_times 0
+update_interval 2.0
+uppercase no
+use_spacer no
+use_xft yes
+xftalpha 1
+xftfont Sansation:pixelsize=12
+
+lua_load /home/didisoft/.conky/lua.lua
+
+# ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
+# ${image /home/didisoft/.conky/didisoft.jpg -p 0,80 -s 26x28} # obrazki w conky
+
+
+TEXT
+${voffset 40}${alignc}${color 8e857c}ARCHLABS
+#${color}${alignc}_________________________
+${color}${voffset 10}${alignc} NAME: $nodename
+${voffset 5}${alignc}UPTIME: $uptime
+${voffset 5}${alignc}CPU: ${cpu cpu0}%
+${voffset 5}${alignc}RAM: $memperc%
+${voffset 5}${alignc}SWAP: $swapperc%
+${voffset 5}${alignc}UPDATES: ${execpi 20 checkupdates | wc -l}
+${alignc}_________________________
+${voffset 5}${alignc}HARD DISK: ${fs_used /} / ${fs_size /}
+${voffset 5}${alignc}HARD DISK2: ${fs_used /run/media/dobbie/Music} / ${fs_size /run/media/dobbie/Music} 
+${voffset 5}${alignc}DOWNLOAD: ${downspeed enp3s0} kb/s
+${voffset 5}${alignc}UPLOAD: ${upspeed enp3s0} kb/s
+${alignc}_________________________

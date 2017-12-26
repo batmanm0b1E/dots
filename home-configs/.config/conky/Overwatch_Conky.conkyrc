@@ -1,0 +1,94 @@
+
+alignment top_right
+background yes
+update_interval 3
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 10240
+imlib_cache_size 0
+ 
+###########
+# Windows #
+###########
+own_window_class Conky
+own_window yes
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+ 
+ 
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 500 500
+maximum_width 280
+ 
+alignment middle_left
+gap_x 10
+gap_y 0
+
+############
+# Graphics #
+############
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+########
+# Text #
+########
+use_xft yes
+xftalpha 0
+
+uppercase no
+ 
+default_color ff9900
+
+########
+# Code #
+########
+own_window_colour 000000
+TEXT
+
+
+${voffset -50}${offset 31}${color ff9900}${font Sportrop:size=50}${time %I}${voffset -38}
+${offset 36}${color 06b4f4}${font Sportrop:size=50}${time %M}${color FF750B}${voffset -25}
+${voffset -45}${offset 10}${font Bauhaus:size=15} ${time %a} ${time %b %d %y }
+${color ff9900}${hr 2}${color 06b4f4}${font Bauhaus:size=15}${voffset 5}
+${offset 15}ARCHLABS 5.0 R2-D2${color ff9900}${voffset 3}
+${offset 5}${color 06b4f4}$kernel${voffset 5}
+${color ff9900}${hr 2}${font Grenadier NF:size=13}${voffset 3}
+${font Bauhaus:size=15}${color FF750B}SYSTEM :${voffset 3}
+${color d8c608}${font Grenadier NF:size=13}uptime:${alignr}${color 06b4f4}$uptime_short${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}Battery:${alignr}${color 06b4f4}${battery_percent}%${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}HDD:${alignr}${color 06b4f4}${fs_used_perc }%${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}Temp:${alignr}${color 06b4f4}${acpitemp}c${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}Mem:${alignr}${color 06b4f4}$memperc%${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}Freq:${alignr}${color 06b4f4}${freq cpu0} MHZ${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}CPU:${alignr}${color 06b4f4}${cpu cpu0}%${color ff9900}
+${color ff9900}${hr 2}${voffset 3}
+${font Bauhaus:size=15}${color FF750B}TOP PROCESSES :${voffset 3}
+${font Grenadier NF:size=13}${color d8c608}${top name 1}${alignr}${color 06b4f4}${top cpu 1} %
+${font Grenadier NF:size=13}${color d8c608}${top name 2}${alignr}${color 06b4f4}${top cpu 2} %
+${font Grenadier NF:size=13}${color d8c608}${top name 3}${alignr}${color 06b4f4}${top cpu 3} %
+${color ff9900}${hr 2}${voffset 3}
+${font Bauhaus:size=15}${color FF750B}TOP MEMORY :${voffset 3}
+${font Grenadier NF:size=13}${color d8c608}${top_mem name 1}${alignr}${color 06b4f4}${top mem 1} %
+${font Grenadier NF:size=13}${color d8c608}${top_mem name 2}${alignr}${color 06b4f4}${top mem 2} %
+${font Grenadier NF:size=13}${color d8c608}${top_mem name 3}${alignr}${color 06b4f4}${top mem 3} %
+${color ff9900}${hr 2}${voffset 3}
+${font Bauhaus:size=15}${color FF750B}INTERNET :${voffset 3}
+${color d8c608}${font Grenadier NF:size=13}${wireless_essid wlo1}${alignr}${color 06b4f4}${wireless_link_qual wlo1}% ${color ff9900}
+${color d8c608}${font Grenadier NF:size=13}Upload:${alignr}${color 06b4f4}${upspeed wlo1}/s${color ff9900} 
+${color d8c608}${font Grenadier NF:size=13}Download:${alignr}${color 06b4f4}${downspeed wlo1}/s 
+${color ff9900}${hr 2}

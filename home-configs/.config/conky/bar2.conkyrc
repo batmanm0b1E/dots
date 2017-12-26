@@ -1,0 +1,40 @@
+own_window yes
+own_window_class Conky
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 140
+own_window_type desktop
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+double_buffer yes
+use_spacer right
+use_xft yes
+#font snap-7
+xftfont Product Sans:bold:size=7
+# xftfont DejaVu Sans Light:size=8
+xftalpha 1
+text_buffer_size 2048
+# alignment is disabled when own_window_type is dock
+alignment top_left
+gap_x -2560
+gap_y 8
+# Use this to move your bar up and down the screen
+default_bar_size 20 6
+short_units yes
+ 
+# --- Colours, Sizes, Fonts & Margins --- #
+update_interval 1.0
+stippled_borders 0
+minimum_size 2550 6 # Your screen width here
+maximum_width 2560  # and here
+border_width 5
+default_color d3d3d3
+# --- Text --- #
+draw_outline no
+draw_borders no
+#font -*-profont-*-*-*-11-*-*-*-*-*-*-*
+uppercase yes
+draw_shades no
+TEXT
+
+${alignc}${voffset -8}|  ${color 0090ff}Time: ${color}${time %H: %M: %S %p -  %A,  %d,  %B,  %Y  %Z}  |  ${color a6e22e}ARCHLABS ${color} - ${color f92672} +4 ${color}  |   ${color beed5f}MACHINE ${color d3d3d3} $nodename   |  ${color ff669d} KERNEL${color d3d3d3}  $kernel   |  ${color 00ff80} ARCHITECTURE:  ${color}${machine}   |   ${color 8000ff}PROCESSOR: ${color} ${execi 1000 cat /proc/cpuinfo  |  grep 'model name'  |  sed -e 's/model name.*: //'| uniq  |  cut -c 1-23}   |   ${color ff4060}PROCESSES:${color} ${processes}   |   ${color ff4060}ACTIVE:${color} ${running_processes}   |   ${color 0090ff}CPU TEMP:${color}  ${execp sensors coretemp-isa-0000  |  grep 'Core 0'  |  cut -c16-17} °C   |   ${color 0090ff}GPU TEMP: ${color}${execi 15 sensors  |  head -n 10  |  grep -i "temp1"  |  cut -c 15-17} °C   |   ${color fd971f}UPTIME ${color d3d3d3} $uptime  ${color}  |  ${color a6e22e}GMAIL: ${color}${execi 300 python ~/.config/conky/scripts/gmail.py} |

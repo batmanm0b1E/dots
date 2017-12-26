@@ -1,0 +1,94 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+xfce-mcs-manager &
+
+##Screen Stuff
+#xrandr --output HDMI-A-0 --mode 2560x1440 --output DVI-D-0 --mode 2560x1440 &
+#xrandr --output DisplayPort-0 --mode 3840x2160 --pos 0x0 --rotate normal --output DVI-D-0 --off --output HDMI-A-0 --mode 3840x2160 --pos 3840x0 --rotate normal &
+xrandr --output DisplayPort-0 --mode 3840x2160 --output HDMI-A-0 --auto --right-of DisplayPort-0
+
+##Visual Stuff
+compton -b -C &
+
+## Set Background Image
+(sleep 5; nitrogen --restore) &
+
+##Turn On Numlock
+(sleep 5; numlockx) &
+
+##Thunar Daemon (Loads Thunar Quicker)
+thunar --daemon &
+
+## GNOME PolicyKit Authentication
+#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+## Volume Keys Daemon
+xfce4-volumed &
+
+## Turn off/on System Beep
+xset b off
+
+## Enable Power Management
+xfce4-power-manager &
+
+## XFCE4 Settings
+xfsettingsd &
+
+## MPD Management
+#mpd &
+#mpdscribble &
+
+## Start Xscreensaver
+xscreensaver -no-splash &
+
+##PCmanFM Controls Desktop
+##pcmanfm desktop
+#pcmanfm --desktop &
+
+##Panel Options
+#xfce4-panel &
+#(sleep 2; plank) &
+#tint2 &
+(sleep 5; polybar -r ob-bar) &
+#(sleep 1; $HOME/.config/polybar/polybar.sh) &
+
+##Applets and Other Things
+#(sleep 2; caffeine) &
+#(sleep 5; covergloobus) &
+#(sleep 5; nm-applet) &
+g610-led -a 90 &
+(sleep 3; clipit) &
+#(sleep 2; greenclip daemon) &
+#(sleep 2; volumeicon) &
+#(sleep 2; volti) &
+
+##Window Control
+(sleep 2; skippy-xd --config $HOME/.config/skippy-xd/skippy-xd.rc --start-daemon) &
+
+##Conky
+#(sleep 2s && al-conky-session --autostart) &
+
+## set mouse accelleration scale is a fraction slower=1/2, none=0/0, faster=2/1..etc.
+xset m 0 0 &
+
+#(for tint2 in $APPS ; do ($tint2 &) ; sleep $2 ; done) &
+
+# let super key alone open rofi
+ksuperkey -e 'Super_L=Alt_L|F1' &
+
+# Desktop Window Snapping
+opensnap --daemon -c /etc/opensnap

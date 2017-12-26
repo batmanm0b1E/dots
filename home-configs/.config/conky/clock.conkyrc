@@ -1,0 +1,81 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################
+
+background no
+update_interval 0.5
+update_run_times 0
+total_run_times 0
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 1024
+imlib_cache_size 0
+
+own_window yes
+own_window_class Conky
+own_window_type normal #All options: conky,dock,desktop,normal,override,panel
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 120 #Opacity color
+own_window_colour ff0000 #Change color bg in this line
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_shades no
+draw_borders no
+draw_graph_borders no
+
+minimum_size 450 135
+maximum_width 450
+
+alignment bottom_right
+gap_x 50
+gap_y 80
+
+use_xft yes
+override_utf8_locale yes
+xftfont Mono:size=8
+xftalpha 1
+uppercase no
+use_spacer none
+
+default_color ffffff #D8D8D8
+color1 ff0000
+
+lua_load ~/.config/conky/lua/imlib_clock.lua
+lua_draw_hook_pre imlib_clock theme
+
+TEXT
+${voffset 24}${offset 150}${font Roboto Condensed:size=12}${color 616161}New Zealand${font}
+${voffset 2}${offset 150}${font Roboto Condensed:size=12}${color 616161}${time %A}${font}
+${voffset 2}${offset 150}${font Roboto Condensed:size=12}${color 616161}${time %e}.${time %m}.${time %Y}${font}
+${voffset 2}${offset 150}${font Roboto Condensed:size=12}${color 8D8D8D}${time %I}:${time %M}:${time %S}  ${time %p}${font}
+${lua imlib_clock grey 130 71 72}
+
+##======================== Regards, Etles_Team =============================##lua_load
+

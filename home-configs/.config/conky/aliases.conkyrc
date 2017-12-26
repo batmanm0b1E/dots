@@ -1,0 +1,96 @@
+own_window yes
+own_window_class Conky
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_type desktop
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+double_buffer yes
+use_spacer right
+use_xft yes
+#font snap-7
+xftfont Roboto Condensed:size=10
+# xftfont DejaVu Sans Light:size=8
+xftalpha 1
+text_buffer_size 2048
+# alignment is disabled when own_window_type is dock
+alignment top_middle
+gap_x 220
+gap_y -5
+# Use this to move your bar up and down the screen
+default_bar_size 20 6
+short_units yes
+ 
+# --- Colours, Sizes, Fonts & Margins --- #
+update_interval 1.0
+stippled_borders 0
+minimum_size 400 6 # Your screen width here
+maximum_width 400  # and here
+border_width 5
+default_color d3d3d3
+# --- Text --- #
+draw_outline no
+draw_borders no
+#font -*-profont-*-*-*-11-*-*-*-*-*-*-*
+uppercase yes
+draw_shades no
+TEXT
+
+${alignr}aliases
+${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
+${alignr}${alignr}${color2}update=SYU${color} -> Pacman Update
+${alignr}${color2}aurup=SYUA${color} -> AUR Update
+${alignr}${color2}yorphan=QTS${color} -> Orphan Removal
+${alignr}${color2}remove=RNS${color} -> Remove Package
+${alignr}${color2}install=S${color} -> Install Package
+${alignr}${color2}weather=wttr${color} -> Weather
+${alignr}${color2}merge=xrdb${color} -> Merge Resources
+${alignr}${color2}neoa=neofetch${color} -> Neofetch ASCII
+${alignr}${color2}font=updatefont${color} -> Update Fonts
+
+${alignr}Keybindings
+${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
+${alignr}${color2}dmenu -> ${color}alt+f3
+${alignr}${color2}Thunar -> ${color}super+f
+${alignr}${color2}Music -> ${color}super+m
+${alignr}${color2}terminal -> ${color}super+t
+${alignr}${color2}rofi -> ${color}super+space
+${alignr}${color2}Browser -> ${color}super+w
+${alignr}${color2}Editor -> ${color}super+e
+${alignr}${color2}Htop -> ${color}super+h
+${alignr}${color2}Lock -> ${color}super+l
+${alignr}${color2}Scrot -> ${color}alt+print
+${alignr}${color2}Audio -> ${color}super+v
+${alignr}${color2}Resize -> ${color}alt+r
+${alignr}${color2}Move -> ${color}alt+m
+${alignr}${color2}Task Manager -> ${color}ctrl+shift+esc
+
+${alignr}Window Controls
+${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
+${alignr}${color2}bottom left -> ${color}super+num1
+${alignr}${color2}bottom half-> ${color}super+num2
+${alignr}${color2}bottom right -> ${color}super+num3
+${alignr}${color2}left half -> ${color}super+num4
+${alignr}${color2}fullscreen -> ${color}super+num5
+${alignr}${color2}right half -> ${color}super+num6
+${alignr}${color2}top left -> ${color}super+num7
+${alignr}${color2}top half -> ${color}super+num8
+${alignr}${color2}top right -> ${color}super+num9
+
+${alignr}${color2}close -> ${color}alt+f4
+${alignr}${color2}iconify -> ${color}alt+f5
+${alignr}${color2}Toggle Max -> ${color}alt+f6
+${alignr}${color2}Lower -> ${color}alt+esc
+${alignr}${color2}Menu -> ${color}alt+space
+${alignr}${color2}Next Window -> ${color}alt+tab
+${alignr}${color2}Toggle Dec -> ${color}alt+b
+${alignr}${color2}Show Desktop -> ${color}alt+d
+
+${alignr}Desktop Controls
+${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
+${alignr}${color2}desktop 1 -> ${color}super+f1
+${alignr}${color2}desktop 2 -> ${color}super+f2
+${alignr}${color2}desktop 3 -> ${color}super+f3
+${alignr}${color2}desktop 4 -> ${color}super+f4
+${alignr}${color2}desktop list -> ${color}super+tab

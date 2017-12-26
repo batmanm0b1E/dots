@@ -1,0 +1,57 @@
+alignment top_right
+background no
+border_margin 5
+border_width 5
+default_color ffffff  #ffffff # grey 5f5f5f 3F3F3F 183149 3B3B3B 26211F
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 25
+gap_y 25
+maximum_width 450
+minimum_size 0 0
+no_buffers yes
+override_utf8_locale yes
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title ARCHLabs Top Conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+uppercase no
+use_xft yes
+xftalpha 1
+short_units no
+xftfont Raleway:pixelsize=9
+
+#	Distric-Thin			fonts
+#	Blue Highway
+#	Raleway
+#	Zekton
+#	Calibri
+#	Engebrechtre
+#	Opeln2001
+#	Raleway:weight=Light
+#	AvantGarde LT ExtraLight
+
+own_window_colour 000000
+TEXT
+${color ffffff}${font AvantGarde LT ExtraLight:pixelsize=150}${alignr}${time %H}
+${voffset -55}${font AvantGarde LT ExtraLight:pixelsize=150}${alignr}${color 454545}${time %M}
+${voffset -140}${color ffffff}${font AvantGarde LT ExtraLight:pixelsize=30}${alignr}${time %A}  |  ${alignr}${time %B %d, %Y}
+${voffset -15}${color 454545}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}net/up ${GOTO 300}${alignr}net/dwn
+${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}${color ffffff}${upspeed enp2s0} ${GOTO 300}${alignr}${color ffffff}${downspeed enp2s0}
+${color 454545}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}total/up ${GOTO 300}${alignr}total/dwn
+${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}${color ffffff}${totalup enp2s0} ${GOTO 300}${alignr}${color ffffff}${totaldown enp2s0}
+${color 454545}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}ram ${GOTO 300}${alignr}cpu
+${color ffffff}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}${color ffffff}${mem} ${GOTO 300}${alignr}${color ffffff}${cpu cpu0}%
+${color 454545}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}cpu temp ${GOTO 300}${alignr}updates
+${color ffffff}${font AvantGarde LT ExtraLight:pixelsize=15}${GOTO 200}${color ffffff}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °c ${GOTO 300}${alignr 10}${color ffffff}${execpi 36 checkupdates | wc -l}
+

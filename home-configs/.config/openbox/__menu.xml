@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu>
+
+<menu id="Utils" label="Utility">
+  <item label="Catfish">
+    <action name="Execute">
+      <command>/usr/bin/catfish</command>
+    </action>
+  </item>
+  <item label="Calculator">
+    <action name="Execute">
+      <command>galculator</command>
+    </action>
+  </item>
+  <item label="Gpick">
+    <action name="Execute">
+      <command>gpick</command>
+    </action>
+  </item>
+</menu>
+<menu id="Media" label="Media">
+  <item label="Video">
+    <action name="Execute">
+      <command>mpv --player-operation-mode=pseudo-gui -- %U</command>
+    </action>
+  </item>
+  <item label="Music">
+    <action name="Execute">
+      <command>audacious</command>
+    </action>
+  </item>
+  <item label="Pictures">
+    <action name="Execute">
+      <command>gpicview</command>
+    </action>
+  </item>
+  <item label="Gimp">
+    <action name="Execute">
+      <command>gimp-2.8</command>
+    </action>
+  </item>
+</menu>
+<menu id="Preferences" label="Settings">
+  <menu id="Openbox" label="Openbox">
+    <item label="Config">
+      <action name="Execute">
+        <command>obconf</command>
+      </action>
+    </item>
+    <item label="Menu">
+      <action name="Execute">
+        <command>kickshaw</command>
+      </action>
+    </item>
+    <separator/>
+    <item label="autostart">
+      <action name="Execute">
+        <command>atom ~/.config/openbox/autostart</command>
+      </action>
+    </item>
+    <item label="menu.xml">
+      <action name="Execute">
+        <command>atom ~/.config/openbox/menu.xml</command>
+      </action>
+    </item>
+    <item label="rc.xml">
+      <action name="Execute">
+        <command>atom ~/.config/openbox/rc.xml</command>
+      </action>
+    </item>
+    <separator/>
+    <item label="Reload">
+      <action name="Execute">
+        <command>openbox --reconfigure</command>
+      </action>
+    </item>
+    <item label="Restart ">
+      <action name="Execute">
+        <command>openbox --restart</command>
+      </action>
+    </item>
+  </menu>
+  <menu id="Compositor" label="Compositor" execute="al-compositor"/>
+  <separator/>
+  <item label="Appearance">
+    <action name="Execute">
+      <command>xfce4-appearance-settings</command>
+    </action>
+  </item>
+  <item label="Wallpaper">
+    <action name="Execute">
+      <command>nitrogen</command>
+    </action>
+  </item>
+</menu>
+<menu id="Settings" label="System">
+  <item label="Packages">
+    <action name="Execute">
+      <command>termite --geometry=600x500 --exec=pacli</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Grub">
+    <action name="Execute">
+      <command>grub-customizer</command>
+    </action>
+  </item>
+  <item label="Nvidia">
+    <action name="Execute">
+      <command>gksudo nvidia-settings</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Settings">
+    <action name="Execute">
+      <command>xfce4-settings-manager</command>
+    </action>
+  </item>
+  <item label="Disks">
+    <action name="Execute">
+      <command>gnome-disks</command>
+    </action>
+  </item>
+  <item label="Gparted">
+    <action name="Execute">
+      <command>gksudo gparted</command>
+    </action>
+  </item>
+</menu>
+<menu id="Screen" label="Screen">
+  <item label="Now">
+    <action name="Execute">
+      <command>scrot %F-%S_$wx$h_scrot.png -e &apos;mv $f ~/images ; gpicview ~/images/$f&apos;</command>
+    </action>
+  </item>
+  <item label="Wait 5">
+    <action name="Execute">
+      <command>scrot -d 5 %F-%S_$wx$h_scrot.png -e &apos;mv $f ~/images/ ; gpicview ~/images/$f&apos;</command>
+    </action>
+  </item>
+  <item label="Wait 10">
+    <action name="Execute">
+      <command>scrot -d 10 %F-%S_$wx$h_scrot.png -e &apos;mv $f ~/images/ ; gpicview ~/images/$f&apos;</command>
+    </action>
+  </item>
+  <item label="Select">
+    <action name="Execute">
+      <command>scrot -sb %F-%S_$wx$h_scrot.png -e &apos;mv $f ~/images/ ; gpicview ~/images/$f&apos;</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="scrot.moe">
+    <action name="Execute">
+      <command>exo-open --launch WebBrowser https://scrot.moe/</command>
+    </action>
+  </item>
+  <item label="Pictures">
+    <action name="Execute">
+      <command>exo-open --launch WebBrowser https://photos.google.com</command>
+    </action>
+  </item>
+  <item label="Imgur">
+    <action name="Execute">
+      <command>exo-open --launch WebBrowser http://smokeking100.imgur.com/all/</command>
+    </action>
+  </item>
+</menu>
+<menu id="Pipes" label="Pipes">
+  <menu id="Recent" label="Recent" execute="al-recent-files-pipemenu"/>
+  <menu id="Browse" label="Browse" execute="al-places-pipemenu"/>
+  <menu id="Keybinds" label="Keybind" execute="al-kb-pipemenu"/>
+  <item label="Switch Menu">
+    <action name="Execute">
+      <command>genmenu</command>
+    </action>
+  </item>
+</menu>
+
+<menu id="root-menu" label="Openbox 3">
+  <separator label="─────➤ ──"/>
+  <item label="Terminal">
+    <action name="Execute">
+      <command>exo-open --launch TerminalEmulator</command>
+    </action>
+  </item>
+  <item label="Web Browser">
+    <action name="Execute">
+      <command>exo-open --launch WebBrowser</command>
+    </action>
+  </item>
+  <item label="File Manager">
+    <action name="Execute">
+      <command>exo-open --launch FileManager</command>
+    </action>
+  </item>
+  <item label="Edit">
+    <action name="Execute">
+      <command>atom</command>
+    </action>
+  </item>
+  <separator/>
+  <menu id="Utils"/>
+  <menu id="Media"/>
+  <menu id="Preferences"/>
+  <menu id="Settings"/>
+  <menu id="Screen"/>
+  <menu id="Pipes"/>
+  <separator/>
+  <item label="Exit">
+    <action name="Execute">
+      <command>oblogout</command>
+    </action>
+  </item>
+</menu>
+
+</openbox_menu>

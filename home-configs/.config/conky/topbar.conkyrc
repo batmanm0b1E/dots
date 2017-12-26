@@ -1,0 +1,58 @@
+own_window yes
+own_window_class Conky
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 140
+own_window_type desktop
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+double_buffer yes
+use_spacer right
+use_xft yes
+#font snap-7
+xftfont Hyperspace:bold:size=7
+# xftfont DejaVu Sans Light:size=8
+xftalpha 1
+text_buffer_size 2048
+# alignment is disabled when own_window_type is dock
+alignment top_left
+gap_x -2560
+gap_y 8
+# Use this to move your bar up and down the screen
+default_bar_size 20 6
+short_units yes
+ 
+# --- Colours, Sizes, Fonts & Margins --- #
+update_interval 1.0
+stippled_borders 0
+minimum_size 2550 6 # Your screen width here
+maximum_width 2560  # and here
+border_width 5
+default_color d3d3d3
+# --- Text --- #
+draw_outline no
+draw_borders no
+#font -*-profont-*-*-*-11-*-*-*-*-*-*-*
+uppercase yes
+draw_shades no
+ 
+color0 a6e22e # Light green
+color1 beed5f # Lime
+color2 fd971f # Light Orange
+color3 ffeb3b # Yellow
+color4 ff5722 # Red
+color5 00CBEE # Blue
+color6 6EC6D4 # Light grey
+TEXT
+${alignc}${color0}ArchLabs Linux +4 ${color} 64-bit |  \
+${color1}User${color} $nodename |  \
+${color3}Time: ${color}${time %H:%M:%S} |  \
+${color2}Uptime ${color} $uptime ${color} |  \
+${color3}Kernel${color} $kernel |  \
+${color4}Cpu: ${color}${cpu}% |  \
+${color5}Ram: ${color}${membar 6, 20}  ${color6}${mem}${color 00CBEE} / ${color}${memmax} |  \
+${color fff}HDD: ${color}${font}${fs_bar 6,60 /}  ${color6}${fs_used /} / ${color}${fs_size /} |  \
+${color6}IP: ${color}${execi 60 curl http://icanhazip.com} |  \
+${color2}GMAIL: ${color}${execi 300 python ~/.config/conky/scripts/gmail.py} | \
+${color3}UPDATES: ${color}${execpi 60 checkupdates | wc -l} | \
+${color0}Currently playing: ${color}${if_running audacious}${exec audtool --current-song-tuple-data title| fold -s -w 500} - ${if_running audacious}${exec audtool --current-song-tuple-data album| fold -s -w 500} - ${if_running audacious}${exec audtool --current-song-tuple-data artist| fold -s -w 500}

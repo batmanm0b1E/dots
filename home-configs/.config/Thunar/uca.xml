@@ -1,0 +1,52 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>Thunar</icon>
+	<name>Open as Root</name>
+	<unique-id>1489735119964747-1</unique-id>
+	<command>gksu thunar %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1489732603648085-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>notes</icon>
+	<name>Set Wallpaper Single</name>
+	<unique-id>1491680700276197-4</unique-id>
+	<command>nitrogen --set-zoom-fill  --head=0 %f  &amp;&amp; nitrogen --set-zoom-fill  --head=1 %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>view-private-symbolic</icon>
+	<name>Search With Catfish</name>
+	<unique-id>1491680584921838-3</unique-id>
+	<command>catfish --path=$f$d</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>utilities-terminal-symbolic</icon>
+	<name>Run</name>
+	<unique-id>1510256876444028-1</unique-id>
+	<command>urxvt -e %f</command>
+	<description>Run in Terminal</description>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+</actions>

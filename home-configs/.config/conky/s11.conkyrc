@@ -1,0 +1,151 @@
+conky.config = {
+-- pkill -xf "conky -c /media/5/Conky/S11_All-Txt.v10.conky" &
+
+
+--  Begin Window Settings
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+	own_window_colour = '#000000',
+	own_window_class = 'Conky',
+	own_window_title = 'Text Conky',
+
+	minimum_width = 260, minimum_height = 900,
+	maximum_width = 260,
+
+	gap_x = 10,
+	gap_y = 10,
+
+	alignment = 'top_left',
+
+-- End Window Settings
+-- Font Settings
+
+	use_xft = true,
+	font = 'Monofur:bold:size=10',
+	xftalpha = 1.0,
+	override_utf8_locale = true,
+
+-- End Font Settings
+-- Color Settings
+
+	draw_shades = true,
+	default_shade_color = '#000000',
+	draw_outline = false,
+	default_outline_color = '#000000',
+
+--default_color DCDCDC #Gainsboro
+	default_color = '#B0E0E6',--PowderBlue
+	color0 = '#98FB98',--PaleGreen
+	color1 = '#778899',--LightSlateGray
+	color2 = '#FFD700',--Gold
+	color3 = '#B0E0E6',--PowderBlue
+	color4 = '#F4A460',--SandyBrown
+	color5 = '#DEB887',--BurlyWood
+	color6 = '#00BFFF',--DeepSkyBlue
+	color7 = '#5F9EA0',--CadetBlue
+	color8 = '#FFA500',--Orange
+	color9 = '#FF4500',--OrangeRed
+
+-- End Color Settings
+-- Borders Section
+
+	draw_borders = false,
+	stippled_borders = 5,
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+-- End Borders Secton
+-- Miscellaneous Section
+
+	background = true,
+	use_spacer = 'none',
+	no_buffers = true,
+	double_buffer = true,
+
+-- End Miscellaneous Section
+
+	update_interval = 1.0,
+
+-- ASCII Characters
+-- │ ─ ┌ ┬ ┐ └ ┴ ┘ ├ ┼ ┤
+-- ║ ═ ╔ ╦ ╗ ╚ ╩ ╝ ╠ ╬ ╣
+
+-- ↑ ↓ → ← ↔ ► ◄ ▲ ▼ « »
+-- ░  ▒  ▓ ☺ ☻ ♥ ♦ ♣ ♠
+-- • ◘ ○ ◙ ♂ ♀ ♪ ♫ ☼
+-- ¼ ½ ¾ ® ©
+
+};
+
+conky.text = [[
+┌─ Time
+│${goto 26}├─ Local${goto 110}${time %T}
+│${goto 26}├─ UTC ${goto 110}${utime %H:%M}
+│${goto 26}├─ Boot${goto 110}${exec who -b | cut -c23-}
+│${goto 26}└─ Uptime${goto 110}${uptime}
+│
+├─ System
+│${goto 26}├─ OS${goto 110}${execi 86400 lsb_release -is} ${execi 86400 lsb_release -rs}
+│${goto 26}├─ Kernel ${goto 110}${kernel}
+│${goto 26}└─ Machine${goto 110}${machine}
+│
+├─ Memory
+│${goto 26}├─ Total${goto 110}${memmax}
+│${goto 26}├─ In Use${goto 110}${mem} (${memperc}%)
+│${goto 26}├─ Free${goto 110}${memfree}
+│${goto 26}├─ Up to${goto 110}${memeasyfree} easy free
+│${goto 26}├─ Swap
+│${goto 26}│${goto 45}├─ Total${goto 110}${swapmax}
+│${goto 26}│${goto 45}├─ Used${goto 110}${swap} ${swapperc}%
+│${goto 26}│${goto 45}└─ Free${goto 110}${swapfree}
+│${goto 26}├─ Ram${goto 110}${memperc}%
+│${goto 26}└─ LoadAvg${goto 120}${loadavg}
+│
+├─ CPU Status${goto 110}Temp: ${execp sensors coretemp-isa-0000 | grep 'Core 1' | cut -c16-17} °C
+│${goto 26}├─ CPU 0${goto 110}${cpu cpu0}%${goto 155}@ ${freq_g 0}GHz
+│${goto 26}├─ CPU 1${goto 110}${cpu cpu1}%${goto 155}@ ${freq_g 1}GHz
+│${goto 26}├─ CPU 2${goto 110}${cpu cpu2}%${goto 155}@ ${freq_g 2}GHz
+│${goto 26}└─ CPU 3${goto 110}${cpu cpu3}%${goto 155}@ ${freq_g 3}GHz
+│
+├─ Sensors
+│${goto 26}├─ CPU${goto 115}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °C
+│${goto 26}├─ FAN${goto 110}${execi 15 sensors | grep -i "fan1" | cut -c 14-21}
+│${goto 26}├─ M|B${goto 115}${execi 15 sensors | tail -n 15 | grep -i "temp2" | cut -c 15-22}
+│${goto 26}├─ SDA${goto 115}${hddtemp /dev/sdc1}°
+│${goto 26}└─ GPU${goto 115}${execi 15 sensors | head -n 10 | grep -i "temp1" | cut -c 15-22}
+│
+├─ HDD Status
+│${goto 26}├─ Disk${goto 110}${execi 30 inxi -D |grep 'Size'| cut -c28-47}
+│${goto 26}├─ Diskio ${goto 110}${diskio}
+│${goto 26}│${goto 45}├─ Read${goto 110}${diskio_read}
+│${goto 26}│${goto 45}└─ Write${goto 110}${diskio_write}
+│${goto 26}├─ /ROOT${goto 110}${fs_free /}${goto 170}/ ${fs_size /}
+│${goto 26}├─ /HOME${goto 110}${fs_free /home}${goto 170}/ ${fs_size /home}
+│${goto 26}├─ /MUSIC${goto 110}${fs_free /run/media/dobbie/Music}${goto 170}/ ${fs_size /run/media/dobbie/Music}
+│${goto 26}└─ /MOVIE${goto 110}${fs_free /run/media/dobbie/Movies}${goto 170}/ ${fs_size /run/media/dobbie/Movies}
+│
+├─ Processes
+│${goto 26}├─ Total${goto 110}${processes}
+│${goto 26}├─ Running${goto 110}${running_processes}
+│${goto 26}│
+│${goto 26}├─ CPU
+│${goto 26}│${goto 45}├─ ${top name 1}${goto 130}${top cpu 1}${top mem 1}
+│${goto 26}│${goto 45}├─ ${top name 2}${goto 130}${top cpu 2}${top mem 2}
+│${goto 26}│${goto 45}└─ ${top name 3}${goto 130}${top cpu 3}${top mem 3}
+│${goto 26}│
+│${goto 26}└─ MEM
+│${goto 45}├─ ${top_mem name 1}${goto 130}${top_mem cpu 1}${top_mem mem 1}
+│${goto 45}├─ ${top_mem name 2}${goto 130}${top_mem cpu 2}${top_mem mem 2}
+│${goto 45}└─ ${top_mem name 3}${goto 130}${top_mem cpu 3}${top_mem mem 3}
+│
+└─ Net
+${goto 26}├─ enp2s0${goto 110}${addrs}
+${goto 26}├─ Up
+${goto 26}│${goto 45}├─ Speed${goto 120}${upspeed enp2s0}
+${goto 26}│${goto 45}└─ Total${goto 120}${totalup enp2s0}
+${goto 26}│
+${goto 26}└─ Down
+${goto 45}├─ Speed${goto 120}${downspeed enp2s0}
+${goto 45}└─ Total${goto 120}${totaldown enp2s0} ]];

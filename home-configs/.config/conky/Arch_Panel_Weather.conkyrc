@@ -1,0 +1,162 @@
+alignment top_left
+background yes
+border_margin 0
+border_width 1
+default_color ffffff
+double_buffer yes
+draw_outline no
+draw_graph_borders no
+draw_borders no
+draw_shades no
+gap_x 3    ### left | right
+gap_y 0    ### up | down
+maximum_width 250
+minimum_size 0 0
+no_buffers yes
+uppercase no
+override_utf8_locale yes
+own_window yes
+own_window_title conky
+own_window_transparent no
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 80
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+use_xft yes
+xftalpha 1.0
+xftfont Freesans:pixelsize=10
+short_units yes
+
+
+
+# -- Lua Load -- #
+#lua_load /home/dobbie/.draw_bg.lua
+#lua_draw_hook_pre draw_bg
+ 
+#lua_load ~/.bargraph_small.lua
+lua_draw_hook_post main_bars
+
+#own_window_colour 000000
+TEXT
+${voffset 145}${color c1c1c1}${color cdbf9a}${font SFNS Regular:pixelsize=9}${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/forecast/daily?APPID=${template6}&id=${template7}&cnt=5&units=${template8}&lang=$l" -o ~/.cache/forecast.json}
+${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/weather?APPID=${template6}&id=${template7}&cnt=5&units=${template8}&lang=$l" -o ~/.cache/weather.json}
+
+${color1}${voffset 2}${alignc 77}${execi 300 LANG=${template9} LC_TIME=${template9} date +%^a}${color}
+${color1}${voffset -10}${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +1day +%^a}${color}
+${color1}${voffset -10}${alignc -77}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +2day +%^a}${color}
+
+${color2}${voffset 51}${font SFNS Regular:pixelsize=9}${alignc 77}${execi 300 jq -r .main.temp ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num}°${font}${color}
+${voffset -15}${color2}${alignc}${execi 300 jq -r .list[1].temp.min ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°/${execi 300 jq -r .list[1].temp.max ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°${color}
+${voffset -15}${color2}${alignc -77}${execi 300 jq -r .list[2].temp.min ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°/${execi 300 jq -r .list[2].temp.max ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°${color}
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .weather[0].id ~/.cache/weather.json).png ~/.cache/weather.png}${image ~/.cache/weather.png -p 30,215 -s 32x32}
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .list[1].weather[0].id ~/.cache/forecast.json).png ~/.cache/weather-2.png}${image ~/.cache/weather-2.png -p 108,215 -s 32x32}
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .list[2].weather[0].id ~/.cache/forecast.json).png ~/.cache/weather-3.png}${image ~/.cache/weather-3.png -p 186,215 -s 32x32}${font}
+${font Poky:pixelsize=12}a ${color cdbf9a}${font SFNS Regular:pixelsize=9}SYSTEM DETAILS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+${font SFNS Regular:pixelsize=9}DISTRIBUTION: ${alignr 10}ArchLabs Linux
+${font SFNS Regular:pixelsize=9}KERNEL VERSION: ${alignr 10}${kernel}
+
+${font SFNS Regular:pixelsize=9}HOST NAME: ${alignr 10}${nodename}
+${font SFNS Regular:pixelsize=9}TIME SINCE LOGIN: ${alignr 10}${uptime}
+
+${font SFNS Regular:pixelsize=9}PROCESSES RUNNING: ${alignr 16}${running_processes}
+${font SFNS Regular:pixelsize=9}CPU ARCHITECTURE: ${alignr 10}${machine}
+${font SFNS Regular:pixelsize=9}PROC: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
+${font SFNS Regular:pixelsize=9}CPU LOAD: ${alignr 10}${loadavg}
+
+${font SFNS Regular:pixelsize=9}CPU TEMPERATURE: ${alignr 10}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °C
+${font SFNS Regular:pixelsize=9}FAN SPEEDS: ${alignr 10}${execi 15 sensors | grep -i "fan1" | cut -c 14-21}
+${font SFNS Regular:pixelsize=9}GRAPHICS CARD TEMP: ${alignr 10}${execi 15 sensors | head -n 10 | grep -i "temp1" | cut -c 15-22}
+${font SFNS Regular:pixelsize=9}MOTHERBOARD TEMP: ${alignr 10}${execi 15 sensors | tail -n 15 | grep -i "temp2" | cut -c 15-22}
+
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}SYSTEM UPDATES ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+${font SFNS Regular:pixelsize=9}PENDING UPDATES: ${goto 100}${color cdbf9a}${color1}${execpi 60 checkupdates | wc -l}
+
+
+${color c1c1c1}${font Poky:pixelsize=12}Y ${color cdbf9a}${font SFNS Regular:pixelsize=9}WIRED NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+${font SFNS Regular:pixelsize=9}SPEED UP: ${goto 90}${upspeed enp2s0}
+${upspeedgraph enp2s0 20,240 cdbf9a cdbf9a}
+
+${font SFNS Regular:pixelsize=9}SPEED DOWN: ${goto 90}${downspeed enp2s0}
+${downspeedgraph enp2s0 20,240 cdbf9a cdbf9a}
+
+${font SFNS Regular:pixelsize=9}TOTAL UP: ${goto 90}${totalup enp2s0}
+
+${font SFNS Regular:pixelsize=9}TOTAL DOWN: ${goto 90}${totaldown enp2s0}
+
+${color c1c1c1}${font Poky:pixelsize=12}H ${color cdbf9a}${font SFNS Regular:pixelsize=9}CENTRAL PROCESSING UNIT ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${font SFNS Regular:pixelsize=9}CPU TOTAL USAGE: ${alignr 10}${cpu cpu0}%
+${color 3f506b}${cpubar 5,225 cpu0}${color c1c1c1}
+
+CORE 1: ${freq cpu1}MHz 
+${font SFNS Regular:pixelsize=9}${cpu cpu1}%${goto 25} ${color 3f506b}${cpubar 5,200 cpu1}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+CORE 2: ${freq cpu2}MHz
+${font SFNS Regular:pixelsize=9}${cpu cpu2}%${goto 25} ${color 3f506b}${cpubar 5,200 cpu2}${color c1c1c1}${font SFNS Regular:pixelsize=8}
+
+CORE 3: ${freq cpu3}MHz
+${font SFNS Regular:pixelsize=9}${cpu cpu3}%${goto 25} ${color 3f506b}${cpubar 5,200 cpu3}${color c1c1c1}${font SFNS Regular:pixelsize=8}
+
+CORE 4: ${freq cpu4}MHz
+${font SFNS Regular:pixelsize=9}${cpu cpu4}%${goto 25} ${color 3f506b}${cpubar 5,200 cpu4}${color c1c1c1}${font SFNS Regular:pixelsize=8}
+
+${color c1c1c1}${font Poky:pixelsize=12}M ${color cdbf9a}${font SFNS Regular:pixelsize=9}MEMORY & USAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+RANDOM ACCESS MEMORY: ${mem}/${memmax} ${alignr 10}${memperc}%
+${color 3f506b}${membar 5,225}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}${top_mem name 1}${alignr 10}${top_mem mem 1}%
+${font SFNS Regular:pixelsize=9}${top_mem name 2}${alignr 10}${top_mem mem 2}%
+${font SFNS Regular:pixelsize=9}${top_mem name 3}${alignr 10}${top_mem mem 3}%
+${font SFNS Regular:pixelsize=9}${top_mem name 4}${alignr 10}${top_mem mem 4}%
+${font SFNS Regular:pixelsize=9}${top_mem name 4}${alignr 10}${top_mem mem 5}%
+${font SFNS Regular:pixelsize=9}${top_mem name 4}${alignr 10}${top_mem mem 6}%
+
+${font SFNS Regular:pixelsize=9}SWAP TOTAL: ${swapmax} ${alignr 10}SWAP USED: ${swap} ${swapperc}% / ${swapfree}
+
+${color c1c1c1}${font Poky:pixelsize=12}y ${color cdbf9a}${font SFNS Regular:pixelsize=9}DISCS & STORAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+${font SFNS Regular:pixelsize=9}DISK IO: ${alignr 10}${diskio_read} / ${diskio_write} 
+
+${font SFNS Regular:pixelsize=9}/ROOT:  ${alignr 20}${fs_used /}/${fs_size /}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /}%${color 3f506b}   ${goto 35}${fs_bar 5,200 /}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}/HOME: ${alignr 20}${fs_used /home}/${fs_free /home}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /home}%${color 3f506b}   ${goto 35}${fs_bar 5,200 /home}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}/MUSIC: ${alignr 20}${fs_used /run/media/dobbie/Music}/${fs_free /run/media/dobbie/Music}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /run/media/dobbie/Music}% ${goto 35}${color 3f506b}${fs_bar 5,200}
+
+${font SFNS Regular:pixelsize=9}${color c1c1c1}/MOVIES: ${alignr 20}${fs_used /run/media/dobbie/Movies}/${fs_free /run/media/dobbie/Movies}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /run/media/dobbie/Movies}%${color 3f506b} ${goto 35}${fs_bar 5,200 /run/media/dobbie/Movies}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}/TIME MACHINE: ${alignr 20}${fs_used /run/media/dobbie/timemachine}/${fs_free /run/media/dobbie/timemachine}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /run/media/dobbie/timemachine}%${color 3f506b} ${goto 35}${fs_bar 5,200 /run/media/dobbie/timemachine}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}/BACKUP: ${alignr 20}${fs_used /run/media/dobbie/Important}/${fs_free /run/media/dobbie/Important}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /run/media/dobbie/Important}%${color 3f506b} ${goto 35}${fs_bar 5,200 /run/media/dobbie/Important}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${font SFNS Regular:pixelsize=9}/BACKUP2: ${alignr 20}${fs_used /run/media/dobbie/backup2}/${fs_free /run/media/dobbie/backup2}
+${font SFNS Regular:pixelsize=9}${fs_used_perc /run/media/dobbie/backup2}%${color 3f506b} ${goto 35}${fs_bar 5,200 /run/media/dobbie/backup2}${font SFNS Regular:pixelsize=9}${color c1c1c1}
+
+${color c1c1c1}${font Poky:pixelsize=12}l ${color cdbf9a}${font SFNS Regular:pixelsize=9}NOW PLAYING - AUDACIOUS ${color 1c1c1c}${stippled_hr 2}${hr 2}${color c1c1c1}${font SFNS Regular:pixelsize=9}
+
+${font SFNS Regular:pixelsize=9}${color c1c1c1}SONG:  ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data title}
+${font SFNS Regular:pixelsize=9}${color c1c1c1}ALBUM: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data album}
+
+${font SFNS Regular:pixelsize=9}${color c1c1c1}ARTIST: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data artist}
+
+${font SFNS Regular:pixelsize=9}${exec audtool --current-song-bitrate-kbps} kbps | ${exec audtool --current-song-length}  ${color 3f506b}${execbar expr 100 \* $(audtool --current-song-output-length-seconds) \/ $(audtool --current-song-length-seconds)}$endif
+
+${font SFNS Regular:pixelsize=9}${color c1c1c1}PLAYLIST: ${if_running audacious}${exec audtool --current-playlist}
+${image $HOME/.config/conky/images/archlabslogo.png -p 40,5}

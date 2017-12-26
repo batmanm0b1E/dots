@@ -1,0 +1,18 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    closeDeletedFileTabs: true
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "no"
+    themes: [
+      "min-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    fontFamily: "Monaco"
+    fontSize: 13
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "63dc5eba-9bb2-4127-868b-26b2eaf86cca"
+  welcome:
+    showOnStartup: false

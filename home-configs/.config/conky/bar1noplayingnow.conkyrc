@@ -1,0 +1,40 @@
+own_window yes
+own_window_class Conky
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 140
+own_window_type desktop
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+double_buffer yes
+use_spacer right
+use_xft yes
+#font snap-7
+xftfont Product Sans:bold:size=7
+# xftfont DejaVu Sans Light:size=8
+xftalpha 1
+text_buffer_size 2048
+# alignment is disabled when own_window_type is dock
+alignment top_middle
+gap_x 0
+gap_y 0
+# Use this to move your bar up and down the screen
+default_bar_size 20 6
+short_units yes
+ 
+# --- Colours, Sizes, Fonts & Margins --- #
+update_interval 1.0
+stippled_borders 0
+minimum_size 2550 6 # Your screen width here
+maximum_width 2560  # and here
+border_width 5
+default_color d3d3d3
+# --- Text --- #
+draw_outline no
+draw_borders no
+#font -*-profont-*-*-*-11-*-*-*-*-*-*-*
+uppercase yes
+draw_shades no
+TEXT
+
+${alignc}|  ${color 9e6ffe} CPU1: ${color d3d3d3}${cpu cpu1}%   |  ${color 9e6ffe} CPU2: ${color d3d3d3}${cpu cpu2}%   |  ${color 9e6ffe} CPU3: ${color d3d3d3}${cpu cpu3}%   |  ${color 9e6ffe} CPU4: ${color d3d3d3}${cpu cpu4}%   |   ${color ff4060}CPU LOAD: ${color}${loadavg}   |   ${color f92672}RAM: ${color d3d3d3}${memperc}%   |  ${color f92672} SWAP: ${color}${swapperc}%   |  ${color f92672}RAM PROC: ${color}${top_mem name 1}  |  ${color fd971f} HOME: ${color}${font}${fs_used /home}/${fs_size /home}   |  ${color fd971f} MUSIC: ${color}${font}${fs_used /run/media/dobbie/Music/}/${fs_size /run/media/dobbie/Music/}   |  ${color fd971f} MOVIES: ${color}${font}${fs_used /run/media/dobbie/Movies/}/${fs_size /run/media/dobbie/Movies/}   |  ${color fd971f} BACKUP: ${color}${font}${fs_used /run/media/dobbie/Back Up/}/${fs_size /run/media/dobbie/Back Up/}   |  ${color fd971f} IMPORTANT: ${color}${font}${fs_used /run/media/dobbie/Important/}/${fs_size /run/media/dobbie/Important/}  |  ${color 00ff30} DOWN: ${color}${downspeed enp2s0}  |  ${color 00ff30}UP: ${color} ${upspeed enp2s0}| ${color 00ff30}TOTAL UP: ${color} ${totalup enp2s0}  |   ${color 00ff30}TOTAL DOWN: ${color} ${totaldown enp2s0}|  ${color 00CBEE}UPDATES:${color} ${execi 60 checkupdates  |  wc -l}  |

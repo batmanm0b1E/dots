@@ -1,0 +1,105 @@
+
+color15_i3wmthemer	    = ${xrdb:color15}
+color14_i3wmthemer	    = ${xrdb:color14}
+color13_i3wmthemer	    = ${xrdb:color13}
+color12_i3wmthemer	    = ${xrdb:color12}
+color11_i3wmthemer	    = ${xrdb:color11}
+color10_i3wmthemer	    = ${xrdb:color10}
+color09_i3wmthemer	      = ${xrdb:color9}
+color08_i3wmthemer	      = ${xrdb:color8}
+color07_i3wmthemer	      = ${xrdb:color7}
+color06_i3wmthemer	      = ${xrdb:color6}
+color05_i3wmthemer	      = ${xrdb:color5}
+color04_i3wmthemer	      = ${xrdb:color4}
+color03_i3wmthemer	      = ${xrdb:color3}
+color02_i3wmthemer	      = ${xrdb:color2}
+color01_i3wmthemer      = ${xrdb:color1}
+color00_i3wmthemer	      = ${xrdb:color0}
+foreground_i3wmthemer 	= ${xrdb:foreground}
+background_i3wmthemer 	= ${xrdb:background}
+
+;=====================================================
+;     Includes
+;=====================================================
+
+[section/base]
+include-file = /home/dobbie/.config/polybar/master.conf
+include-file = /home/dobbie/.config/polybar/modules.conf
+
+
+;=====================================================
+;     i3 Bars
+;=====================================================
+
+[bar/i3-bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = ${env:MONITOR:HDMI-A-0}
+
+modules-left = menu window_switch redshift caffeine i3-workspaces weather
+modules-center = music2
+modules-right = pkg memory temp cpu eth volume1 time rofi
+
+; All available modules (some require configuration in modules.conf)
+; redshift github filesystem mpd wired-network wireless-network battery menu volume-bar
+; pkg keyboard memory temperature coreuse network clock volume i3-workspaces workspaces window_switch
+
+
+;;;;;; Tray is commented out ;;;;;;;;
+;tray-position = center
+;tray-padding = 10
+;tray-background = ${colors.background}
+;tray-offset-x = 20%
+
+
+;=====================================================
+;     Openbox Bars
+;=====================================================
+
+[bar/ob-bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = ${env:MONITOR:HDMI-A-0}
+
+modules-left = menu window_switch redshift weather
+modules-center = music2
+modules-right = pkg mail memory temp cpu eth volume1 time rofi
+
+; All available modules (some require configuration in modules.conf)
+; redshift github filesystem mpd wired-network wireless-network battery menu volume-bar
+; menu pkg keyboard memory temperature coreuse network clock volume i3-workspaces workspaces window_switch music2 previous play pause next
+; music2 jgmenu
+
+;;;;;; Tray is commented out ;;;;;;;;
+;tray-position = center
+;tray-padding = 10
+;tray-background = ${colors.background}
+;tray-offset-x = 20%
+
+;=====================================================
+;     Bspwm Bars
+;=====================================================
+
+[bar/bsp-bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor =
+
+modules-left   = bspwm menu
+modules-center = clock
+modules-right  = pkg memory temperature coreuse network volume
+
+; All available modules (some require configuration in modules.conf)
+; redshift github filesystem mpd jgmenu wired-network wireless-network battery menu volume-bar bspwm
+; pkg keyboard memory temperature coreuse network clock volume i3-workspaces workspaces window_switch
+
+
+;;;;;; Tray is commented out ;;;;;;;;
+;tray-position = center
+;tray-padding = 10
+;tray-background = ${colors.background}
+;tray-offset-x = 20%
+ 

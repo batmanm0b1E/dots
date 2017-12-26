@@ -1,0 +1,106 @@
+alignment top_right
+background yes
+border_margin 0
+border_width 1
+default_color ffffff
+double_buffer yes
+draw_outline no
+draw_graph_borders no
+draw_borders no
+draw_shades no
+gap_x 3    ### left | right
+gap_y 0    ### up | down
+maximum_width 250
+minimum_size 0 0
+no_buffers yes
+uppercase no
+override_utf8_locale yes
+own_window yes
+own_window_title conky
+own_window_transparent no
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 110
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+use_xft yes
+xftalpha 1.0
+xftfont Freesans:pixelsize=10
+short_units yes
+
+# -- Lua Load -- #
+ 
+#lua_draw_hook_pre draw_bg
+ 
+#lua_load ~/.bargraph_small.lua
+lua_draw_hook_post main_bars 
+
+#own_window_colour 000000
+TEXT
+${image $HOME/.config/conky/images/als.png -p 50,5}
+${voffset 147}
+
+${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${font SFNS Regular:pixelsize=18}${alignc}${color cdbf9a}I T ${color1}L ${color cdbf9a}I S ${color1}A S T I M E
+${alignc}${if_match ${exec date +"%M"} < 35}${if_match ${exec date +"%M"} >= 15}${if_match ${exec date +"%M"} < 20}${color cdbf9a}${endif}${endif}A ${color1}C ${if_match ${exec date +"%M"} >= 15}${if_match ${exec date +"%M"} < 20}${color cdbf9a}${endif}${endif}Q U A R T E R ${color1}D C
+${alignc}${if_match ${exec date +"%M"} >= 20}${if_match ${exec date +"%M"} < 30}${color cdbf9a}${endif}${endif}T W E N T Y ${if_match ${exec date +"%M"} >= 25}${if_match ${exec date +"%M"} < 30}${color cdbf9a}${endif}${else}${color1}${endif}${if_match ${exec date +"%M"} >= 5}${if_match ${exec date +"%M"} < 10}${color cdbf9a}${endif}${endif}F I V E ${color1}X
+${alignc}${if_match ${exec date +"%M"} >= 30}${if_match ${exec date +"%M"} < 35}${color cdbf9a}${endif}${endif}H A L F ${color1}B ${if_match ${exec date +"%M"} >= 10}${if_match ${exec date +"%M"} < 15}${color cdbf9a}${endif}${endif}T E N ${color1}F T O
+${alignc}${else}${if_match ${exec date +"%M"} >= 45}${if_match ${exec date +"%M"} < 50}${color cdbf9a}${endif}${endif}A ${color1}C ${if_match ${exec date +"%M"} >= 45}${if_match ${exec date +"%M"} < 50}${color cdbf9a}${endif}${endif}Q U A R T E R ${color1}D C
+${alignc}${if_match ${exec date +"%M"} >= 35}${if_match ${exec date +"%M"} < 45}${color cdbf9a}${endif}${endif}T W E N T Y ${if_match ${exec date +"%M"} < 40}${if_match ${exec date +"%M"} >= 35}${color cdbf9a}${endif}${else}${color1}${endif}${if_match ${exec date +"%M"} >= 55}${color cdbf9a}${endif}F I V E ${color1}X
+${alignc}H A L F B ${if_match ${exec date +"%M"} >= 50}${if_match ${exec date +"%M"} < 55}${color cdbf9a}${endif}${endif}T E N ${color1}F ${color cdbf9a}T O${color1}
+${alignc}${endif}${if_match ${exec date +"%M"} < 35}${if_match ${exec date +"%M"} >= 5}${color cdbf9a}${endif}${endif}P A S T ${color1}E R U ${if_match ${exec date +"%M"} < 35}${if_match ${exec date +"%I"} == 9}${color cdbf9a}${else}${color1}${endif}N I N E
+${alignc}${if_match ${exec date +"%I"} == 1}${color cdbf9a}${else}${color1}${endif}O N E ${if_match ${exec date +"%I"} == 6}${color cdbf9a}${else}${color1}${endif}S I X ${if_match ${exec date +"%I"} == 3}${color cdbf9a}${else}${color1}${endif}T H R E E
+${alignc}${if_match ${exec date +"%I"} == 4}${color cdbf9a}${else}${color1}${endif}F O U R ${if_match ${exec date +"%I"} == 5}${color cdbf9a}${else}${color1}${endif}F I V E ${if_match ${exec date +"%I"} == 2}${color cdbf9a}${else}${color1}${endif}T W O
+${alignc}${if_match ${exec date +"%I"} == 8}${color cdbf9a}${else}${color1}${endif}E I G H T ${if_match ${exec date +"%I"} == 11}${color cdbf9a}${else}${color1}${endif}E L E V E N
+${alignc}${if_match ${exec date +"%I"} == 7}${color cdbf9a}${else}${color1}${endif}S E V E N ${if_match ${exec date +"%I"} == 12}${color cdbf9a}${else}${color1}${endif}T W E L V E
+${alignc}${if_match ${exec date +"%I"} == 10}${color cdbf9a}${else}${color1}${endif}T E N ${else}${if_match ${exec date +"%I"} == 8}${color cdbf9a}${else}${color1}${endif}N I N E
+${alignc}${if_match ${exec date +"%I"} == 12}${color cdbf9a}${else}${color1}${endif}O N E ${if_match ${exec date +"%I"} == 5}${color cdbf9a}${else}${color1}${endif}S I X ${if_match ${exec date +"%I"} == 2}${color cdbf9a}${else}${color1}${endif}T H R E E
+${alignc}${if_match ${exec date +"%I"} == 3}${color cdbf9a}${else}${color1}${endif}F O U R ${if_match ${exec date +"%I"} == 4}${color cdbf9a}${else}${color1}${endif}F I V E ${if_match ${exec date +"%I"} == 1}${color cdbf9a}${else}${color1}${endif}T W O
+${alignc}${if_match ${exec date +"%I"} == 7}${color cdbf9a}${else}${color1}${endif}E I G H T${if_match ${exec date +"%I"} == 10}${color cdbf9a}${else}${color1}${endif} E L E V E N
+${alignc}${if_match ${exec date +"%I"} == 6}${color cdbf9a}${else}${color1}${endif}S E V E N${if_match ${exec date +"%I"} == 11}${color cdbf9a}${else}${color1}${endif} T W E L V E
+${alignc}${if_match ${exec date +"%I"} == 9}${color cdbf9a}${else}${color1}${endif}T E N ${endif}${color1}S E ${if_match ${exec date +"%M"} < 5}${color cdbf9a}${endif}O C L O C K
+
+${color c1c1c1}${font Poky:pixelsize=12}D ${color cdbf9a}${font SFNS Regular:pixelsize=9}GMAIL - NEW MAIL ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${color1}NEW MAIL: ${alignc}${color1}${execi 300 python ~/.config/conky/scripts/gmail.py}
+
+${color c1c1c1}${font Poky:pixelsize=12}r ${color cdbf9a}${font SFNS Regular:pixelsize=9}THIS DAY IN HISTORY ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.historytoday.com/feed/rss.xml 15 item_titles 6}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}ARCH LINUX - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss https://www.archlinux.org/feeds/news/ 120 item_titles 6}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}WEBUPD8 - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds2.feedburner.com/webupd8 15 item_titles 6}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}OMG!UBUNTU - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/d0od 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}ANGRY METAL GUY - REVIEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.angrymetalguy.com/feed/ 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}INVISIBLE ORANGES - NEWS & REVIEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.invisibleoranges.com/feed/ 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}METAL INJECTION - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/metalinjection 60 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}METAL SUCKS - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/Metalsucks 60 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}NO CLEAN SINGING- NEWS & REVIEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.nocleansinging.com/feed/ 60 item_titles 6}

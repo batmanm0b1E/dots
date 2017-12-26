@@ -1,0 +1,93 @@
+## pkill -xf "conky -c /home/sector11/.config/conky/Grey-Clock.conky" &
+## 2017-06-25
+## ---------- Begin Window Settings
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints skip_taskbar,skip_pager,below,undecorated,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title Dobbie03's Grey Clock
+
+gap_x -250
+gap_y 20
+
+minimum_size 500 260
+maximum_width 500
+
+alignment tm
+
+## ---------- End Window Settings
+## ---------- Font Settings
+
+override_utf8_locale yes
+use_xft yes
+xftfont Roboto Condensed:size=12
+xftalpha 1.0
+uppercase yes
+
+## --------- End Font Settings
+## --------- Color Settings
+
+draw_shades yes
+default_shade_color 000000
+draw_outline no
+default_outline_color 000000
+
+default_color DCDCDC #Gainsboro
+default_color C0C0C0 #Silver
+color0 C0C0C0 #Silver
+color1 778899 #LightSlateGray
+color2 4d4d4d #grey ??
+color3 696969 #DimGrey
+color4 d3d3d3 #LightGrey
+color5 FFDEAD #NavajoWhite
+color6 616161 #an ututo grey
+color7 B0E0E6 #PowderBlue
+color8 FFD700 #Gold
+color9 CD5C5C #IndianRed
+
+## ---------- End Color Settings
+## ---------- Begin Borders Section
+
+draw_borders no ## set to yes to see conky limits.
+stippled_borders 5
+border_inner_margin 0
+border_outer_margin 0
+border_width 2
+draw_graph_borders no
+default_graph_size 15 40
+
+## ---------- End Borders Secton
+## ---------- Begin Miscellaneous Section
+
+background no ## yes
+use_spacer none
+no_buffers yes
+imlib_cache_size 0
+double_buffer yes
+
+## ---------- End Miscellaneous Section
+## ---------- Begin LUA script
+
+lua_load /home/dobbie/.config/conky/LUA/AL-Grey-clock.lua
+lua_draw_hook_pre main
+
+## ---------- End LUA script
+
+update_interval 1
+TEXT
+${image ~/.config/conky/images/grey-clock-face.png -p 10,10}
+${voffset 50}${goto 290}${color 616161}NEW ZEALAND
+${goto 290}${color 616161}${time %A}
+${goto 290}${color 616161}${time %e}.${time %m}.${time %Y}${color}
+#${goto 290}
+#${goto 290}
+#${goto 290}
+#${goto 290}
+#${goto 70}${uptime_short}
+#${goto 290}
+#${goto 290}${tztime %UTC}
+#${goto 290}
+${goto 290}${color 8D8D8D}${time %I}:${time %M}:${time %S}  ${time %p}

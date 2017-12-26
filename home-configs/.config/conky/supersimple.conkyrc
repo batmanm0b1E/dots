@@ -1,0 +1,112 @@
+# SUPER SIMPLE - Conky config original by cloverskill
+#################
+# Settings
+#################
+
+update_interval 1
+total_run_times 0
+cpu_avg_samples 2
+double_buffer yes
+no_buffers yes
+
+own_window yes
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 67
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+border_inner_margin 12
+short_units yes
+pad_percents 2
+
+use_xft yes
+xftfont Liberation Sans:size=8
+xftalpha 0.5
+text_buffer_size 512
+override_utf8_locale yes
+default_color white
+uppercase no
+
+minimum_size 210 999
+maximum_width 210
+gap_x 30
+gap_y 55
+alignment tr	
+
+TEXT
+System ${alignr}${exec lsb_release -si} ${exec lsb_release -sr} ${exec lsb_release -sc}
+Kernel ${alignr}${kernel}
+${voffset 18}Uptime${alignr}${uptime}
+
+${voffset 10}CPU ${alignr}${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-25}
+CPU usage ${alignr}${cpu cpu0}%
+CPU Current Speed ${alignr}${freq cpu0}MHz
+CPU Temp ${alignr}${hwmon temp 1}°C
+${cpugraph cpu0}
+
+#GPU ${alignr}NVIDIA GeForce GT 540M
+#GPU Mem Clock ${alignr}${nvidia memfreq}MHz
+#GPU Mem Used ${alignr}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
+#GPU Temp ${alignr}${nvidia temp}°C
+#
+Mem ${alignc}$mem / $memmax ${alignr}$memperc%
+$membar
+
+Root ${alignc}${fs_used /} / ${fs_size /} ${alignr}${fs_free_perc /}%
+${fs_bar /}
+
+Home ${alignc}${fs_used /home} / ${fs_size /home} ${alignr}${fs_free_perc /home}%
+${fs_bar /home}
+
+Data ${alignc}${fs_used /mnt/DATA} / ${fs_size /mnt/DATA} ${alignr}${fs_free_perc /mnt/DATA}%
+${fs_bar /mnt/DATA}
+
+${voffset 10}Load ${alignr}${loadavg}
+Processes ${alignr}$processes ($running_processes running)
+${voffset 18}Name ${alignr}PID     CPU
+${top name 1} ${alignr}${top pid 1}   ${top cpu 1}
+${top name 2} ${alignr}${top pid 2}   ${top cpu 2}
+${top name 3} ${alignr}${top pid 3}   ${top cpu 3}
+${top name 4} ${alignr}${top pid 4}   ${top cpu 4}
+${top name 5} ${alignr}${top pid 5}   ${top cpu 5}
+${top name 6} ${alignr}${top pid 6}   ${top cpu 6}
+${top name 7} ${alignr}${top pid 7}   ${top cpu 7}
+${top name 8} ${alignr}${top pid 8}   ${top cpu 8}
+${if_existing /proc/net/route eth0}${voffset 10}Network ${alignr}${exec ~/.conky/scripts/pingtest.sh 87.211.217.111}
+Private IP ${alignr}${addr eth0}
+Public IP ${alignr}${execi 3600 wget -O - -q icanhazip.com}
+${voffset 10}Inbound eth0 ${alignr}${downspeed eth0} kb/s
+${downspeedgraph eth0}
+Outbound eth0 ${alignr}${upspeed eth0} kb/s
+${upspeedgraph eth0}
+Downloaded ${alignr}${totaldown eth0}
+Uploaded ${alignr}${totalup eth0}${endif}
+${if_existing /proc/net/route wlan0}${voffset 10}Network ${alignr}${exec ~/.conky/scripts/pingtest.sh 87.211.217.111}
+Private IP ${alignr}${addr wlan0}
+Public IP ${alignr}${execi 1000 wget -O - -q icanhazip.com}
+Wifi ssid ${alignr}${wireless_essid wlan0} ${wireless_link_qual_perc wlan0}%
+${voffset 10}Inbound wlan0 ${alignr}${downspeed wlan0} kb/s
+${downspeedgraph wlan0}
+Outbound wlan0 ${alignr}${upspeed wlan0} kb/s
+${upspeedgraph wlan0}
+Downloaded ${alignr}${totaldown wlan0}
+Uploaded ${alignr}${totalup wlan0}${endif}
+${if_match "${exec ~/.config/conky/deadbeef/ddbf.py %l s}" != "0"}
+${voffset 10}[Deadbeef] ${alignr}Now playing
+Title ${alignr}${exec ~/.config/conky/deadbeef/ddbf.py %t}
+Artist ${alignr}${exec ~/.config/conky/deadbeef/ddbf.py %a}
+Album ${alignr}${exec ~/.config/conky/deadbeef/ddbf.py %b}
+${voffset 10}Track ${exec ~/.config/conky/deadbeef/ddbf.py %n} ${alignr}${exec ~/.config/conky/deadbeef/ddbf.py %e n} / ${exec ~/.config/conky/deadbeef/ddbf.py %l n}
+${voffset 2}${execbar expr 100 \* $(~/.config/conky/deadbeef/ddbf.py %e s) \/ $(~/.config/conky/deadbeef/ddbf.py %l s)}${voffset 8}${endif}
+${if_running spotify}${voffset 6}[Spotify] ${alignr}Now playing
+Title ${alignr}${execi 3 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata'|egrep -A 1 "title"|egrep -v "title"|cut -b 44-|cut -d '"' -f 1|egrep -v ^$ }
+Artist ${alignr}${execi 3 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata'|egrep -A 2 "artist"|egrep -v "artist"|egrep -v "array"|cut -b 27-|cut -d '"' -f 1|egrep -v ^$ }
+Album ${alignr}${execi 3 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata'|egrep -A 1 "album"|egrep -v "album"|cut -b 44-|cut -d '"' -f 1|egrep -v ^$ }${voffset 16}${endif}
+Location ${alignr}${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=733075&u=c" -o ~/.cache/weather.xml}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+Today ${alignr}${execi 300 ~/.config/conky/scripts/weather.sh "EUR|NL|NL012|ROTTERDAM"}
+${voffset 22}${font Dejavu Sans Mono:size=8}${execpi 60 VinDSL_Cal_8=`date +%-d`; cal -h | sed -e '1d' -e 's/\<'"$VinDSL_Cal_8"'\>/${color ffc000}&${color}/' -e 's/^/${offset 35}/'}
+${voffset 4}${font Arial Black:size=18}${alignc}${time %H:%M}${font}
+${voffset 4}${font Liberation Sans:size=10}${alignc}${time %A %d %B %Y}

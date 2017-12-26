@@ -1,0 +1,4 @@
+numlockx &
+
+
+exec openbox-session

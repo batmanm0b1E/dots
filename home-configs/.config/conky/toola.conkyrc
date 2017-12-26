@@ -1,0 +1,105 @@
+own_window yes
+own_window_type normal
+own_window_transparent no
+own_window_color 261710
+own_window_argb_visual yes
+own_window_argb_value 180
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_class conky
+own_window_title ARCHlabs Branding Conky
+
+minimum_size 200 1080
+
+gap_x 5
+gap_y 30
+alignment top_right
+draw_shades no
+default_shades_color 261710
+draw_outline no
+default_outline_color 261710
+defalut_bar_width 200
+defalut_bar_height 10
+default_gauge_width 40
+default_gauge_height 40
+default_graph_width 150
+defalut_graph_height 40
+
+use_xft yes
+xftfont Noto Sans:size=10
+xftalpha 1
+override_utf8_locale yes
+uppercase no
+double_buffer yes
+imlib_cache_size 0
+update_interval 1
+text_buffer_size 2048
+cpu_avg_samples 2
+diskio_avg_samples 10
+net_avg_samples 2
+temperature_unit celsius
+no_buffers yes
+border_inner_margin 10
+
+
+default_color 261710
+color1 202020
+color2 929292
+color3 5294E2
+
+TEXT
+${image $HOME/.config/conky/images/al1a.png -s 130x130 -p 45,10}\
+
+
+
+
+
+
+
+
+${color2}${font Noto Sans:size=18:weight:bold:Underline}${alignc}ARCHlabs Linux\
+
+${hr 2}
+${color2}${font Noto Sans:size=10:weight:bold}CPU ${alignr}${color3}${font Noto sans:size=10:weight:bold:}${execi 6000 cat /proc/cpuinfo | grep -i 'Model name' -m 1 | cut -c14-35}
+${color2}${font Noto Sans:size=10:weight:bold}Uptime ${alignr}${color3} $uptime
+${color2}${font Noto Sans:size=10:weight:bold}Cpu Temp ${alignr}${color3}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
+${color2}${font Noto Sans:size=10:weight:bold}Cpu Freq ${alignr}${color3}${freq_g} Ghz
+
+${color2}${cpubar cpu0 13,85}  ${alignr}${color2}${cpubar cpu1 13,85}
+${color2}${cpubar cpu2 13,85}  ${alignr}${color2}${cpubar cpu3 13,85}
+${color2}${cpubar cpu4 13,85}  ${alignr}${color2}${cpubar cpu5 13,85}
+${color2}${cpubar cpu6 13,85}  ${alignr}${color2}${cpubar cpu7 13,85}
+${color2}${hr 2}
+${color2}${font Noto Sans:size=10:weight:bold}Memory ${alignr}${color2}${membar 13,85}
+${color2}${font Noto Sans:size=10:weight:bold}Total Processes ${alignr}${color3}${processes}
+${color2}${font Noto Sans:size=10:weight:bold}Load ${alignr}${color3}${loadavg}
+${color2}${font Noto Sans:size=10:weight:bold}Updates ${alignr}${color3}${execi 3600 checkupdates | wc -l | tail} Pkgs$voffset
+${color2}${hr 2}
+${offset 30}${color2}${font Noto Sans:size=10:weight:bold}${top name 1}${alignr}${color3}${top cpu 1}%${font}
+${offset 30}${color2}${font Noto Sans:size=10:weight:bold}${top name 2}${alignr}${color3}${top cpu 2}%${font}
+${offset 30}${color2}${font Noto Sans:size=10:weight:bold}${top name 3}${alignr}${color3}${top cpu 3}%${font}
+${offset 30}${color2}${font Noto Sans:size=10:weight:bold}${top name 4}${alignr}${color3}${top cpu 4}%${font}
+${offset 30}${color2}${font Noto Sans:size=10:weight:bold}${top name 5}${alignr}${color3}${top cpu 5}%${font}
+${color2}${hr 2}
+${if_existing /proc/net/route en}${font Noto Sans:size=10:weight:bold}${alignc}${color2}Ethernet
+${offset 10}${font Noto Sans:size=10:weight:bold}Up ${color3}${totalup enp3s0}${alignr}${color3}${totaldown enp3s0}${color2}Down
+${offset 10}${font Noto Sans:size=10:weight:bold}Up ${color3}${upspeed enp3s0}${alignr}${color3}${downspeed enp3s0}${color2}Down
+${else}${font Not Sans:size=10:weight:bold}${alignc}${color2}Wireless
+${offset 10}${font Noto Sans:size=10:weight:bold}Up ${color3}${totalup wlp2s0}${alignr}${color3}${totaldown wlp2s0}${color2}Down
+${offset 10}${font Noto Sans:size=10:weight:bold}Up ${color3}${upspeed wlp2s0}${alignr}${color3}${downspeed wlp2s0}${color2}Down
+${endif}\
+${color2}${hr 2}
+${color2}${font Noto Sans:size=10:weight:bold}Disk ${alignr}${color2}${fs_bar 13,85 /}
+${color2}${font Noto Sans:size=10:weight:bold}Swap ${alignr}${color2}${swapbar 13,85}
+${color2}${font Noto Sans:size=10:weight:bold}Home ${alignr}${color2}${fs_bar 13,85 /home}
+${color2}${font Noto Sans:size=10:weight:bold}Data ${alignr}${color2}${fs_bar 13,85 /Data}
+${color2}${hr 2}
+
+${image $HOME/.config/conky/images/nvidia.png -s 200x50 -p -0,770}
+
+
+${color2}${font Noto Sans:size=10:weight:bold}Freq ${alignr}${color3}${execi 60 nvidia-settings -query [gpu:0]/GPUCurrentClockFreqs | perl -ne 'print $1 if /GPUCurrentClockFreqs.*?: (\d+)./;'} MHz$voffset
+${color2}${font Noto Sans:size=10:weight:bold}Temp ${alignr}${color3}${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?: (\d+)./;'}C$voffset
+${color2}${font Noto Sans:size=10:weight:bold}Mem ${alignr}${color3}${nvidia memfreq} Mhz$voffset
+${color2}${hr 2}
+
+${image $HOME/.config/conky/images/intel.png -s 110x110 -p 55,910

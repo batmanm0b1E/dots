@@ -1,0 +1,153 @@
+alignment top_left
+background yes
+border_margin 0
+border_width 1
+default_color ffffff
+double_buffer yes
+draw_outline no
+draw_graph_borders no
+draw_borders no
+draw_shades no
+gap_x 3    ### left | right
+gap_y 0    ### up | down
+maximum_width 500
+minimum_size 0 0
+no_buffers yes
+uppercase no
+override_utf8_locale yes
+own_window yes
+own_window_title conky
+own_window_transparent no
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 110
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+use_xft yes
+xftalpha 1.0
+xftfont Freesans:pixelsize=10
+short_units yes
+
+# -- Lua Load -- #
+#lua_load /home/dobbie/.draw_bg.lua
+#lua_draw_hook_pre draw_bg
+ 
+#lua_load ~/.bargraph_small.lua
+lua_draw_hook_post main_bars
+
+#own_window_colour 000000
+TEXT
+
+#${lua conky_draw_bg}
+#${color cdbf9a}${font conkysymbols:size=50}${alignc 45}t
+#${voffset -90}${color c1c1c1}${font Roboto Condensed:pixelsize=18}${offset -45}${alignc}ARCH LINUX
+${voffset 145}${color c1c1c1}${color cdbf9a}${font Roboto Condensed:pixelsize=15}${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+${goto 181}${execp ~/.conkymoi/astro_neo.sh}
+${font Poky:pixelsize=15}a ${color cdbf9a}${font Roboto Condensed:pixelsize=15}SYSTEM DETAILS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${font Roboto Condensed:pixelsize=15}DISTRIBUTION: ${alignr 10}ArchLabs Linux +4
+${font Roboto Condensed:pixelsize=15}KERNEL VERSION: ${alignr 10}${kernel}
+
+${font Roboto Condensed:pixelsize=15}HOST NAME: ${alignr 10}${nodename}
+${font Roboto Condensed:pixelsize=15}TIME SINCE LOGIN: ${alignr 10}${uptime}
+
+${font Roboto Condensed:pixelsize=15}PROCESSES RUNNING: ${alignr 16}${running_processes}
+${font Roboto Condensed:pixelsize=15}CPU ARCHITECTURE: ${alignr 10}${machine}
+${font Roboto Condensed:pixelsize=15}PROC: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
+${font Roboto Condensed:pixelsize=15}CPU LOAD: ${alignr 10}${loadavg}
+
+${font Roboto Condensed:pixelsize=15}CPU TEMPERATURE: ${alignr 10}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °C
+${font Roboto Condensed:pixelsize=15}FAN SPEEDS: ${alignr 10}${execi 15 sensors | grep -i "fan1" | cut -c 14-21}
+${font Roboto Condensed:pixelsize=15}GRAPHICS CARD TEMP: ${alignr 10}${execi 15 sensors | head -n 10 | grep -i "temp1" | cut -c 15-22}
+${font Roboto Condensed:pixelsize=15}MOTHERBOARD TEMP: ${alignr 10}${execi 15 sensors | tail -n 15 | grep -i "temp2" | cut -c 15-22}
+
+
+${color c1c1c1}${font Poky:pixelsize=15}i ${color cdbf9a}${font Roboto Condensed:pixelsize=15}SYSTEM UPDATES ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${font Roboto Condensed:pixelsize=15}PENDING UPDATES: ${goto 170}${color cdbf9a}${color1}${execpi 60 checkupdates | wc -l}
+
+
+${color c1c1c1}${font Poky:pixelsize=15}Y ${color cdbf9a}${font Roboto Condensed:pixelsize=15}WIRED NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${font Roboto Condensed:pixelsize=15}SPEED UP: ${goto 140}${upspeed enp2s0}
+${upspeedgraph enp2s0 20,380 cdbf9a cdbf9a}
+
+${font Roboto Condensed:pixelsize=15}SPEED DOWN: ${goto 140}${downspeed enp2s0}
+${downspeedgraph enp2s0 20,380 cdbf9a cdbf9a}
+
+${font Roboto Condensed:pixelsize=15}TOTAL UP: ${goto 120}${totalup enp2s0}
+
+${font Roboto Condensed:pixelsize=15}TOTAL DOWN: ${goto 120}${totaldown enp2s0}
+
+${color c1c1c1}${font Poky:pixelsize=15}H ${color cdbf9a}${font Roboto Condensed:pixelsize=15}CENTRAL PROCESSING UNIT ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${font Roboto Condensed:pixelsize=15}CPU TOTAL USAGE: ${alignr 10}${cpu cpu0}%
+${color 3f506b}${cpubar 8,380 cpu0}${color c1c1c1}
+
+CORE 1: ${freq cpu1}MHz 
+${font Roboto Condensed:pixelsize=15}${cpu cpu1}%${goto 45} ${color 3f506b}${cpubar 8,330 cpu1}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+CORE 2: ${freq cpu2}MHz
+${font Roboto Condensed:pixelsize=15}${cpu cpu2}%${goto 45} ${color 3f506b}${cpubar 8,330 cpu2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+CORE 3: ${freq cpu3}MHz
+${font Roboto Condensed:pixelsize=15}${cpu cpu3}%${goto 45} ${color 3f506b}${cpubar 8,330 cpu3}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+CORE 4: ${freq cpu4}MHz
+${font Roboto Condensed:pixelsize=15}${cpu cpu4}%${goto 45} ${color 3f506b}${cpubar 8,330 cpu4}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${color c1c1c1}${font Poky:pixelsize=15}M ${color cdbf9a}${font Roboto Condensed:pixelsize=15}MEMORY & USAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+RANDOM ACCESS MEMORY: ${mem}/${memmax} ${alignr 10}${memperc}%
+${color 3f506b}${membar 8,380}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}${top_mem name 1}${alignr 10}${top_mem mem 1}%
+${font Roboto Condensed:pixelsize=15}${top_mem name 2}${alignr 10}${top_mem mem 2}%
+${font Roboto Condensed:pixelsize=15}${top_mem name 3}${alignr 10}${top_mem mem 3}%
+${font Roboto Condensed:pixelsize=15}${top_mem name 4}${alignr 10}${top_mem mem 4}%
+${font Roboto Condensed:pixelsize=15}${top_mem name 4}${alignr 10}${top_mem mem 5}%
+${font Roboto Condensed:pixelsize=15}${top_mem name 4}${alignr 10}${top_mem mem 6}%
+
+${font Roboto Condensed:pixelsize=15}SWAP TOTAL: ${swapmax} ${alignr 10}SWAP USED: ${swap} ${swapperc}% / ${swapfree}
+
+${color c1c1c1}${font Poky:pixelsize=15}y ${color cdbf9a}${font Roboto Condensed:pixelsize=15}DISCS & STORAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${font Roboto Condensed:pixelsize=15}DISK IO: ${alignr 10}${diskio_read} / ${diskio_write} 
+
+${font Roboto Condensed:pixelsize=15}/ROOT:  ${alignr 20}${fs_used /}/${fs_size /}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /}%${color 3f506b}   ${goto 50}${fs_bar 8,330 /}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}/HOME: ${alignr 20}${fs_used /home}/${fs_free /home}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /home}%${color 3f506b}   ${goto 50}${fs_bar 8,330 /home}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}/MUSIC: ${alignr 20}${fs_used /run/media/dobbie/Music}/${fs_free /run/media/dobbie/Music}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /run/media/dobbie/Music}% ${goto 50}${color 3f506b}${fs_bar 8,330}
+
+${font Roboto Condensed:pixelsize=15}${color c1c1c1}/MOVIES: ${alignr 20}${fs_used /run/media/dobbie/Movies}/${fs_free /run/media/dobbie/Movies}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /run/media/dobbie/Movies}%${color 3f506b} ${goto 50}${fs_bar 8,330 /run/media/dobbie/Movies}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}/TIME MACHINE: ${alignr 20}${fs_used /run/media/Dobbie/Time Machine}/${fs_free /run/media/Dobbie/Time Machine}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /run/media/Dobbie/Time Machine}%${color 3f506b} ${goto 50}${fs_bar 8,330 /run/media/Dobbie/Time Machine}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}/BACKUP: ${alignr 20}${fs_used /run/media/dobbie/Important}/${fs_free /run/media/dobbie/Important}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /run/media/dobbie/Important}%${color 3f506b} ${goto 50}${fs_bar 8,330 /run/media/dobbie/Important}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${font Roboto Condensed:pixelsize=15}/BACKUP2: ${alignr 20}${fs_used /run/media/dobbie/Back Up}/${fs_free /run/media/dobbie/Back Up}
+${font Roboto Condensed:pixelsize=15}${fs_used_perc /run/media/dobbie/Back Up}%${color 3f506b} ${goto 50}${fs_bar 8,330 /run/media/dobbie/Back Up}${font Roboto Condensed:pixelsize=15}${color c1c1c1}
+
+${color c1c1c1}${font Poky:pixelsize=15}l ${color cdbf9a}${font Roboto Condensed:pixelsize=15}NOW PLAYING - MPD - SONATA ${color 1c1c1c}${stippled_hr 2}${hr 2}${color c1c1c1}${font Roboto Condensed:pixelsize=15}
+
+${font Roboto Condensed:pixelsize=15}${color c1c1c1}SONG:  ${goto 100}${if_running audacious}${mpd_title}
+${font Roboto Condensed:pixelsize=15}${color c1c1c1}ALBUM: ${goto 100}${if_running audacious}${mpd_album}
+${font Roboto Condensed:pixelsize=15}${color c1c1c1}ARTIST: ${goto 100}${if_running audacious}${mpd_artist}
+
+${font Roboto Condensed:pixelsize=15}${color c1c1c1}${mpd_elapsed} / ${mpd_length} / ${mpd_bitrate} kbps
+
+#${image $HOME/.config/conky/images/silver2.png -p 90,5}
+#${image $HOME/.config/conky/images/silver1.png -p 90,5}
+${image $HOME/.config/conky/images/silver.png -p 90,5}
+#${image $HOME/.config/conky/images/archlabslogo.png -p 90,5}

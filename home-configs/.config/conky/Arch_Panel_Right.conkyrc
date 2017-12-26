@@ -1,0 +1,97 @@
+alignment top_right
+background yes
+border_margin 0
+border_width 1
+default_color ffffff
+double_buffer yes
+draw_outline no
+draw_graph_borders no
+draw_borders no
+draw_shades no
+gap_x 3    ### left | right
+gap_y 0    ### up | down
+maximum_width 250
+minimum_size 0 0
+no_buffers yes
+uppercase no
+override_utf8_locale yes
+own_window yes
+own_window_title conky
+own_window_transparent no
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 110
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+use_xft yes
+xftalpha 1.0
+xftfont Freesans:pixelsize=10
+short_units yes
+
+# -- Lua Load -- #
+ 
+#lua_draw_hook_pre draw_bg
+ 
+#lua_load ~/.bargraph_small.lua
+lua_draw_hook_post main_bars 
+
+#own_window_colour 000000
+TEXT
+${image $HOME/.config/conky/images/als.png -p 50,5}
+${voffset 145}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}LXER - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://lxer.com/module/newswire/headlines.rss 15 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}LINUX SLAVES - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.linuxslaves.com/feeds/posts/default?alt=rss 15 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}LIFEHACKER - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.gawker.com/lifehacker/full 15 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}PLANET GNOME - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://planet.gnome.org/rss20.xml 30 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}LINUX TODAY - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/linuxtoday/linux 15 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}ARCH LINUX - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss https://www.archlinux.org/feeds/news/ 120 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}WEBUPD8 - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds2.feedburner.com/webupd8 15 item_titles 5}
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}OMG!UBUNTU - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/d0od 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}ANGRY METAL GUY - REVIEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.angrymetalguy.com/feed/ 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}INVISIBLE ORANGES - NEWS & REVIEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://www.invisibleoranges.com/feed/ 15 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}METAL INJECTION - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/metalinjection 60 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}METAL SUCKS - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://feeds.feedburner.com/Metalsucks 60 item_titles 6}
+
+${color c1c1c1}${font Lassus:pixelsize=30}A ${color cdbf9a}${font SFNS Regular:pixelsize=9}LAST RITES - NEWS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
+
+${color4}${rss http://yourlastrites.com/feed/rss 60 item_titles 6}

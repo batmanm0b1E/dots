@@ -1,0 +1,100 @@
+alignment top_left
+background yes
+border_margin 0
+border_width 1
+default_color ffffff
+double_buffer yes
+draw_outline no
+draw_graph_borders no
+draw_borders no
+draw_shades no
+gap_x 3
+gap_y 30
+maximum_width 250
+minimum_size 0 0
+no_buffers yes
+uppercase no
+override_utf8_locale yes
+own_window yes
+own_window_title conky
+own_window_transparent no
+own_window_color 000000
+own_window_argb_visual yes
+own_window_argb_value 155
+own_window_type desktop
+own_window_hints undecorated,below,skip_taskbar,skip_page
+own_window_class conky
+text_buffer_size 8000
+total_run_times 0
+update_interval 1
+use_xft yes
+xftalpha 1.0
+xftfont Freesans:pixelsize=9
+short_units yes
+
+# -- Lua Load -- #
+#lua_load /home/dobbie/.draw_bg.lua
+#lua_draw_hook_pre draw_bg
+ 
+#lua_load ~/.bargraph_small.lua
+lua_draw_hook_post main_bars
+
+own_window_colour 000000
+TEXT
+#${lua conky_draw_bg}
+${color cdbf9a}${font conkysymbols:size=50}${alignc 45}t
+#${voffset -90}${color c1c1c1}${font SFNS Regular:pixelsize=18}${offset -45}${alignc}ARCH LINUX
+${voffset -50}${color c1c1c1}${font Poky:pixelsize=12}S ${color cdbf9a}${font SFNS Regular:pixelsize=9}KERNEL VERSION ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=8}
+
+${color c1c1c1}${font SFNS Regular:pixelsize=9}${kernel}
+
+${font Poky:pixelsize=12}d ${color cdbf9a}${font SFNS Regular:pixelsize=9}TIME & DATE${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
+
+${color c1c1c1}${font SFNS Regular:pixelsize=9}${time %A}
+${color cdbf9a}${font SFNS Regular:pixelsize=15}${time %I:%M %P }${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${font SFNS Regular:pixelsize=8}${time %B %d}, ${time %G}
+
+${font Poky:pixelsize=12}a ${color cdbf9a}${font SFNS Regular:pixelsize=9}SYSTEM DETAILS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=8}
+
+DISTRO: ${alignr 10}Arch Linux
+
+HOST: ${alignr 10}${nodename}
+
+UPTIME: ${alignr 10}${uptime}
+
+PROCESSES: ${alignr 10}${running_processes}
+
+ARCHITECTURE: ${alignr 10}${machine}
+
+PROCESSOR: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
+
+CPU LOAD: ${alignr 10}${loadavg}
+
+CPU TEMP: ${alignr 10}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} °C
+
+FAN SPEED: ${alignr 10}${execi 15 sensors | grep -i "fan1" | cut -c 14-21}
+
+GPU TEMP: ${alignr 10}${execi 15 sensors | head -n 10 | grep -i "temp1" | cut -c 15-22}
+
+MB TEMP: ${alignr 10}${execi 15 sensors | tail -n 15 | grep -i "temp1" | cut -c 15-22}
+
+
+${color c1c1c1}${font Poky:pixelsize=12}i ${color cdbf9a}${font SFNS Regular:pixelsize=9}SYSTEM UPDATES ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=8}
+
+UPDATES PENDING: ${goto 90}${color cdbf9a}${color1}${execpi 3600 checkupdates | wc -l}
+
+
+${color c1c1c1}${font Poky:pixelsize=12}Y ${color cdbf9a}${font SFNS Regular:pixelsize=9}WIRED NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=8}
+
+SPEED UP: ${goto 90}${upspeed enp3s0}
+${upspeedgraph enp3s0 15,240 cdbf9a cdbf9a}
+
+SPEED DOWN: ${goto 90}${downspeed enp3s0}
+${downspeedgraph enp3s0 15,240 cdbf9a cdbf9a}
+
+TOTAL UP: ${goto 90}${totalup enp3s0}
+
+TOTAL DOWN: ${goto 90}${totaldown enp3s0}
+
+
+

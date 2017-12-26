@@ -1,0 +1,92 @@
+--------------------------- Windows Settings
+own_window yes
+own_window_class Conky
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_type desktop
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+	double_buffer yes
+	background yes
+
+--------------------------- Position
+	minimum_width 275
+	minimum_height 0
+	maximum_width 275
+minimum_size 275 0
+gap_x 400
+gap_y 100
+alignment top_right
+
+--------------------------- Font
+	use_xft yes
+	xftalpha 0.8
+	override_utf8_locale yes
+	draw_shades yes
+	default_shade_color black
+	draw_borders no
+	draw_outline no
+	draw_graph_borders no
+	font Monofur:bold:size=8
+
+--------------------------- Color
+	default_color DCDCDC
+	color0 35bf5c
+	color1 DDDDDD
+	color2 AAAAAA
+	color3 888888
+
+--------------------------- OTHER
+	update_interval 1
+	top_cpu_separate no
+	cpu_avg_samples 2
+	--top_name_verbose no
+	template0 ${GOTO 50}${color\1}${top name \2}${alignr}${top cpu \2}%
+	template1 ${GOTO 50}${color\1}${top_mem name \2}${alignr}${top_mem mem \2}%
+
+TEXT
+${voffset 25}${GOTO 50}${font}System
+${GOTO 50}${font}Uptime: ${font Monofur:size=8}${uptime_short}${alignr}(${color0}$entropy_avail / $entropy_poolsize${color})
+
+${font Monofur:size=8}${GOTO 50}${font}Processes: ${font Monofur:size=8}${processes} (${color0}${running_processes} ${color}running)
+${GOTO 50}${font}Threads: ${font Monofur:size=8}${running_threads}
+${GOTO 50}${font}Connections: ${font Monofur:size=8}${tcp_portmon 1 65535 count}
+
+${GOTO 50}${font}GPU: ${font Monofur:size=8}${nvidia temp}°C | ${font Monofur:size=8}${nvidia gpufreq}Mhz | ${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t}MiB
+${image /home/dobbie/.config/conky/img/system.png -p 10,20}
+${voffset 25}${GOTO 50}${font}CPU
+${GOTO 50}${font}Avg use: ${font Monofur:size=8}${cpu cpu0}%${alignr}${font}Freq: ${font Monofur:size=8}${freq_g} Ghz
+${GOTO 50}${cpugraph 20,230 DDDDDD 35bf5c}
+${voffset 1}${template0 0 1}
+${template0 1 2}
+${template0 2 3}
+${template0 3 4}
+${template0 3 5}
+${voffset 5}${GOTO 40}${color2}${GOTO 80}${cpu cpu1}${GOTO 105}${cpu cpu2}${GOTO 130}${cpu cpu3}${GOTO 155}${cpu cpu4}${GOTO 180}${cpu cpu5}${GOTO 205}${cpu cpu6}${GOTO 230}${cpu cpu7}${GOTO 255}${cpu cpu8} 
+${GOTO 85}${hwmon 0 temp 2}°C${GOTO 135}${hwmon 0 temp 3}°C${GOTO 185}${hwmon 0 temp 4}°C${GOTO 235}${hwmon 0 temp 5}°C
+${image /home/dobbie/.config/conky/img/cpu.png -p 10,140}
+${voffset 25}${GOTO 50}${font}RAM
+${GOTO 50}${font}Usage: ${font Monofur:size=8}${memperc}% | ${mem}${font Monofur:size=7}${alignr}[+${buffers} +${cached}]
+${voffset 27}${font Monofur:size=8}${template1 0 1}
+${template1 1 2}
+${template1 2 3}
+${template1 3 4}
+${template1 3 5}
+${image /home/dobbie/.config/conky/img/ram.png -p 10,315}
+${voffset 25}${if_existing /proc/net/route enp2s0}${GOTO 50}${font}Network
+${GOTO 50}${font}Public ip: ${font Monofur:size=8}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
+${GOTO 50}${downspeedgraph enp2s0 20,230 DDDDDD 35bf5c}
+${GOTO 50}${upspeedgraph enp2s0 20,230 AAAAAA 888888}
+${GOTO 50}${font}Recieve: ${font Monofur:size=8}${downspeed enp2s0}${GOTO 200}${font}Send: ${font Monofur:size=8}${upspeed enp2s0}
+${image /home/dobbie/.config/conky/img/networkhigh.png -p 10,455}${else}${if_existing /proc/net/route wlp2s0}${GOTO 50}${font}Network
+${GOTO 50}${font}Public ip: ${font Monofur:size=8}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${GOTO 200}${font}Sig: ${font Monofur:size=8}${wireless_link_qual_perc enp2s0}%
+${GOTO 50}${font}Recieve: ${font Monofur:size=8}${downspeed enp2s0}${GOTO 200}${font}Send: ${font Monofur:size=8}${upspeed enp2s0}
+${if_match "${wireless_link_qual_perc enp2s0}"<"33"}${image /home/dobbie/.config/conky/img/networklow.png -p 10,455 -s 45x45}${else}${if_match "${wireless_link_qual_perc enp2s0}"<"66"}${image /home/dobbie/.config/conky/img/networkmid.png -p 10,455}${else}${image /home/dobbie/.config/conky/img/networkhigh.png -p 10,455}${endif}${endif}${else}${GOTO 50}${font}Network
+${GOTO 50}${font}No connection
+${image /home/dobbie/.config/conky/img/nonetwork.png -p 10,455}${endif}${endif}
+${voffset 25}${GOTO 50}${font}File System
+${GOTO 50}${font}Hdd: ${font Monofur:size=8}${fs_used /}${GOTO 200}${font}Temp: ${font Monofur:size=8}${execi udisks --show-info /dev/sdb | awk '/reallocated-sector-count/ {gsub(/\|/, " ", $0); print $6}'} °C
+${GOTO 50}${diskiograph 20,230 DDDDDD 35bf5c}
+${GOTO 50}${font}Read: ${font Monofur:size=8}${diskio_read}${GOTO 200}${font}Write: ${font Monofur:size=8}${diskio_write}
+${image /home/dobbie/.config/conky/img/files.png -p 10,590}
