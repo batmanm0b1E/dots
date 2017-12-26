@@ -1,0 +1,15 @@
+<skin name="CD Case with CD" width="150" height="150">
+
+<!-- this theme is free to distribute, mod and such as long as you accredit it back to http://emey87.deviantart.com/ who made the skin for cad and ~leonardomdq (leonardomdq.deviantart.com) who ported it for covergloobus--> 
+
+ <image src="nocover.png" x="25" y="54" widht="80" height="80"/>
+ <albumcover x="25"   y="54"  width="80"  height="80"/>
+ <image src="case.png"  x="0"   y="44"  width="142"  height="108"/>
+ <image src="panel.png"    x="4"   y="-10"  width="112"  height="70"/>
+ 
+<titlename x="-60" y="8" width="240" font="Calibri bold caps Bold 8" align="center" color="#FFFFFFff"  maxchars="16" scroll="true"/>
+
+<rating		x="33" y="33" width="10" height="10" spacing = "1" star="star.png" nostar="nostar.png" />
+</skin>
+
+

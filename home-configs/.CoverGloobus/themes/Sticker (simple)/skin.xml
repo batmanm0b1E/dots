@@ -1,0 +1,8 @@
+<skin name="Sticker (simple)" width="174" height="169">
+
+  	<image src="background.png" x="0" y="0" width="174" height="169"/>
+	<albumcover x="13" y="13" width="140" height="140" round="70" mask="mask.png"/>
+	<image src="overlay.png" x="0" y="0" width="174" height="169"/>
+        <image src="up.png" x="0" y="0" width="174" height="169"/>
+ 
+</skin>

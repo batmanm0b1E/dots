@@ -1,0 +1,16 @@
+<!-- Clips skin for Covergloobus by sosoinlove http://sosoinlove.deviantart.com/    http://so-soinlove.blogbus.com/-->
+
+<skin    name="Dot White"       width="800"    height="150">
+	
+<artistname                x="0"  y="0"  width="164" maxchars="250" align="center" font="Steiner Light 10" color="#ffffffff" scroll="true" />	
+
+<titlename                x="0"  y="40"  width="164" maxchars="250" align="center" font="Steiner Regular 8" color="#ffffffff" scroll="true" />
+
+	<playercontrols spacing="50" x="100" y="200">
+		<prev 			x="50"  y="15" src="previous.tif" hover="previousDown.tif"/>
+		<play		 	x="75" y="15" src="play.tif" hover="playDown.tif" pause="pause.tif" pause_hover="pauseDown.tif"/>
+		<next 			x="95" y="15"	src="next.tif" hover="nextDown.tif"/>
+	</playercontrols>    
+
+</skin>
+

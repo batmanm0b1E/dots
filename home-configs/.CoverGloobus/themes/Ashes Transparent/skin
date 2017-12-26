@@ -1,0 +1,19 @@
+<skin name="tahiry" width="430" height="220">
+
+ 
+  <image src="nocover.png" 	x="300" y="58"  width="95" height="95"/> 
+  <albumcover   			x="300" y="58" width="95" height="95"/>
+  <image src="case.png" 		x="32" y="8"  width="424" height="209"/> 
+  
+  <titlename 	x="105" y="65" width="230" maxchars="32" align="left" font="Bebas 9" color="#ffffffFF" shadowcolor="#000000ff" />     
+  <artistname 	x="105" y="92" width="230" maxchars="35" align="left" font="Gnuolane 10"	color="#ffffffFF" shadowcolor="#000000ff" />
+  <albumname 	x="105" y="118" width="230" maxchars="35" align="left" font="Gnuolane 10" color="#ffffffFF"  shadowcolor="#000000ff" />
+
+  <playercontrols spacing="0" x="106" y="298">
+     <prev 			x="300"  y="164" src="prev.png"/> 
+     <play		 	x="326" y="162" src="play.png"/> 
+	 <next 			x="342" y="164"	src="next.png"/> 
+  </playercontrols>
+  
+</skin>
+

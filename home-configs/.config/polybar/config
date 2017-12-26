@@ -65,7 +65,7 @@ monitor = ${env:MONITOR:HDMI-A-0}
 
 modules-left = menu window_switch redshift weather
 modules-center = music2
-modules-right = pkg mail memory temp cpu eth volume1 time rofi
+modules-right = pkg mail memory temperature cpu eth volume1 time rofi
 
 ; All available modules (some require configuration in modules.conf)
 ; redshift github filesystem mpd wired-network wireless-network battery menu volume-bar

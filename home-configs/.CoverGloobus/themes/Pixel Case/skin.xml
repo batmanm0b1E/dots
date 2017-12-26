@@ -1,0 +1,17 @@
+<!-- Pixel Case skin for Covergloobus by Theconso [theconso.deviantart.com] -->
+
+<!-- Special thanks to kiko11 [kiko11.deviantart.com] for give me the permission to porting this skin -->
+
+
+<skin name="Pixel Case for Covergloobus by Theconso"  width="32" height="32">
+
+<image 	src="nocover.png" x="1"   y="3"  width="16"  height="16"/> 
+<albumcover x="1"   y="3"  width="16"  height="16"/>
+<image 	src="case.png"  x="0"   y="0"  width="21"  height="21"/>
+
+<titlename x="0" y="22" width="21" font="Calibri bold 4" color="#ccccccff" shadowcolor="#000000ff" maxchars="10" scroll="true"/>
+
+</skin>
+
+
+

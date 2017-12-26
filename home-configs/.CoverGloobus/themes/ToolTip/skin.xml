@@ -1,0 +1,21 @@
+<skin name="T-tip" width="480" height="163">
+<!-- Based on the Coversutra theme -->
+  
+    
+  <image src="base.png" 	x="0" y="0"  	width="403" height="143"/> 
+	<image src="nocover.png" 	x="30" y="42"  	width="60" height="60"/> 
+	<albumcover   			x="30" y="42" 	width="60" height="60"/>
+	<image src="shadow.png" 	x="30" y="42"  	width="60" height="60"/>
+ 
+  
+  <titlename 	x="110" y="42" width="230" maxchars="25" align="left" font="URW Gothic L Bold Bold 9" color="#ffffffFF"  />     
+  <artistname 	x="110" y="62" width="230" maxchars="25" align="left" font="URW Gothic L Bold 9"	color="#ffffffFF"  />
+  <albumname 	x="110" y="82" width="230" maxchars="20" align="left" font="URW Gothic L Bold 9" color="#ffffffFF"  />
+   <rating			x="293" y="49" width="13" height="13" spacing = "1" star="star.png" nostar="nostar.png" />
+  <playercontrols spacing="0" x="106" y="298">
+     <prev 			x="295"  y="80" src="prev.png"/> 
+     <play		 	x="315"  y="80" src="pause.png" pause="play.png"/> 
+	 <next 			x="335"  y="80"	src="next.png"/> 
+  </playercontrols>
+</skin>
+

@@ -1,0 +1,9 @@
+<skin name="Circle Dark" width="420" height="155">
+
+  <albumcover   x="43" y="63" width="40" height="40" round="19"/>
+  <image  src="Case.png" 	x="0" y="0"  width="157" height="157"  />  
+  <titlename x="95" y="85" width="200" align="left" maxchars="135" font="Gill Sans MT Italic 8" color="#454545FF"  scroll="true" />
+  <artistname x="95" y="66" width="200" align="left" maxchars="130" font="Gill Sans MT 9" color="#454545FF"  scroll="false" />
+  
+</skin>
+

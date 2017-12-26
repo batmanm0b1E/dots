@@ -1,0 +1,21 @@
+<skin name="Sticker" width="400" height="169">
+
+  	<image src="background.png" x="0" y="0" width="174" height="169"/>
+	<albumcover x="13" y="13" width="140" height="140" round="70" mask="mask.png"/>
+	<image src="overlay.png" x="0" y="0" width="174" height="169"/>
+        <image src="up.png" x="0" y="0" width="174" height="169"/>
+
+	<titlename x="180" y="15" width="400" align="left" maxchars="31" font="Garuda bold 10" color="#ffffffFF" shadowcolor="#000000BB"/>
+	<artistname x="180" y="34" align="left" maxchars="36" font="Garuda bold 8" color="#ffffffFF" shadowcolor="#000000BB"/>
+	<albumname x="180" y="49" width="400" align="left" maxchars="36" font="Garuda bold 8" color="#ffffffFF" shadowcolor="#000000BB"/>
+
+<playercontrols			spacing="-5" x="0" y="0">
+	<prev 			x="177" y="68" src="prev.png" hover="prev_hover.png" /> 
+	<play		 	x="187" y="68" src="play.png" hover="play_hover.png" pause="pause.png" pause_hover="pause_hover.png"/> 
+	<next 			x="197" y="68"	src="next.png" hover="next_hover.png"/> 
+</playercontrols>
+
+<rating x="215" y="70" width="10" height="10" spacing = "2" star="star.png" nostar="nostar.png" hover="star_hover.png" />
+
+</skin>
+

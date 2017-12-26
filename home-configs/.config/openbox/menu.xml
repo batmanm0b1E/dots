@@ -3,8 +3,6 @@
 	<menu id="root-menu" label="Openbox 3">
 
 
-				<separator label="D O B B I E B A N G" />
-
 			<menu id="access-menu" label="Run">
 			<item label="Run...">
 			<action name="Execute">
@@ -192,9 +190,9 @@
 			</item>
 		</menu>
 		<menu id="apps-editors-menu" label="Editors">
-			<item label="Atom">
+			<item label="Sublime Text">
 				<action name="Execute">
-					<command>atom</command>
+					<command>subl3</command>
 					<startupnotify>
 						<enabled>yes</enabled>
 						<wmclass>GVim</wmclass>
@@ -227,9 +225,9 @@
 					</startupnotify>
 				</action>
 			</item>
-			<item label="Gedit">
+			<item label="Atom">
 				<action name="Execute">
-					<command>gedit</command>
+					<command>atom</command>
 					<startupnotify>
 						<enabled>yes</enabled>
 					</startupnotify>
@@ -588,6 +586,14 @@
 					</startupnotify>
 				</action>
 			</item>
+     <item label="The Long Dark">
+        <action name="Execute">
+          <command>/home/dobbie/.steam/steam/steamapps/common/TheLongDark/tld.x86</command>
+          <startupnotify>
+            <enabled>yes</enabled>
+          </startupnotify>
+        </action>
+      </item>
 			<item label="0 A.D.">
 				<action name="steam">
 					<command>0ad</command>
@@ -605,44 +611,49 @@
 			<menu id="system-menu-25831" label="Edit Settings">
 					<item label="Edit menu.xml">
 					<action name="Execute">
-						<execute>atom ~/.config/openbox/menu.xml</execute>
+						<execute>subl3 ~/.config/openbox/menu.xml</execute>
 					</action>
 				</item>
 				<item label="Edit rc.xml">
 					<action name="Execute">
-						<execute>atom ~/.config/openbox/rc.xml</execute>
+						<execute>subl3 ~/.config/openbox/rc.xml</execute>
 					</action>
 				</item>
 				<item label="Edit autostart">
 					<action name="Execute">
-						<execute>atom ~/.config/openbox/autostart</execute>
+						<execute>subl3 ~/.config/openbox/autostart</execute>
 					</action>
 				</item>
 				<item label="Edit .Xresources">
 					<action name="Execute">
-						<execute>atom ~/.Xresources</execute>
+						<execute>subl3 ~/.Xresources</execute>
 					</action>
 				</item>
 				<item label="Edit .zshrc">
 					<action name="Execute">
-						<execute>atom ~/.zshrc</execute>
+						<execute>subl3 ~/.zshrc</execute>
 					</action>
 				</item>
 				<item label="Edit compton.conf">
 					<action name="Execute">
-						<execute>atom ~/.config/compton.conf</execute>
+						<execute>subl3 ~/.config/compton.conf</execute>
 					</action>
 				</item>
 				<item label="Edit pacman.conf">
 					<action name="Execute">
-						<execute>gksu atom /etc/pacman.conf</execute>
+						<execute>gksu subl3 /etc/pacman.conf</execute>
 					</action>
 				</item>
 				<item label="Edit ncmpcpp config">
 					<action name="Execute">
-						<execute>atom ~/.ncmpcpp/config</execute>
+						<execute>subl3 ~/.ncmpcpp/config</execute>
 					</action>
 				</item>
+        <item label="Edit dunstrc">
+          <action name="Execute">
+            <execute>subl3 ~/.config/dunst/dunstrc</execute>
+          </action>
+          </item>
 				<separator/>
 				<item label="OBMenu GUI">
 					<action name="Execute">
@@ -682,7 +693,7 @@
 				<item label="Text Editor As Root">
 					<action name="Execute">
 						<command>
-                        gksudo atom
+                        gksudo subl3
                     </command>
 					</action>
 				</item>
@@ -742,7 +753,7 @@
       </item>
       <item label="Exit Appearance">
         <action name="Execute">
-          <command>gksudo atom /etc/oblogout.conf</command>
+          <command>gksudo subl3 /etc/oblogout.conf</command>
         </action>
       </item>
 		<item label="Screensaver">
@@ -865,7 +876,7 @@
 			<separator/>
 				<item label="Web Browser">
 			<action name="Execute">
-				<execute>firefox-developer</execute>
+				<execute>firefox-developer-edition</execute>
 			</action>
 		</item>
 		<item label="Email">
@@ -900,7 +911,7 @@
 		</item>
 		<item label="File Editor">
 			<action name="Execute">
-				<execute>atom</execute>
+				<execute>subl3</execute>
 			</action>
 		</item>
 		<item label="Terminal">
@@ -959,7 +970,7 @@
 		      </item>
 		      <item label="Exit Appearance">
 		        <action name="Execute">
-		          <command>gksudo atom /etc/oblogout.conf</command>
+		          <command>gksudo subl3 /etc/oblogout.conf</command>
 		        </action>
 		      </item>
 				<item label="Screensaver">
@@ -997,12 +1008,12 @@
 						<separator label="SYSTEM CONTROL" />
 					<item label="Lock The Screen">
 			<action name="Execute">
-				<execute>i3lock-fancy</execute>
+				<execute>i3lock-fancy -p</execute>
 			</action>
 		</item>
 		  <item label="Exit DobbieLabs">
               <action name="Execute">
-        <command>oblogout</command>
+        <command>/usr/bin/rofi-logout</command>
       </action>
     </item>
     </menu>

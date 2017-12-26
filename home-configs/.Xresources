@@ -1,37 +1,3 @@
-! ------------------------------------------------------------------------------
-! xterm standard archlabs theme
-! ------------------------------------------------------------------------------
-! https://critical.ch/xterm/
-! ------------------------------------------------------------------------------
-
-xterm*font: 7x13
-xterm*faceName: Monaco:size=10:antialias=false
-xterm*loginShell: true
-xterm*vt100*geometry: 105x34
-xterm*saveLines: 2000
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
-xterm*termName: xterm-color
-xterm*eightBitInput: false
-xterm*foreground: rgb:d9/d4/d4
-xterm*background: rgb:32/32/32
-xterm*color0: rgb:00/00/00
-xterm*color1: rgb:a8/00/00
-xterm*color2: rgb:00/a8/00
-xterm*color3: rgb:a8/54/00
-xterm*color4: rgb:5f/81/9d
-xterm*color5: rgb:a8/00/a8
-xterm*color6: rgb:00/a8/a8
-xterm*color7: rgb:70/78/80
-xterm*color8: rgb:54/54/54
-xterm*color9: rgb:fc/54/54
-xterm*color10: rgb:54/fc/54
-xterm*color11: rgb:fc/fc/54
-xterm*color12: rgb:81/a2/be
-xterm*color13: rgb:fc/54/fc
-xterm*color14: rgb:54/fc/fc
-xterm*color15: rgb:c5/c8/c6
-xterm*boldMode: false
-
 
 ! ------------------------------------------------------------------------------
 ! URxvt standard archlabs theme
@@ -42,20 +8,24 @@ xterm*boldMode: false
 ! general settings
 URxvt*saveline:         15000
 URxvt*termName:         rxvt-256color
-URxvt*iso14755:         false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt*iconFile: /usr/share/icons/Papirus/64x64/apps/terminal.svg
 
 ! appearance
 URxvt*depth:            32
 !URxvt*background:      rgba:0000/0000/0000/AAAA
-URxvt*background:      [97]#1f1f1f
+URxvt*background:      [97]#eff1f5
 !URxvt*background:       [100]#1d1f21
-URxvt*foreground: 		                #c0b18b
-URxvt.underlineColor:   #4682B4
-URxvt.highlightColor:   #4682B4
-URxvt.throughColor:     Blue
-URxvt*cursorColor:      2b303b
-URxvt*cursorColor2:     Black
+!URxvt*foreground: 		                #c0b18b
+!URxvt.underlineColor:   #4682B4
+!URxvt.highlightColor:   #4682B4
+!URxvt.throughColor:     Blue
+!URxvt*cursorColor:      2b303b
+!URxvt*cursorColor2:     Black
 URxvt*scrollBar:        false
 URxvt*scrollBar_right:  false
 URxvt*internalBorder:   0
@@ -65,56 +35,55 @@ URxvt*externalBorder:   0
 !URxvt.colorUL:      #87afd7
 
 ! special
-*.foreground:   #c0b18b
-*.background:   #1f1f1f
-*.cursorColor:  #c0b18b
+*.foreground:   #4f5b66
+*.background:   #eff1f5
+*.cursorColor:  #4f5b66
 
 ! black
-*.color0:       #4a3637
-*.color8:       #4a3637
+*.color0:       #2b303b
+*.color8:       #65737e
 
 ! red
-*.color1:       #d17b49
-*.color9:       #d17b49
+*.color1:       #bf616a
+*.color9:       #bf616a
 
 ! green
-*.color2:       #7b8748
-*.color10:      #7b8748
+*.color2:       #a3be8c
+*.color10:      #a3be8c
 
 ! yellow
-*.color3:       #af865a
-*.color11:      #af865a
+*.color3:       #ebcb8b
+*.color11:      #ebcb8b
 
 ! blue
-*.color4:       #535c5c
-*.color12:      #535c5c
+*.color4:       #8fa1b3
+*.color12:      #8fa1b3
 
 ! magenta
-*.color5:       #775759
-*.color13:      #775759
+*.color5:       #b48ead
+*.color13:      #b48ead
 
 ! cyan
-*.color6:       #6d715e
-*.color14:      #6d715e
+*.color6:       #2b303b
+*.color14:      #2b303b
 
 ! white
-*.color7:       #c0b18b
-*.color15:      #c0b18b
-
+*.color7:       #c0c5ce
+*.color15:      #eff1f5
 
 
 ! fonts
 URxvt*letterSpace: 	    		-1
 !Xft.size:						12
-URxvt*font:                 	xft:Monaco:regular:size=9
-URxvt*imFont:               	xft:Monaco:regular:size=9
-URxvt*boldFont:             	xft:Monaco:bold:size=9
-URxvt*italicFont:           	xft:Monaco:italic:size=9
-URxvt*boldItalicFont:     		xft:Monaco:regular:size=9
+URxvt*font:                 	xft:Ubuntu Mono:regular:size=8
+URxvt*imFont:               	xft:Ubuntu Mono:regular:size=8
+URxvt*boldFont:             	xft:Ubuntu Mono:bold:size=8
+URxvt*italicFont:           	xft:Ubuntu Mono:italic:size=8
+URxvt*boldItalicFont:     		xft:Ubuntu Mono:regular:size=8
 ! run :.!fc-list | grep <font-name>
 
 ! perl extensions
-URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
 !URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
 
 ! macros for clipboard and selection
@@ -140,68 +109,17 @@ URxvt*buffered:         false
 
 
 
-! ------------------------------------------------------------------------------
-! UXTerm standard archlabs theme
-! ------------------------------------------------------------------------------
-
-
-
-! termtype
-UXTerm*termName: xterm-256color
-
-
-UXTerm*cursorColor:        white
-UXTerm*VT100.geometry:     90x30
-UXTerm*font:               Monaco
-UXTerm*faceSize:		   12
-UXTerm*dynamicColors:      true
-UXTerm*utf8:               2
-UXTerm*eightBitInput:      true
-UXTerm*saveLines:          10000
-UXTerm*scrollKey:          true
-UXTerm*scrollTtyOutput:    false
-UXTerm*scrollBar:          false
-UXTerm*rightScrollBar:     false
-UXTerm*jumpScroll:         true
-UXTerm*multiScroll:        true
-UXTerm*toolBar:            false
-
-
-! fix colors
-UXTerm*background: rgb:63/63/63
-UXTerm*foreground: rgb:00/00/00
-UXTerm*color0: rgb:00/00/00
-UXTerm*color1: rgb:a8/00/00
-UXTerm*color2: rgb:00/a8/00
-UXTerm*color3: rgb:a8/54/00
-UXTerm*color4: rgb:00/00/a8
-UXTerm*color5: rgb:a8/00/a8
-UXTerm*color6: rgb:00/a8/a8
-UXTerm*color7: rgb:a8/a8/a8
-UXTerm*color8: rgb:54/54/54
-UXTerm*color9: rgb:fc/54/54
-UXTerm*color10: rgb:54/fc/54
-UXTerm*color11: rgb:fc/fc/54
-UXTerm*color12: rgb:54/54/fc
-UXTerm*color13: rgb:fc/54/fc
-UXTerm*color14: rgb:54/fc/fc
-UXTerm*color15: rgb:fc/fc/fc
-UXTerm*boldMode: false
-UXTerm*colorBDMode: true
-UXTerm*colorBD: rgb:3f/3f/3f
-
-
 
 ! ------------------------------------------------------------------------------
-! MonoLabs themes
+! ArchLabs Themes
 ! ------------------------------------------------------------------------------
 
 rofi.font:              Pilcrow 20
 rofi.color-enabled: true
-rofi.color-window: #1F1F1F, #798C91, #798C91
-rofi.color-normal: #1F1F1F, #798C91, #1F1F1F, #798C91, #1F1F1F
-rofi.color-active: #798C91, #1F1F1F, #798C91, #1F1F1F, #798C91
-rofi.color-urgent: #798C91, #1F1F1F, #798C91, #1F1F1F, #798C91
+rofi.color-window: #DFE1E8, #8fA1B3, #8fA1B3
+rofi.color-normal: #DFE1E8, #8fA1B3, #DFE1E8, #8fA1B3, #DFE1E8
+rofi.color-active: #8fA1B3, #DFE1E8, #8fA1B3, #DFE1E8, #8fA1B3
+rofi.color-urgent: #8fA1B3, #DFE1E8, #8fA1B3, #DFE1E8, #8fA1B3
 rofi.separator-style:   solid
 rofi.fullscreen:        false
 rofi.padding:           10
@@ -212,35 +130,15 @@ rofi.xoffset:           0
 rofi.width:            1920
 rofi.lines:            20
 
-! ------------------------------------------------------------------------------
-! ROFI standard archlabs themes
-! ------------------------------------------------------------------------------
-!rofi.font:              Pilcrow 18
-!rofi.color-enabled: true
-!rofi.color-window: #1F1F1F, #798C91, #798C91
-!rofi.color-normal: #1F1F1F, #798C91, #1F1F1F, #798C91, #1F1F1F
-!rofi.color-active: #798C91, #1F1F1F, #798C91, #1F1F1F, #798C91
-!rofi.color-urgent: #798C91, #1F1F1F, #798C91, #1F1F1F, #798C91
-!rofi.separator-style:   solid
-!rofi.fullscreen:        false
-!rofi.padding:           10
-!rofi.hide-scrollbar:    true
-!rofi.line-margin:       2
-!rofi.yoffset:           00
-!rofi.xoffset:           0
-!rofi.width:            1920
-!rofi.lines:            20
-
-
 !--------------------------------------------
 ! Custom DPI
 !--------------------------------------------
-
-Xft.dpi: 144
+!Xft.dpi: 144
+Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
-Xft.hinting: 1
+Xft.hinting: 	true
 Xft.antialias: 1
 Xft.rgba: rgb
 

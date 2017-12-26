@@ -1,0 +1,19 @@
+<skin name="Nexa" width="308" height="101"> 
+      <image src="case.png" 	x="0" y="0"  width="308" height="101" />
+     <image src="nocover.png" 	x="17" y="16"  width="42" height="42" round="1" />
+  <albumcover  round="1" x="17" y="16"  width="42" height="42" />
+<artistname x="80" y="32" width="197" maxchars="40" align="center" font="Droid Sans Regular 8" color="#000000FF" scroll="true" />
+ <titlename x="80" y="14" width="197" maxchars="40" align="center" font="Droid Sans Regular 8" color="#000000FF" scroll="true" />
+
+<playercontrols spacing="0" x="0" y="0">
+     <prev 			x="112"  y="76" src="prev.png" hover="prev.png" /> 
+	<play		 	x="147" y="75" src="Play.png" hover="playover.png" pause="pause.png" pause_hover="pauseover.png"/> 
+	 <next 			x="184" y="76"	src="next.png" hover="next.png" /> 
+  </playercontrols>
+
+  <seekbar x="80" y="48" width="197" height="12" back="back.png" top="fill.png" >
+ </seekbar>
+
+  
+</skin>
+

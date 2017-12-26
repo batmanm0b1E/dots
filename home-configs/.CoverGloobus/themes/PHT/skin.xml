@@ -1,0 +1,7 @@
+<skin name="PHT by Emanuel Sá (port by Attila Szabó)" width="205" height="205">
+
+    <image src="nocover.png" x="0" y="0" widht="200" height="200"/>
+    <albumcover   			x="24" y="24" 	width="152" height="152"/>
+    <image src="case.png" 	x="0" y="0"  	width="200" height="200"/> 
+ </skin>
+

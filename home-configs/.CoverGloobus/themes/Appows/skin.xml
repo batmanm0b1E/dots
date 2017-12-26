@@ -1,0 +1,21 @@
+
+<skin name="Appows" width="183" height="247">
+
+<!-- this theme is free to distribute, mod and such as long as you accredit it back to =Neio (Neio.deviantart.com) who made the artwork for CAD and ~gabriela2400 (gabriela2400.deviantart.com) who did the port for covergloobus --> 
+
+	
+ 	
+	<image src="case.png" x="0" y="0" width="183" height="247"/>
+	<image src="nocover.png" x="27" y="84" width="126" height="126"/>
+  	<albumcover x="27" y="84" width="126" height="126"/>
+
+  <artistname x="-30" y="31" width="240" font="Segoe UI Caps Bold 6" align="center" color="#ccccccff" shadowcolor="#000000ff" maxchars="21" scroll="true"/>
+  <titlename x="-31" y="40" width="240" font="Segoe UI 7" align="center" color="#ccccccff" shadowcolor="#000000ff" maxchars="25" scroll="true"/>
+
+<playercontrols spacing="50" x="100" y="200">
+     <prev 			x="27"  y="65" src="prev.png"/> 
+     <play		 	x="75" y="63" src="play.png"/> 
+	 <next 			x="130" y="65"	src="next.png"/> 
+  </playercontrols>
+</skin>
+

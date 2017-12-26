@@ -1,0 +1,13 @@
+<skin name="PHT Nano" width="151" height="151">
+
+    <image src="nocover.png" x="0" y="0" widht="150" height="150"/>
+    <albumcover   			x="25" y="25" 	width="100" height="100"/>
+    <image src="case.png" 	x="0" y="0"  	width="150" height="150"/> 
+  <playercontrols spacing="0" x="106" y="298">
+     <prev 			x="35"  y="135" src="prev.png"/> 
+     <play		 	x="65"  y="135" src="play.png"/> 
+	 <next 			x="95" y="135"	src="next.png"/> 
+  </playercontrols>
+  
+</skin>
+

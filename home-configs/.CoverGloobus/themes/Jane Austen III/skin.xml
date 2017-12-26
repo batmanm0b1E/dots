@@ -1,0 +1,11 @@
+<!--
+Jane Asuten II Covergloobus by Dobbie03
+
+-->
+
+  <skin name="Jane Austen II" width="1920" height="90">
+<albumname x="0" y="20" width="1300" align="left" maxchars="136" font="Acens 15" color="#454545ff" />  
+<artistname x="30" y="35" width="1300" font="Jane Austen 20" align="left" color="#454545ff"  maxchars="155" scroll="true" />
+  <titlename x="0" y="75" width="1300" font="Acens 15" align="left" color="#4545456f"  maxchars="155" scroll="true" />
+      </skin>
+

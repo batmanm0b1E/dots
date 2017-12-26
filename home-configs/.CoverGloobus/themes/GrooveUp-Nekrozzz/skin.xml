@@ -1,0 +1,25 @@
+<!-- GrooveUp skin for Covergloobus by Theconso, modified by NeKroZ -->
+
+<skin name="GrooveUp porting for Covergloobus" width="500" height="250">
+<image src="NOCOVER.png" x="40" y="55" width="105" height="100"/>
+<albumcover x="40"   y="55"  width="105"  height="100" round="10" reflect="5-40-50"/>
+<!--<image src="CASE.png"  x="0"   y="0"  width="500"  height="250"/>-->
+<titlename x="170" y="55"  width="300" align="left" maxchars="50" font="calibri Bold 16" color="#CCCCCCFF" scroll="true" />  
+<artistname x="170"  y="83" width="300" maxchars="50" align="left" font="calibri 13" color="#CCCCCCFF"  scroll="true" />
+<albumname x="170"  y="110" width="300" maxchars="50" align="left" font="calibri 11" color="#888888FF"  scroll="true" />
+<time 	x="170" y="138" width="40" maxchars="10" align="left" font="calibri 10" 	color="#666666FF" scroll="false"/>
+<image src="delim.png" x="206" y="142" width="3" height="9"/>
+<length x="215"  y="138"  width="40" align="left" maxchars="10" font="calibri 10" color="#666666FF" scroll="false" />
+<playercontrols spacing="0"   x="50" y="50">
+	<play x="33" y="152" src="TOOLBAR/play.png" hover="TOOLBAR/play1.png" pause="TOOLBAR/pause.png" pause_hover="TOOLBAR/pause1.png"/> 
+	<prev x="67" y="152" src="TOOLBAR/prev.png" hover="TOOLBAR/prev1.png"/> 
+	<next x="100" y="152" src="TOOLBAR/next.png" hover="TOOLBAR/next1.png"/> 
+</playercontrols>  
+<seekbar x="170" y="158" width="250" height="38" back="PROGRESSBAR/back.png" top="PROGRESSBAR/fill.png">
+   	<thumb src="PROGRESSBAR/knob.png" width="16" height="38" left="0" top="0" bottom="0"/>
+</seekbar>
+
+</skin>
+
+
+

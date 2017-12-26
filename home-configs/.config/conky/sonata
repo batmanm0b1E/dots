@@ -1,0 +1,17 @@
+#!/bin/bash
+home=/home/dobbie
+# change this ^ to your home directory
+sonata info > $home/.config/conky/sonata_info
+if [ -f ~/sonata ]; then
+	ARTIST=$(cat $home/.config/conky/sonata_info | grep Artist | cut -c 9-)
+	ALBUM=$(cat $home/.config/conky/sonata_info | grep Album | cut -c 8-)
+	echo "$ARTIST-$ALBUM.jpg" > $home/.config/conky/image
+	IMAGE=$(cat $home/.config/conky/image)
+	if [ -f "$home/.covers/$IMAGE" ]; then
+		cp "$home/.covers/$IMAGE" "$home/.config/conky/currentcover.jpg"
+	else
+			cp "$home/.config/conky/nocover.jpg" "$home/.config/conky/currentcover.jpg"
+	fi
+else
+	exit 1
+fi

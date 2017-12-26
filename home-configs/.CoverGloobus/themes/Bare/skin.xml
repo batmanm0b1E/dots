@@ -1,0 +1,14 @@
+<skin name="Bare" width="160" height="150">
+	<!-- Bare CoverGloobus theme by noyth (http://noyth.deviantart.com) -->
+	<!-- CC BY-SA 3.0 -->
+	<image src="background.png" x="0" y="0" width="160" height="150"/>
+	<albumcover x="21" y="11" width="128" height="128" />
+
+<playercontrols	spacing="0" x="0" y="0">
+	<prev x="11" y="46" src="prev.png" hover="prev_hover.png" /> 
+	<play x="11" y="65" src="play.png" hover="play_hover.png" pause="pause.png" pause_hover="pause_hover.png"/> 
+	<next x="11" y="85" src="next.png" hover="next_hover.png"/>
+</playercontrols>
+
+</skin>
+

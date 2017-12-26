@@ -1,0 +1,21 @@
+<!-- 
+Impumon CoverGloobus theme by Cyr4x3
+ 
+Based on the original theme for Coverz by LaGaDesk
+-->
+
+<skin name="ImpuMon-II" width="512" height="200">
+
+        
+   <albumcover x="202" y="57" width="106" height="106"	round="45" src="nocover-blue.png"/>
+   <image src="case2.png" x="0" y="0"  width="512" height= '200'/>
+   
+    
+   
+   <playercontrols	spacing="0" x="0" y="0">
+   <prev x="77" y="4" width="16" height="16" src="prev.png" hover="prev_prev.png"/>
+   <play x="248" y="4" width="16" height="16" src="play.png" hover="play_prev.png" pause="pause.png" pause_hover="pause_prev.png"/>
+   <next x="418" y="4" width="16" height="16" src="next.png" hover="next_prev.png"/>
+  </playercontrols>
+
+</skin>

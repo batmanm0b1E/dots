@@ -106,6 +106,7 @@ alias font="sudo fc-cache -f -v"
 alias tui="s-tui"
 alias upmirrors="sudo reflector --score 100 --fastest 25 --sort rate --save /etc/pacman.d/mirrorlist --verbose"
 alias backup="sh ~/Documents/dotii"
+alias scr="./.scr"
 #alias orp="sudo pacman -Rns $(pacman -Qtdq)"
 
 ## PACMAN
@@ -134,8 +135,10 @@ alias aurinen='LC_ALL=C yaourt -S'
 alias Y='yaourt --noconfirm'
 alias aurinf='yaourt -Si'
 
-neofetch
+#neofetch
+./.al.sh
 echo "[3m$(fortune -sa)\n" # display a random short quote at start
+
 
 PATH="/home/dobbie/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/dobbie/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

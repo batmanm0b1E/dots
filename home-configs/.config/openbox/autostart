@@ -62,7 +62,7 @@ xscreensaver -no-splash &
 ##Panel Options
 #xfce4-panel &
 #(sleep 2; plank) &
-#tint2 &
+tint2 &
 (sleep 5; polybar -r ob-bar) &
 #(sleep 1; $HOME/.config/polybar/polybar.sh) &
 
@@ -75,6 +75,7 @@ g610-led -a 90 &
 #(sleep 2; greenclip daemon) &
 #(sleep 2; volumeicon) &
 #(sleep 2; volti) &
+#(sleep 5; trayer --edge bottom --align right --heighttype pixel --height 40  --SetDockType true --widthtype request --expand true --alpha 255 --transparent true) &
 
 ##Window Control
 (sleep 2; skippy-xd --config $HOME/.config/skippy-xd/skippy-xd.rc --start-daemon) &
@@ -91,4 +92,4 @@ xset m 0 0 &
 ksuperkey -e 'Super_L=Alt_L|F1' &
 
 # Desktop Window Snapping
-opensnap --daemon -c /etc/opensnap
+#opensnap --daemon -c /etc/opensnap

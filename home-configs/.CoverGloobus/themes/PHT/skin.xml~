@@ -1,0 +1,13 @@
+<skin name="PHT" width="205" height="205">
+
+    <image src="nocover.png" x="0" y="0" widht="200" height="200"/>
+    <albumcover   			x="24" y="24" 	width="152" height="152"/>
+    <image src="case.png" 	x="0" y="0"  	width="200" height="200"/> 
+  <playercontrols spacing="0" x="106" y="298">
+     <prev 			x="55"  y="185" src="prev.png"/> 
+     <play		 	x="85"  y="185" src="play.png"/> 
+	 <next 			x="115" y="185"	src="next.png"/> 
+  </playercontrols>
+  
+</skin>
+

@@ -1,0 +1,26 @@
+<skin name="noe port by nyamuknakal" width="300" height="300">
+
+<image x="5" y="65" widht="71" height="75" round="33" src="nocover.png" />
+<albumcover x="7"   y="67"  width="67"  height="71"/>
+
+<titlename x="85" y="65"  width="150" align="left" maxchars="30" font="Raleway Normal 16" color="#FFFFFFFF"  scroll="true" />   
+<albumname x="85"  y="85" width="150" maxchars="30" align="left" font="Raleway 9" color="#FFFFFFFF"   scroll="true" />
+<artistname x="85"  y="95"  width="150" align="left" maxchars="30" font="Raleway 9" color="#FFFFFFFF"  scroll="true" />  
+
+	<seekbar x="85" y="116" width="149" height="2" back="seekbar.back.png" top="seekbar.top.png">
+	<thumb src="grip.png" width="17" height="16" left="-5" right="-5" top="-7" bottom="0" />
+	</seekbar>
+        <time x="85" y="126" width="100" maxchars="44" align="left" font="Raleway 9" color="#ffffffff" />
+	<length x="135" y="125" width="100" maxchars="44" align="right" font="Raleway 9" color="#ffffffff" />
+
+<playercontrols spacing="50" x="100" y="200">
+	<prev x="135"  y="128" src="prev.png"/> 
+	<play x="155" y="128" src="play.png" pause="pause.png"/> 
+	<next x="170" y="128" src="next.png"/> 
+</playercontrols>
+
+
+</skin>
+
+
+

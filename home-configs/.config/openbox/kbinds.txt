@@ -35,14 +35,14 @@ o W-S-Right       	DirectionalCycleWindows
 o W-S-Left        	DirectionalCycleWindows
 o W-S-Up          	DirectionalCycleWindows
 o W-S-Down        	DirectionalCycleWindows
-x A-F1            	rofi -modi run,drun,window -show drun
+x A-F1            	rofi -combi-modi window,drun -show combi -modi combi
 x A-F2            	rofi-launcher
-x A-F3            	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'San Francisco Display Regular:pixelsize=18'
+x A-F3            	dmenu_run -i -nb '#2B303B' -nf '#81A2BE' -sb '#81A2BE' -sf '#191919' -fn 'Pilcrow:pixelsize=24'
 x F9              	skippy-xd --toggle-window-picker
 x W-f             	thunar
 x W-t             	urxvt
 x W-C-t           	termite
-x W-w             	firefox-developer
+x W-w             	firefox-developer-edition
 x W-S-r           	~/.config/polybar/launch.sh --reload
 x W-l             	i3lock-fancy -g
 x W-e             	geany
@@ -52,6 +52,9 @@ x W-v             	pavucontrol
 x XF86AudioMute   	amixer -D pulse set Master toggle
 x XF86AudioStop   	playerctl stop
 x XF86AudioPlay   	playerctl play-pause
+x XF86AudioRaiseVolume	/home/dobbie/.bin/pamixer-up
+x XF86AudioLowerVolume	/home/dobbie/.bin/pamixer-down
+x XF86AudioRaiseTogglee	/home/dobbie/.bin/pamixer-toggle
 o W-Tab           	client-list-combined-menu
 o W-space         	root-menu
 o A-C-q           	root-menu

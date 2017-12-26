@@ -1,0 +1,12 @@
+<!--
+covergloobus skin with no covers!
+seekbar images are from Simple by Mustapha Asbbar, http://alezzacreative.deviantart.com
+-->
+
+  <skin name="Mincin" width="900" height="90">
+  <artistname x="0" y="19" width="900" font="Sawasdee 20" align="left" color="#ffffffff"  maxchars="55" scroll="false" />
+  <titlename x="0" y="63" width="900" font="Steiner 15" align="left" color="#ffffff6f"  maxchars="55" scroll="false" />
+<seekbar x="0" y="58" width="300" height="1" back="seekbar.back.png" top="seekbar.top.png">
+  </seekbar>
+  </skin>
+

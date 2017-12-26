@@ -1,0 +1,21 @@
+
+<skin name="Appows mini" width="305" height="96">
+
+<!-- this theme is free to distribute, mod and such as long as you accredit it back to =Neio (Neio.deviantart.com) who made the artwork for CAD and ~gabriela2400 (gabriela2400.deviantart.com) who did the port for covergloobus --> 
+
+	
+ 	
+	<image src="case.png" x="0" y="0" width="305" height="96"/>
+	<image src="back.png" x="32" y="54" width="137" height="9"/>
+  	
+
+  <artistname x="-20" y="31" width="240" font="Segoe UI Caps Bold 6" align="center" color="#ccccccff" shadowcolor="#000000ff" maxchars="25" scroll="true"/>
+  <titlename x="-21" y="40" width="240" font="Segoe UI 7" align="center" color="#ccccccff" shadowcolor="#000000ff" maxchars="28" scroll="true"/>
+
+<playercontrols spacing="50" x="100" y="200">
+     <prev 			x="190"  y="40" src="prev.png"/> 
+     <play		 	x="217" y="37" src="play.png"/> 
+	 <next 			x="252" y="40"	src="next.png"/> 
+  </playercontrols>
+</skin>
+

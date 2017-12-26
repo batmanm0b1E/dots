@@ -1,0 +1,13 @@
+<!--
+Covergloobus Square Mod No Text by Dobbie03 August 2016, made from this original http://fav.me/d33cys0 by Theconso
+http://theconso.deviantart.com/
+
+-->
+
+  <skin name="Covergloobus Square Mod No Text 4k" width="210" height="210">
+
+<albumcover x="0" y="0" width="208" height="208" round="0"  mask="back.png"/>
+
+<image src="border.png" x="0" y="0" width="220" height="220" opacity="0.9" />
+
+</skin>

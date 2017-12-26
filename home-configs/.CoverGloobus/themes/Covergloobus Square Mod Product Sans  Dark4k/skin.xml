@@ -1,0 +1,16 @@
+<!--
+Covergloobus Square Mod by Dobbie03 August 2016, made from this original http://fav.me/d33cys0 by Theconso
+http://theconso.deviantart.com/
+
+-->
+
+  <skin name="Covergloobus Square Mod" width="1920" height="220">
+<albumname x="215" y="0" width="1300" align="left" maxchars="500" font="Kenyan Coffee Regular 30" color="#d7d7d7ff" />  
+<artistname x="235" y="45" width="1300" font="Olympic Branding Regular 60" align="left" color="#7c6d87ff"  maxchars="155" scroll="true" />
+  <titlename x="215" y="125" width="1300" font="Kenyan Coffee Regular 30" align="left" color="#7e9fadff"  maxchars="155" scroll="true" />
+      
+<albumcover x="0" y="0" width="200" height="200" round="0"  mask="Maschera.png"/>
+	
+<image src="Cerchio.png" x="0" y="0" width="200" height="200" opacity="0.9" />
+
+</skin>

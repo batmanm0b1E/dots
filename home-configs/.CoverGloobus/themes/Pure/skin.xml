@@ -1,0 +1,19 @@
+<skin name="Pure" width="139" height="287">
+        
+	<image src="case.png" x="0" y="0" width="139" height="287"/>
+	<image src="nocover.png" x="1" y="74" width="137" height="137"/>
+        <albumcover x="1" y="74" width="137" height="137"/>
+
+  <artistname x="0" y="17" maxchars="15" font="BankGothic Md BT 9" align="center" color="#e6e6e6FF" shadowcolor="#000000ff" shadow_x="0" shadow_y="0"/>   
+  <titlename x="0" y="40" width="139" maxchars="18" font="BankGothic Md BT 8" align="center" color="#e6e6e6FF" shadowcolor="#ffffffFF" shadow_x="0" shadow_y="0"/>
+  <albumname x="0" y="264" width="139" maxchars="18" font="BankGothic Md BT 8" align="center" color="#e6e6e6FF" shadowcolor="#ffffffFF" shadow_x="0" shadow_y="0" />
+
+<playercontrols			spacing="0" x="0" y="0">
+	<prev 			x="8" y="233" src="prev.png" hover="prev_hover.png"/> 
+	<play		 	x="62" y="231" src="play.png" hover="play_hover.png" pause="pause.png" pause_hover="pause_hover.png"/> 
+	<next 			x="114" y="233"	src="next.png" hover="next_hover.png"/> 
+</playercontrols>
+
+</skin>
+
+

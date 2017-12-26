@@ -1,0 +1,14 @@
+<!-- Clips skin for Covergloobus by sosoinlove http://sosoinlove.deviantart.com/    http://so-soinlove.blogbus.com/-->
+
+<skin    name="Dot"       width="800"    height="50">
+	
+	<titlename                x="0"  y="25"  width="164" maxchars="150" align="center" font="Aller 8.5" color="#4d4d4dff" scroll="true" />
+
+	<playercontrols spacing="50" x="100" y="200">
+		<prev 			x="50"  y="0" src="previous.tif" hover="previousDown.tif"/>
+		<play		 	x="75" y="0" src="play.tif" hover="playDown.tif" pause="pause.tif" pause_hover="pauseDown.tif"/>
+		<next 			x="95" y="0"	src="next.tif" hover="nextDown.tif"/>
+	</playercontrols>    
+
+</skin>
+

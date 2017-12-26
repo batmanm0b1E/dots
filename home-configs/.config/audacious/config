@@ -6,20 +6,22 @@ color=4539717
 mixer-element=Master
 
 [audacious]
+filepopup_showprogressbar=TRUE
 generic_title_format=${?artist:${artist} - }${?album:${album} - }${?track-number:${track-number}. }${title}
 output_bit_depth=32
+record=FALSE
 
 [audgui]
 about_win=0,573,582,408
 close_dialog_add=TRUE
-filebrowser_win=2193,442,672,480
-filesel_path=/run/media/dobbie/Music/C/Cradle Of Filth
+filebrowser_win=4013,651,672,480
+filesel_path=/home/dobbie/Music/Music/H/Hooded Menace
 info_win=4127,827,643,426
 no_confirm_playlist_delete=TRUE
 playlist_export_win=759,339,800,600
 playlist_import_win=860,386,840,630
 playlist_path=file:///home/dobbie/Music
-url_opener_win=4673,1028,384,103
+url_opener_win=4673,1028,384,89
 
 [globalHotkey]
 Hotkey_0_event=0
@@ -62,16 +64,17 @@ NumHotkeys=4
 
 [gtkui]
 close_button_visible=FALSE
-column_widths=10,275,302,44,328,175,32,100,51,77,275,275,275,10
+column_widths=10,275,302,44,224,175,32,100,51,77,275,275,275,10,275
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 menu_visible=FALSE
-player_height=946
-player_width=1135
-player_x=3936
-player_y=180
+player_height=894
+player_width=882
+player_x=4836
+player_y=192
 playlist_columns=track title artist album length year
 playlist_headers=FALSE
+playlist_tabs_visible=FALSE
 statusbar_visible=FALSE
 
 [gtkui-layout]
@@ -79,11 +82,13 @@ item0_name=Spectrum Analyzer
 item0_pos=-1,0,0,281,185
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,0,0,284,188
-item2_name=Playlist Manager
-item2_pos=-1,96,499,276,180
-item3_name=Blur Scope
-item3_pos=3,0,0,1119,155
-item_count=4
+item2_name=Blur Scope
+item2_pos=3,0,0,1119,155
+item3_name=Playlist Manager
+item3_pos=0,96,499,269,843
+item4_name=Album Art
+item4_pos=0,0,0,270,911
+item_count=5
 
 [notify]
 actions=FALSE

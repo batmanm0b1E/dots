@@ -1,0 +1,28 @@
+<!--
+Covergloobus Square Mod by Dobbie03 August 2016, made from this original http://fav.me/d33cys0 by Theconso
+http://theconso.deviantart.com/
+
+-->
+
+  <skin name="Covergloobus Square Mod Seek Bar" width="1920" height="110">
+<albumname x="115" y="0" width="1300" align="left" maxchars="500" font="Pindunk Regular 30" color="#ffffffff" />  
+<artistname x="115" y="20" width="1300" font="Olympic Branding Regular 40" align="left" color="#ffffff6f"  maxchars="155" scroll="true" />
+  <titlename x="115" y="65" width="1300" font="Kenyan Coffee Regular 20" align="left" color="#ffffffff"  maxchars="155" scroll="true" />
+      
+<albumcover x="0" y="0" width="100" height="100" round="0"  mask="Maschera.png"/>
+	
+<image src="Cerchio.png" x="0" y="0" width="100" height="100" opacity="0.9" />
+
+<seekbar x="0" y="116" width="300" height="2" back="seekbar.back.png" top="seekbar.top.png">
+	<thumb src="grip.png" width="17" height="16" left="-5" right="-5" top="-7" bottom="0" />
+	</seekbar>
+        <time x="0" y="126" width="100" maxchars="44" align="left" font="Ubuntu Regular 9" color="#ffffffff" />
+	<length x="135" y="125" width="165" maxchars="44" align="right" font="Ubuntu Regular 9" color="#ffffffff" />
+
+<playercontrols spacing="50" x="100" y="200">
+	<prev x="135"  y="128" src="prev.png"/> 
+	<play x="155" y="128" src="play.png" pause="pause.png"/> 
+	<next x="170" y="128" src="next.png"/> 
+</playercontrols>
+
+</skin>

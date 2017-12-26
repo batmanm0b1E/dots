@@ -1,0 +1,99 @@
+[audioscrobbler]
+use_audioscrobbler = True
+password_md5 = 72089d4e8653d5ea87227b616addcf31
+username = Stillborn_Hate
+
+[connection]
+auto = True
+profile_num = 0
+
+[currformat]
+current = %N|%T|%A|%B|%L|%Y
+currsong1 = [%N] %T
+currsong2 = by %A from %B
+library = %A - %T
+title = Sonata
+
+[library]
+lib_view = 0
+lib_album = !NONE!
+lib_artist = !NONE!
+lib_genre = !NONE!
+lib_year = !NONE!
+lib_path = Music/G
+
+[notebook]
+current_tab_pos = 0
+current_tab_visible = True
+info_tab_pos = 4
+info_tab_visible = True
+library_tab_pos = 1
+library_tab_visible = True
+playlists_tab_pos = 2
+playlists_tab_visible = True
+streams_tab_pos = 3
+streams_tab_visible = False
+
+[player]
+art_location = 0
+art_location_custom_filename = 
+columnwidths = 49,370,240,318,137,52
+covers_pref = 1
+covers_type = 0
+decorated = False
+existing_playlist = 0
+expanded = True
+h = 1151
+info_album_expanded = True
+info_art_enlarged = False
+info_lyrics_expanded = True
+info_song_expanded = True
+info_song_more = False
+infofile_path = /tmp/xmms-info
+initial_run = False
+search_num = 0
+lyrics_location = 0
+minimize = False
+ontop = False
+popup_time = 2
+screen = 0
+covers = True
+show_header = True
+lyrics = True
+notification = False
+playback = True
+progressbar = True
+statusbar = False
+trayicon = True
+sticky = False
+stop_on_exit = True
+tabs_expanded = False
+notif_location = 0
+update_on_start = True
+browser = 
+use_infofile = True
+w = 1568
+withdrawn = False
+x = 5481
+xfade = 0
+xfade_enabled = False
+y = 490
+
+[plugins]
+autostart_plugins = gajim_tune,lyricwiki,covers_lastfm
+known_plugins = covers_lastfm,gajim_tune,lyricwiki,localmpd,test
+
+[tags]
+use_mpdpaths = False
+
+[streams]
+num_streams = 0
+
+[profiles]
+names[0] = Default Profile
+musicdirs[0] = /home/dobbie/Music
+hosts[0] = localhost
+ports[0] = 6600
+passwords[0] = 
+num_profiles = 1
+

@@ -1,0 +1,14 @@
+<skin name="Bookmark" width="310" height="100">
+        
+	<image src="background.png" x="0" y="0" width="400" height="100" />
+	<image src="art_bg.png" x="19" y="31" width="44" height="44" />
+	<image src="nocover.png" x="22" y="34" width="38" height="38" round="4" />
+	<albumcover x="21" y="32" width="40" height="40" round="4" />
+	<image src="overlay.png" x="19" y="31" width="44" height="44"/>
+  
+  <titlename x="70" y="35" width="200" maxchars="24" font="Gill Sans MT 11" color="#D2D2D2FF" shadowcolor="#000000FF"/>   
+  <artistname x="70" y="52" width="200" maxchars="35" font="Gill Sans MT 8" color="#f7f7f7FF" shadowcolor="#000000FF"/>
+  
+</skin>
+
+

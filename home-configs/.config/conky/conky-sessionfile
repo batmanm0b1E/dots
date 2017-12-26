@@ -1,1 +1,1 @@
-conky -c /home/dobbie/.config/conky/Matts_Elegance_Rainmeter.conkyrc & sleep 1s
+conky -c /home/dobbie/.config/conky/Arch_Panel_Star_Sign_4K_ArchLabs_Dark.conkyrc & sleep 1s
