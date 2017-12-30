@@ -1,7 +1,7 @@
 [audioscrobbler]
 use_audioscrobbler = True
-password_md5 = 72089d4e8653d5ea87227b616addcf31
-username = Stillborn_Hate
+password_md5 = 
+username = 
 
 [connection]
 auto = True
