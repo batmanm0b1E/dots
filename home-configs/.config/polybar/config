@@ -68,7 +68,28 @@ modules-center = music2
 modules-right = pkg mail memory temperature cpu eth volume1 time rofi
 
 ; All available modules (some require configuration in modules.conf)
-; redshift github filesystem mpd wired-network wireless-network battery menu volume-bar
+; redshift github filesystem mpd wired-network wireless-network battery menu volume
+; menu pkg keyboard memory temperature coreuse network clock volume i3-workspaces workspaces window_switch music2 previous play pause next
+; music2 jgmenu
+
+;;;;;; Tray is commented out ;;;;;;;;
+;tray-position = center
+;tray-padding = 10
+;tray-background = ${colors.background}
+;tray-offset-x = 20%
+
+[bar/mpd-bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = ${env:MONITOR:HDMI-A-0}
+
+modules-left = menu window_switch redshift weather
+modules-center = mpd
+modules-right = pkg mail memory temperature cpu eth volume3 time rofi
+
+; All available modules (some require configuration in modules.conf)
+; redshift github filesystem mpd wired-network wireless-network battery menu volume
 ; menu pkg keyboard memory temperature coreuse network clock volume i3-workspaces workspaces window_switch music2 previous play pause next
 ; music2 jgmenu
 
@@ -89,8 +110,8 @@ inherit = bar/master
 monitor =
 
 modules-left   = bspwm menu
-modules-center = clock
-modules-right  = pkg memory temperature coreuse network volume
+modules-center = music2
+modules-right  = pkg mail memory temperature cpu eth volume3 time rofi
 
 ; All available modules (some require configuration in modules.conf)
 ; redshift github filesystem mpd jgmenu wired-network wireless-network battery menu volume-bar bspwm

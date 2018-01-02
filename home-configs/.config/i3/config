@@ -199,8 +199,8 @@ bindsym $mod+Shit+y floating enable, fullscreen disable, sticky toggle, resize s
 # re-run with every i3 reload
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id ksuperkey -e 'Super_L=Alt_L|F1'
-exec_always --no-startup-id $HOME/.config/i3/scripts/compositor.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id compton
+exec_always --no-startup-id polybar -r i3-bar
 
 # run once at startup
 exec --no-startup-id xfsettingsd &
@@ -208,6 +208,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id xscreensaver -no-splash &
+exec --no-startup-id xrandr --output DisplayPort-0 --mode 3840x2160 --output HDMI-A-0 --auto --right-of DisplayPort-0
 
 # system tray
 #exec --no-startup-id nm-applet

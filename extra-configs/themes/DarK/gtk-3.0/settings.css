@@ -1,0 +1,42 @@
+/***********************************************************************
+### Enable or disable Scrollbar steppers
+### default is: Common-Style(fwd + bwd)
+***********************************************************************/
+
+scrollbar {
+-GtkScrollbar-has-backward-stepper:true;
+-GtkScrollbar-has-forward-stepper:true;
+-GtkScrollbar-has-secondary-backward-stepper:false;
+-GtkScrollbar-has-secondary-forward-stepper:false;}
+
+/***********************************************************************
+### Enable or disable Notebook steppers
+### (If the notebook is bigger than the host window)
+### default is Common-Style(fwd + bwd)
+***********************************************************************/
+
+notebook{
+-GtkNotebook-has-backward-stepper:1;
+-GtkNotebook-has-forward-stepper:1;
+-GtkNotebook-has-secondary-backward-stepper:0;
+-GtkNotebook-has-secondary-forward-stepper:0;}
+
+/***********************************************************************
+### Make Menubar Text bold
+### disabled by default
+***********************************************************************/
+
+/*
+menubar{
+font-weight:bold;}
+*/
+
+/***********************************************************************
+### Make Menu Text bold
+### disabled by default
+***********************************************************************/
+
+/*
+menu{
+font-weight:bold;}
+*/

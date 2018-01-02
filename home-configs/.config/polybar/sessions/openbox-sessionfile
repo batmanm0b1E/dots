@@ -1,1 +1,11 @@
---config=/home/dobbie/.config/polybar/modules.conf powermenubar
+# Polybar openbox Sessionfile
+    
+# DO NO edit this file, it will be overwritten by al-polyzen
+# Instead make a custom sessionfile and use the -z FILE or --session FILE option
+    
+# To load session at startup use the following line
+
+# sleep 1; al-polybar-session &
+
+/home/dobbie/.config/polybar/current_original_config ob-bar
+/home/dobbie/.config/polybar/config ob-bar

@@ -147,9 +147,9 @@ case "$1" in
 		volMuteStatus
                 if [ ${curStatus} = 'yes' ]
                 then
-			echo "    $curVol%  "
+			echo "    $curVol%  "
 		else
-			echo "    $curVol%  "
+			echo "    $curVol%  "
 		fi
         ;;
 esac
