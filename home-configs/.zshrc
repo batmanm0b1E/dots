@@ -107,7 +107,10 @@ alias tui="s-tui"
 alias upmirrors="sudo reflector --score 100 --fastest 25 --sort rate --save /etc/pacman.d/mirrorlist --verbose"
 alias backup="sh ~/Documents/dotii"
 alias scr="./.scr"
+alias res="openbox --restart"
+alias rec="openbox --reconfigure"
 #alias orp="sudo pacman -Rns $(pacman -Qtdq)"
+alias tutor="vimtutor"
 
 ## PACMAN
 alias update='sudo pacman -Syyu'
@@ -136,9 +139,9 @@ alias Y='yaourt --noconfirm'
 alias aurinf='yaourt -Si'
 
 #neofetch
-./.al.sh
 echo "[3m$(fortune -sa)\n" # display a random short quote at start
-
+./.al.sh
+if [[ $TERM != "xterm-termite" ]] || [[ $TERM != "rxvt-256color" ]]; then export TERM="xterm-256color"; fi
 
 PATH="/home/dobbie/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/dobbie/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -160,10 +163,35 @@ PERL_LOCAL_LIB_ROOT="/home/dobbie/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/dobbie/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/dobbie/perl5"; export PERL_MM_OPT
 
+# ls after cd.. no-op in dir with more than 40 items to list
+cdls() { cd "$@"; [ ${#$(ls)} -le 40 ] && ls --group-directories-first || :; }
 
-
+alias cd="cdls"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 export PATH=$HOME/bin:$PATH
+
+instantnews () {
+  curl https://newsapi.org/v1/articles -s -G \
+    -d sources=$1 \
+    -d apiKey=83df5985124c4352ae11447b349270f7u \
+    | jq '.articles[] | .title'
+}
+
+startmyday () {
+  echo "Hello, Matt."
+  echo "\nUpdating your ArchLabs system..."
+  aurup --noconfirm
+  echo "\nThe weather right now:"
+  ansiweather
+  echo "\nLatest News Headlines from BBC:"
+  instantnews --news bbc-news
+  echo "\nNews from Google:"
+  instantnews --news google-news
+  echo "\nSport News from BBC Sport:"
+  instantnews --news bbc-sport
+}
+
+export IN_API_KEY="83df5985124c4352ae11447b349270f7"
