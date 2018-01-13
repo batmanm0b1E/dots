@@ -36,12 +36,12 @@ filter_unmatched_urls = true
 #modify_other_keys = false
 
 [colors]
-
+background = rgba(59, 66, 82, 0.9)
 # special
-foreground      = #4f5b66
-foreground_bold = #4f5b66
-cursor          = #4f5b66
-background      = #eff1f5
+foreground      = #c0c5ce
+foreground_bold = #c0c5ce
+cursor          = #c0c5ce
+#background      = #2b303b
 
 # black
 color0  = #2b303b
@@ -68,13 +68,12 @@ color5  = #b48ead
 color13 = #b48ead
 
 # cyan
-color6  = #2b303b
-color14 = #2b303b
+color6  = #96b5b4
+color14 = #96b5b4
 
 # white
 color7  = #c0c5ce
 color15 = #eff1f5
-
 
 
 [hints]

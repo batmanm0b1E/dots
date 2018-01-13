@@ -6,7 +6,7 @@ menu.border.color: #eceff4
 
 menu.title.bg: flat solid
 menu.title.bg.color: #eceff4
-menu.title.text.color: #696E7A
+menu.title.text.color: #3b4252
 menu.title.text.justify: center
 
 menu.items.bg: flat solid
@@ -15,8 +15,8 @@ menu.items.text.color: #696E7A
 menu.items.disabled.text.color: #696E7A
 
 menu.items.active.bg: flat solid
-menu.items.active.bg.color: #8FA1B3
-menu.items.active.text.color: #ffffff
+menu.items.active.bg.color: #3b4252
+menu.items.active.text.color: #eceff4
 
 menu.separator.color: #eceff4
 menu.separator.width: 1

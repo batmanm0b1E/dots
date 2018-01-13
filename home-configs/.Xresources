@@ -1,24 +1,14 @@
-
-! ------------------------------------------------------------------------------
-! URxvt standard archlabs theme
-! ------------------------------------------------------------------------------
-
-
-
 ! general settings
 URxvt*saveline:         15000
 URxvt*termName:         rxvt-256color
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt*iconFile: /usr/share/icons/Papirus/64x64/apps/terminal.svg
 
 ! appearance
 URxvt*depth:            32
 !URxvt*background:      rgba:0000/0000/0000/AAAA
-URxvt*background:      [97]#eff1f5
+URxvt*background:      [97]#1F2326
 !URxvt*background:       [100]#1d1f21
 !URxvt*foreground: 		                #c0b18b
 !URxvt.underlineColor:   #4682B4
@@ -35,9 +25,9 @@ URxvt*externalBorder:   0
 !URxvt.colorUL:      #87afd7
 
 ! special
-*.foreground:   #4f5b66
-*.background:   #eff1f5
-*.cursorColor:  #4f5b66
+*.foreground:   #c0c5ce
+*.background:   #2b303b
+*.cursorColor:  #c0c5ce
 
 ! black
 *.color0:       #2b303b
@@ -64,8 +54,8 @@ URxvt*externalBorder:   0
 *.color13:      #b48ead
 
 ! cyan
-*.color6:       #2b303b
-*.color14:      #2b303b
+*.color6:       #96b5b4
+*.color14:      #96b5b4
 
 ! white
 *.color7:       #c0c5ce
@@ -83,19 +73,18 @@ URxvt*boldItalicFont:     		xft:Ubuntu Mono:regular:size=8
 ! run :.!fc-list | grep <font-name>
 
 ! perl extensions
-!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
 !URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
 
 ! macros for clipboard and selection
 URxvt.copyCommand:      xclip -i -selection clipboard
 URxvt.pasteCommand:     xclip -o -selection clipboard
-URxvt.keysym.M-c:       perl:clipboard:copy
-URxvt.keysym.m-v:       perl:clipboard:paste
-URxvt.keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt.keysym.S-C-V: 	perl:clipboard:paste
+!URxvt.keysym.M-C-v:    perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape:  perl:keyboard-select:activate
 URxvt.keysym.M-s:       perl:keyboard-select:search
 URxvt.keysym.M-u:       perl:url-select:select_next
-URxvt.urlLauncher:      chromium
+URxvt.urlLauncher:      firefox
 URxvt.underlineURLs:    true
 URxvt.urlButton:        1
 URxvt.geometry: 		75x23
@@ -111,7 +100,7 @@ URxvt*buffered:         false
 
 
 ! ------------------------------------------------------------------------------
-! ArchLabs Themes
+! ROFI Details
 ! ------------------------------------------------------------------------------
 
 rofi.font:              Pilcrow 20
@@ -134,7 +123,7 @@ rofi.lines:            20
 ! Custom DPI
 !--------------------------------------------
 !Xft.dpi: 144
-Xft.dpi: 192
+EoblXft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
