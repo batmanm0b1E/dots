@@ -123,7 +123,7 @@ rofi.lines:            20
 ! Custom DPI
 !--------------------------------------------
 !Xft.dpi: 144
-EoblXft.dpi: 192
+Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
