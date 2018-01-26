@@ -115,9 +115,9 @@ junk.enable_cp936_detection 1
 junk.enable_shift_jis_detection 1
 lastfm.disable_np 0
 lastfm.enable 1
-lastfm.login Stillborn_Hate
+lastfm.login 
 lastfm.mbid 0
-lastfm.password Sb9VDz{Vf!#U
+lastfm.password 
 lastfm.prefer_album_artist 0
 lastfm.scrobbler_url http://post.audioscrobbler.com
 lastfm.submit_tiny_tracks 1
