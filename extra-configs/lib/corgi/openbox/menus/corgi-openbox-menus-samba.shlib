@@ -1,0 +1,434 @@
+#!/bin/sh
+
+# Copyright 2015 Antonio Malcolm, released under an MPL, v. 2.0, license. All rights reserved.
+#
+# This file is part of Corgi Scripts (also referred to as corgi-scripts).
+#
+# Corgi Scripts is subject to the terms of the Mozilla Public License, v. 2.0. 
+# If a copy of the MPL was not distributed with this file, 
+# you can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Corgi Scripts is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either expressed or implied.
+# See LICENSE.txt, for the specific language governing rights and limitations under the License,
+# which should have been provided with this software, or visit http://mozilla.org/MPL/2.0/.
+
+# corgi-openbox-menus-samba.shlib - Functions used to generate Openbox menus and items for describing and connecting to samba shares.
+#
+# v2015.07.17
+#
+# Authored by Antonio Malcolm
+#
+# Requires: corgi-openbox-menus-core.shlib
+# Requires: corgi-shares-management-samba.shlib
+# Requires: corgi-posix-core.shlib (normally provided by corgi-openbox-menus-core.shlib or corgi-shares-management-samba.shlib)
+# Requires: cifs-utils - to obtain information describing currently mounted samba shares
+
+
+currentDirectory="`dirname "$0"`"
+currentDirectory="`cd "$currentDirectory" ; pwd -P `"
+parentDirectory="`dirname $currentDirectory`"
+
+corgiObMenuLib="$parentDirectory/lib/corgi/openbox/corgi-openbox-menus-core.shlib"
+corgiSharesManagementSambaLib="$parentDirectory/lib/corgi/corgi-shares-management-samba.shlib"
+
+if [ ! -e "$corgiObMenuLib" ]
+then
+  logger "ERROR (corgi-openbox-menus-samba.shlib): $corgiObMenuLib is missing. Exiting..."
+  echo "ERROR (corgi-openbox-menus-samba.shlib): $corgiObMenuLib is missing. Exiting..."
+  exit 1
+fi
+
+if [ ! -e "$corgiSharesManagementSambaLib" ]
+then
+  logger "ERROR (corgi-openbox-menus-samba.shlib): $corgiSharesManagementSambaLib is missing. Exiting..."
+  echo "ERROR (corgi-openbox-menus-samba.shlib): $corgiSharesManagementSambaLib is missing. Exiting..."
+  exit 1
+fi
+
+. "$corgiObMenuLib"
+. "$corgiSharesManagementSambaLib"
+
+hasCifs=false
+hasFindsmb=false
+
+if ! command -v mount.cifs > /dev/null
+then
+  logger "ERROR (corgi-openbox-menus-samba.shlib): mount.cifs not found. We will be unable to detect mounted Samba shares. Please install cifs-utils"
+else
+  hasCifs=true
+fi
+
+if ! command -v findsmb > /dev/null
+then
+  logger "ERROR (corgi-openbox-menus-samba.shlib): findsmb not found. Please install the Samba package"
+else 
+  hasFindsmb=true
+fi
+
+
+# Helper function, generates and echoes openbox menu items (as an XML-formatted string) which describe aspects of the Samba host, 
+# by parsing data provided by the caller. 
+# (This logic is intended to be used as a callback function for function '# getSambaHostData', 
+# and is separated in order to reduce code complexity.)
+#
+# $1 - required, shifted, supplied as part of callback by function '# getSambaHostData'
+# $2 - string, required, the type of descriptive data to be parsed, reflective of what's made available by the host server -
+#      options are "all" (all data), "ipc" (data pertaining to the share responsible for IPC services), 
+#      "shares" (data describing the available shares), 
+#      or "system" (data describing the Samba host, such as workgroup name, operating system, and Samba version)
+# $3 - string, required, data describing an aspect of a Samba host
+buildSambaHostDetailItems() {
+
+  detailItems=''
+
+  shift
+
+  dataType="$1"
+
+  shift
+
+  case "$dataType" in
+
+    'ipc')
+        label="`corgiFetchSubstringBefore "$1" ' ('`"
+        value="`corgiFetchSubstringBetween "$1" '(' ')'`"
+        detailItems="$detailItems`corgiObMenuItem "label:$label: $value"`"
+    ;;
+
+    'system')
+
+      for arg in "$@"
+      do     
+
+        label="`corgiFetchSubstringBefore "$arg" '=['`"
+        value="`corgiFetchSubstringBetween "$arg" '=[' ']'`"
+        detailItems="$detailItems`corgiObMenuItem "label:$label: $arg"`"
+
+      done  
+
+    ;;
+
+  esac
+
+  echo "$detailItems"
+  exit $?
+
+}
+
+
+# Helper function, generates and echoes an openbox menu (as an XML-formatted string) which describe a Samba share and 
+# provides the option to mount that share, by parsing data provided by the caller. 
+# (This is intended to be used as a callback function for function '# getSambaHostData', 
+# and is separated in order to reduce code complexity.)
+#
+# $1 - string, required, the Samba host IP address
+# $2 - required, shifted, supplied as part of callback by function '# getSambaHostData'
+# $3 - string, required, data describing a Samba share
+buildSambaHostShareMenu() {
+
+  shareName=''
+
+  ipAddress="$1"
+
+  shift
+  shift
+
+  if [ $# -gt 1 ]
+  then
+
+    for arg in "$@"
+    do
+      shareName="$shareName $arg"
+    done
+
+  else
+    shareName="$1"  
+  fi
+
+  mountPoint="`buildMountedSambaSharePath "$ipAddress" "$shareName"`"
+  shareNameDisplay="`corgiObEscapeUnderscores "$shareName"`"
+
+  if [ -z "$mountPoint" ]
+  then
+
+    mountCommand="sh -c 'cd \"$currentDirectory\" ; . \"$parentDirectory/lib/corgi/openbox/menus/corgi-openbox-menus-samba.shlib\" ; mountSambaShare \"$ipAddress\" \"$shareName\"'"
+    shareItems="`corgiObMenuItem "label:Mount" "action:Execute" "command:$mountCommand"`"
+
+    mountCommand="sh -c 'cd \"$currentDirectory\" ; . \"$parentDirectory/lib/corgi/openbox/menus/corgi-openbox-menus-samba.shlib\" ; mountSambaShare \"$ipAddress\" \"$shareName\" true'"
+    shareItems="$shareItems`corgiObMenuItem "label:Mount Read-Only" "action:Execute" "command:$mountCommand"`"
+
+  else
+
+    unmountCommand="sh -c 'cd \"$currentDirectory\" ; . \"$parentDirectory/lib/corgi/openbox/menus/corgi-openbox-menus-samba.shlib\" ; unmountSambaShare \"$mountPoint\" \"$ipAddress\" \"$shareName\"'"
+
+    mountPointDisplay="`buildMountPointDisplayString "$mountPoint"`"
+
+    shareItems="`corgiObMenuItem "label:Mounted At: $mountPointDisplay"`"
+    shareItems="$shareItems`corgiObMenuItem "label:Unmount" "action:Execute" "command:$unmountCommand"`"
+
+  fi
+
+  menuId="`corgiMakeIdString "corgi-menu-samba-host-share-"`"
+  shareMenuIcon="$parentDirectory/share/icons/corgi/openbox/menus/drive-harddisk.png"
+  shareMenu="`corgiObMenu "id:$menuId" "icon:$shareMenuIcon" "label:$shareNameDisplay" "content:$shareItems"`"
+
+  echo "$shareMenu"
+  exit $?
+
+}
+
+
+# Generates and echoes an Openbox pipe menu (as an XML-formatted string) consisting of data which describes a Samba host.
+# 
+# $1 - string, required, the Samba host IP address
+# $2 - string, required, describes whether or not the Samba host is a Domain Master Browser
+# $3 - string, required, describes whether or not the Samba host is a Local Master Browser
+# $4 - string, required, the name of the Samba host workgroup
+# $5 - string, required, the operating system which is host to the Samba host
+# $6 - string, required, the Samba host version
+buildSambaHostMenuContent() {
+
+  hostMenuContent=''
+
+  ipAddress="$1"
+  isDomainMaster="$2"
+  isLocalMaster="$3"
+  workgroup="$4"
+  os="$5"
+  sambaVersion="$6"
+
+  menuId="`corgiMakeIdString "corgi-menu-samba-host-details-"`"
+  detailItems="`getSambaHostData "$ipAddress" 'system' buildSambaHostDetailItems`"
+
+  case "$detailItems" in
+
+    '_AUTHENTICATION-REQUIRED_')
+
+      detailItems="`corgiObMenuItem "label:IP Address: $ipAddress"`$detailItems"
+      detailItems="$detailItems`corgiObMenuItem "label:Is Browsable: no"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Reason: authentication required"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Workgroup: $workgroup"`"
+      detailItems="$detailItems`corgiObMenuItem "label:OS: $os"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Samba Version: $sambaVersion"`"
+
+      detailsMenu="`corgiObMenu "id:$menuId" "label:Details" "content:$detailItems"`"
+      hostMenuContent="$hostMenuContent$detailsMenu"
+
+    ;;
+
+    '_CONNECTION-REFUSED_')
+
+      detailItems="`corgiObMenuItem "label:IP Address: $ipAddress"`$detailItems"
+      detailItems="$detailItems`corgiObMenuItem "label:Is Browsable: no"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Reason: connection refused"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Workgroup: $workgroup"`"
+      detailItems="$detailItems`corgiObMenuItem "label:OS: $os"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Samba Version: $sambaVersion"`"
+
+      detailsMenu="`corgiObMenu "id:$menuId" "label:Details" "content:$detailItems"`"
+      hostMenuContent="$hostMenuContent$detailsMenu"
+
+    ;;
+
+    *)
+
+      detailItems="`corgiObMenuItem "label:IP Address: $ipAddress"`$detailItems"
+      detailItems="$detailItems`corgiObMenuItem "label:Is Browsable: yes"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Is Domain Master: $isDomainMaster"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Is Local Master: $isLocalMaster"`"
+
+      ipcDetails="`getSambaHostData "$ipAddress" 'ipc' buildSambaHostDetailItems`"
+
+      if [ ! -z "$ipcDetails" ]
+      then
+        detailItems="$detailItems$ipcDetails"
+      fi
+
+      detailItems="$detailItems`corgiObMenuItem "label:Workgroup: $workgroup"`"
+      detailItems="$detailItems`corgiObMenuItem "label:OS: $os"`"
+      detailItems="$detailItems`corgiObMenuItem "label:Samba Version: $sambaVersion"`"
+
+      detailsMenu="`corgiObMenu "id:$menuId" "label:Details" "content:$detailItems"`"
+      hostMenuContent="$hostMenuContent$detailsMenu"
+
+      menuId="`corgiMakeIdString "corgi-menu-samba-host-shares-"`"
+      sharesMenu="`getSambaHostData $ipAddress 'shares' buildSambaHostShareMenu`"
+      sharesMenu="`corgiObMenu "id:$menuId" "label:Shares" "content:$sharesMenu"`"
+
+      hostMenuContent="$hostMenuContent$sharesMenu"
+
+    ;;
+
+  esac
+
+  hostMenuContent="`corgiObPipeMenu "content:$hostMenuContent"`"
+
+  echo "$hostMenuContent"
+  exit $?
+
+}
+
+
+# Generates and echoes an Openbox menu (as an XML-formatted string) 
+# consisting of data which describes mounted Samba shares.
+buildCurrentSambaMountsMenu() {
+
+  mount -t cifs | {
+
+    mountsMenu=''
+
+    while read -r line
+    do
+
+      ipAddressAndShareName="`corgiFetchSubstringBefore "$line" ' ' 'first'`"
+      ipAddress="`corgiFetchSubstringBetween "$ipAddressAndShareName" '//' '/'`"
+      shareName="`corgiFetchSubstringAfter "$ipAddressAndShareName" '/'`"
+
+      mountPoint="`corgiFetchSubstringBetween "$line" 'on' 'type'`"
+      mountPoint="`corgiTrimWhiteSpace "$mountPoint"`"
+
+      mountPointDisplay="`buildMountPointDisplayString "$mountPoint"`"
+
+      hostName="`getSambaHostNameFromIpAddress "$ipAddress"`"
+
+      if [ ! -z "$hostName" ]
+      then
+        hostNameDisplay="`corgiObEscapeUnderscores "$hostName"`"
+        mountItems="`corgiObMenuItem "label:Host: $hostNameDisplay"`"
+        mountItems="$mountItems`corgiObMenuItem "label:Host IP: $ipAddress"`"
+      else
+        mountItems="`corgiObMenuItem "label:Host IP: $ipAddress"`"
+      fi
+
+      unmountCommand="sh -c 'cd \"$currentDirectory\" ; . \"$parentDirectory/lib/corgi/openbox/menus/corgi-openbox-menus-samba.shlib\" ; unmountSambaShare \"$mountPoint\" \"$ipAddress\" \"$shareName\"'"
+
+      mountItems="$mountItems`corgiObMenuItem "label:Mounted At: $mountPointDisplay"`"
+      mountItems="$mountItems`corgiObMenuItem "label:Unmount" "action:Execute" "command:$unmountCommand"`"
+
+      shareNameDisplay="`corgiObEscapeUnderscores "$shareName"`"
+
+      menuId="`corgiMakeIdString "corgi-menu-samba-share-mounted-"`"
+      mountMenuIcon="$parentDirectory/share/icons/corgi/openbox/menus/drive-harddisk.png"
+      mountMenu="`corgiObMenu "id:$menuId" "icon:$mountMenuIcon" "label:$shareNameDisplay" "content:$mountItems"`"
+      mountsMenu="$mountsMenu$mountMenu"
+
+    done
+
+    if [ ! -z "$mountsMenu" ]
+    then
+      menuId="`corgiMakeIdString "corgi-menu-samba-shares-mounted-"`"
+      mountsMenu="`corgiObMenu "id:$menuId" "label:Mounts" "content:$mountsMenu"`"
+    fi
+
+    echo "$mountsMenu"
+    exit 0
+
+  }
+
+  exit $?
+
+}
+
+
+# Generates and echoes an Openbox pipe menu (as an XML-formatted string) consisting of data which describes available Samba hosts.
+buildSambaHostMenus() {
+
+  findsmb | {
+
+    hostMenus=''
+
+    while read -r line
+    do
+
+      # The first two lines of output are generally querying info, so skip that...
+      if [ ! -z "$line" ] && ! corgiHasSubstring "$line" '*=DMB' && ! corgiHasSubstring "$line" '+=LMB' \
+      && ! corgiStartsWithSubstring "$line" 'IP ADDR' && ! corgiStartsWithSubstring "$line" '---'
+      then 
+
+        isDomainMaster='no'
+        isLocalMaster='no'
+        workgroup='unkown'
+        os='unknown'
+        sambaVersion='unknown'
+
+        # The output from command '# findsmb' is a tad wonky, 
+        # so we're forced to rely on string manipulation to set our variables.
+        # (I'd much rather parse each line as args.)
+        # This, surely, will make things more complicated, and, just as surely, will slow performance...
+
+        line="`corgiTrimWhiteSpace "$line"`"
+        ipAddress="`corgiFetchSubstringBefore "$line" ' ' 'first'`"
+
+        line="`corgiFetchSubstringAfter "$line" "$ipAddress" 'first'`"
+        line="`corgiTrimWhiteSpace "$line"`"
+
+        hostName="`corgiFetchSubstringBefore "$line" ' ' 'first'`"
+
+        line="`corgiFetchSubstringAfter "$line" "$hostName" 'first'`"
+        line="`corgiTrimWhiteSpace "$line"`"
+
+        if corgiStartsWithSubstring "$line" '*['
+        then
+          isDomainMaster='yes'
+        fi
+ 
+        if corgiStartsWithSubstring "$line" '+['
+        then
+          isLocalMaster='yes'
+        fi   
+
+        if ! corgiStartsWithSubstring "$line" 'Unknown'
+        then
+
+          workgroup="`corgiFetchSubstringBetween "$line" '[' ']' 'first'`"
+          line="`corgiFetchSubstringAfter "$line" "[$workgroup]"`"
+
+          workgroup="`corgiTrimWhiteSpace "$workgroup"`"
+          line="`corgiTrimWhiteSpace "$line"`"
+
+          if [ ! -z "$line" ]
+          then
+
+            os="`corgiFetchSubstringBetween "$line" '[' ']' 'first'`"
+            line="`corgiFetchSubstringAfter "$line" "[$os]"`"
+
+            os="`corgiTrimWhiteSpace "$os"`"
+            line="`corgiTrimWhiteSpace "$line"`"
+
+            if [ ! -z "$line" ]
+            then
+              sambaVersion="`corgiFetchSubstringBetween "$line" '[Samba' ']' 'first'`"
+              sambaVersion="`corgiTrimWhiteSpace "$sambaVersion"`"
+            fi
+
+          fi
+
+        fi
+
+        hostNameDisplay="`corgiObEscapeUnderscores "$hostName"`"
+
+        menuId="`corgiRemoveAllOccurrencesOfSubstring "$ipAddress" '.'`"
+        menuId="`corgiMakeIdString "corgi-menus-samba-host-$menuId-"`"
+        hostMenuIcon="$parentDirectory/share/icons/corgi/openbox/menus/network-server.png"
+        hostMenuCommand="sh -c 'cd &quot;$currentDirectory&quot; ; . &quot;$parentDirectory/lib/corgi/openbox/menus/corgi-openbox-menus-samba.shlib&quot; ; buildSambaHostMenuContent &quot;$ipAddress&quot; &quot;$isDomainMaster&quot; &quot;$isLocalMaster&quot; &quot;$workgroup&quot; &quot;$os&quot; &quot;$sambaVersion&quot;'"
+        hostMenus="$hostMenus`corgiObMenu "id:$menuId" "icon:$hostMenuIcon" "label:$hostNameDisplay" "execute:$hostMenuCommand"`"
+
+      fi
+
+    done
+
+		if [ -z "$hostMenus" ]
+		then
+			hostMenus="`corgiObMenuItem "label:No hosts responding."`"
+		fi
+		
+		hostPipeMenus="`corgiObPipeMenu "content:$hostMenus"`"
+
+    echo "$hostPipeMenus"
+    exit 0
+
+  }
+
+  exit $?
+
+}

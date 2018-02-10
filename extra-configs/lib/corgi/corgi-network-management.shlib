@@ -1,0 +1,1629 @@
+#!/bin/sh
+
+# Copyright 2015 Antonio Malcolm, released under an MPL, v. 2.0, license. All rights reserved.
+#
+# This file is part of Corgi Scripts (also referred to as corgi-scripts).
+#
+# Corgi Scripts is subject to the terms of the Mozilla Public License, v. 2.0. 
+# If a copy of the MPL was not distributed with this file, 
+# you can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Corgi Scripts is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either expressed or implied.
+# See LICENSE.txt, for the specific language governing rights and limitations under the License,
+# which should have been provided with this software, or visit http://mozilla.org/MPL/2.0/.
+
+# corgi-network-management.shlib - Functions used to describe and manage network devices and connections, 
+#                                  using NetworkManager as a backend.
+#
+# v2016.04.10
+#
+# Authored by Antonio Malcolm
+#
+# Requires: corgi-posix-core.shlib
+# Requires: NetworkManager
+# Requires: zenity - if we plan on connecting to authenticated and/or hidden wireless networks - used for entering SSIDs and passwords, 
+#                    as well as confirmation and error prompts, as well as notifications, in the absence of notify-send
+# Optional: libnotify - used for informational and success notifications
+
+
+exitStatus=1
+currentDirectory="`dirname "$0"`"
+currentDirectory="`cd "$currentDirectory" ; pwd -P `"
+parentDirectory="`dirname $currentDirectory`"
+
+corgiCoreLib="$parentDirectory/lib/corgi/corgi-posix-core.shlib"
+
+if [ ! -e "$corgiCoreLib" ]
+then
+  logger "ERROR (corgi-network-management.shlib): The core Corgi library is missing. Exiting..."
+  echo "ERROR (corgi-network-management.shlib): The core Corgi library is missing. Exiting..."
+  exit 1
+fi
+
+. "$corgiCoreLib"
+
+hasNetworkManager=false
+hasZenity=false
+hasNotify=false
+
+if ! command -v nmcli > /dev/null
+then
+  logger "ERROR (corgi-network-management.shlib): nmcli command not found. Please install NetworkManager"
+else
+  hasNetworkManager=true
+fi
+
+if ! command -v zenity > /dev/null
+then
+  logger "WARN (corgi-network-management.shlib): zenity not found. We can't connect to secured wireless networks without it. Please install zenity."
+else
+  hasZenity=true
+fi
+
+if ! command -v notify-send > /dev/null
+then
+  logger "INFO (corgi-network-management.shlib): libnotify (notify-send) not found. We will default to zenity, if it's available."
+else
+  hasNotify=true  
+fi
+
+
+# Obtains and echoes the current status of the networking hardware,
+# by way of the output of command '# nmcli networking'.
+# (normally "enabled", in the case that networking hardware is active, and "disabled" in the case that it is not active).
+# If the nmcli command is not available, this echoes the string output of variable '$corgiNoBone'
+getNetworkHardwareStatus() {
+
+  if [ $hasNetworkManager = true ]
+  then
+    echo "`nmcli networking`"
+    exit 0    
+  else
+    echo "$corgiNoBone"
+    exit 1
+  fi
+
+  exit $?
+
+}
+
+
+# Obtains and echoes the current status of the wireless networking hardware,
+# by way of the output of command '# nmcli radio wifi'.
+# (normally "enabled", in the case that networking hardware is active, and "disabled" in the case that it is not active).
+# If the nmcli command is not available, this echoes the string output of variable '$corgiNoBone'.
+getWirelessHardwareStatus() {
+
+  if [ $hasNetworkManager = true ]
+  then
+    echo "`nmcli radio wifi`"
+    exit 0    
+  else
+    echo "$corgiNoBone"
+    exit 1
+  fi
+
+  exit $?
+
+}
+
+
+# Determines, based on SSID, whether or not a network is hidden (does not broadcast the SSID, in which case, nmcli reports "--")
+# and echos back the result (i.e., "visible" or "hidden").
+#
+# $1 - true or false, required, determines whether the args should be shifted before the check
+#      (as is necessary when a network is active, in which case, the SSID is the second arg, rather than the first)
+# $args - args, required, the first or second of which will be the SSID string for which to check
+getWifiNetworkVisibility() {
+
+  visibility='visible'
+  shouldShift=$1
+
+  shift
+
+  if [ $shouldShift = true ]
+  then
+    shift
+  fi
+
+  if [ "$1" = '--' ]
+  then
+    visibility='hidden'
+  fi
+
+  echo "$visibility"
+  exit $?
+
+}
+
+
+# Parses a single line of output from command '# nmcli connection show' (provided by the caller),
+# in order to generate and echo a connection name.
+#
+# Note: this function expects 4 arguments, but only as the minimum.
+# Example: in the case that a profile name contains spaces, each portion will be a separate
+# arg by the time it is passed to this function, which will then combine them.
+#
+# $1 - string, required, the name which identifies the connection
+# $2 - string, required, the network type with which this connection is associated
+# $3 - string, required, the NetworkManager-assigned unique identifier which identifies the connection
+# $4 - string, required, the device with which this connection is used
+parseConnectionShowLineForName() {
+
+  expectedArgCount=4
+
+  argCount=$#
+  name="$1"
+
+  if [ $argCount -gt $expectedArgCount ]
+  then
+
+    lastNameIdx=$(($argCount - $expectedArgCount))
+
+    for idx in `seq 1 $lastNameIdx`
+    do
+      name="$name `corgiFetchNthArg $idx "$@"`"
+    done
+
+  fi
+
+  echo "$name"
+  exit 0
+
+}
+
+
+# Parses a single line of output from command '# nmcli connection show' (provided by the caller).
+# From that, it determines if the connection described by that line of output contains a type 
+# which matches the desired type (i.e., "802-3-ethernet", "802-11-wireless", ...).
+# Returns 0, if the connetcion type matches the desired type, returns 1 if the connection type does not match the desired type.
+#
+# $1 - string, required, the desired connection type
+# $@ - args, required, a line of output from command '# nmcli connection show' (treated here as separate args)
+containsMatchingConnectionType() {
+
+  type="$1"
+
+  shift
+
+  for arg in "$@"
+  do
+
+    if [ "$arg" = "$type" ]
+    then
+      return 0
+    fi
+
+  done
+
+  return 1
+
+}
+
+
+# Adds a secured (WPA-PSK) wireless network to NetworkManager's list of connections
+# and invokes a provided callback function.
+#
+# $1 - string, required, the SSID for the wireless network
+# $2 - string, required, the security key for the wireless network
+# $3 - true or false, required, describes whether or not the wireless network is hidden )does not broadcast an SSID)
+# $4 - true or false, required, describes whether or not NetworkManager should automatically connect to the wireless network when it becomes available
+# $5 - function, optional, a callback function to be invoked once the wireless network has been added
+# $args - remaining args are passed to the callback function
+addSecuredWifiConnection() {
+
+  ssid="$1"
+  key="$2"
+  isHidden=$3
+  shouldAutoconnect=$4
+  callback=$5
+
+  for idx in `seq 1 5`
+  do
+    shift
+  done
+
+  if [ -z "$ssid" -o -z "$key" -o -z "$shouldAutoconnect" ]
+  then
+    logger "ERROR (corgi-network-management.shlib): Couldn't add the connection - ssid, key, and autoconnect args are required"
+    exit 1
+  fi
+
+# NOTE: All variables passed into END_ADD_HIDDEN should be passed WITHOUT quoting, and there should be NO INDENTS.
+nmcli connection edit con-name "$ssid" type "802-11-wireless" << END_ADD_CONNECTION ; $callback "$@" "$ssid" "$key"
+set 802-11-wireless.ssid $ssid
+set 802-11-wireless.hidden $isHidden
+set 802-11-wireless-security.key-mgmt wpa-psk
+set 802-11-wireless-security.psk $key
+set connection.autoconnect $shouldAutoconnect
+save
+yes
+quit
+END_ADD_CONNECTION
+
+  exit $?
+
+}
+
+
+# Updates the security key for a authenticated (WPA-PSK) wireless network stored 
+# in NetworkManager's list of connection profiles and invokes a provided callback function.
+#
+# $1 - string, required, the SSID for the hidden wireless network
+# $2 - string, required, the security key for the hidden wireless network
+# $3 - function, optional, a callback function to be invoked once the hidden wireless network has been added
+# $args - remaining args are passed to the callback function
+updateSecuredWifiConnectionKey() {
+
+  uuid="$1"
+  key="$2"
+  callback=$3
+
+  for idx in `seq 1 3`
+  do
+    shift
+  done
+
+  if [ -z "$uuid" -o -z "$key" ]
+  then
+    logger "ERROR (corgi-network-management.shlib): Couldn't edit the connection - ssid and key parameters are required."
+    exit 1
+  fi
+
+# NOTE: All variables passed into END_UPDATE_KEY should be passed WITHOUT quoting, and there should be NO INDENTS.
+nmcli connection edit uuid "$uuid" << END_UPDATE_KEY ; $callback "$@" "$uuid" "$key"
+set 802-11-wireless-security.psk $key
+save
+quit
+END_UPDATE_KEY
+
+  exit $?
+
+}
+
+
+# Deletes a NetworkManager connection profile.
+deleteConnectionImpl() {
+
+  expectedArgCount=2
+
+  argCount=$#
+  name="$1"
+  uuid="`corgiFetchNthArg -1 "$@"`"
+
+  if [ $argCount -gt $expectedArgCount ]
+  then
+
+    lastNameIdx=$(($argCount - $expectedArgCount))
+
+    for idx in `seq 1 $lastNameIdx`
+    do
+      name="$name `corgiFetchNthArg $idx "$@"`"
+    done
+
+  fi
+
+  nmcli connection delete uuid "$uuid" | {
+
+    response=''
+
+    while read -r line
+    do
+      # Get just the first line of output...
+      response="$line"
+      break
+    done
+
+    if corgiStartsWithSubstring "$response" 'Error'
+    then
+
+      logger "ERROR (corgi-network-management.shlib): Couldn't delete connection profile '$name' - $response"
+
+      if [ $hasZenity = true ]
+      then
+        zenity --error --title="Error" --text="`echo "Failed to delete connection profile '$name'.\n$response"`"
+      fi
+
+      exit 1
+
+    else
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Connection profile '$name' was deleted."
+      elif [ $hasZenity = true ]
+      then
+        zenity --info --title="Success" --text="Connection profile '$name' was deleted."
+      fi
+
+      exit 0
+
+    fi
+
+  }
+
+  exit $?
+
+}
+
+
+# Prompts the user, to confirm their desire to delete a NetworkManager connection.
+# If confirmed, calls #deleteConnectionImpl() to delete the connection.
+deleteConnection() {
+
+  expectedArgCount=2
+
+  argCount=$#
+  name="$1"
+  uuid="`corgiFetchNthArg -1 "$@"`"
+
+  if [ $argCount -gt $expectedArgCount ]
+  then
+
+    lastNameIdx=$(($argCount - $expectedArgCount))
+
+    for idx in `seq 1 $lastNameIdx`
+    do
+      name="$name `corgiFetchNthArg $idx "$@"`"
+    done
+
+  fi
+
+  if [ $hasZenity = true ]
+  then
+
+    if zenity --question --title="Confirm Delete Connection Profile" --text="Delete connection profile '$name'?"
+    then
+      deleteConnectionImpl "$name" "$uuid"
+    else 
+      exit 0
+    fi
+
+  else
+    deleteConnectionImpl "$name" "$uuid"
+  fi
+
+  exit $?
+
+}
+
+
+# Generates and echoes a newline-delimited string of field values, according to the provided, associated field names,
+# which describe the NetworkManager connection associated with the provided identifier (UUID or id (name)).
+#
+# $1 - string, required, the type of identifier used to find the associated NetworkManager connection (i.e., "uuid" or "id")
+# $2 - string, required, the identifier (UUID or ID, according to the provided identifier type) with which the NetworkManager connection is associated
+# $@ - args, required, the field names associated with the desired values to be output
+getConnectionFieldValuesByConnectionIdentifierAndFieldNames() {
+
+  fieldData=''
+
+  if ! [ "$1" = 'id' -o "$1" = 'uuid' ]
+  then
+    echo "$fieldData"
+    exit 1  
+  fi
+
+  identifierType="$1"
+  identifier="$2"
+
+  shift
+  shift
+
+  if [ $# -eq 0 ]
+  then
+    echo "$fieldData"
+    exit 1
+  fi
+
+  nmcli connection show --show-secrets $identifierType "$identifier" | {
+
+    while read -r line
+    do
+
+      for arg in "$@"
+      do
+
+        if corgiStartsWithSubstring "$line" "$arg"
+        then
+
+          if [ ! -z "$fieldData" ]
+          then
+            fieldData="$fieldData$corgiNewlineDelimiter`corgiGetValueFromSpaceDelimitedNameValuePair $line`"
+          else
+            fieldData="`corgiGetValueFromSpaceDelimitedNameValuePair $line`"
+          fi
+
+        fi
+   
+      done
+
+    done
+
+    echo "$fieldData"
+
+  }
+
+  exit $?
+
+}
+
+
+# Echoes the connection UUID associated with the provided wireless network SSID.
+#
+# $1 - string, required, the wireless network SSID, with which the connecion is associated
+getConnectionUuidAssociatedToWifiSsid() {
+
+  uuid=''
+
+  ssid="$1"
+
+  nmcli connection show | {
+
+    count=0
+
+    while read -r line
+    do
+
+      # The first line of output is generally column names, so skip that...
+      if [ $count -gt 0 ]
+      then
+
+        uuid="`corgiFetchNthArg -3 $line`"
+
+        if [ "`getConnectionFieldValuesByConnectionIdentifierAndFieldNames 'uuid' "$uuid" '802-11-wireless.ssid'`" = "$ssid" ]
+        then
+          echo "$uuid"
+          exit 0
+        else
+          name=''
+        fi
+
+      fi
+      
+      count=$(($count + 1))
+
+    done
+
+  }
+
+  exit $?
+
+}
+
+
+# Determines whether or not a connection is enabled or disabled, by whether or not it has an associated device,
+# and echoes that status (i.e., "disabled" or "enabled"). 
+getConnectionStatus() {
+
+  name="$1"
+  status='disabled'
+
+  nmcli connection show | {
+
+    count=0
+
+    while read -r line
+    do
+
+      # The first line of output is generally column names, so skip that...
+      if [ $count -gt 0 ]
+      then
+
+        if corgiStartsWithSubstring "$line" "$name"
+        then
+
+          deviceName="`corgiFetchNthArg -1 $line`"
+
+          if [ "$deviceName" != '--' ]
+          then
+            status='enabled'
+          fi
+          
+          break
+
+        fi        
+
+      fi
+
+      count=$(($count + 1))
+
+    done
+
+    echo "$status"
+    exit 0
+
+  }
+
+  exit $?
+
+}
+
+
+# Echoes a newline-delimited string of the types, of the connections currently stored by NetworkManager (i.e., "802-3-ethernet", "802-11-wireless", ...).
+#
+# Note: each type in use is listed exactly once, regardless of the number of connections with which it is used- they are not repeated.
+getAllConnectionTypesInUse() {
+
+  types=''
+  tracking=''
+
+  nmcli connection show | {
+
+    count=0
+
+    while read -r line
+    do
+
+      # The first line of output is generally column names, so skip that...
+      if [ $count -gt 0 ]
+      then
+
+        type="`corgiFetchNthArg -2 $line`"
+
+        if [ ! -z "$types" ]
+        then
+
+          if ! containsMatchingConnectionType "$type" $tracking
+          then
+            types="$types$corgiNewlineDelimiter$type"
+            tracking="$types $type"
+          fi
+
+        else
+          types="$type"
+          tracking="$type"
+        fi
+
+      fi
+
+      count=$(($count + 1))
+
+    done
+
+    echo "$types"
+    exit 0
+
+  }
+
+  exit $?
+
+}
+
+
+# Prompts the user with a dialog, in which they can provide the SSID and/or security key to connect to 
+# a wireless network which requires authentication.
+#
+# $1 - string, required (can be empty), the SSID associated with the network with which to connect -
+#      if an empty string is provided, the dialog will contain a field in which the user can provide an SSID
+# $2 - function, required, a callback to be invoked after the user has provided the network SSID and key
+# $3 - number, optional, a number to match a type of error, in the case this function is called following
+#      an encountered error - 
+#      options are 1 (the user provided an SSID for which an available network could not be found),
+#      2 (the user failed to provide a security key for the network to which they are attempting to connect),
+#      3 (the user provided an incorrect security key for the network to which they are attempting to connect)
+promptUserForWifiCredentials() {
+
+  ssid="$1"
+  callback=$2
+  errorCode=$3
+
+  dialogTitle="Key Required To Connect"
+  dialogText="Enter the security key for wireless network '$ssid'."
+
+  case $errorCode in
+
+    1) 
+      dialogTitle="Unavailable Network SSID"
+      dialogText="`echo "SSID '$ssid' is incorrect or unavailable.\nEnter the SSID and key for the wireless network."`"
+    ;;
+
+    2) 
+      dialogTitle="Network Key Required"
+      dialogText="`echo "A security key is required for '$ssid'.\n$dialogText"`"
+    ;;
+
+    3) 
+      dialogTitle="Incorrect Network Key"
+      dialogText="`echo "Security key provided for '$ssid' is incorrect.\n$dialogText"`"
+    ;;
+
+  esac
+
+  if [ -z "$ssid" -a -z "$errorCode" ]
+  then
+    dialogTitle="SSID And Key Required To Connect"
+    dialogText="Enter the SSID and key for the wireless network."
+  fi
+
+  if [ -z "$ssid" ] || [ $errorCode -eq 1 ]
+  then
+    
+    zenity --forms --title="$dialogTitle" --text="$dialogText" --add-entry="SSID:" --add-password="Key (if required):" | {
+
+      response='_ZENITY-CANCEL-VALUE_'
+
+      while read -r line
+      do
+
+        # Sometimes, Gtk throws warnings to pester developers about using their APIs.
+        # This results in garbage that users of those developer's products
+        # must deal with, so we must filter it out, here...
+        if ! corgiStartsWithSubstring "$line" 'Gtk-Message'
+        then
+          response="$line"
+          break
+        fi
+
+      done
+
+      if [ "$response" = '_ZENITY-CANCEL-VALUE_' ]
+      then
+        exit 0
+      else
+
+        if [ -z "$response" ]
+        then
+          promptUserForWifiCredentials "" $callback
+        else
+
+          ssid="`corgiFetchSubstringBefore "$response" '|'`"
+          key="`corgiFetchSubstringAfter "$response" '|'`"
+
+          if [ ! -z "$ssid" ]
+          then
+            $callback "$ssid" "$key"
+          else
+            promptUserForWifiCredentials "" $callback
+          fi
+
+        fi
+
+        exit $?
+        
+      fi
+
+      exit $?
+
+    }
+    
+  else
+    
+    zenity --forms --title="$dialogTitle" --text="$dialogText" --add-password="Key:" | {
+
+      response='_ZENITY-CANCEL-VALUE_'
+
+      while read -r line
+      do
+
+        # Sometimes, Gtk throws warnings to pester developers about using their APIs.
+        # This results in garbage that users of those developer's products
+        # must deal with, so we must filter it out, here...
+        if ! corgiStartsWithSubstring "$line" 'Gtk-Message' 
+        then
+          response="$line"
+          break
+        fi
+
+      done
+
+      if [ "$response" = '_ZENITY-CANCEL-VALUE_' ]
+      then
+        exit 0
+      else
+      
+        if [ -z "$response" ]
+        then
+          promptUserForWifiCredentials "$ssid" $callback 2
+        else
+          $callback "$ssid" "$response"
+        fi
+        
+      fi
+
+      exit $?
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Negotiates the connection to a wireless network, and echoes a response based on whether or
+# not the connection attempt was successful, and if not, why it was not successful.
+#
+# $1 - string, required, the SSID which identifies the wireless network to which the connection is being attempted
+# $2 - string, optional, the security key required to connect to an authenticated (WPA-PSK) network
+makeWifiConnection() {
+
+  ssid="$1"
+  key="$2"
+
+  if [ -z "$ssid" ]
+  then
+    echo "Error: could not connect to wireless network - ssid missing"
+    exit 1
+  fi
+
+  nmcliCommand="nmcli device wifi connect $ssid"
+
+  if [ ! -z "$key" ]
+  then
+    nmcliCommand="$nmcliCommand password $key"
+  fi
+
+  if [ $hasNotify = true ]
+  then
+    notify-send "Negotiating connection to network '$ssid'..."
+  fi
+
+  $nmcliCommand 2>&1 | {
+
+    response=''
+
+    while read -r line
+    do
+      # Get just the first line of output...
+      response="$line"
+      break
+    done
+
+    if corgiStartsWithSubstring "$response" 'Error:'
+    then
+
+      # nmcli has this REALLY annoying behavior,
+      # by which it will automatically add to connections,
+      # even if the connection fails...
+      nmcli connection delete id "$ssid"
+
+      logger "ERROR (corgi-network-management.shlib): Couldn't connect to the wireless network - $response"
+
+      if corgiHasSubstring "$response" 'Secrets were required' || corgiHasSubstring "$response" '802-11-wireless-security.psk: property is invalid'
+      then
+
+        if [ -z "$key"]
+        then
+          echo "Error: could not connect to wireless network - key missing"
+        else
+          echo "Error: could not connect to wireless network - key rejected"
+        fi
+
+      elif corgiHasSubstring "$response" 'No network with SSID' || corgiHasSubstring "$response" 'unknown connection' || corgiHasSubstring "$response" 'could not be found'
+      then
+
+        echo "Error: could not connect to wireless network - ssid unreachable"
+
+      elif ! corgiHasSubstring "$response" 'No reason' && ! corgiHasSubstring "$response" 'Active connection removed'
+      then
+
+        echo "Error: could not connect to wireless network - $response"
+
+      fi
+
+      exit 1
+
+    else
+      echo "Success: connected to wireless netowrk '$ssid'"
+      exit 0
+    fi
+
+  }
+
+  exit $?
+
+}
+
+
+# Enables a wireless connection profile stored by NetworkManager, and attempts to connect to the wireless network associated with that profile.
+# Echoes a response based on whether or not the connection attempt was successful, and if not, why it was not successful.
+# In the case of a failure, under certain conditions for which the connection profile is newly created, that profile will be deleted.
+#
+# $1 - string, required, the type of identifier used to identify the NetworkManager connection (i.e., "uuid" or "id")
+# $2 - string, required, the identifier (UUID or ID, according to the provided identifier type) for the NetworkManager connection
+# $3 - true or false, optional, describes whether or not the connection profile is newly added - defaults to false
+enableWifiConnectionProfile() {
+
+  if ! [ "$1" = 'id' -o "$1" = 'uuid' ]
+  then
+    echo "Error: could not enable connection - '$1' - invalid identifier type"
+    exit 1
+  fi
+
+  identifierType="$1"
+  identifier="$2"
+  isNew=$3
+
+  if [ -z "$isNew" ]
+  then
+    isNew=false
+  fi
+
+  name="$identifier"
+
+  if [ "$identifierType" = 'id' ]
+  then
+    identifier="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" 'connection.uuid'`"
+    identifierType='uuid'
+  else
+    name="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" 'connection.id'`"
+  fi
+
+  ssid="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" '802-11-wireless.ssid'`"
+
+  nmcli connection up $identifierType "$identifier" 2>&1 | {
+
+    response=''
+
+    while read -r line
+    do
+      # Get just the first line of output...
+      response="$line"
+      break
+    done
+
+    if corgiStartsWithSubstring "$response" 'Error:'
+    then
+
+      if [ $isNew = true ] && corgiHasSubstring "$response" 'Connection activation failed'
+      then
+
+        # This is normally the case when an SSID is incorrect or unreachable.        
+        # Upon adding a new connection, if it can't be reached, 
+        # the user should probably check the SSID and try again...
+
+        nmcli connection delete $identifierType "$identifier"
+        echo "Error: could not enable connection - ssid unreachable"
+
+      else
+        echo "Error: could not enable connection - $response"
+      fi
+
+      exit 1
+
+    fi
+
+    if corgiStartsWithSubstring "$response" 'Password'
+    then
+
+      if [ $isNew = true ]
+      then
+        nmcli connection delete $identifierType "$identifier"
+      fi
+
+      echo "Error: could not enable connection - key rejected"
+      exit 1
+
+    fi
+
+    connectionStatus='disconnected'
+    connectionStatusCheckLimit=10
+    connectionStatusCheckPauseTime=".1s"
+
+    for idx in `seq 0 $connectionStatusCheckLimit`
+    do
+
+      connectionStatus=`getConnectionStatus "$name"`
+
+      if [ "$connectionStatus" = 'enabled' ]
+      then
+        break
+      fi
+
+      sleep "$connectionStatusCheckPauseTime"
+
+    done
+
+    if [ "$connectionStatus" = 'enabled' ]
+    then
+      echo "Success: Connection profile '$name' enabled, connected to network '$ssid'"
+      exit 0
+    else
+
+      connectionStatusCheckLimit="15"
+      connectionStatusCheckPauseTime="1s"
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Attempting connection to '$ssid', with profile '$name'..."
+      fi
+
+      for idx in `seq 0 $connectionStatusCheckLimit`
+      do
+
+        connectionStatus=`getConnectionStatus "$name"`
+
+        if [ "$connectionStatus" = 'enabled' ]
+        then
+          break
+        fi
+
+        sleep "$connectionStatusCheckPauseTime"
+
+      done
+
+      if [ "$connectionStatus" = 'enabled' ]
+      then
+        echo "Success: Connection profile '$name' enabled, connected to network '$ssid'"
+        exit 0
+      else
+
+        if [ $isNew = true ]
+        then
+          nmcli connection delete $identifierType "$identifier"
+        fi
+
+        echo "Error: could not enable connection - timed out"
+        exit 1
+
+      fi
+
+    fi
+
+    exit $?
+
+  }
+
+  exit $?
+
+}
+
+
+# Obtains and echos the security key provided by (and serves as the callback for) a user dialog 
+# provided to update the security key for a wireless network managed by a connection profile.
+#
+# $1 - arg, required (may be empty), ignored by this method, but must be in place
+# $2 - string, required, the user-provided, updated security key
+getUserUpdatedConnectionProfileKey() {
+  echo "$2"
+  exit $?
+}
+
+
+# Updates the security key for the wireless network managed by the connection profile specififed by the provided UUID.
+# Validates that the key was coreect, and, if not, prompts the user to re-enter the key, or cancel the update.
+#
+# $1 - string, required, the UUID used to identify the connection profile being updated
+# $2 - string, required, the SSID for the network being managed by the connection profile
+# $3 - string, required, the user-provided, updated security key
+updateWifiConnectionProfileKey() {
+
+  response='Error: could not update the connection profile - details missing'
+
+  uuid="$1"
+  ssid="$2"
+  key="$3"
+
+  if [ ! -z "$uuid" ] && [ ! -z "$ssid" ] && [ ! -z "$key" ]
+  then
+
+    if [ $hasNotify = true ]
+    then
+      notify-send "Updating stored security key for network '$ssid'..."
+    fi
+
+    response="`updateSecuredWifiConnectionKey "$uuid" "$key" enableWifiConnectionProfile 'uuid' "$uuid" | tail -1`"
+
+    if corgiHasSubstring "$response" 'Error'
+    then
+
+      if corgiEndsWithSubstring "$response" 'key rejected'
+      then
+        response="`promptUserToUpdateWifiConnectionProfileKey "$uuid" "$ssid"`"
+      fi
+        
+    fi
+
+  fi
+
+  echo "$response"
+  exit $?
+
+}
+
+
+# Presents the user with a dialog, with which they may update the security key for 
+# the wireless network managed by the connection profile specififed by the provided UUID, 
+# and echoes the new key.
+#
+# $1 - string, required, the UUID used to identify the connection profile being updated
+# $2 - string, required, the SSID for the network being managed by the connection profile
+promptUserToUpdateWifiConnectionProfileKey() {
+
+  uuid="$1"
+  ssid="$2"
+
+  response="`promptUserForWifiCredentials "$ssid" getUserUpdatedConnectionProfileKey 3`"
+  response="`updateWifiConnectionProfileKey "$uuid" "$ssid" "$response"`"
+
+  echo "$response"
+  exit $?
+
+}
+
+
+# Enables or disables all networking hardware, depending on the provided arg.
+# Prompts the user for confirmation.
+#
+# $1 - string, required, "on" or "off", describes the desired state
+toggleNetworkingState() {
+
+  state="$1"
+  toggleStateCommand='nmcli networking'
+  stateMessage='enabled'
+  stateTitle='Enabled'
+
+  if ! [ "$state" = 'off' -o "$state" = 'on' ]
+  then
+
+    logger "Error (corgi-network-management.shlib): Couldn't toggle networking hardware state - '$state' is not a valid state."
+
+    if [ $hasZenity = true ]
+    then
+      zenity --error --title="Error" --text="`echo "Failed to toggle networking hardware state.\n'$state' is not a valid state."`"
+    fi
+
+    exit 1
+
+  fi
+
+  toggleStateCommand="$toggleStateCommand $state"
+
+  if [ "$state" = 'off' ]
+  then
+    stateMessage='disabled'
+    stateTitle='Disabled'
+  fi
+
+  if [ $hasZenity = true ] && [ "$state" = 'off' ]
+  then
+
+    if zenity --question --title="Confirm Disable" --text="Disable all networking?"
+    then
+
+      $toggleStateCommand && {
+
+        if [ $hasNotify = true ]
+        then
+          notify-send "All networking hardware has been $stateMessage."
+        else
+          zenity --info --title="Networking Disabled" --text="All networking hardware has been $stateMessage."
+        fi
+
+        exit 0
+
+      }
+
+    else
+      exit 0
+    fi
+
+  else
+
+    $toggleStateCommand && {
+
+      nmcli radio wifi $state && {
+
+        if [ $hasNotify = true ]
+        then
+          notify-send "All networking hardware has been $stateMessage."
+        elif [ $hasZenity = true ]
+        then
+          zenity --info --title="Networking $stateTitle" --text="All networking hardware has been $stateMessage."
+        fi
+
+        exit 0
+
+      }
+
+      exit $?
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Enables or disables wireless hardware, depending on the provided arg.
+#
+# $1 - string, required, "on" or "off", describes the desired state
+toggleWifiState() {
+
+  state="$1"
+  toggleStateCommand='nmcli radio wifi'
+  stateMessage='enabled'
+  stateTitle='Enabled'
+
+  if ! [ "$state" = "off" -o "$state" = "on" ]
+  then
+
+    logger "Error (corgi-network-management.shlib): Couldn't toggle wireless hardware state - '$state' is not a valid state."
+
+    if [ $hasZenity = true ]
+    then
+      zenity --error --title="Error" --text="`echo "Failed to toggle wireless hardware state.\n'$state' is not a valid state."`"
+    fi
+
+    exit 1
+
+  fi
+
+  if [ "$state" = 'off' ]
+  then
+    stateMessage='disabled'
+    stateTitle='Disabled'
+  fi
+
+  toggleStateCommand="$toggleStateCommand $state"
+
+  if [ $hasZenity = true ] && [ "$state" = 'off' ]
+  then
+
+    if zenity --question --title="Confirm Disable" --text="Disable wireless networking?"
+    then
+
+      $toggleStateCommand && {
+
+        if [ $hasNotify = true ]
+        then
+          notify-send "Wireless networking hardware has been $stateMessage."
+        else
+          zenity --info --title="Wireless Disabled" --text="Wireless netowrking hardware has been $stateMessage."
+        fi
+
+        exit 0
+
+      }
+
+    else
+      exit 0
+    fi
+
+  else
+
+    $toggleStateCommand && {
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Wireless networking hardware has been $stateMessage."
+      elif [ $hasZenity = true ]
+      then
+        zenity --info --title="Wireless $stateTitle" --text="Wireless networking hardware has been $stateMessage."
+      fi
+
+      exit 0
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Enables or disables a stored NetworkManager connection profile, depending on the provided arg.
+#
+# $1 - string, required, "down" or "up", describes the desired state
+toggleConnectionState() {
+
+  identifierType="$1"
+
+  if ! [ "$identifierType" = 'id' -o "$identifierType" = 'uuid' ]
+  then
+
+    logger "ERROR (corgi-network-management.shlib): Couldn't toggle connection state - '$identifierType' is not a valid identifier type."
+
+    if [ $hasZenity = true ]
+    then
+      zenity --error --title="Error" --text="`echo "Couldn't toggle connection state.\n'$identifierType' is not a valid identifier type."`"
+    fi
+
+    exit 1
+
+  fi
+
+  identifier="$2"  
+  type="$3"
+  state="$4"
+  name="$identifier"
+  ssid=''
+
+  if [ "$identifierType" = 'id' ]
+  then
+    identifier="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" 'connection.uuid'`"
+    identifierType='uuid'
+  else
+    name="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" 'connection.id'`"
+  fi
+
+  ssid="`getConnectionFieldValuesByConnectionIdentifierAndFieldNames $identifierType "$identifier" '802-11-wireless.ssid'`"
+
+  if ! [ "$state" = "down" -o "$state" = "up" ]
+  then
+
+    logger "Error (corgi-network-management.shlib): Couldn't toggle connection state for '$name' - '$state' is not a valid state."
+
+    if [ $hasZenity = true ]
+    then
+      zenity --error --title="Error" --text="`echo "Failed to toggle connection state for '$name'\n'$state' is not a valid state."`"
+    fi
+
+    exit 1
+
+  fi
+
+  stateMessage='enabled'
+
+  if [ "$state" = 'down' ]
+  then
+    stateMessage='disabled'
+  fi
+
+  if corgiEndsWithSubstring "$type" 'wireless' && [ "$state" = 'up' ]
+  then
+
+    if [ $hasNotify = true ]
+    then
+      notify-send "Enabling connection profile '$name', connecting to network '$ssid'..."
+    fi
+
+    response="`enableWifiConnectionProfile "$identifierType" "$identifier"`"
+
+    if corgiStartsWithSubstring "$response" 'Success'
+    then
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Connection profile '$name' is $stateMessage, connected to network '$ssid'."
+      elif [ $hasZenity = true ]
+      then
+        zenity --info --title="Success" --text="Connection profile '$name' is now $stateMessage, connected to network '$ssid'."
+      fi
+
+      exit 0
+
+    fi
+
+    if corgiHasSubstring "$response" 'Error'
+    then
+
+      if corgiEndsWithSubstring "$response" 'key rejected'
+      then
+
+        # If the security key for the network managed by this profile is no longer valid,
+        # give the user an opportunity to provide an update, before giving up...
+
+        response="`promptUserToUpdateWifiConnectionProfileKey "$identifier" "$ssid"`"
+
+        if corgiStartsWithSubstring "$response" 'Success:'
+        then
+
+          if [ $hasNotify = true ]
+          then
+
+            notify-send "Connection profile '$name' is $stateMessage, connected to network '$ssid'."
+
+          elif [ $hasZenity = true ]
+          then
+            zenity --info --title="Success" --text="Connection profile '$name' is $stateMessage, connected to network '$ssid'."
+          fi
+  
+          exit 0
+
+        else
+
+          if [ $hasZenity = true ]
+          then
+            zenity --info --title="Error" --text="`echo "Failed to enable connection profile '$name',\ndue to authentication failure with network '$ssid'."`"
+          fi
+
+        fi
+
+      elif corgiEndsWithSubstring "$response" 'timed out'
+      then
+
+        if [ $hasZenity = true ]
+        then
+          zenity --info --title="Error" --text="Failed to enable connection profile '$name', due to lack of response."
+        fi 
+
+      else
+
+        errorMsg="`corgiFetchSubstringAfter "$response" '-'`"
+        errorMsg="`corgiTrimWhiteSpace "$response"`"
+
+        logger "ERROR (corgi-network-management.shlib): Couldn't toggle connection state to '$state' for '$name' - $errorMsg."
+
+        if [ $hasZenity = true ]
+        then
+          zenity --info --title="Error" --text="`echo "Failed to enable connection profile '$name'\n$errorMsg"`"
+        fi
+
+      fi
+
+      exit 1
+
+    fi
+
+  else
+
+    nmcli connection $state $identifierType "$identifier" | {
+
+      response=''
+
+      while read -r line
+      do
+        # Get just the first line of output...
+        response="$line"
+        break
+      done
+
+      if corgiStartsWithSubstring "$response" 'Error:'
+      then
+
+        logger "ERROR (corgi-network-management.shlib): Couldn't toggle connection state for \"$name\" - $response"
+
+        if [ $hasZenity = true ]
+        then
+          zenity --error --title="Error" --text="`echo "Failed to enable connection profile '$name'\n$response"`"
+        fi
+
+        exit 1
+  
+      else
+
+        if [ $hasNotify = true ]
+        then
+          notify-send "Connection profile '$name' is now $stateMessage."
+        elif [ $hasZenity = true ]
+        then
+          zenity --info --title="Success" --text="Connection profile '$name' is now $stateMessage."
+        fi
+
+        exit 0
+   
+      fi
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Parses the response resulting from an attempt to connect to a wireless network (provided by the caller)
+# to determine if the attempt was successful or not. In the case of a successful connection,
+# the user is presented with a notification. In the case of an error, the error determines the next action. 
+# In the case either the network SSID or security key are either missing or incorrect, the user is prompted 
+# to replace the missing or incorrect credential(s), and a separate function is invoked for the additional
+# connection attempt. In most error cases which involve invoking functions, several or all args supplied
+# to this function are passed. In the case of a time out error, as well as errors which aren't covered, 
+# the user is presented with a notification.
+#
+# $1 - string, required, the SSID which identifies the network to be joined
+# $2 - string, required, the response resulting from the connection attempt
+# $3 - true or false, required, describes whether or not the network is hidden (does not broadcast an SSID)
+parseWifiConnectionResponse() {
+
+  callback=connectToWifiNetwork
+
+  ssid="$1"
+  response="$2"
+  isHidden=$3
+
+  # An empty response indicates an action was cancelled...
+  if [ -z "$response" ]
+  then
+    exit 0
+  fi
+
+  if [ $isHidden = true ]
+  then
+
+    ssid="`corgiFetchSubstringAfter "$response" '|'`"
+    callback=connectToSecuredHiddenWifiNetwork
+
+    if [ -z "$ssid" ] 
+    then
+      response='Error: ssid missing'
+    else
+      response="`corgiFetchSubstringBefore "$response" '|'`"
+    fi
+
+  fi
+
+  if corgiStartsWithSubstring "$response" 'Success:'
+  then
+
+    if [ $hasNotify = true ]
+    then
+      notify-send "Connected to network '$ssid'."
+    elif [ $hasZenity = true ]
+    then
+      zenity --info --title="Success" --text="Connected to network '$ssid'."
+    fi
+
+    exit 0
+
+  fi
+
+  if corgiStartsWithSubstring "$response" 'Error:'
+  then
+  
+    tryAgain=true
+
+    if corgiEndsWithSubstring "$response" 'ssid missing'
+    then
+      response="`promptUserForWifiCredentials "" $callback`"
+    elif corgiEndsWithSubstring "$response" 'ssid unreachable'
+    then
+      response="`promptUserForWifiCredentials "$ssid" $callback 1`"
+    elif corgiEndsWithSubstring "$response" 'key missing'
+    then
+      response="`promptUserForWifiCredentials "$ssid" $callback 2`"
+    elif corgiEndsWithSubstring "$response" 'key rejected'
+    then
+      response="`promptUserForWifiCredentials "$ssid" $callback 3`"
+    elif corgiEndsWithSubstring "$response" 'timed out'
+    then
+
+      tryAgain=false
+
+      if [ $hasZenity = true ]
+      then
+        zenity --info --title="Error" --text="`echo "Failed to connect to '$ssid'.\nCommunication attempt has timed out."`"
+      fi
+
+    else
+
+      tryAgain=false
+
+      errorMsg="`corgiFetchSubstringAfter "$response" '-'`"
+      errorMsg="`corgiTrimWhiteSpace "$response"`"
+
+      logger "ERROR (corgi-network-management.shlib): Couldn't enable wifi connection - $errorMsg."
+
+      if [ $hasZenity = true ]
+      then
+        zenity --info --title="Error" --text="`echo "Failed to connect to '$ssid'.\n$errorMsg"`"
+      fi
+
+    fi
+
+    if [ $tryAgain = true ]
+    then
+      parseWifiConnectionResponse "$ssid" "$response" $isHidden
+      exit $?
+    else
+      exit 1
+    fi
+
+  fi
+
+  exit $?
+
+}
+
+
+# Connects a user to a wireless network. If a non-empty SSID is supplied, 
+# attempts to connect the user to the network associated with the provided SSID.
+# Determines whether or not an existing connection profile, associated with the SSID, is stored by NetworkManager.
+# If a connection profile is found, an attempt to enable that connection is made.
+# If an empty SSID is supplied, prompts the user for connection details.
+# Support for hidden networks (those which do not boradcast an SSID) is provided by supplying empty values for 
+# the SSID and key, as well as setting the isHidden flag to true.
+#
+# $1 - string, required (may be mepty), the SSID which identifies the network to be joined, or empty string, 
+#      if the network is hidden (does not broadcast an SSID)
+# $2 - string, optional (required, but may be mepty, in the case the isHidden flag is set to true), 
+#      the security key for the network to be joined
+# $3 - true or false, optional, describes whether or not the network is hidden (does not broadcast an SSID)-
+#      defaults to false
+connectToWifiNetwork() {
+
+  response='Error: could not connect to the hidden network - ssid missing'
+
+  ssid="$1"
+  key="$2"
+  isHidden=$3
+
+  if [ -z "$isHidden" ]
+  then
+    isHidden=false
+  fi
+
+  if [ $isHidden = true ]
+  then
+    response="`connectToSecuredHiddenWifiNetwork "$ssid" "$key"`"
+  elif [ ! -z "$ssid" ] 
+  then
+
+    uuid="`getConnectionUuidAssociatedToWifiSsid "$ssid"`"
+
+    if [ ! -z "$uuid" ]
+    then
+      response="`enableWifiConnectionProfile 'uuid' "$uuid"`"
+    else
+      response="`makeWifiConnection "$ssid" "$key"`"
+    fi
+
+  fi
+
+  parseWifiConnectionResponse "$ssid" "$response" $isHidden
+  exit $?
+
+}
+
+
+# Connects a user to a hidden wireless network which requires authentication (WPA-PSK, with no broadcast SSID).
+# Determines whether or not an existing connection profile, which manages the network identified the SSID, is stored by NetworkManager.
+# If a connection profile is found, an attempt to enable that connection is made.
+# If no connection profile is found, and a security key is provided, 
+# an attempt will be made to add a new connection profile for the hidden network.
+# Echoes a response based on whether or not the connection attempt or profile addition was successful, 
+# and if not, why it was not successful.
+#
+# $1 - string, required, the SSID which identifies the hidden network
+# $2 - string, optional, the security key for the hidden network, required if creating a new connection profile
+connectToSecuredHiddenWifiNetwork() {
+
+  response='Error: could not connect to the hidden network - ssid missing'
+ 
+  ssid="$1"
+  key="$2"
+
+  if [ ! -z "$ssid" ]
+  then
+
+    uuid="`getConnectionUuidAssociatedToWifiSsid "$ssid"`"
+
+    if [ ! -z "$uuid" ]
+    then
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Reconnecting to '$ssid'..."
+      fi
+
+      response="`enableWifiConnectionProfile 'uuid' "$uuid"`"
+
+    elif [ ! -z "$key" ]
+    then
+
+      if [ $hasNotify = true ]
+      then
+        notify-send "Negotiating connection to hidden network '$ssid'..."
+      fi
+    
+      response="`addSecuredWifiConnection "$ssid" "$key" true true enableWifiConnectionProfile 'id' "$ssid" true | tail -1`"
+
+      if corgiStartsWithSubstring "$response" 'Success:'
+      then
+
+        if [ $hasNotify = true ]
+        then
+          notify-send "Added connection profile for hidden network '$ssid'."
+        fi
+
+      fi
+
+    else
+      response='Error: could not connect to the hidden network - key missing'
+    fi
+
+    response="$response|$ssid"
+
+  fi
+
+  echo "$response"
+  exit $?
+
+}

@@ -101,6 +101,7 @@ alias merge="xrdb -merge ~/.Xresources"
 alias neo="neofetch"
 alias lol= "screenfetch | lolcat -F 0.2  -a -s 10"0
 alias neoa="neofetch --ascii"
+alias neob="neofetch --backend off"
 alias play="ncmpcpp -S visualizer"
 alias font="sudo fc-cache -f -v"
 alias tui="s-tui"
@@ -138,9 +139,10 @@ alias aurinen='LC_ALL=C yaourt -S'
 alias Y='yaourt --noconfirm'
 alias aurinf='yaourt -Si'
 
-#neofetch
+neofetch --backend off
 echo "[3m$(fortune -sa)\n" # display a random short quote at start
-./.al.sh
+#./.al.sh
+#ufetch
 if [[ $TERM != "xterm-termite" ]] || [[ $TERM != "rxvt-256color" ]]; then export TERM="xterm-256color"; fi
 
 PATH="/home/dobbie/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -165,8 +167,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/dobbie/perl5"; export PERL_MM_OPT
 
 # ls after cd.. no-op in dir with more than 40 items to list
 cdls() { cd "$@"; [ ${#$(ls)} -le 40 ] && ls --group-directories-first || :; }
-
-alias cd="cdls"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh

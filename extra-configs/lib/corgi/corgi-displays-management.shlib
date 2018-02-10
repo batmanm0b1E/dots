@@ -1,0 +1,1413 @@
+#!/bin/sh
+
+# Copyright 2015 Antonio Malcolm, released under an MPL, v. 2.0, license. All rights reserved.
+#
+# This file is part of Corgi Scripts (also referred to as corgi-scripts).
+#
+# Corgi Scripts is subject to the terms of the Mozilla Public License, v. 2.0. 
+# If a copy of the MPL was not distributed with this file, 
+# you can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Corgi Scripts is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either expressed or implied.
+# See LICENSE.txt, for the specific language governing rights and limitations under the License,
+# which should have been provided with this software, or visit http://mozilla.org/MPL/2.0/.
+
+# corgi-displays-management.shlib - handles automation of display positioning and resolution configuration, with PRIMUS and reverse PRIMUS support.
+#
+# v2015.06.17
+#
+# Authored by Antonio Malcolm
+#
+# Requires: corgi-posix-core.shlib
+# Requires: zenity - if we plan on setting values for scale, DPI, and panning, tracking and borders
+# Optional: libnotify - used for informational and success notifications
+
+
+currentDirectory="`dirname "$0"`"
+currentDirectory="`cd "$currentDirectory" ; pwd -P `"
+parentDirectory="`dirname $currentDirectory`"
+
+corgiCoreLib="$parentDirectory/lib/corgi/corgi-posix-core.shlib"
+
+if [ ! -e "$corgiCoreLib" ]
+then
+  logger "ERROR (corgi-displays-management.shlib): $corgiCoreLib is missing. Exiting..."
+  echo "ERROR (corgi-displays-management.shlib): $corgiCoreLib is missing. Exiting..."
+  exit 1
+fi
+
+. "$corgiCoreLib"
+
+hasXrandr=false
+hasZenity=false
+hasNotify=false
+
+if ! command -v xrandr > /dev/null
+then
+  logger "ERROR (corgi-displays-manager.shlib): xrandr not found. Please install xrandr"
+else 
+  hasXrandr=true
+fi
+
+if ! command -v zenity > /dev/null
+then
+  logger "WARN (corgi-displays-manager.shlib): zenity not found. We can't connect to secured samba shares or set custom mount points without it. Please install zenity."
+else
+  hasZenity=true
+fi
+
+if ! command -v notify-send > /dev/null
+then
+  logger "INFO (corgi-displays-manager.shlib): libnotify (notify-send) not found. We will default to zenity, if it's available."
+else
+  hasNotify=true  
+fi
+
+
+connectionDataDelimiter=','
+
+# Determines if a display connection, associated to the provided name, is connected to a powered display. 
+# Returns 0, if the connection is connected to a powered display, 1 if it is not.
+#
+# $1 - string, required, the name used to identifiy the display for which the connection is being checked
+connectionIsActive() {
+
+  connectionName="$1"
+  existenceCheck="`xrandr --query | grep "$connectionName"`"
+
+  if corgiHasSubstring "$existenceCheck" ' connected'
+  then
+    return 0
+  else
+    return 1
+  fi
+
+  exit $?
+
+}
+
+
+# Determines if a display on the connection, associated to the provided name, supports the provided resolution. 
+# Echos "yes", if the display supports the resolution, "no" if it does not.
+#
+# $1 - string, required, the name used to identifiy the connection for which the display resolution is being checked
+# $2 - string, required, the resolution being checked in <WIDTH>x<HEIGHT> format    
+echoConnectionHasResolution() {
+
+  connectionName="$1"
+  requestedRes="$2"
+
+  xrandr --query | {
+
+    shouldCheck=false
+
+    while read -r line
+    do
+
+      if corgiHasSubstring "$line" "$connectionName" && corgiHasSubstring "$line" ' connected'
+      then
+        shouldCheck=true
+      elif ! corgiHasSubstring "$line" "$connectionName" && corgiHasSubstring "$line" 'connected'
+      then
+        shouldCheck=false
+      fi
+
+      if [ $shouldCheck = true ]
+      then
+
+        line="`corgiTrimWhiteSpace "$line"`"
+        connectionSupportedRes="`corgiFetchSubstringBefore "$line" ' ' 'first'`"
+
+        if [ "$requestedRes" = "$connectionSupportedRes" ]
+        then
+          echo 'yes' 
+          exit 0
+        fi
+
+      fi
+
+    done
+
+    echo 'no'
+    exit $?
+
+  }
+
+  exit $?
+
+}
+
+
+# Determines if a display on the connection, associated to the provided name, supports the provided resolution. 
+# Returns 0, if the display supports the resolution, 1 if it does not.
+#
+# $1 - string, required, the name used to identifiy the connection for which the display resolution is being checked
+# $2 - string, required, the resolution being checked in <WIDTH>x<HEIGHT> format    
+connectionHasResolution() {
+
+  connectionName="$1"
+  requestedRes="$2"
+
+  if ! connectionIsActive "$connectionName"
+  then
+    return 1
+  fi
+
+  if [ "`echoConnectionHasResolution "$connectionName" "$requestedRes"`" = 'yes' ]
+  then
+    return 0
+  else
+    return 1
+  fi
+
+  return 1
+
+}
+
+
+# Determines if a display and its connection, associated to the provided name, supports panning. 
+# Echoes "yes", if the connection and display support panning, "no" if they do not.
+#
+# $1 - string, required, the name used to identifiy the connection for which panning support is being checked
+echoConnectionSupportsPanning() {
+
+  connectionName="$1"
+
+  xrandr --props | {
+
+    shouldCheck=false
+
+    while read -r line
+    do
+
+      if corgiHasSubstring "$line" "$connectionName" && corgiHasSubstring "$line" ' connected'
+      then
+        shouldCheck=true
+      elif ! corgiHasSubstring "$line" "$connectionName" && corgiHasSubstring "$line" 'connected'
+      then
+        shouldCheck=false
+      fi
+
+      if [ $shouldCheck = true ]
+      then
+
+        line="`corgiTrimWhiteSpace "$line"`"
+
+        if corgiHasSubstring "$line" 'BorderDimensions'
+        then
+          echo 'yes' 
+          exit 0
+        fi
+
+      fi
+
+    done
+
+    echo 'no'
+    exit $?
+
+  }
+
+  exit $?
+
+}
+
+
+# Determines if a display and its connection, associated to the provided name, supports panning. 
+# Returns 0, if the connection and display support panning, 1 if they do not.
+#
+# $1 - string, required, the name used to identifiy the connection for which panning support is being checked
+
+connectionSupportsPanning() {
+
+  connectionName="$1"
+
+  if ! connectionIsActive "$connectionName"
+  then
+    return 1
+  fi
+
+  if [ "`echoConnectionSupportsPanning "$connectionName"`" = 'yes' ]
+  then
+    return 0
+  else
+    return 1
+  fi
+
+  return 1
+
+}
+
+
+# Prompts the user with a dialog, with which they can provide their desired screen DPI.
+#
+# $1 - string, required (may be empty), the name used to identifiy the screen, 
+#      for which the DPI is being set, used purely for display purposes
+promptUserForScreenDpi() {
+
+  name="$1"
+
+  zenity --forms --title="Set DPI For $name" --text="Set DPI For $name" --add-entry="DPI:" | {
+
+    response='_ZENITY-CANCEL-VALUE_'
+
+    while read -r line
+    do
+
+      # Sometimes, Gtk throws warnings to pester developers about using their APIs.
+      # This results in garbage that users of those developers' products
+      # must deal with, so we must filter it out, here...
+      if ! corgiStartsWithSubstring "$line" 'Gtk-Message'
+      then
+        response="$line"
+        break
+      fi
+
+    done
+
+    if [ "$response" = '_ZENITY-CANCEL-VALUE_' ]
+    then
+      exit 0
+    else
+ 
+      if [ -z "$response" ]
+      then
+        exit 0
+      else
+        setScreenDpi "$name" "$response"
+      fi
+
+    fi
+
+  }
+
+}
+
+
+# Prompts the user with a dialog, with which they can provide details used to set the panning for a display.
+#
+# $1 - string, required, the name used to identifiy the display for which the panning is being set
+#      for which the DPI is being set, used purely for display purposes
+# $2 - string, optional, the name used to identify the display set as primary (if one is set)
+promptUserForDisplayPanning() {
+
+  panningWidth=0
+  panningHeight=0
+  panningOffsetX=0
+  panningOffsetY=0
+  trackingWidth=0
+  trackingHeight=0
+  trackingOffsetX=0
+  trackingOffsetY=0
+  borderTop=0
+  borderBottom=0
+  borderLeft=0
+  borderRight=0
+
+  name="$1"
+  primaryName="$2"
+
+  zenity --forms --title="Set Panning For $name" --text="Set panning, tracking, and border for '$name'" \
+  --add-entry="Panning Width:" --add-entry="Panning Height:" --add-entry="Panning Offset X:" --add-entry="Panning Offset Y:" \
+  --add-entry="Tracking Width:" --add-entry="Tracking Height:" --add-entry="Tracking Offset X:" --add-entry="Tracking Offset Y:" \
+  --add-entry="Border Top:" --add-entry="Border Bottom:" --add-entry="Border Left:" --add-entry="Border Right:" | {
+
+    response='_ZENITY-CANCEL-VALUE_'
+
+    while read -r line
+    do
+
+      # Sometimes, Gtk throws warnings to pester developers about using their APIs.
+      # This results in garbage that users of those developers' products
+      # must deal with, so we must filter it out, here...
+      if ! corgiStartsWithSubstring "$line" 'Gtk-Message'
+      then
+        response="$line"
+        break
+      fi
+
+    done
+
+    if [ "$response" = '_ZENITY-CANCEL-VALUE_' ]
+    then
+      exit 0
+    else
+ 
+      if [ -z "$response" ]
+      then
+        exit 0
+      else
+
+        response="$response|"
+        count=0
+
+        while corgiHasSubstring "$response" '|'
+        do
+
+          value="`corgiFetchSubstringBefore "$response" '|' 'first'`"
+
+          if [ ! -z "$value" ]
+          then
+
+            case $count in
+              0) panningWidth=$value ;;
+              1) panningHeight=$value ;;
+              2) panningOffsetX=$value ;;
+              3) panningOffsetY=$value ;;
+              4) trackingWidth=$value ;;
+              5) trackingHeight=$value ;;
+              6) trackingOffsetX=$value ;;
+              7) trackingOffsetY=$value ;;
+              8) borderTop=$value ;;
+              9) borderBottom=$value ;;
+              10) borderLeft=$value ;;
+              11) borderRight=$value ;;
+            esac
+
+          fi 
+
+          response="`corgiFetchSubstringAfter "$response" '|' 'first'`"
+          count=$(($count + 1))
+
+        done
+
+        panning="$panningWidth"'x'"$panningHeight"'+'"$panningOffsetX"'+'"$panningOffsetY"'/'"$trackingWidth"'x'"$trackingHeight"'+'"$trackingOffsetX"'+'"$trackingOffsetY"'/'"$borderLeft"'/'"$borderTop"'/'"$borderRight"'/'"$borderBottom"
+
+        setDisplayPanning "$name" "$panning" "$primaryName"
+
+      fi
+
+      exit $?
+
+    fi
+
+    exit $?
+
+  }
+
+}
+
+
+# Prompts the user with a dialog, with which they can provide their desired display scale factor.
+#
+# $1 - string, required, the name used to identifiy the display for which the scale is being set
+promptUserForDisplayScale() {
+
+  name="$1"
+
+  zenity --forms --title="Set scale For $name" --text="Set scale For $name" --add-entry="X:" --add-entry="Y:" | {
+
+    response='_ZENITY-CANCEL-VALUE_'
+
+    while read -r line
+    do
+
+      # Sometimes, Gtk throws warnings to pester developers about using their APIs.
+      # This results in garbage that users of those developers' products
+      # must deal with, so we must filter it out, here...
+      if ! corgiStartsWithSubstring "$line" 'Gtk-Message'
+      then
+        response="$line"
+        break
+      fi
+
+    done
+
+    if [ "$response" = '_ZENITY-CANCEL-VALUE_' ]
+    then
+      exit 0
+    else
+ 
+      if [ -z "$response" ]
+      then
+        exit 0
+      else
+
+        scaleX="`corgiFetchSubstringBefore "$response" '|'`"
+        scaleY="`corgiFetchSubstringAfter "$response" '|'`"
+
+        setDisplayScale "$name" "$scaleX" "$scaleY"
+
+      fi
+
+    fi
+
+  }
+
+}
+
+
+# Sets the screen DPI.
+#
+# $1 - string, required (may be empty), the name used to identifiy the screen, 
+#      for which the DPI is being set, used purely for display purposes
+# $2 - number, required, the desired DPI setting
+setScreenDpi() {
+
+  name="$1"
+  dpi="$2"
+
+  xrandr --dpi $dpi 2>&1 | {
+
+    response=''
+
+    while read -r line
+    do
+      response="$line"
+      break
+    done
+
+    if [ -z "$response" ]
+    then
+      response="DPI for $name is now $dpi"
+    fi
+
+    notify-send "$response"
+    exit $?
+
+  }
+
+  exit $?  
+
+}
+
+
+# Sets the specified display as primary.
+#
+# $1 - string, required, the name used to identifiy the display being set as primary
+makeDisplayPrimary() {
+
+  name="$1"
+
+  xrandr --output $name --primary 2>&1 | {
+
+    response=''
+
+    while read -r line
+    do
+      response="$line"
+      break
+    done
+
+    if [ -z "$response" ]
+    then
+      response="Display '$name' is now primary."
+    fi
+
+    notify-send "$response"
+    exit $?
+
+  }
+
+  exit $?
+
+}
+
+
+# Changes the position of the specified display relative to the specified adjacent display.
+#
+# $1 - string, required, the name used to identifiy the display for which the position is being changed 
+# $2 - string, required, the axis on which the specified display is being moved - options are "x" and "y" (defaults to "x")
+# $3 - string, required, the desired position of the display, relative to the adjacent display - 
+#      options are "above" and "below" (used with "x" axis option), or "left" and "right" (used with "y" axis option)
+#      (defaults to "left")
+# $4 - string, required, the name used to identifiy the adjacent display, to which the positional change is relative
+# $5 - string, optional, the name used to identify the display set as primary (if one is set)
+moveDisplay() {
+
+  name="$1"
+  axis="$2"
+  adjacency="$3"
+  adjacentTo="$4"
+  primaryName="$5"
+
+  moveDisplayCommand="xrandr --output $name --left-of $adjacentTo"
+
+  if [ "$axis" = 'y' ]
+  then
+
+    moveDisplayCommand="xrandr --output $name --above $adjacentTo"
+
+    if [ "$adjacency" = 'below' ]
+    then
+      moveDisplayCommand="xrandr --output $name --below $adjacentTo"
+    fi
+
+  fi
+
+  if [ "$adjacency" = 'right' ]
+  then
+    moveDisplayCommand="xrandr --output $name --right-of $adjacentTo"
+  fi
+
+  # Prevent xrandr from segfaulting with Nvidia Optimus,
+  # which sometimes returns null when setting position of a non-primary display,
+  # when a primary is present, on multi-display setups,
+  # by temporarily swapping the primary...
+
+  if [ ! -z "$primaryName" ]
+  then
+
+    swapPrimaryCommand="xrandr --output $name --primary"
+
+    if [ "$name" = "$primaryName" ]
+    then
+      swapPrimaryCommand="xrandr --output $adjacentTo --primary"  
+    fi
+
+    $swapPrimaryCommand && {
+
+      $moveDisplayCommand 2>&1 | {
+
+        response=''
+
+        while read -r line
+        do
+          response="$line"
+          break
+        done
+
+        if [ -z "$response" ]
+        then
+
+          if [ "$adjacency" = 'left' ] || [ "$adjacency" = 'right' ]
+          then
+            adjacency="$adjacency of"
+          fi
+ 
+          response="Moved display $name $adjacency $adjacentTo"
+
+        fi
+
+        xrandr --output $primaryName --primary
+        notify-send "$response"
+        exit $?
+
+      }
+
+    }
+
+  else
+
+    $moveDisplayCommand 2>&1 | {
+
+      response=''
+
+      while read -r line
+      do
+        response="$line"
+        break
+      done
+
+      if [ -z "$response" ]
+      then
+
+        if [ "$adjacency" = 'left' ] || [ "$adjacency" = 'right' ]
+        then
+          adjacency="$adjacency of"
+        fi
+ 
+        response="Display '$name' is now $adjacency '$adjacentTo'"
+
+      fi
+
+      notify-send "$response"
+      exit $?
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Sets the panning for the specified display.
+#
+# $1 - string, required, the name used to identifiy the display for which the panning is being set
+# $2 - string, required, the desired display panning
+# $3 - string, optional, the name used to identify the display set as primary (if one is set)
+setDisplayPanning() {
+
+  name="$1"
+  panning="$2"
+  primaryName="$3"
+
+  setPanningCommand="xrandr --output $name --panning $panning"
+
+  # Prevent xrandr from segfaulting with Nvidia Optimus,
+  # which sometimes returns null when setting the resolution on a non-primary display,
+  # when a primary is present, on multi-display setups,
+  # by temporarily swapping the primary...
+
+  if [ ! -z "$primaryName" ] && [ "$name" != "$primaryName" ]
+  then
+
+    xrandr --output $name --primary && {
+
+      $setPanningCommand 2>&1 | {
+
+        response=''
+
+        while read -r line
+        do
+          response="$line"
+          break
+        done
+
+        if [ -z "$response" ]
+        then
+          response="Panning for display '$name' is now $panning"
+        fi
+
+        xrandr --output $primaryName --primary
+        notify-send "$response"
+        exit $?
+
+      }
+
+    }
+
+  else
+
+    $setPanningCommand 2>&1 | {
+
+      response=''
+
+      while read -r line
+      do
+        response="$line"
+        break
+      done
+
+      if [ -z "$response" ]
+      then
+        response="Panning cleared for display '$name'"
+      fi
+
+      notify-send "$response"
+      exit $?
+
+    }
+
+  fi
+
+  exit $?
+
+}
+
+
+# Sets the resolution for the specified display.
+#
+# $1 - string, required, the name used to identifiy the display for which the resolution is being set
+# $2 - string, required, the desired display resolution
+# $3 - string, optional, the name used to identify the display set as primary (if one is set)
+setDisplayResolution() {
+
+  name="$1"
+  resolution="$2"
+  primaryName="$3"
+
+  setResolutionCommand="xrandr --output $name --mode $resolution"
+
+  # Prevent xrandr from segfaulting with Nvidia Optimus,
+  # which sometimes returns null when setting the resolution on a non-primary display,
+  # when a primary is present, on multi-display setups,
+  # by temporarily swapping the primary...
+
+  if [ ! -z "$primaryName" ] && [ "$name" != "$primaryName" ]
+  then
+
+    xrandr --output $name --primary && {
+
+      $setResolutionCommand 2>&1 | {
+
+        response=''
+
+        while read -r line
+        do
+          response="$line"
+          break
+        done
+
+        if [ -z "$response" ]
+        then
+          response="Resolution for display '$name' is now $resolution"
+        fi
+
+        xrandr --output $primaryName --primary
+        notify-send "$response"
+        exit $?
+
+      }
+
+    }
+
+  else
+
+    $setResolutionCommand 2>&1 | {
+
+      response=''
+
+      while read -r line
+      do
+        response="$line"
+        break
+      done
+
+      if [ -z "$response" ]
+      then
+        response="Resolution for display '$name' is now $resolution"
+      fi
+
+      notify-send "$response"
+      exit $?
+
+    } 
+
+  fi
+
+  exit $?
+
+}
+
+
+# Sets the scale factor for the specified display.
+#
+# $1 - string, required, the name used to identifiy the display for which the scale is being set
+# $2 - string, required, the horizontal scale factor
+# $3 - string, required, the vertical scale factor
+setDisplayScale() {
+
+  scale='1x1'
+
+  name="$1"
+  scaleX="$2"
+  scaleY="$3"
+
+  if [ -z "$scaleY" ]
+  then
+    scaleY="$scaleX"
+  fi
+
+  scale="$scaleX"'x'"$scaleY"
+
+  xrandr --output $name --scale $scale 2>&1 | {
+
+    response=''
+
+    while read -r line
+    do
+      response="$line"
+      break
+    done
+
+    if [ -z "$response" ]
+    then
+      response="Scale for dsiplay '$name' is now $scale"
+    fi
+
+    notify-send "$response"
+    exit $?
+
+  }
+
+  exit $?  
+
+}
+
+
+setDisplaysImpl() {
+
+  orderedConnectionNames=''
+  orderedConnectionResolutionsX=''
+  orderedConnectionResolutionsY=''
+
+  preconfiguredConnectionNames=''
+  preconfiguredConnectionResolutions=''
+
+  connectionNames=''
+  connectionResolutions=''
+
+  screenResX=0
+  screenResY=0
+
+  expectedArgCount=5
+
+  preconfiguredConnections="$1"
+  primaryConnectionName="$2"
+  dpi=$3
+  compensateForPrimePanning=$4
+
+  if [ ! -z "$preconfiguredConnections" ]
+  then
+
+    preconfiguredConnections="$preconfiguredConnections$connectionDataDelimiter"
+
+    while corgiHasSubstring "$preconfiguredConnections" $connectionDataDelimiter
+    do
+
+      connectionName="`corgiFetchSubstringBefore "$preconfiguredConnections" $connectionDataDelimiter 'first'`"
+      connectionName="`corgiTrimWhiteSpace "$connectionName"`"
+      connectionRes="$corgiNoBone"
+
+      if corgiHasSubstring "$connectionName" ':'
+      then
+
+        requestedRes="`corgiFetchSubstringAfter "$connectionName" ':'`"
+        requestedRes="`corgiTrimWhiteSpace "$requestedRes"`"
+        connectionName="`corgiFetchSubstringBefore "$connectionName" ':'`"
+        connectionName="`corgiTrimWhiteSpace "$connectionName"`"
+
+        if connectionHasResolution "$connectionName" "$requestedRes"
+        then
+          connectionRes="$requestedRes"  
+        fi
+
+      fi
+
+      if connectionIsActive "$connectionName"
+      then
+        preconfiguredConnectionNames="$preconfiguredConnectionNames$connectionName$connectionDataDelimiter"
+        preconfiguredConnectionResolutions="$preconfiguredConnectionResolutions$connectionRes$connectionDataDelimiter"
+      fi
+
+      preconfiguredConnections="`corgiFetchSubstringAfter "$preconfiguredConnections" $connectionDataDelimiter 'first'`"
+
+    done
+
+  fi
+
+  xrandr --query | grep ' connected' | {
+
+    while read -r line
+    do
+      connectionName="`corgiFetchSubstringBefore "$line" ' ' 'first'`"
+      connectionNames="$connectionNames$connectionName$connectionDataDelimiter"
+    done
+
+    xrandr --query | grep '+' | {
+
+      while read -r line
+      do
+
+        if ! corgiHasSubstring "$line" 'connected'
+        then
+          preferredRes="`corgiTrimWhiteSpace "$line"`"
+          preferredRes="`corgiFetchSubstringBefore "$preferredRes" ' ' 'first'`"
+          preferredResX=`corgiFetchSubstringBefore "$preferredRes" 'x'`
+          preferredResY=`corgiFetchSubstringAfter "$preferredRes" 'x'`
+          connectionResolutions="$connectionResolutions$preferredRes$connectionDataDelimiter"
+        fi
+
+      done
+
+      while corgiHasSubstring "$preconfiguredConnectionNames" $connectionDataDelimiter
+      do
+
+        connectionName="`corgiFetchSubstringBefore "$preconfiguredConnectionNames" $connectionDataDelimiter 'first'`"
+        connectionRes="`corgiFetchSubstringBefore "$preconfiguredConnectionResolutions" $connectionDataDelimiter 'first'`"
+
+        if [ "$connectionRes" = "$corgiNoBone" ]
+        then
+
+          connectionNamesToCheck="$connectionNames"
+          connectionResolutionsToCheck="$connectionResolutions"
+
+          while corgiHasSubstring "$connectionNamesToCheck" $connectionDataDelimiter
+          do
+
+            connectionNameToCheck="`corgiFetchSubstringBefore "$connectionNamesToCheck" $connectionDataDelimiter 'first'`"
+
+            if [ "$connectionNameToCheck" = "$connectionName" ]
+            then
+              connectionRes="`corgiFetchSubstringBefore "$connectionResolutionsToCheck" $connectionDataDelimiter 'first'`"
+              break
+            fi
+
+            connectionNamesToCheck="`corgiFetchSubstringAfter "$connectionNamesToCheck" $connectionDataDelimiter 'first'`"
+            connectionResolutionsToCheck="`corgiFetchSubstringAfter "$connectionResolutionsToCheck" $connectionDataDelimiter 'first'`"
+
+          done
+
+        fi
+
+        connectionResX=`corgiFetchSubstringBefore "$connectionRes" 'x'`
+        connectionResY=`corgiFetchSubstringAfter "$connectionRes" 'x'`
+
+        orderedConnectionNames="$orderedConnectionNames$connectionName$connectionDataDelimiter"
+        orderedConnectionResolutionsX="$orderedConnectionResolutionsX$connectionResX$connectionDataDelimiter"
+        orderedConnectionResolutionsY="$orderedConnectionResolutionsY$connectionResY$connectionDataDelimiter"
+
+        screenResX=$(($screenResX + $connectionResX))
+          
+        if [ $connectionResY -gt $screenResY ]
+        then
+          screenResY=$connectionResY
+        fi
+
+        preconfiguredConnectionNames="`corgiFetchSubstringAfter "$preconfiguredConnectionNames" $connectionDataDelimiter 'first'`"
+        preconfiguredConnectionResolutions="`corgiFetchSubstringAfter "$preconfiguredConnectionResolutions" $connectionDataDelimiter 'first'`"
+
+      done
+
+      while corgiHasSubstring "$connectionNames" $connectionDataDelimiter
+      do
+
+        connectionName="`corgiFetchSubstringBefore "$connectionNames" $connectionDataDelimiter 'first'`"
+        connectionRes="`corgiFetchSubstringBefore "$connectionResolutions" $connectionDataDelimiter 'first'`"
+        hasPreconfigured=false
+        
+        connectionNamesToCheck="$orderedConnectionNames"
+
+        while corgiHasSubstring "$connectionNamesToCheck" $connectionDataDelimiter
+        do
+
+          connectionNameToCheck="`corgiFetchSubstringBefore "$connectionNamesToCheck" $connectionDataDelimiter 'first'`"
+
+          if [ "$connectionNameToCheck" = "$connectionName" ]
+          then
+            hasPreconfigured=true
+            break
+          fi
+
+          connectionNamesToCheck="`corgiFetchSubstringAfter "$connectionNamesToCheck" $connectionDataDelimiter 'first'`"
+
+        done
+
+        if [ $hasPreconfigured = false ]
+        then
+
+          connectionResX=`corgiFetchSubstringBefore "$connectionRes" 'x'`
+          connectionResY=`corgiFetchSubstringAfter "$connectionRes" 'x'`
+
+          orderedConnectionNames="$orderedConnectionNames$connectionName$connectionDataDelimiter"
+          orderedConnectionResolutionsX="$orderedConnectionResolutionsX$connectionResX$connectionDataDelimiter"
+          orderedConnectionResolutionsY="$orderedConnectionResolutionsY$connectionResY$connectionDataDelimiter"
+
+          screenResX=$(($screenResX + $connectionResX))
+          
+          if [ $connectionResY -gt $screenResY ]
+          then
+            screenResY=$connectionResY
+          fi
+
+        fi
+
+        connectionNames="`corgiFetchSubstringAfter "$connectionNames" $connectionDataDelimiter 'first'`"
+        connectionResolutions="`corgiFetchSubstringAfter "$connectionResolutions" $connectionDataDelimiter 'first'`"
+
+      done
+
+      screenRes=$screenResX'x'$screenResY
+      xrandrCommand="xrandr --auto"
+
+      if [ ! -z "$dpi" ] && [ $dpi -gt 0 ]
+      then
+        xrandrCommand="$xrandrCommand --dpi $dpi"
+      fi
+
+      $xrandrCommand && {
+
+        positionX=0
+
+        while corgiHasSubstring "$orderedConnectionNames" $connectionDataDelimiter
+        do
+	
+          connectionName="`corgiFetchSubstringBefore "$orderedConnectionNames" $connectionDataDelimiter 'first'`"
+          connectionResX="`corgiFetchSubstringBefore "$orderedConnectionResolutionsX" $connectionDataDelimiter 'first'`"
+          connectionResY="`corgiFetchSubstringBefore "$orderedConnectionResolutionsY" $connectionDataDelimiter 'first'`"
+
+          mode=$connectionResX'x'$connectionResY
+          position=$positionX'x0'
+
+          setResolutionCommand="xrandr --output $connectionName --mode $mode --pos $position"
+
+          if [ $compensateForPrimePanning = true ] && connectionSupportsPanning "$connectionName"
+          then
+
+            border='0/0/0/0'
+
+            if [ $positionX -eq 0 ]
+            then
+
+              border=$(($screenResX - $connectionResX))
+              border='0/0/-'$border'/0'
+
+            elif [ $(($screenResX - $positionX)) -eq $connectionResX ]
+            then
+
+              border=$(($screenResX - $connectionResX))
+              border='-'$border'/0/0/0'
+
+            else
+
+              border=$(($screenResX - $connectionResX))
+              border=$(($border - $positionX))
+              border='-'$positionX'/0/-'$border'/0'
+
+            fi
+
+            panning=$screenRes'+0+0/'$screenRes'+0+0/'$border
+            setResolutionCommand="$setResolutionCommand --panning $panning"
+
+          fi
+
+          $setResolutionCommand
+
+          positionX=$(($positionX + $connectionResX))
+  
+          orderedConnectionNames="`corgiFetchSubstringAfter "$orderedConnectionNames" $connectionDataDelimiter 'first'`"
+          orderedConnectionResolutionsX="`corgiFetchSubstringAfter "$orderedConnectionResolutionsX" $connectionDataDelimiter 'first'`"
+          orderedConnectionResolutionsY="`corgiFetchSubstringAfter "$orderedConnectionResolutionsY" $connectionDataDelimiter 'first'`"
+
+        done
+
+        if [ ! -z "$primaryConnectionName" ] && connectionIsActive "$primaryConnectionName"
+        then
+
+          xrandr --output "$connectionName" --primary && {
+            echo "success"
+            exit 0
+          }
+
+        fi
+
+        echo "success"
+        exit 0
+
+      }
+
+      exit $?
+
+    }
+
+    exit $?
+
+  }
+
+  exit $?
+
+}
+
+
+parseSetDisplays() {
+
+  setCheck=''
+  expectedArgCount=7
+
+  preconfiguredConnections="$1"
+  primaryConnectionName="$2"
+  dpi=$3
+  useReversePrimeProvider=$4
+  useReversePrimeSource=$5
+  compensateForPrimePanning=$6
+  callback=$7
+
+  if [ ! -z "$useReversePrimeProvider" ] && [ ! -z "$useReversePrimeSource" ]
+  then
+
+    if [ $useReversePrimeProvider = true ]
+    then
+      useReversePrimeProvider="modesetting"
+    fi
+
+    if [ $useReversePrimeSource = true ]
+    then
+      useReversePrimeSource="NVIDIA-0"
+    fi
+
+    if [ -z "$compensateForPrimePanning" ] || [ $compensateForPrimePanning != true ]
+    then
+      compensateForPrimePanning=false
+    fi
+
+    setCheck="`xrandr --setprovideroutputsource $useReversePrimeProvider $useReversePrimeSource && setDisplaysImpl "$preconfiguredConnections" "$primaryConnectionName" $dpi $compensateForPrimePanning`"
+
+  else
+    setCheck="`setDisplaysImpl "$preconfiguredConnections" "$primaryConnectionName" $dpi false`"
+  fi
+
+  if [ $? -eq 0 ] && [ ! -z "$callback" ]
+  then
+
+    for idx in `seq 1 $expectedArgCount`
+    do
+      shift
+    done
+
+    $callback "$@"
+
+  fi
+
+  exit $?
+
+}
+
+
+# Sets the positions for the specified displays, as well as which is primary, by way of an ordered, 
+# comma-delimited string of connection names and the name of the primary. Also sets provider and source for
+# Reverse PRIME GPU configuration. In the case of Nvidia Reverse PRIME support, automates compensating
+# for Nvidia's panning, across external displays, when a laptop is being used. 
+# (In such a scenario, Nvidia applies the total of ALL display widths to the external displays, 
+#  to include that of the internal display, which results in on the external displays, 
+#  with the internal display's content included in the panned content- 
+#  by providing a simple boolean, this function will eliminate that issue.)
+#
+# This functioon also supports a callback, to be triggered upon completion of the function.
+#
+# (This is a convenience method for #parseSetDisplays(), using #corgiParseShellRequest())
+# @SEE #parseSetDisplays()
+# @SEE corgi-posix-core.shlib > #corgiParseShellRequest()
+#
+setDisplays() {
+  corgiParseShellRequest parseSetDisplays 'connections,primary,dpi,useReversePrimeProvider,useReversPrimeSource,compensateForPrimePanning,callback' "$@"
+  exit $?
+}
+
+
+# Sets brightness for a display controlled by the provided brightness interface.
+#
+# $1 - string, required, the brightness setting option
+#      options are down (decreases current brightness by 10% of the maximum available),
+#      up (increases current brightness by 10% of the maximum available),
+#      arbitrary (sets current brightness to a supplied amount between the minimum and the maximum available),
+#      percentage (sets current brightness to a supplied percentage of the maximum available),
+#      off (sets current brightness to zero),
+#      min (sets current brightness to the minimum available (normally zero)),
+#      low (sets current brightness to 25% of the maximum available),
+#      less (sets current brightness to 30% of the maximum available),
+#      half (sets current brightness to 50% of the maximum available),
+#      more (sets current brightness to 60% of the maximum available),
+#      high (sets current brightness to 75% of the maximum available),
+#      max (sets current brightness to the maximum available),
+#      --get-current (echo the current brightness),
+#      --get-max (echo the maximum available brightness)
+# $2 (if arg $1 is NOT one of 'arbitrary' or 'percentage') - 
+#      string, required, the name of the interface with which brightness is set
+#      options are normally one of acpi_video0, intel_backlight, etc.
+# $2 (if arg $1 is 'arbitrary') -  number, required, between the minimum and maximum brightness for the provided interface
+# $2 (if arg $2 is 'percentage') - number, required, representing a percentage (0 to 100)
+# $3 (ONLY if either 'arbitrary' or 'percentage' are supplied) - 
+#      string, required, the name of the interface with which brightness is set
+#      options are normally one of acpi_video0, intel_backlight, etc.
+setDisplayBrightnessImpl() {
+
+  argCount=$#
+
+  # Set, ultimately, by the executed method's exit code 
+  # (usually, this is a call to echo, to update the backlight file)
+  # Assume failure, until proven otherwise
+  exitStatus=1
+  
+  # Set this if the location of your backlight interface is not /sys/class/backlight
+  interfacePath='/sys/class/backlight'
+  
+  if [ ! -e "$interfacePath" ]
+  then
+  	echo "(corgi-displays-management.shlib): could not find path to brightness interface \"$interfacePath\". Exiting..."
+    exit $exitStatus
+  fi
+  
+  # Set this if you want minimum brightness to be something other than zero
+  minBrightness=0
+
+  # Set this if you want more or fewer possible levels of brightness
+  steps=10
+
+  interface='acpi_video0' 
+
+  option=$1
+  amount=""
+  
+  if [ $argCount -eq 2 ]
+  then
+    interface="$2"
+  elif [ $argCount -eq 3 ]
+  then
+    amount=$2
+    interface="$3"
+  fi
+  
+  if [ -z "$interface" ]
+  then 
+    amount='acpi_video0'
+  fi
+  
+  # Variables set from those defined above...
+
+  interface="$interfacePath/$interface"
+  
+  if [ ! -e "$interface" ]
+  then
+  	echo "(corgi-displays-management.shlib): Could not find brightness interface \"$interface\". Exiting..."
+    exit $exitStatus
+  fi  
+  
+  brightness="$interface/brightness"
+  currentBrightness=`cat $brightness`
+  maxBrightness=`cat $interface/max_brightness`
+  step=$(($maxBrightness/steps))
+  
+  if [ -z "$amount" ]
+  then 
+    amount=$maxBrightness
+  fi
+
+  case "$option" in
+
+    'down')
+   
+      nextStep=$(($currentBrightness - $step))
+  
+      if [ $nextStep -gt $minBrightness ]
+      then
+        echo $nextStep > $brightness
+      else
+        echo $minBrightness > $brightness
+      fi
+
+      result=$?     
+
+    ;;
+
+    'up')
+  
+      nextStep=$(($currentBrightness + $step))
+  
+      if [ $nextStep -lt $maxBrightness ]
+      then
+        echo $nextStep > $brightness
+      else
+        echo $maxBrightness > $brightness
+      fi
+
+      result=$?
+    
+    ;;
+
+    'arbitrary') 
+
+      if [ $amount -ge 0 ] && [ $amount -lt $maxBrightness ]
+      then
+        echo $amount > $brightness
+        result=$?
+      else
+        echo "ERROR (corgi-backlight-screen): arbitrary $amount is outside of range of 0 to $maxBrightness"
+        logger "ERROR (corgi-backlight-screen): arbitrary $amount is outside of range of 0 to $maxBrightness"        
+      fi
+
+    ;;
+    
+    'percentage') 
+
+      if [ $amount -ge 0 ] && [ $amount -le 100 ]
+      then
+        amount="`echo $amount 100 $maxBrightness | awk '{printf "%.0f", (($1/$2)*$3)}'`"
+        echo $amount > $brightness
+        result=$?
+      else
+        echo "ERROR (corgi-backlight-screen): percentage $amount is outside the range of 0 to 100"
+        logger "ERROR (corgi-backlight-screen): percentage $amount is outside the range of 0 to 100"        
+      fi
+
+    ;;
+
+    'off')
+      echo 0 > $brightness 
+      result=$?
+    ;;
+
+    'min') 
+      echo $minBrightness > $brightness 
+      result=$?
+    ;;
+
+    'low')
+      nextStep=$(($maxBrightness / 4))
+      echo $nextStep > $brightness
+      result=$?
+    ;;
+
+    'less')
+      nextStep=$(($maxBrightness / 3))
+      echo $nextStep > $brightness
+      result=$?
+    ;;
+
+    'half')
+      nextStep=$(($maxBrightness / 2))
+      echo $nextStep > $brightness
+      result=$?
+    ;;
+
+    'more')
+      nextStep=$(($maxBrightness - ($maxBrightness / 3)))
+      echo $nextStep > $brightness
+      result=$?
+    ;;
+
+    'high')
+      nextStep=$(($maxBrightness - ($maxBrightness / 4)))
+      echo $nextStep > $brightness
+      result=$?
+    ;;
+
+    'max')
+      echo $maxBrightness > $brightness 
+      result=$?
+    ;;
+    
+    '--get-current')
+      echo "$maxBrightness"
+      result=0
+    ;;
+  
+    '--get-max')
+      echo "$maxBrightness" 
+      result=0
+    ;;
+  
+    # Standard help response
+    *)
+
+      echo ""    
+      echo "corgi-backight-screen - accepts one of the following arguments:"
+      echo""
+      echo "help, --help, -h  (Displays this help dialog)"
+      echo "--get-max         (Displays a message with the maximum brightness available for your display)"
+      echo "down              (Decrease brightness by $((100 / $steps))%)"
+      echo "up                (Increase brightness by $((100 / $steps))%)"
+      echo "arbitrary         (Set brightness to the value provided as a second argument)"
+      echo "percentage        (Set brightness to the percentage provided as a second argument)"
+      echo "off               (Set brightness to zero)"
+      echo "min               (Set brightness to minimum (zero, by default - minimum variable can be edited in the script)"
+      echo "low               (Set brightness to 25% of maximum)"
+      echo "less              (Set brightness to 30% of maximum)"
+      echo "half              (Set brightness to 50% of maximum)"
+      echo "more              (Set brightness to 60% of maximum)"
+      echo "high              (Set brightness to 75% of maximum)"
+      echo "max               (Set brightness to maximum available (which, for YOUR built-in display, is $maxBrightness))"
+      echo ""
+
+      result=0
+
+    ;;
+
+  esac
+
+  exit $exitStatus
+
+}
+
+
+# Sets brightness for a display controlled by the provided brightness interface.
+# (This is a convenience method for #setDisplayBrightnessImpl(), using #corgiParseShellRequest())
+# @SEE #setDisplayBrightnessImpl()
+# @SEE corgi-posix-core.shlib > #corgiParseShellRequest()
+#
+setDisplayBrightness() {
+  corgiParseShellRequest setDisplayBrightnessImpl 'option,amount,interface' "$@"
+  exit $?
+}

@@ -8,7 +8,7 @@ URxvt*iconFile: /usr/share/icons/Papirus/64x64/apps/terminal.svg
 ! appearance
 URxvt*depth:            32
 !URxvt*background:      rgba:0000/0000/0000/AAAA
-URxvt*background:      [97]#1F2326
+URxvt*background:      [90]#1F2326
 !URxvt*background:       [100]#1d1f21
 !URxvt*foreground: 		                #c0b18b
 !URxvt.underlineColor:   #4682B4

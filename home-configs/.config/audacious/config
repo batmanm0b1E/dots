@@ -15,13 +15,13 @@ record=FALSE
 about_win=0,573,582,408
 close_dialog_add=TRUE
 filebrowser_win=4013,651,672,480
-filesel_path=/home/dobbie/Music/Music/H/Hooded Menace
-info_win=4127,827,643,426
+filesel_path=/home/dobbie/Music/Music/M
+info_win=3962,801,643,426
 no_confirm_playlist_delete=TRUE
-playlist_export_win=759,339,800,600
+playlist_export_win=736,154,1919,1040
 playlist_import_win=860,386,840,630
 playlist_path=file:///home/dobbie/Music
-url_opener_win=4673,1028,384,89
+url_opener_win=4673,1028,384,72
 
 [globalHotkey]
 Hotkey_0_event=0
@@ -64,14 +64,14 @@ NumHotkeys=4
 
 [gtkui]
 close_button_visible=FALSE
-column_widths=10,275,302,44,224,175,32,100,51,77,275,275,275,10,275
+column_widths=10,275,210,44,224,175,32,100,51,54,275,275,275,10,275
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 menu_visible=FALSE
-player_height=894
-player_width=882
-player_x=4836
-player_y=192
+player_height=902
+player_width=888
+player_x=5660
+player_y=214
 playlist_columns=track title artist album length year
 playlist_headers=FALSE
 playlist_tabs_visible=FALSE
