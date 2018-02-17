@@ -52,7 +52,7 @@ filebrowser.showicons 1
 filebrowser.sidebar_width 220
 filebrowser.sort_treeview 1
 filebrowser.treelines 0
-filechooser.lastdir file:///run/media/dobbie/Music/G/Gnaw%20Their%20Tongues
+filechooser.lastdir file:///run/media/dobbie/Music/W/Wolves%20In%20The%20Throne%20Room
 gtkui.action_separators 1
 gtkui.autoresize_columns 1
 gtkui.color.bar_background 34952 35466 34181
@@ -86,7 +86,7 @@ gtkui.font.listview_group_text San Francisco Display Bold 8
 gtkui.font.listview_text San Francisco Display 8
 gtkui.font.tabstrip_text San Francisco Display 8
 gtkui.hide_remove_from_disk 1
-gtkui.hide_tray_icon 1
+gtkui.hide_tray_icon 0
 gtkui.italic_current_track 0
 gtkui.layout.0.6.2 vsplitter pos=0 locked=0 {placeholder {} vsplitter pos=71 locked=0 {waveform_seekbar {} hsplitter pos=640 locked=0 {vsplitter pos=641 locked=0 {coverart {} vsplitter pos=39 locked=0 {hsplitter pos=295 locked=1 {customizable_toolbar layout="stop|0|media-playback-stop,play|0|media-playback-start,toggle_pause|0|media-playback-pause,prev|0|media-skip-backward,next|0|media-skip-forward,add_files|0|window-maximize,add_folders|0|folder-new,toggle_menu|0|preferences-other" {} volumebar {} } musical_spectrum {} } } tabbed_playlist hideheaders=0 width=1362 {} } } } 
 gtkui.mmb_delete_playlist 0
@@ -166,8 +166,8 @@ lastfm.submit_tiny_tracks 1
 mainwin.geometry.h 896
 mainwin.geometry.maximized 0
 mainwin.geometry.w 2003
-mainwin.geometry.x 5640
-mainwin.geometry.y 188
+mainwin.geometry.x 4481
+mainwin.geometry.y 934
 mp3.id3v1_encoding iso8859-1
 mp3.id3v2_version 3
 mp3.write_id3v1 1
@@ -224,7 +224,7 @@ notify.format_title_tf %title%
 output_plugin ALSA output plugin
 playback.loop 0
 playback.order 0
-playback.volume -14.27165
+playback.volume -12.27165
 playlist.current 7
 playlist.cursor.0 2090
 playlist.cursor.1 1592
@@ -233,12 +233,12 @@ playlist.cursor.11 5
 playlist.cursor.12 501
 playlist.cursor.13 2643
 playlist.cursor.14 13
-playlist.cursor.2 5953
+playlist.cursor.2 13850
 playlist.cursor.3 0
 playlist.cursor.4 1051
 playlist.cursor.5 641
 playlist.cursor.6 811
-playlist.cursor.7 1075
+playlist.cursor.7 27
 playlist.cursor.8 10
 playlist.cursor.9 0
 playlist.pin.groups 1
@@ -249,12 +249,12 @@ playlist.scroll.11 0
 playlist.scroll.12 17637
 playlist.scroll.13 95120
 playlist.scroll.14 87
-playlist.scroll.2 502139
+playlist.scroll.2 503259
 playlist.scroll.3 0
 playlist.scroll.4 0
 playlist.scroll.5 24825
 playlist.scroll.6 0
-playlist.scroll.7 38819
+playlist.scroll.7 737
 playlist.scroll.8 0
 playlist.scroll.9 0
 playlist.scroll.cursorfollowplayback 1
@@ -282,10 +282,10 @@ prefwin.geometry.x 2050
 prefwin.geometry.y 981
 replaygain_mode 2
 replaygain_scale 1
-resume.paused 1
-resume.playlist 7
-resume.position 28.792865
-resume.track 1075
+resume.paused 0
+resume.playlist 2
+resume.position 180.99856
+resume.track 13850
 resume_last_session 1
 rgscan.num_threads 0
 rgscan.target 89.0
