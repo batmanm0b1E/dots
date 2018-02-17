@@ -1,0 +1,1785 @@
+**** BEGIN LOGGING AT Tue Feb  6 12:17:57 2018
+
+Feb 06 12:17:57 *	Now talking on #archlabslinux-team
+Feb 06 12:17:57 *	livingstone.freenode.net sets mode +n on #archlabslinux-team
+Feb 06 12:17:57 *	livingstone.freenode.net sets mode +s on #archlabslinux-team
+Feb 06 12:18:15 *	iDanoo (~idanoo@unaffiliated/idanoo) has joined
+Feb 06 12:18:21 <iDanoo>	can I get op? :)
+Feb 06 12:18:29 *	unix121 (~unix121@78-35-160.adsl.cyta.gr) has joined
+Feb 06 12:18:34 <dobbie>	Yup, how do I do it?
+Feb 06 12:18:43 <iDanoo>	just /op idanoo
+Feb 06 12:18:51 <unix121>	idanoo can do it for you don't worry :P
+Feb 06 12:19:02 *	dobbie gives channel operator status to iDanoo
+Feb 06 12:19:08 *	ChanServ sets mode -s on #archlabslinux-team
+Feb 06 12:19:08 *	ChanServ sets mode +t on #archlabslinux-team
+Feb 06 12:19:08 *	ChanServ sets mode +c on #archlabslinux-team
+Feb 06 12:19:11 *	dobbie gives channel operator status to unix121
+Feb 06 12:19:33 <dobbie>	schweet
+Feb 06 12:19:36 <unix121>	It'
+Feb 06 12:19:47 *	ChanServ removes channel operator status from dobbie
+Feb 06 12:19:48 <unix121>	It's been a while since I last used IRC, it feels so good
+Feb 06 12:19:58 <dobbie>	how come I olst my op?
+Feb 06 12:20:01 <dobbie>	lost
+Feb 06 12:20:12 <dobbie>	its been a long while since I used irc
+Feb 06 12:20:18 *	unix121 gives channel operator status to dobbie
+Feb 06 12:20:26 <dobbie>	cheers Stav
+Feb 06 12:20:37 <unix121>	you should register your account on free node
+Feb 06 12:20:55 <unix121>	"/msg NickServ REGISTER password youremail@example.com"
+Feb 06 12:21:09 <dobbie>	can i do this in this room?
+Feb 06 12:21:11 <unix121>	where "password" is your password and email is your mail obviously
+Feb 06 12:21:27 <unix121>	mhm just click on freenode if you are on Hexchat and do it from there
+Feb 06 12:21:41 <unix121>	but it should work from here as well
+Feb 06 12:22:01 <iDanoo>	yeah definitely
+Feb 06 12:22:09 <iDanoo>	msg is a global command, will be sweet
+Feb 06 12:22:32 <dobbie>	all done, I was alrady registered/
+Feb 06 12:22:50 <unix121>	oh great man
+Feb 06 12:22:55 <unix121>	the rest should join here as well
+Feb 06 12:22:57 <dobbie>	now stupid question, will I automatically login when I start hexchat?
+Feb 06 12:23:06 <unix121>	it's annoying that you can't pin a post on Hangouts to let everyone know
+Feb 06 12:23:19 <unix121>	depends on how you set it
+Feb 06 12:23:26 <iDanoo>	You might need to /msg nickserv identify <pass>
+Feb 06 12:23:35 <unix121>	brb
+Feb 06 12:23:54 *	unix121 has quit (Quit: Leaving)
+Feb 06 12:25:00 *	unix121 (~unix121@78.87.35.160) has joined
+Feb 06 12:25:10 <dobbie>	okay cool
+Feb 06 12:25:14 <unix121>	nice
+Feb 06 12:25:51 <dobbie>	I pinned a post at the G+ community
+Feb 06 12:26:00 <iDanoo>	Awesome
+Feb 06 12:26:04 *	iDanoo gives voice to unix121
+Feb 06 12:26:32 <unix121>	I think you should add it on the AL website, that there is now a general AL irc channel
+Feb 06 12:27:00 <dobbie>	Doing that now...
+Feb 06 12:27:32 <unix121>	great. It's also possible to add an IRC client on the ISO that auto connects to the channel for live assistance with installation etc
+Feb 06 12:27:51 <unix121>	most distros do it cause it's easy way to get live assitance
+Feb 06 12:28:14 <dobbie>	We need Nate here for this....Nate? Nate?
+Feb 06 12:29:13 *	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-uiloilipuhtwzcbd) has joined
+Feb 06 12:29:16 *	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-uiloilipuhtwzcbd) has left ("User left")
+Feb 06 12:29:44 <dobbie>	Who is matrixbridge?
+Feb 06 12:30:15 <unix121>	That's actually easy, you add the dinary of the chat on the live ISO and you add the channel you want to auto enter on the config file.
+Feb 06 12:30:22 <iDanoo>	  I'll be back in 10
+Feb 06 12:30:22 <unix121>	It's basically a 5 minute job :P
+Feb 06 12:30:25 <unix121>	sure
+Feb 06 12:31:02 <unix121>	@dobbie there are some bots in IRC
+Feb 06 12:31:06 <dobbie>	Larry wants to know if we have bridging available? How do we enable it?
+Feb 06 12:31:47 <unix121>	Bridging, meaning?
+Feb 06 12:31:59 <dobbie>	No idea.....
+Feb 06 12:32:20 <unix121>	mhmm
+**** ENDING LOGGING AT Tue Feb  6 12:32:59 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 12:32:59 2018
+
+Feb 06 12:34:21 <dobbie>	back later on chaps
+Feb 06 12:35:59 *	sqamsqam (65649b81@gateway/web/freenode/ip.101.100.155.129) has joined
+Feb 06 12:36:09 <sqamsqam>	o/
+Feb 06 12:36:13 <unix121>	Is that you Larry?
+Feb 06 12:36:22 <sqamsqam>	nah
+Feb 06 12:36:24 <sqamsqam>	sam
+Feb 06 12:36:36 <sqamsqam>	guy that hosts the forum
+Feb 06 12:36:38 <unix121>	oh great
+Feb 06 12:36:46 <sqamsqam>	brb making food
+Feb 06 12:38:51 *	iDanoo gives voice to sqamsqam
+Feb 06 12:38:54 <iDanoo>	are you registered sqamsqam ?
+Feb 06 12:41:29 <iDanoo>	heh there's a cool addon for weechat
+Feb 06 12:41:40 <iDanoo>	I can basically run shell commands and it outputs it into weechat
+Feb 06 12:41:46 <dobbie>	whats that addon?
+Feb 06 12:44:36 <iDanoo>	Linux intersect 4.14.15-1-ARCH #1 SMP PREEMPT Tue Jan 23 21:49:25 UTC 2018 x86_64 GNU/Linux
+Feb 06 12:44:38 <iDanoo>	heh
+Feb 06 12:44:57 <iDanoo>	wonder what else I can pipe in
+Feb 06 12:44:58 <dobbie>	@sam, I received an email from Softaculous, is this the installed WP site?
+Feb 06 12:46:55 <dobbie>	back soon gents, I haven't set up irc on my phone yet so get me on telegram/hangouts
+Feb 06 12:50:35 <sqamsqam>	iDanoo: nah not on freenode. might ave an account from ages ago
+Feb 06 12:52:14 <sqamsqam>	iDanoo: how do you auth on frenode
+Feb 06 12:52:46 <unix121>	"/msg NickServ REGISTER password youremail@example.com"
+Feb 06 12:53:03 <unix121>	whenre password is your password and youremail@.. your email
+Feb 06 12:54:22 *	ChanServ removes voice from sqamsqam
+Feb 06 12:55:52 *	smoke (~smoke@S01061cabc0afc263.ok.shawcable.net) has joined
+Feb 06 12:56:12 <sqamsqam>	ok registerd
+Feb 06 12:56:35 <smoke>	haha, fuck me people go through all that just to chat
+Feb 06 12:56:38 <smoke>	XD
+Feb 06 12:57:24 <unix121>	For me it was a 1 minute job :P
+Feb 06 12:57:39 <smoke>	ya, but cmon, you're pro
+Feb 06 12:58:24 <iDanoo>	hahaha
+Feb 06 12:58:30 *	iDanoo gives voice to sqamsqam
+Feb 06 12:58:32 *	iDanoo gives voice to smoke
+Feb 06 13:02:42 <unix121>	I added an a pinned post on the subreddit to push people to use #archlabslinux for fast assistance
+Feb 06 13:03:19 *	avnsgt[m] (avnsgtmatr@gateway/shell/matrix.org/x-vmvdhjvdwujswouf) has joined
+Feb 06 13:03:31 <avnsgt[m]>	Hello team mates
+Feb 06 13:03:55 <unix121>	Hello sir
+Feb 06 13:04:28 <avnsgt[m]>	g2g with Riot connections.
+Feb 06 13:05:49 <unix121>	One step closer to completely removing Google from my life lol
+Feb 06 13:06:37 <avnsgt[m]>	awesome
+Feb 06 13:07:26 <avnsgt[m]>	Good old reliable IRC. Never fails.
+Feb 06 13:07:46 <unix121>	Yeap, IRC and XMPP are awesome
+Feb 06 13:07:50 <smoke>	haha, my first time ever touching IRC
+Feb 06 13:09:28 <iDanoo>	It's amazing
+Feb 06 13:09:34 <unix121>	you're gonna love it
+Feb 06 13:09:38 <avnsgt[m]>	One of the best tools ever created.
+Feb 06 13:10:53 <unix121>	hangouts used to slow my browser a lot
+Feb 06 13:11:04 <unix121>	hexchat is so lightweight
+Feb 06 13:11:20 <iDanoo>	If you're into CLI shoudl checkout weechat
+Feb 06 13:11:48 <iDanoo>	https://imgur.com/a/4bhE8
+Feb 06 13:12:15 <avnsgt[m]>	Btw, I just read about the adoption of the system wide freenode bot, by freenode. So, that makes it much easier. No more manual configuring the bot bridging. :)
+Feb 06 13:12:21 <iDanoo>	Ah that's awesome
+Feb 06 13:12:59 <avnsgt[m]>	Love weechat.
+Feb 06 13:14:21 <unix121>	I'm gonna try it right away
+Feb 06 13:14:56 <avnsgt[m]>	It is great, and highly customizable. So, take some time with it.
+Feb 06 13:15:12 <avnsgt[m]>	Esp if you like to work with tmux or screen.
+Feb 06 13:16:12 <unix121>	tmux is my favorite part of linux :P
+Feb 06 13:19:04 <unix121>	wow weechat has a huge amount of features lol
+Feb 06 13:19:05 <unix121>	nice
+Feb 06 13:19:21 <avnsgt[m]>	Yep.
+Feb 06 13:20:07 <avnsgt[m]>	And, a buddy of mine kind of got me started on Riot. I think the two of them together are sweet.
+Feb 06 13:20:46 <avnsgt[m]>	Riot when in the GUI, and weechat in the CLI. 😆
+Feb 06 13:21:03 <iDanoo>	might need to try it out
+Feb 06 13:22:54 <unix121>	I'm still trying to figure out weechat :P
+Feb 06 13:28:39 <smoke>	same
+Feb 06 13:28:58 <smoke>	fucking lost XD
+Feb 06 13:29:38 <iDanoo>	Haha it takes a bit
+Feb 06 13:29:54 <iDanoo>	but you can just setup a connection like /server add freenode irc.freenode.net/6697 -ssl -autoconnect
+Feb 06 13:29:57 <iDanoo>	then /connect freenode
+Feb 06 13:30:10 <iDanoo>	there's heeeaps of cool things
+Feb 06 13:30:28 <unix121>	my basic problem is that when I connect to freenode it auto-changes my nickname to unix121_
+Feb 06 13:30:30 <unix121>	:P
+Feb 06 13:30:58 <smoke>	you can set the list of default nicknames it uses
+Feb 06 13:31:06 <smoke>	I figured that out
+Feb 06 13:31:16 <iDanoo>	yeah theres heaps of stuff you can do
+Feb 06 13:31:19 <smoke>	but cant figure out scrolling the bloody screen :P
+Feb 06 13:31:29 <unix121>	I've already done that, but as soon as I connect to freenode it changes it to the second one :P
+Feb 06 13:31:48 <unix121>	pageup and down work just fine :P
+Feb 06 13:32:03 <smoke>	oh god, thatnk you
+Feb 06 13:33:42 <avnsgt[m]>	Imagine working on a Macbook without the pg up and down keys. Having to learn Macbook shortcuts for them. That was annoying.
+Feb 06 13:33:53 *	unix121 has quit (Quit: Leaving)
+Feb 06 13:33:58 <smoke>	no
+Feb 06 13:34:02 <smoke>	just no
+Feb 06 13:34:34 *	unix121 (~unix121@78-35-160.adsl.cyta.gr) has joined
+Feb 06 13:34:50 *	unix121_ (~unix121@78-35-160.adsl.cyta.gr) has joined
+Feb 06 13:35:08 *	unix121_ has quit (Quit: WeeChat 2.0.1)
+Feb 06 13:35:28 <unix121>	That's interesting, it still doesn't connect me throught weechat lol
+Feb 06 13:35:39 *	sqamsqam has quit (Ping timeout: 260 seconds)
+Feb 06 13:35:47 <smoke>	rip
+Feb 06 13:36:23 <avnsgt[m]>	You might have the config slight off. I know I made that mistake the first time or two.
+Feb 06 13:38:06 <unix121>	The thing is that althought I've configured my freenode username to be unix121 , when I /connect freenode it auto changes it to unix121_ :P
+Feb 06 13:38:20 <unix121>	so I cannot enter my password for unix121 :P
+Feb 06 13:38:40 <unix121>	oh wait i might have found a solution
+Feb 06 13:38:50 <smoke>	I didnt do any of that
+Feb 06 13:38:51 <avnsgt[m]>	k
+Feb 06 13:38:51 *	ofperfection (~ofperfect@2600:380:701f:2c2f:25c1:dadc:2258:93b7) has joined
+Feb 06 13:39:55 <unix121>	ornot :P
+Feb 06 13:39:59 <iDanoo>	It looks like you already had a connection under unix121
+Feb 06 13:40:03 <iDanoo>	so it uses the alt unix131_
+Feb 06 13:40:04 <smoke>	haha
+Feb 06 13:40:18 <unix121>	Oh please don't tell me I'm that stupid holy fuck.
+Feb 06 13:40:18 *	unix121 has quit (Quit: Leaving)
+Feb 06 13:40:28 <iDanoo>	hahahahahah
+Feb 06 13:40:33 <avnsgt[m]>	lol
+Feb 06 13:40:58 *	unix121 (~unix121@78-35-160.adsl.cyta.gr) has joined
+Feb 06 13:41:05 <unix121>	YEAH I AM THAT STUPID LOL
+Feb 06 13:41:07 <iDanoo>	Welcome back unix121 ;)
+Feb 06 13:41:25 *	avnsgt[m] Hello
+Feb 06 13:42:14 <avnsgt[m]>	Now. I have to remember all the special commands for IRC.
+Feb 06 13:42:41 <unix121>	Tab swapping on weechat is awesome :P I like navigating with commands
+Feb 06 13:42:48 *	avnsgt[m] slaps dobbie with a wet seabass.
+Feb 06 13:42:58 <iDanoo>	alt + a goes to next active tab
+Feb 06 13:43:24 <unix121>	I already have alt assigned to switch workspaces
+Feb 06 13:43:32 <unix121>	so I set it other keybind
+Feb 06 13:43:48 <unix121>	Weechat : 158 MB used. Beat that skype lol
+Feb 06 13:45:33 <avnsgt[m]>	lol
+Feb 06 13:45:58 <avnsgt[m]>	Not sure too many programs can... iriss.
+Feb 06 13:46:41 <iDanoo>	irssi?
+Feb 06 13:46:52 <avnsgt[m]>	Think I spelled that wrong.
+Feb 06 13:46:52 <iDanoo>	158mb is still a bit
+Feb 06 13:46:53 <avnsgt[m]>	lol
+Feb 06 13:47:02 <avnsgt[m]>	irssi
+Feb 06 13:47:04 <iDanoo>	oh 195mb here :\
+Feb 06 13:47:31 <smoke>	yea
+Feb 06 13:47:36 <smoke>	wass gonna say
+Feb 06 13:47:49 <smoke>	150megs kinda seems excessive
+Feb 06 13:48:00 <smoke>	tis the future
+Feb 06 13:48:21 <smoke>	where a simple text chat application can consume gigabyes of memory
+Feb 06 13:48:25 <smoke>	:P
+Feb 06 13:48:45 <iDanoo>	I wonder what's actually using that much memory haha
+Feb 06 13:48:47 <iDanoo>	Probably chat buffers
+Feb 06 13:49:53 <smoke>	yea
+Feb 06 13:49:58 <smoke>	lol
+Feb 06 13:50:05 <smoke>	0.2% of memory
+Feb 06 13:50:15 <smoke>	'seems excessive'
+Feb 06 13:51:05 <smoke>	mines using around 32MB
+Feb 06 13:51:15 <unix121>	ncmpcpp uses more memory than weechat :P
+Feb 06 13:51:16 <smoke>	0.2% of 16G
+Feb 06 13:51:38 <smoke>	You must have a literal shit ton of buffers my dude
+Feb 06 13:51:43 <smoke>	:P
+Feb 06 13:51:48 <avnsgt[m]>	That is a drop in the bucket.
+Feb 06 13:51:53 <smoke>	yea
+Feb 06 13:52:20 <unix121>	let me check
+Feb 06 13:52:31 *	unix121 has quit (Quit: WeeChat 2.0.1)
+Feb 06 13:53:19 *	unix121 (~unix121@78-35-160.adsl.cyta.gr) has joined
+Feb 06 13:53:22 <iDanoo>	oooh ncmpcpp is pretty cool
+Feb 06 13:53:32 <iDanoo>	I used to use it with spotify for awhile
+Feb 06 13:53:43 <unix121>	ok now it uses ~70 mb
+Feb 06 13:53:59 <avnsgt[m]>	Kind of disappointed that Geekshed.net has not jump on to Riot, by adding a bot too.
+Feb 06 13:54:02 <smoke>	yea, thats more like it
+Feb 06 13:54:12 <unix121>	I only use ncmpcpp for music for the past year+ , it's the most lightweight thing ever
+Feb 06 13:55:32 <unix121>	So, I'm gonna order 2x custom keycaps for my mech from maxkeyboards to replace the windows key
+Feb 06 13:55:54 <unix121>	I'm either gonna go with the Linux Tux or the AL Logo cause it's fucking cool lol
+Feb 06 13:56:46 <avnsgt[m]>	Really, where are ordering those from? I want to get rid of these hideous windows superkeys.
+Feb 06 13:56:47 <avnsgt[m]>	lol
+Feb 06 13:57:29 <unix121>	maxkeyboards man
+Feb 06 13:57:45 <unix121>	they give you the option to order either full custom keycap set or like as many keys as you like
+Feb 06 13:57:55 <avnsgt[m]>	Yeah.. I just seen that.
+Feb 06 13:57:58 <unix121>	I'll just replace the windows key because I kate the logo
+Feb 06 13:58:01 <unix121>	hate*
+Feb 06 13:58:04 <avnsgt[m]>	Feel dumb. lol
+Feb 06 13:58:20 <unix121>	I'm looking for the white/silver AL logo svg on the repos but I can't find it
+Feb 06 13:58:30 <unix121>	to put this on the keycap
+Feb 06 13:59:33 <avnsgt[m]>	Well, I have cut into my fun time.. Time for some Bloodborne..
+Feb 06 13:59:37 <avnsgt[m]>	have fun.
+Feb 06 14:00:17 <unix121>	have fun mate
+Feb 06 14:01:05 <ofperfection>	AL logo keys would be neat.
+Feb 06 14:01:42 <ofperfection>	I've been waffling on what I want on a key, leaning towards getting a set of Vim arrow/letter keycaps
+Feb 06 14:01:45 <unix121>	The silver one is gonna look great with the white backlight on my keyboad
+Feb 06 14:02:08 <unix121>	There was a drop on massdrop a while ago with VIM related keycaps
+Feb 06 14:02:19 <unix121>	I was so sad that I didn' thave the money to join that drop
+Feb 06 14:02:40 <unix121>	Greek capital controls have fucked me over
+Feb 06 14:02:54 <ofperfection>	I don't think I know what that is
+Feb 06 14:03:18 <unix121>	Because as known Greece is a corrupted country and now we are forced to pay money to Germans
+Feb 06 14:03:25 <unix121>	there are some capital controls in effect till August
+Feb 06 14:03:43 <unix121>	like , you can't withdrawl over 340euros / day from ATM
+Feb 06 14:03:49 <ofperfection>	Oooh
+Feb 06 14:04:11 <unix121>	and you can't buy from international shops using your Visa etc
+Feb 06 14:04:13 <ofperfection>	Thought you were talking about capital letters and the ctrl key
+Feb 06 14:04:17 <unix121>	unless the bank approves the sale
+Feb 06 14:04:19 <ofperfection>	Geez
+Feb 06 14:04:24 <unix121>	and don't approve anything
+Feb 06 14:04:39 <unix121>	I wanted to sell my Dash when Dash reached 1600 euros
+Feb 06 14:04:47 <unix121>	and I couldn't because of the capital control
+Feb 06 14:04:50 <ofperfection>	I'll have to look into those specifics
+Feb 06 14:05:07 <unix121>	yeah man, it's fucking stupid :/
+Feb 06 14:05:20 <unix121>	At least it's over in August :P It's already been 2 years that they are in effect
+Feb 06 14:09:14 <ofperfection>	Hopefully they find a solution with their creditors out there
+Feb 06 14:09:36 <iDanoo>	oh wow
+Feb 06 14:10:18 <unix121>	They'll never do it.
+Feb 06 14:10:42 <unix121>	Greece has sold the national TV , the national telecommunication (OTE) to Germany
+Feb 06 14:10:58 <unix121>	and now it's about to sell the National Power Provider to repay
+Feb 06 14:11:14 <ofperfection>	Is that better than austerity
+Feb 06 14:11:27 <unix121>	Which means that basically 3 of the basic utilities that everyone has will be payed to German companies instead of Greek
+Feb 06 14:11:44 <iDanoo>	Wow
+Feb 06 14:11:48 <iDanoo>	I had no idea it was that bad.
+Feb 06 14:11:52 <unix121>	So basically Greece will never revover the financial hole that the previous politicians dug
+Feb 06 14:12:20 <unix121>	Yeah man, Greek Politicians + Orthodox Church destroyed the country
+Feb 06 14:15:02 <iDanoo>	 Anyway
+Feb 06 14:15:04 <iDanoo>	I'll be back later
+Feb 06 14:15:07 <iDanoo>	gotta get some work done haha
+Feb 06 14:15:49 <unix121>	sure man , see you later
+Feb 06 14:16:56 <iDanoo>	seeya
+Feb 06 14:29:56 *	ofperfection (~ofperfect@2600:380:701f:2c2f:25c1:dadc:2258:93b7) has left ("liteIRC for Android")
+Feb 06 14:46:59 *	ofperfection (~ofperfect@2600:380:701f:2c2f:25c1:dadc:2258:93b7) has joined
+Feb 06 14:53:49 <dobbie>	Hello?
+Feb 06 14:55:03 <unix121>	Hey
+Feb 06 14:55:12 <dobbie>	Hey mate
+Feb 06 14:55:59 <ofperfection>	Yo
+Feb 06 14:56:11 <unix121>	Oh by the way, who are you ofperf?
+Feb 06 14:56:36 <ofperfection>	In what context
+Feb 06 14:57:00 <dobbie>	ofperf = Shaun
+Feb 06 14:57:10 <dobbie>	he's helping with the webpage alongside Dan and Sam
+Feb 06 14:57:12 <unix121>	Oh ok, cause I know everyone by name and not nickname :P
+Feb 06 14:58:00 <dobbie>	:)
+Feb 06 14:58:32 <dobbie>	oh man, still no Linux update for Larry
+Feb 06 14:59:44 <unix121>	I added a pinned post on the subreddit to push people to join #archlabslinux for general questions and assistance
+Feb 06 15:01:36 <dobbie>	Good stuff, I added one at G+ :)
+Feb 06 15:01:38 *	ofperfection has quit (Ping timeout: 276 seconds)
+Feb 06 15:03:19 <unix121>	I think I might stay awake tonigh
+Feb 06 15:03:36 <unix121>	It's 04:03 here already and I literally have to wake up in 8 hours.
+Feb 06 15:04:50 *	ofperfection (~eldrazi@68-119-3-39.dhcp.unas.wa.charter.com) has joined
+Feb 06 15:04:51 <unix121>	I mean at 08:00
+Feb 06 15:05:02 <unix121>	So I'll probably not sleep again lol
+Feb 06 15:06:04 <ofperfection>	sorry, I dropped for a minute there
+Feb 06 15:06:12 <ofperfection>	I'm Sean!
+Feb 06 15:06:33 <dobbie>	Oh Shit, I meant Sean not Shaun....sorry man!
+Feb 06 15:06:50 <ofperfection>	all good
+Feb 06 15:07:00 <unix121>	I guess that they both sound the same :P
+Feb 06 15:07:07 <ofperfection>	Yes they do
+Feb 06 15:07:25 <unix121>	When are you from ? I see you timed out cause of high ping (276)
+Feb 06 15:07:35 <ofperfection>	WA state
+Feb 06 15:07:45 <ofperfection>	I was on mobile, and when I got back to the house my phone grabbed the wifi and it took a shit
+Feb 06 15:07:50 <ofperfection>	(USA)
+Feb 06 15:08:31 <unix121>	Oh from Amurica!
+Feb 06 15:08:36 <ofperfection>	M U R C A
+Feb 06 15:09:44 <unix121>	I know a guy from MURCA who lives very close to the Canada borders, next to a forrest full of wasps
+Feb 06 15:09:49 <unix121>	America must suck lol
+Feb 06 15:10:02 <ofperfection>	I was born in Texas
+Feb 06 15:10:11 <ofperfection>	the wasp biodiversity there is fuckin incredible
+Feb 06 15:10:20 <ofperfection>	these canadian border wasps ain't shit
+Feb 06 15:11:09 <unix121>	He was half American half Greek, so he was in Greece for Summer, missing for like 2 months from america
+Feb 06 15:11:22 <unix121>	and he comes back to USA, and the wasps had raided his home
+Feb 06 15:11:35 <ofperfection>	lol
+Feb 06 15:11:42 <unix121>	he sent a pic which a huge wasp nest inside their living room
+Feb 06 15:13:03 <unix121>	I'm basically terrified of everything that qualifies as an insect and has wings
+Feb 06 15:18:57 <ofperfection>	I ain't gonna lie
+Feb 06 15:19:04 <ofperfection>	you gotta stay on top of the wasp nests out here
+Feb 06 15:19:18 <ofperfection>	never had a nest inside tho
+Feb 06 15:19:51 <unix121>	Man if I ever found a wasp next on my home, first thing I'd do would be to burn my home.
+Feb 06 15:19:58 <ofperfection>	geez
+Feb 06 15:20:06 <ofperfection>	I just load up on wasp spray
+Feb 06 15:20:15 <unix121>	Have you read that TIFU of the guy who ignored a weird sound on his roof ?
+Feb 06 15:20:24 <ofperfection>	I don't think so
+Feb 06 15:20:34 <unix121>	The TL;DR version is this:
+Feb 06 15:20:58 <unix121>	Guy ignores for months a weird sound on his roof
+Feb 06 15:21:11 <unix121>	One day comes back home and finds his place FULL of wasps
+Feb 06 15:21:32 <unix121>	The sound that he ignored was Wasps building a huge nest inside his roof
+Feb 06 15:21:50 <ofperfection>	I have a tennis racquet with a nine volt in it
+Feb 06 15:22:00 <unix121>	and the nest got so huge that the roof couldn't hold it, so it fell down, throught the ceiling into the living room and broke
+Feb 06 15:22:04 <ofperfection>	I used to sit on my porch swing and swat the wasps out of the sky
+Feb 06 15:22:23 <unix121>	I always wanted to do that :P I've only done it with flies
+Feb 06 15:22:34 <ofperfection>	yeah it's nice because wasps are much easier to hit
+Feb 06 15:22:41 <unix121>	and the other flies that have the light on them :P ( don't know the english word for them )
+Feb 06 15:22:47 <ofperfection>	fireflies
+Feb 06 15:22:50 <unix121>	Oh yeah
+Feb 06 15:23:13 <unix121>	but I hoped that hitting them with it, it would make their light stronger before they die :P
+Feb 06 15:23:16 <unix121>	but it didn't xD
+Feb 06 15:23:19 <unix121>	I was a kid :P
+Feb 06 15:23:44 <ofperfection>	lol
+Feb 06 15:24:04 <ofperfection>	in the NW of WA here the bugs aren't too bad
+Feb 06 15:24:14 <ofperfection>	in Texas though, they were
+Feb 06 15:24:16 <ofperfection>	fire ants
+Feb 06 15:24:26 <ofperfection>	4 colors of wasp
+Feb 06 15:24:30 <ofperfection>	snakes
+Feb 06 15:24:34 <unix121>	Those are the ones that can kill you? (fire ants)
+Feb 06 15:24:43 <ofperfection>	I mean it's technically possible
+Feb 06 15:24:45 <unix121>	Oh no, those are the Army Ants
+Feb 06 15:24:54 <ofperfection>	but usually that'd be an allergy thing
+Feb 06 15:25:30 <ofperfection>	fire ants are aggressive and will swarm you before all biting simultaneously
+Feb 06 15:25:57 <unix121>	lol wtf
+Feb 06 15:26:02 <unix121>	bees do that as well
+Feb 06 15:26:16 <unix121>	they kill other insects by swarming them and killing htem with the heat they create
+Feb 06 15:29:26 <ofperfection>	idk tho I got nothing on the aussies
+Feb 06 15:29:26 <ofperfection>	funnel webs and sea wasps and blue ring octopi and shit
+Feb 06 15:30:23 <unix121>	OH JEEZ
+Feb 06 15:30:29 <unix121>	I googled "funnel web"
+Feb 06 15:30:34 <unix121>	why the fuck did I do that?
+Feb 06 15:31:04 <unix121>	Man I'm glad I live in Greece , we don't have that kind of misscreations here
+Feb 06 15:31:20 <dobbie>	Nothing like that in NZ either
+Feb 06 15:31:22 <ofperfection>	yeah dude Australia is a known center of real fucked up nature
+Feb 06 15:31:54 <dobbie>	Yup
+Feb 06 15:32:12 <ofperfection>	Texas is about as bad as it gets in the US that I can think of
+Feb 06 15:32:16 <unix121>	We have plenty of scorpions here tho
+Feb 06 15:32:22 <ofperfection>	but I'd still take the wildlife there over AUS
+Feb 06 15:33:25 <unix121>	The thing is that spiders are literally fearless
+Feb 06 15:33:40 <ofperfection>	really depends on the spider
+Feb 06 15:33:45 <ofperfection>	Like we've got black widows here
+Feb 06 15:33:51 <ofperfection>	but they will do everything in their power to stay away from you
+Feb 06 15:33:52 <unix121>	THE FUCK
+Feb 06 15:34:03 <ofperfection>	Yeah they used to spook me, but at my first data center
+Feb 06 15:34:09 <ofperfection>	the area was assigned they were EVERY
+Feb 06 15:34:11 <ofperfection>	FUCKING
+Feb 06 15:34:13 <ofperfection>	WHERE
+Feb 06 15:34:15 <ofperfection>	so i got used to them
+Feb 06 15:34:28 <unix121>	I guess it was because of the heat
+Feb 06 15:34:36 <ofperfection>	yeah they used swamp coolers there
+Feb 06 15:34:42 <ofperfection>	so during the winter they drained the coolers
+Feb 06 15:34:42 <unix121>	The love the heat, so data center would be awesome for them
+Feb 06 15:34:49 <ofperfection>	and spiders would set up shop in the nice, warm pods
+Feb 06 15:35:00 <ofperfection>	and they were outdoor individual little pod enclosures
+Feb 06 15:37:04 <unix121>	Worst I've ever come close to was a black scorpion in my garage
+Feb 06 15:37:17 <unix121>	I've never seen an actual big spider
+Feb 06 15:37:33 <unix121>	I bet we don't even have them here :P big hairy spiders ;P
+Feb 06 15:38:02 <ofperfection>	Yeah you'll occasionally see big ones here, but really you'll only see giant nasty ones in the south
+Feb 06 15:38:12 <ofperfection>	tarantulas, wind scorpions, etc.
+Feb 06 15:38:14 <ofperfection>	vinegaroons
+Feb 06 15:38:54 <unix121>	I'll never move into a warm place man.
+Feb 06 15:39:13 <unix121>	I'll move to Norway or something. Have my head clean.
+Feb 06 15:39:42 <ofperfection>	I don't really know where would be my ideal place to live
+Feb 06 15:39:50 <ofperfection>	I really like Singapore
+Feb 06 15:40:11 <ofperfection>	I like hawaii, but I ain't rich
+Feb 06 15:40:35 <unix121>	Singapore has a warm climate right? based on the location
+Feb 06 15:40:40 <ofperfection>	yes
+Feb 06 15:40:43 <ofperfection>	year round tropical
+Feb 06 15:40:49 <ofperfection>	they spray for bugs aggressively
+Feb 06 15:40:55 <ofperfection>	I barely saw any bugs when I was there
+Feb 06 15:41:01 <unix121>	I prefer cold ones. Norway-Finland-Sweden
+Feb 06 15:41:02 <ofperfection>	which is impressive given that the climate is perfect for bugs
+Feb 06 15:41:15 <ofperfection>	I've never gotten to visit Europe :(
+Feb 06 15:41:26 <unix121>	Europe is nice :P
+Feb 06 15:41:48 <unix121>	Spraying for bugs is easy, you can keep them away, what you can't keep away is other actual animals they go there
+Feb 06 15:42:12 <unix121>	In my hometown we used to have a snake problem when I was a kid
+Feb 06 15:42:43 <unix121>	which only went away when the city expanded closer to my area so there was no big field or place for them to live around anymore
+Feb 06 15:53:55 FiSHLiM plugin unloaded
+Feb 06 15:53:55 Python interface unloaded
+**** ENDING LOGGING AT Tue Feb  6 15:53:55 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 15:54:09 2018
+
+Feb 06 15:54:09 *	Now talking on #archlabslinux-team
+**** ENDING LOGGING AT Tue Feb  6 15:54:39 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 15:54:53 2018
+
+Feb 06 15:54:53 *	Now talking on #archlabslinux-team
+Feb 06 15:55:01 *	dobbie_ (~dobbie@2407:7000:9429:4000:75eb:f04b:691d:94ea) has joined
+**** BEGIN LOGGING AT Tue Feb  6 15:55:01 2018
+
+Feb 06 15:55:01 *	Now talking on #archlabslinux-team
+Feb 06 15:57:20 <unix121>	going to sleep for 3 hours to gain some power, see you later guys
+Feb 06 15:57:20 <unix121>	going to sleep for 3 hours to gain some power, see you later guys
+Feb 06 16:00:26 <ofperfection>	later man
+Feb 06 16:00:26 <ofperfection>	later man
+Feb 06 16:06:01 <dobbie_>	later Stav
+Feb 06 16:06:02 <dobbie_>	later Stav
+**** ENDING LOGGING AT Tue Feb  6 16:06:35 2018
+
+Feb 06 16:06:35 *	dobbie_ has quit (Quit: Leaving)
+**** ENDING LOGGING AT Tue Feb  6 16:06:40 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 16:08:22 2018
+
+Feb 06 16:08:22 *	Now talking on #archlabslinux-team
+Feb 06 16:08:36 <dobbie>	Do I lose my op status if I leave a room?
+Feb 06 16:09:17 <avnsgt[m]>	No, the room should rememder the setting for OP status.
+Feb 06 16:10:55 <dobbie>	hmmm weird
+Feb 06 16:12:23 <avnsgt[m]>	If not, IRC has bots that manage rooms, and can set chan ops, ban kick and do other funcitions.
+Feb 06 16:14:10 <dobbie>	am I showing as OP?
+Feb 06 16:14:14 *	#archlabslinux-team :You're not a channel operator
+Feb 06 16:14:52 <avnsgt[m]>	I can't see, as I am bridged into IRC, using Riot. 😇
+Feb 06 16:15:00 <ofperfection>	You're not
+Feb 06 16:15:00 *	iDanoo gives channel operator status to dobbie
+Feb 06 16:15:06 <iDanoo>	dobbie: are you registered?
+Feb 06 16:15:18 <dobbie>	Yup
+Feb 06 16:15:24 <dobbie>	I am sure I am
+Feb 06 16:22:08 *	avnsgt[m] sips on a cool glass of fine ass water.
+Feb 06 16:22:38 <dobbie>	Our water is fucked, its so heavily chlorinated its undrinkable
+Feb 06 16:23:33 <avnsgt[m]>	At least you have water.. Ferds is about to be without running water out in the Cape Town area..
+Feb 06 16:25:02 <dobbie>	Yeah I saw that man, scary scary shit.
+Feb 06 16:25:26 <avnsgt[m]>	So.. Dobbie, what is going to happen with the tapatalk forum?
+Feb 06 16:25:56 <iDanoo>	dobbie: might get you to quit and rejoin soon, just testing auto-OP
+Feb 06 16:26:04 <iDanoo>	in a min tho
+Feb 06 16:26:27 <dobbie>	I have locked it down.  Sticking with the Discourse one there Mr Larry
+Feb 06 16:26:37 <dobbie>	will do Dan, let me know when
+Feb 06 16:26:38 *	ChanServ removes voice from smoke
+Feb 06 16:27:03 <iDanoo>	give it a go now :)
+Feb 06 16:27:29 *	Disconnected ()
+**** ENDING LOGGING AT Tue Feb  6 16:27:29 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 16:33:57 2018
+
+Feb 06 16:33:57 *	Now talking on #archlabslinux-team
+Feb 06 16:34:01 <iDanoo>	wb dobbie
+Feb 06 16:34:07 <dobbie>	I am here
+Feb 06 16:34:09 <avnsgt[m]>	I can't imagine being without something like water, and someone I know will likely be in several weeks. WTF is the world coming too.
+Feb 06 16:34:32 <iDanoo>	Hmm where was that?
+Feb 06 16:34:36 <iDanoo>	I heard somewhere in Aus is going to be fully out of water
+Feb 06 16:34:45 <iDanoo>	damn dobbie didn't work :/
+Feb 06 16:34:50 <dobbie>	South Africa, Cape Town
+Feb 06 16:34:53 <avnsgt[m]>	Cape Town, South Africa.
+Feb 06 16:34:57 <avnsgt[m]>	lol
+Feb 06 16:34:58 <dobbie>	LOL Larry
+Feb 06 16:34:58 <iDanoo>	Ahh Cape Town
+Feb 06 16:35:07 <iDanoo>	I take that back, places in Aus with similar names..
+Feb 06 16:35:30 <iDanoo>	                        │16:34:55  -- | ChanServ (ChanServ@services.): Entry Nickname/Host          Flags
+Feb 06 16:35:32 <iDanoo>	                        │16:34:55  -- | ChanServ (ChanServ@services.): ----- ---------------------- -----
+Feb 06 16:35:34 <iDanoo>	                        │16:34:55  -- | ChanServ (ChanServ@services.): 1     iDanoo                 +AFORefiorstv        (#archlabslinux-team) [modified 8m 6s ago, on Feb 06 03:26:49 2018]
+Feb 06 16:35:36 <iDanoo>	                        │16:34:56  -- | ChanServ (ChanServ@services.): 2     dobbie                 +Oo                  (#archlabslinux-team) [modified 8m 18s ago, on Feb 06 03:26:37 2018]
+Feb 06 16:35:38 <iDanoo>	                        │16:34:56  -- | ChanServ (ChanServ@services.): 3     smoke                  +Vv                  (#archlabslinux-team) [modified 7m 55s ago, on Feb 06 03:27:00 2018]
+Feb 06 16:35:40 <iDanoo>	                        │16:34:56  -- | ChanServ (ChanServ@services.): 4     sqamsqam               +Vv                  (#archlabslinux-team) [modified 6m 54s ago, on Feb 06 03:28:01 2018]
+Feb 06 16:35:42 <iDanoo>	                        │16:34:56  -- | ChanServ (ChanServ@services.): ----- ---------------------- -----
+Feb 06 16:35:44 <iDanoo>	Hmmm you have +oO
+Feb 06 16:35:46 <dobbie>	Yeah scary stuff.  Even the supposed "clean and Green" NZ is not so well off.  Our waterways are fucked
+Feb 06 16:35:47 *	iDanoo gives channel operator status to iDanoo
+Feb 06 16:35:48 *	iDanoo removes channel operator status from iDanoo
+Feb 06 16:36:01 <iDanoo>	oh god
+Feb 06 16:36:03 <iDanoo>	what have I done
+Feb 06 16:36:06 <iDanoo>	I deopped myself haha
+Feb 06 16:36:06 <ofperfection>	lmao
+Feb 06 16:36:23 <dobbie>	hahaha
+Feb 06 16:36:29 *	#archlabslinux-team :You're not a channel operator
+Feb 06 16:36:30 <avnsgt[m]>	opps.
+Feb 06 16:36:32 *	ChanServ gives channel operator status to iDanoo
+Feb 06 16:36:35 <iDanoo>	well there we go
+Feb 06 16:36:37 <dobbie>	lol I tried to OP you
+Feb 06 16:36:49 <dobbie>	I lost my op status :(
+Feb 06 16:36:57 <dobbie>	Maybe I'm not registered?
+Feb 06 16:36:59 <iDanoo>	haha you can /msg chanserv op #archlabslinux-team dobbie
+Feb 06 16:37:01 <iDanoo>	and it should op you
+Feb 06 16:37:10 >chanserv<	op #archlabslinux-team dobbie
+Feb 06 16:37:10 -ChanServ-	You are not authorized to (de)op dobbie on #archlabslinux-team.
+Feb 06 16:37:21 <dobbie>	You are not authorized to (de)op dobbie on #archlabslinux-team
+Feb 06 16:37:26 <iDanoo>	huh od.
+Feb 06 16:37:31 -ChanServ-	You have been opped on #archlabslinux-team by iDanoo
+Feb 06 16:37:31 *	ChanServ gives channel operator status to dobbie
+Feb 06 16:37:32 <dobbie>	yeah this is weird
+Feb 06 16:37:34 <iDanoo>	 /shrug
+Feb 06 16:37:38 <iDanoo>	ill sort it
+Feb 06 16:37:50 <iDanoo>	freenode has a weird op system
+Feb 06 16:37:55 <dobbie>	I just remembered this was one of the reasons I got frustrated with IRC at the begninning
+Feb 06 16:37:57 <iDanoo>	I like servers that have half-op
+Feb 06 16:38:07 <iDanoo>	can kick and stuff but not change any channel settings
+Feb 06 16:38:17 <dobbie>	yeah it is a strange setup
+Feb 06 16:38:51 <iDanoo>	ok lets try something else
+Feb 06 16:38:54 <avnsgt[m]>	At least you have the topic locked.
+Feb 06 16:39:08 *	iDanoo has changed the topic to: Archlabs Linux - Team members
+Feb 06 16:39:12 <iDanoo>	;)
+Feb 06 16:39:21 <avnsgt[m]>	It is funny when anyone can change the topic.
+Feb 06 16:39:32 *	sqamsqam (65649b81@gateway/web/freenode/ip.101.100.155.129) has joined
+Feb 06 16:39:43 <iDanoo>	sup sqamsqam
+Feb 06 16:39:44 <sqamsqam>	back
+Feb 06 16:39:49 <sqamsqam>	connection died...
+Feb 06 16:40:00 <iDanoo>	lol should probably get an unaffiliated cloak
+Feb 06 16:40:02 <iDanoo>	so it doesn't show your IP
+Feb 06 16:40:04 *	ChanServ gives voice to sqamsqam
+Feb 06 16:40:07 <iDanoo>	^ wtf
+Feb 06 16:40:11 <iDanoo>	it worked for him dobbie
+Feb 06 16:40:12 <iDanoo>	hahahaha
+Feb 06 16:40:33 <dobbie>	what the fuck am I stuffing up then I wonder
+Feb 06 16:40:57 *	ChanServ removes channel operator status from dobbie
+Feb 06 16:40:57 *	ChanServ removes voice from smoke avnsgt[m]
+Feb 06 16:41:10 <iDanoo>	umm
+Feb 06 16:41:36 <smoke>	LOL
+Feb 06 16:41:53 <iDanoo>	ok it actually worked
+Feb 06 16:42:03 *	iDanoo gives voice to smoke
+Feb 06 16:42:07 *	iDanoo gives channel operator status to dobbie
+Feb 06 16:42:51 *	avnsgt[m] wants bacon.
+Feb 06 16:44:41 <smoke>	dude
+Feb 06 16:44:44 <smoke>	me too now
+Feb 06 16:45:21 <ofperfection>	k, I'm rebooting into botnet, I'll catch you guys a little later
+Feb 06 16:45:25 <avnsgt[m]>	https://i.pinimg.com/736x/dd/6b/5b/dd6b5b16e488fd8e8db5e360743442b4--funny-shit-funny-stuff.jpg
+Feb 06 16:46:38 *	ofperfection has quit (Quit: WeeChat 2.0.1)
+Feb 06 16:47:06 <iDanoo>	hahaha avnsgt[m]
+Feb 06 16:49:30 <avnsgt[m]>	iDanoo: ikr
+Feb 06 17:36:36 FiSHLiM plugin unloaded
+**** ENDING LOGGING AT Tue Feb  6 17:36:36 2018
+
+**** BEGIN LOGGING AT Tue Feb  6 18:09:53 2018
+
+Feb 06 18:09:53 *	Now talking on #archlabslinux-team
+Feb 06 18:09:53 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 06 18:09:53 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+**** BEGIN LOGGING AT Tue Feb  6 18:10:03 2018
+
+Feb 06 18:10:03 *	Now talking on #archlabslinux-team
+Feb 06 18:10:03 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 06 18:10:03 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 06 18:10:03 *	dobbie_ (~dobbie@2407:7000:9429:4000:75eb:f04b:691d:94ea) has joined
+**** ENDING LOGGING AT Tue Feb  6 18:10:15 2018
+
+Feb 06 18:10:15 *	dobbie_ has quit (Client Quit)
+Feb 06 18:18:58 <dobbie>	Google products are not playing nicely at all today
+Feb 06 18:23:47 <dobbie>	Dan Sam Sean, youguys all here?
+Feb 06 18:24:08 <sqamsqam>	i am. pretty sure dan has gone to bed or something
+Feb 06 18:24:20 <dobbie>	LOL Was it an early morning start?
+Feb 06 18:24:40 <dobbie>	Might be eating dumplings?
+Feb 06 18:28:29 <iDanoo>	Yeah
+Feb 06 18:28:33 <iDanoo>	I'm here
+Feb 06 18:28:42 <iDanoo>	Was just getting ready for bed
+Feb 06 18:28:43 <iDanoo>	hahaha
+Feb 06 18:28:53 <iDanoo>	installing irc on mobile
+Feb 06 18:28:58 <dobbie>	Was it an early start Dan?
+Feb 06 18:29:29 <iDanoo>	yeah up at 530
+Feb 06 18:29:44 <dobbie>	No thanks, 6:30 is just fine for me
+Feb 06 18:31:37 <iDanoo>	Hah yeah
+Feb 06 18:32:58 *	liteIRC_ (~ofperfect@68-119-3-39.dhcp.unas.wa.charter.com) has joined
+Feb 06 18:36:27 <iDanoo>	Cool on mobile now
+Feb 06 18:36:36 <dobbie>	nice!
+Feb 06 18:36:53 <dobbie>	I have a client installed, haven't set it up yet
+Feb 06 18:37:41 <liteIRC_>	K
+Feb 06 18:37:48 <liteIRC_>	Welp
+Feb 06 18:38:07 <dobbie>	I see Sean has had a name change lol
+Feb 06 18:38:40 <liteIRC_>	Yeah need to fix my client for mobile
+Feb 06 18:39:10 <dobbie>	:)
+Feb 06 18:39:14 Usage: QUERY [-nofocus] <nick> [message], opens up a new privmsg window to someone and optionally sends a message
+Feb 06 18:41:02 <sqamsqam>	recomended irc clinet for iOS?
+Feb 06 18:42:06 <dobbie>	Can't help here sorry Sam, on dirty old Android
+Feb 06 18:42:58 <sqamsqam>	iDanoo: how was Quassel?
+Feb 06 18:44:03 <iDanoo>	Shit
+Feb 06 18:44:07 <iDanoo>	Heavy
+Feb 06 18:44:10 <iDanoo>	Front and back end
+Feb 06 18:44:25 <iDanoo>	You gotta run a backend server to connect to
+Feb 06 18:44:27 <iDanoo>	Idk for ios
+Feb 06 18:52:12 *	sqamsqam_ (~samfenton@101.100.155.129) has joined
+Feb 06 18:52:28 <sqamsqam_>	Using mutter on my phone.
+Feb 06 18:52:34 <sqamsqam_>	Seems pretty decent.
+Feb 06 18:52:49 <iDanoo>	Sweet
+Feb 06 18:52:58 <iDanoo>	Yeah I'm using znc as a bouncer
+Feb 06 18:53:10 <sqamsqam_>	Just need to set up znc and connect through that.
+Feb 06 18:57:42 *	sqamsqam_ has quit (Ping timeout: 260 seconds)
+Feb 06 19:02:38 <dobbie>	how do you mention someone directly?
+Feb 06 19:05:55 <iDanoo>	Just @ I think
+Feb 06 19:05:58 <iDanoo>	dobbie:
+Feb 06 19:06:02 <iDanoo>	Oh nah just their nick
+Feb 06 19:06:19 <dobbie>	got ya, cheers @iDanoo
+Feb 06 19:06:23 <dobbie>	work?
+Feb 06 19:07:11 <iDanoo>	Hmm not sure if I can get tags on mobile
+Feb 06 19:07:15 <iDanoo>	Let me take a look
+Feb 06 19:08:34 <dobbie>	sweet
+Feb 06 19:08:42 <iDanoo>	Try now?
+Feb 06 19:08:54 <dobbie>	@iDanoo
+Feb 06 19:09:08 *	sqamsqam_ (~samfenton@101.100.155.129) has joined
+Feb 06 19:09:35 *	liteIRC_ (~ofperfect@68-119-3-39.dhcp.unas.wa.charter.com) has left ("liteIRC for Android")
+Feb 06 19:10:29 <iDanoo>	Nope
+Feb 06 19:10:34 <iDanoo>	Try without the @ this time
+Feb 06 19:10:36 <dobbie>	ah fuck 
+Feb 06 19:10:38 <dobbie>	hmmm
+Feb 06 19:10:39 <iDanoo>	Now :)
+Feb 06 19:10:43 <dobbie>	idanoo
+Feb 06 19:10:49 Usage: QUERY [-nofocus] <nick> [message], opens up a new privmsg window to someone and optionally sends a message
+Feb 06 19:10:54 <iDanoo>	Yep
+Feb 06 19:10:58 <dobbie>	ah cool
+Feb 06 19:10:59 <iDanoo>	That worked haha
+Feb 06 19:11:05 <dobbie>	nice thanks!
+Feb 06 19:11:15 <iDanoo>	I needed to test this one anyway
+Feb 06 19:11:21 <dobbie>	lol
+Feb 06 19:12:04 *	ofperfection (~ofperfect@68-119-3-39.dhcp.unas.wa.charter.com) has joined
+Feb 06 19:15:07 <dobbie>	What the hell? Its the middle of summer and the Southern Alps had fresh snow today...
+Feb 06 19:25:27 *	sqamsqam_ has quit (Ping timeout: 240 seconds)
+Feb 06 19:29:31 <iDanoo>	Wow
+Feb 06 19:30:31 *	sqamsqam__ (~samfenton@101.100.155.129) has joined
+Feb 06 19:31:59 <dobbie>	LOL funny, so the forum has decided it will now use the Void Linux forum favicon instead of the ArchLabs one
+Feb 06 19:33:57 <dobbie>	Well in my Firefox at least
+Feb 06 19:40:16 *	sqamsqam__ has quit (Remote host closed the connection)
+Feb 06 19:50:23 <dobbie>	iDanoo, that mirror of yours man....updating is the best
+Feb 06 19:51:34 <iDanoo>	Haha you're using it? Sweet
+Feb 06 19:51:54 <iDanoo>	It just does a git pull every 10min. So should always be up to date
+Feb 06 19:52:13 <dobbie>	Oh yeah man its great.  I was in a state of panic while your server was down
+Feb 06 19:52:23 <iDanoo>	Haha at least it should fall back!
+Feb 06 19:52:38 <iDanoo>	Yeah never figured out what killed it
+Feb 06 19:52:47 <iDanoo>	But all new hardware now. Well new used hardware
+Feb 06 19:52:56 <dobbie>	Nice1
+Feb 06 19:53:37 <iDanoo>	Oh well I need to get some sleep I'll be back on in the morning
+Feb 06 19:53:38 <iDanoo>	Night all
+Feb 06 19:53:57 <dobbie>	Catch ya Dan
+Feb 06 19:56:53 <sqamsqam>	cya
+Feb 06 20:02:59 <dobbie>	I'm out too dudes, see ya
+Feb 06 20:07:25 FiSHLiM plugin unloaded
+Feb 06 20:07:26 Python interface unloaded
+**** ENDING LOGGING AT Tue Feb  6 20:07:26 2018
+
+**** BEGIN LOGGING AT Wed Feb  7 17:40:02 2018
+
+Feb 07 17:40:02 *	Now talking on #archlabslinux-team
+Feb 07 17:40:02 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 07 17:40:02 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 07 17:40:02 *	ChanServ gives channel operator status to dobbie
+Feb 07 17:42:10 <dobbie>	WHats happening fellows?
+Feb 07 18:06:54 <iDanoo>	 not much haha
+Feb 07 18:06:58 <iDanoo>	just cleaning
+Feb 07 18:07:01 <iDanoo>	house inspection tomorrow damnit
+Feb 07 18:07:05 <dobbie>	Sounds like fun
+Feb 07 18:07:15 <iDanoo>	Yeah first one, moved in end of dec
+Feb 07 18:07:34 <dobbie>	Joys of owning your own home....you dont get inspections
+Feb 07 18:07:41 <iDanoo>	Yeeeah that'll be in the next few years hopefully
+Feb 07 18:07:53 <iDanoo>	I mean.. finally moved out of parents garage at 26
+Feb 07 18:07:55 <iDanoo>	with a 5 year old kid haha
+Feb 07 18:07:58 <iDanoo>	So eh
+Feb 07 18:08:03 <iDanoo>	just getting used the real world hahahahaha
+Feb 07 18:08:11 <iDanoo>	Nah I'm good, it's nice having the freedom.
+Feb 07 18:08:16 <iDanoo>	Also helped heaps while I was studying
+Feb 07 18:08:20 <dobbie>	haha, I only have about 3 years on my mortgage
+Feb 07 18:08:24 <iDanoo>	Oh wow
+Feb 07 18:08:31 <iDanoo>	joys of not living in auckland eh?
+Feb 07 18:09:23 <dobbie>	Yup and a 15 year mortgage
+Feb 07 18:21:54 <iDanoo>	Damn
+Feb 07 18:22:00 <dobbie>	Yup :D
+Feb 07 18:22:10 <dobbie>	Pretty happy so by 41 should be all squared up
+Feb 07 18:48:00 <iDanoo>	Nice!
+Feb 07 18:48:05 <iDanoo>	So... 26 when you got a mortgage?
+Feb 07 18:48:19 <iDanoo>	Cool, I have 8 months.. hahahah
+Feb 07 18:49:27 <dobbie>	Yup.  And 2 kids :D ohand married at 23
+Feb 07 18:50:47 <iDanoo>	Jeez
+Feb 07 18:51:15 <dobbie>	:) Been with the missus coming up 20 years....holy shit thats a long time
+Feb 07 18:51:28 <iDanoo>	I'm hoping I'm still happy with my partner after 3 years, past shows I get bored around that point lol
+Feb 07 18:51:32 <iDanoo>	Would like to settle down properly haha
+Feb 07 18:51:34 <dobbie>	hahahaha
+Feb 07 18:51:47 <dobbie>	I wouldn't change anything.
+Feb 07 18:51:53 <iDanoo>	I'm coming up to a year, and I mean we've moved in together. Which is the first time I've done that
+Feb 07 18:52:06 <dobbie>	Wow!  hope it goes well
+Feb 07 18:53:35 <iDanoo>	Thanks haha, hoping so
+Feb 07 18:53:38 <iDanoo>	Just need to find her a better job
+Feb 07 18:53:42 <iDanoo>	I don't like the 3 weeks away
+Feb 07 18:54:04 <iDanoo>	we're on like day 4 and I'm already eating leftover dumplings and drinking cocktails.
+Feb 07 18:54:08 <iDanoo>	hahahah
+Feb 07 18:54:15 <iDanoo>	although passed my exam today, so guess that's a reason to drink?
+Feb 07 18:54:44 <dobbie>	Oh good work!  Drink it up, Thirsty Wednesday
+Feb 07 18:54:54 <iDanoo>	Hahaha
+Feb 07 18:55:11 <iDanoo>	One thing good about my job, is we can pretty much work any hours during the day, as long as we do 9.5
+Feb 07 18:55:22 <iDanoo>	So I quite often do 6am-3pm
+Feb 07 18:55:26 <iDanoo>	gives me the afternoon to do stuff
+Feb 07 18:55:37 <iDanoo>	sqamsqam does the same most of the time
+Feb 07 19:01:44 *	avnsgt[m] (avnsgtmatr@gateway/shell/matrix.org/x-kaatykcsyxawnwec) has joined
+Feb 07 19:01:44 *	ChanServ gives voice to avnsgt[m]
+Feb 07 19:02:22 <iDanoo>	oh cool
+Feb 07 19:02:25 <iDanoo>	will play around with invite shit soon
+Feb 07 19:02:33 *	smokeking (~SmokeKing@S01061cabc0afc263.ok.shawcable.net) has joined
+Feb 07 19:02:36 <smokeking>	Here
+Feb 07 19:03:04 <iDanoo>	sweet
+Feb 07 19:03:08 <iDanoo>	I wonder if it's cause I did /invite
+Feb 07 19:03:16 <iDanoo>	or if its just your permissions that let you koin
+Feb 07 19:03:17 <iDanoo>	join
+Feb 07 19:03:20 <iDanoo>	hmmmm
+Feb 07 19:03:37 <iDanoo>	Are you registered smokeking?
+Feb 07 19:03:37 <smokeking>	hmm, asking the wrong dude, I'm dumb as shit when it comes to IRC
+Feb 07 19:03:45 <smokeking>	I dont believe so
+Feb 07 19:03:55 <iDanoo>	You should totally register
+Feb 07 19:04:02 <smokeking>	I went to freenode and it didnt seem like registering was a thing
+Feb 07 19:04:05 <smokeking>	Ok
+Feb 07 19:04:14 <iDanoo>	on here tho
+Feb 07 19:04:14 <iDanoo>	like /msg nickserv register
+Feb 07 19:04:17 <iDanoo>	and it'll tell you the full command
+Feb 07 19:04:22 <iDanoo>	just to prevent other people using your nick
+Feb 07 19:04:23 <smokeking>	Sweet, ty
+Feb 07 19:04:30 <iDanoo>	also means I can setup perm permissions in this chan for you :D
+Feb 07 19:04:50 <iDanoo>	And on login just /msg nickserv identify <pass>
+Feb 07 19:04:51 <iDanoo>	but you can usually set that in your client
+Feb 07 19:05:09 *	smokeking has quit (Quit: WeeChat 2.0.1)
+Feb 07 19:25:21 <dobbie>	The transfer for the domain for archlabslinux.com is finally under way
+Feb 07 19:36:52 *	iDanoo has quit (Quit: ZNC - http://znc.in)
+Feb 07 19:40:39 *	iDanoo (~idanoo@unaffiliated/idanoo) has joined
+Feb 07 19:40:39 *	ChanServ gives channel operator status to iDanoo
+Feb 07 19:41:48 *	smoke (~SmokeKing@S01061cabc0afc263.ok.shawcable.net) has joined
+Feb 07 19:41:55 <smoke>	ayy, got it
+Feb 07 19:41:56 <iDanoo>	welcome haha
+Feb 07 19:42:01 <iDanoo>	I had to invite myself.....
+Feb 07 19:42:03 <smoke>	no clue, again
+Feb 07 19:42:06 <smoke>	LOL
+Feb 07 19:42:11 <iDanoo>	seriously wtf haha
+Feb 07 19:42:13 <smoke>	invit-ception
+Feb 07 19:42:39 <dobbie>	IRC is so confusing
+Feb 07 19:42:44 <smoke>	It truly is
+Feb 07 19:42:47 <smoke>	bloody hell
+Feb 07 19:43:12 FiSHLiM plugin unloaded
+Feb 07 19:43:12 Python interface unloaded
+**** ENDING LOGGING AT Wed Feb  7 19:43:12 2018
+
+**** BEGIN LOGGING AT Wed Feb  7 19:45:01 2018
+
+Feb 07 19:45:01 *	Now talking on #archlabslinux-team
+Feb 07 19:45:01 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 07 19:45:01 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 07 19:45:01 *	ChanServ gives channel operator status to dobbie
+Feb 07 19:45:09 <iDanoo>	Oh sweet dobbie it worked!
+Feb 07 19:45:19 <dobbie>	The OP status?
+Feb 07 19:45:22 <iDanoo>	Yep!
+Feb 07 19:45:24 <iDanoo>	and invite status
+Feb 07 19:45:27 <dobbie>	Yup, sweet!
+Feb 07 19:45:45 <dobbie>	Anyone else updated to 4.15?
+Feb 07 19:45:50 <iDanoo>	I might now
+Feb 07 19:45:52 <iDanoo>	Any issues?
+Feb 07 19:46:00 <smoke>	I thionk as long as I can join and send text I could care less what status I have :D
+Feb 07 19:46:04 <iDanoo>	haha yep!
+Feb 07 19:46:07 <iDanoo>	less worries tbh
+Feb 07 19:46:08 <dobbie>	Nothing I can see so far
+Feb 07 19:46:11 <smoke>	yea lol
+Feb 07 19:46:13 <iDanoo>	holy crap.
+Feb 07 19:46:15 <iDanoo>	quick update
+Feb 07 19:46:23 <dobbie>	I'm interested as to how Larry comes along as he is using ryzen
+Feb 07 19:46:25 <iDanoo>	nothing quite like updating over gigabit lan....
+Feb 07 19:46:26 <smoke>	I'm on 4.15
+Feb 07 19:46:30 <smoke>	man
+Feb 07 19:46:34 <smoke>	lucky prick
+Feb 07 19:46:41 <iDanoo>	Eh I just clone the repos ;)
+Feb 07 19:46:50 <smoke>	LOL, nice
+Feb 07 19:46:55 <iDanoo>	https://archlabs.m2.nz/
+Feb 07 19:47:09 <iDanoo>	Server = https://archlabs.m2.nz/archlinux/$repo/os/$arch
+Feb 07 19:47:15 <dobbie>	Yeah man, loving those mirror speeds
+Feb 07 19:47:25 <smoke>	Should I be adding this to our server list on the iso?
+Feb 07 19:47:35 <iDanoo>	[archlabs_repo]
+Feb 07 19:47:37 <smoke>	is it fairly finished
+Feb 07 19:47:37 <iDanoo>	Server = https://archlabs.m2.nz/archlabs_repo/$arch
+Feb 07 19:47:39 <iDanoo>	Server = https://archlabs.github.io/archlabs_repo/$arch
+Feb 07 19:47:41 <iDanoo>	ah probably not just yet
+Feb 07 19:47:46 <smoke>	Ok no worries
+Feb 07 19:47:49 <iDanoo>	I'm keen to get a few more people using it first
+Feb 07 19:47:54 <smoke>	Yea
+Feb 07 19:47:55 <iDanoo>	And make sure I have no issues
+Feb 07 19:47:59 <smoke>	I'd add it but
+Feb 07 19:48:02 <smoke>	you know
+Feb 07 19:48:05 <iDanoo>	Haha yeah
+Feb 07 19:48:09 <smoke>	other side of the world an all
+Feb 07 19:48:20 <iDanoo>	Yeeeah
+Feb 07 19:48:44 <smoke>	I never hit anything but the github server
+Feb 07 19:49:00 <iDanoo>	➜  archlabs.m2.nz du -sh *
+Feb 07 19:49:02 <iDanoo>	684M    archlabs_repo
+Feb 07 19:49:04 <iDanoo>	41G     archlinux
+Feb 07 19:49:06 <iDanoo>	not too bad for repo sizes
+Feb 07 19:49:07 <smoke>	It doesnt seem to timeout for me ever
+Feb 07 19:49:16 <smoke>	thats not bad at all
+Feb 07 19:49:28 <iDanoo>	➜  archlinux ls
+Feb 07 19:49:30 <iDanoo>	community  core  extra  iso  multilib  pool
+Feb 07 19:49:32 <iDanoo>	those are the repos i've got too
+Feb 07 19:49:40 <iDanoo>	covers the basics ;)
+Feb 07 19:49:43 <smoke>	nice, nearly everything
+Feb 07 19:49:46 <smoke>	yea
+Feb 07 19:49:55 <iDanoo>	I basically clone from http://mirror.internode.on.net/pub/archlinux/
+Feb 07 19:50:01 <iDanoo>	AU tier 1 mirror
+Feb 07 19:50:19 <iDanoo>	that's everything without staging/testing
+Feb 07 19:50:24 <smoke>	yea
+Feb 07 19:50:28 <iDanoo>	I tried testing once
+Feb 07 19:50:29 <iDanoo>	once.
+Feb 07 19:50:34 <smoke>	I dont know who actuallly uses testing
+Feb 07 19:50:42 <iDanoo>	Last time I had so many issues
+Feb 07 19:50:42 <smoke>	it seems so pointless on arch
+Feb 07 19:50:45 <smoke>	yea
+Feb 07 19:50:51 <iDanoo>	randomly couldn't boot cause lvm2 was broken with dm-crypt
+Feb 07 19:50:53 <dobbie>	I haven't used Testing since starting AL
+Feb 07 19:50:53 <iDanoo>	haha
+Feb 07 19:51:00 <smoke>	I tried once and also had a shit ton of issues
+Feb 07 19:51:04 <iDanoo>	Yep
+Feb 07 19:51:13 <iDanoo>	staging is better, but still too buggy
+Feb 07 19:51:21 <iDanoo>	arch is pretty damn stable on the normal repos
+Feb 07 19:51:23 <iDanoo>	i like it
+Feb 07 19:51:28 <smoke>	yea
+Feb 07 19:51:32 <smoke>	agree totally
+Feb 07 19:51:53 <smoke>	plus normal repos on arch are so far ahead of most distro's anyhow
+Feb 07 19:52:14 <iDanoo>	hell yeah
+Feb 07 19:52:25 <iDanoo>	My server is on debian stable...
+Feb 07 19:52:30 <iDanoo>	but hey at least it's damn stable
+Feb 07 19:52:32 <iDanoo>	hahah
+Feb 07 19:52:36 <smoke>	you go to ubuntu or debian and the packages are sooo bloody old
+Feb 07 19:53:00 <iDanoo>	yep
+Feb 07 19:53:12 <smoke>	I wanted to set my mom up with something fairly stable
+Feb 07 19:53:18 <smoke>	thought I'd try ubuntu
+Feb 07 19:53:23 <smoke>	Good god
+Feb 07 19:53:40 <smoke>	was such a bitch to get a recent version of kodi working
+Feb 07 19:53:46 <dobbie>	I set up Mum on elementary.....what a fucking drama
+Feb 07 19:53:49 <smoke>	most recent version in the repos
+Feb 07 19:53:56 <smoke>	lol, 15
+Feb 07 19:54:05 <smoke>	yea man
+Feb 07 19:54:19 <smoke>	I went back to manjaro/antergos for friends and family
+Feb 07 19:54:29 <smoke>	fuck haviung to deal with apt
+Feb 07 19:54:42 <dobbie>	I'm probably going to get Ma on AL with Gnome.
+Feb 07 19:54:50 <iDanoo>	heh I'm using anarchy on my families pc with KDE
+Feb 07 19:54:51 <smoke>	I hate that shit, takes so long to do upgrade && update
+Feb 07 19:54:57 <iDanoo>	just cause easily drop in replacement for W10 without questions
+Feb 07 19:55:04 <smoke>	I like KDE for normies
+Feb 07 19:55:11 <iDanoo>	yeah, pretty simple
+Feb 07 19:55:12 <smoke>	I think its perfect honestly
+Feb 07 19:55:16 <iDanoo>	clean UI
+Feb 07 19:55:18 <smoke>	yea
+Feb 07 19:55:36 <iDanoo>	I might head off soon
+Feb 07 19:55:37 <smoke>	its not heavy like it once was
+Feb 07 19:55:46 <smoke>	No worries man
+Feb 07 19:56:00 <dobbie>	All good Dan
+Feb 07 19:56:38 <dobbie>	you guys ever used Windowchef as an enviroment?
+Feb 07 19:56:39 <dobbie>	https://imgur.com/2oi5fqp
+Feb 07 19:56:51 <smoke>	lol
+Feb 07 19:56:54 <smoke>	this guy
+Feb 07 19:57:07 <dobbie>	lol
+Feb 07 19:57:31 <smoke>	what is it
+Feb 07 19:57:36 <smoke>	just another WM?
+Feb 07 19:57:46 <dobbie>	No idea, but it seems to be getting more popular at unixporn
+Feb 07 19:57:58 <smoke>	Window Chef is a stacking window manager that cooks windows with orders from the Waitron
+Feb 07 19:58:00 <smoke>	Nope
+Feb 07 19:58:06 <iDanoo>	nope.
+Feb 07 19:58:08 <iDanoo>	Hahahahah
+Feb 07 19:58:14 <smoke>	LOL
+Feb 07 19:58:15 <iDanoo>	I mean.. looks alright.
+Feb 07 19:58:20 <smoke>	stacking.. I'm out
+Feb 07 19:58:24 <dobbie>	lol
+Feb 07 19:58:27 <smoke>	Yea it does look nice
+Feb 07 19:58:27 <iDanoo>	Hahah
+Feb 07 19:58:31 <iDanoo>	I used i3wm for quite awhile
+Feb 07 19:58:34 <smoke>	same
+Feb 07 19:58:38 <smoke>	still on it
+Feb 07 19:58:39 <iDanoo>	But just little issues pissed me off
+Feb 07 19:58:40 <dobbie>	you elite Tiling guys....
+Feb 07 19:58:42 <iDanoo>	like popups
+Feb 07 19:58:47 <iDanoo>	I mean, just raw i3wm on arch
+Feb 07 19:58:49 <smoke>	thought about bsp and a few others
+Feb 07 19:58:50 <iDanoo>	no fancy DM
+Feb 07 19:58:57 <iDanoo>	DE/whatever
+Feb 07 19:59:01 <iDanoo>	just pure i3wm
+Feb 07 19:59:01 <smoke>	yea I got ya
+Feb 07 19:59:03 <iDanoo>	and it was god
+Feb 07 19:59:05 <iDanoo>	but damn
+Feb 07 19:59:07 <iDanoo>	little popups
+Feb 07 19:59:09 <iDanoo>	taking up half the screen
+Feb 07 19:59:11 <iDanoo>	hahaha
+Feb 07 19:59:11 <smoke>	lol
+Feb 07 19:59:15 <smoke>	easy fix
+Feb 07 19:59:23 <iDanoo>	shift + space was a great fix
+Feb 07 19:59:33 <iDanoo>	but I feel like it goes against the theory of tiling WMs
+Feb 07 19:59:36 <smoke>	for_window [title="(?i)(?:copying|deleting|moving|open)"] floating enable
+Feb 07 19:59:38 <smoke>	for_window [window_role="(?i)(?:pop-up|setup|preferen*)"] floating enable
+Feb 07 19:59:41 <iDanoo>	haha damn
+Feb 07 19:59:44 <smoke>	LOL
+Feb 07 19:59:45 <iDanoo>	if only I knew about that
+Feb 07 19:59:53 <iDanoo>	I'm happy with openbox at the moment though
+Feb 07 19:59:56 <smoke>	for_window [class="(?i)work"]     floating enable, move position 1052 8, resize set 860 600
+Feb 07 19:59:56 <iDanoo>	so will see how long this lasts
+Feb 07 20:00:00 <iDanoo>	hahaha
+Feb 07 20:00:11 <smoke>	you can do whatever with windows
+Feb 07 20:00:17 <smoke>	i3 doesnt really care much
+Feb 07 20:00:24 <smoke>	kinda fucked
+Feb 07 20:00:31 <smoke>	you can do some dumb stuff
+Feb 07 20:01:02 <iDanoo>	yeah
+Feb 07 20:01:06 <iDanoo>	have you tried awesomeWM
+Feb 07 20:01:07 <iDanoo>	i think it is
+Feb 07 20:01:10 <iDanoo>	or xmonad
+Feb 07 20:01:13 <smoke>	yea a bit
+Feb 07 20:01:22 <iDanoo>	got a workmate using xmonad on arch
+Feb 07 20:01:26 <smoke>	only because I had to configure our AL version of Awesome
+Feb 07 20:01:27 <iDanoo>	he's bloody quick with it
+Feb 07 20:01:33 <smoke>	nice
+Feb 07 20:01:35 <smoke>	yea
+Feb 07 20:01:42 <iDanoo>	just shortcuts for each program on a new desktop
+Feb 07 20:01:43 <smoke>	both are programmers WM's
+Feb 07 20:01:51 <iDanoo>	yep, I've been trying to get right into vim
+Feb 07 20:01:52 <smoke>	super in depth configs
+Feb 07 20:02:02 <smoke>	over the last 3 months
+Feb 07 20:02:05 <iDanoo>	I mean.. I got it pretty and some cool linters and a status bar / etc
+Feb 07 20:02:10 <smoke>	I've totally migrated to vim
+Feb 07 20:02:10 <iDanoo>	but just can't get my head around all the keys
+Feb 07 20:02:14 <iDanoo>	haha nice!
+Feb 07 20:02:20 <iDanoo>	yeah I've got things like $
+Feb 07 20:02:26 <smoke>	lol yea
+Feb 07 20:02:28 <iDanoo>	and sed
+Feb 07 20:02:30 <smoke>	there is soo much
+Feb 07 20:02:36 <iDanoo>	just can't navigate quick enough
+Feb 07 20:02:37 <smoke>	slightly overwhelming
+Feb 07 20:02:42 <iDanoo>	I know the {} keys and paragraphs/etc.
+Feb 07 20:02:46 <smoke>	Just force yourself to use it
+Feb 07 20:02:57 <iDanoo>	I can't take the productivity hit though
+Feb 07 20:03:02 <smoke>	You'll get the hang of navigation fairly quickly
+Feb 07 20:03:06 <smoke>	Fair
+Feb 07 20:03:27 <smoke>	I find using geany or others to be very difficult now
+Feb 07 20:03:29 <iDanoo>	Especailly at 3am when you get a call saying shits tanking the environment and you need to push something asap
+Feb 07 20:03:31 <iDanoo>	hahaha
+Feb 07 20:03:37 <smoke>	after getting so used to it
+Feb 07 20:03:44 <iDanoo>	Yeah, we primarily use Phpstorm
+Feb 07 20:03:47 <iDanoo>	which is so damn heavy
+Feb 07 20:03:54 <iDanoo>	I quite liked Atom with a few custom plugins
+Feb 07 20:03:55 <smoke>	Oh god yea
+Feb 07 20:03:56 <iDanoo>	but still, heavy.
+Feb 07 20:04:03 <smoke>	atom was what I was using
+Feb 07 20:04:05 <smoke>	but yea
+Feb 07 20:04:08 <smoke>	heavy as shit
+Feb 07 20:04:11 <smoke>	not so nice
+Feb 07 20:04:12 <iDanoo>	Another workmate uses i3-gaps with spacemacs
+Feb 07 20:04:22 <iDanoo>	it's so nice seeing people using real custom arch builds haha
+Feb 07 20:04:28 <smoke>	plus doesnt work well with the other stuff I use
+Feb 07 20:04:31 <iDanoo>	yeah true
+Feb 07 20:04:35 <iDanoo>	I mean our work laptops only have 8gb ram
+Feb 07 20:04:38 <smoke>	Dude
+Feb 07 20:04:40 <smoke>	soacemacs
+Feb 07 20:04:43 <smoke>	spacemacs
+Feb 07 20:04:44 <iDanoo>	and we run a vagrant box which chews up 2gb
+Feb 07 20:04:47 <iDanoo>	fuck spacemacs
+Feb 07 20:04:49 <smoke>	I used that for a while
+Feb 07 20:04:51 <iDanoo>	I swear it's slower than atom
+Feb 07 20:04:55 <smoke>	but then was like wait
+Feb 07 20:04:57 <iDanoo>	especially with all the stuff enabled
+Feb 07 20:04:59 <smoke>	yep
+Feb 07 20:05:02 <smoke>	totally
+Feb 07 20:05:05 <iDanoo>	I watch him search for files
+Feb 07 20:05:10 <iDanoo>	and i kind of laugh inside
+Feb 07 20:05:13 <smoke>	and its literally vim.. but not
+Feb 07 20:05:16 <iDanoo>	yeah hahahaha
+Feb 07 20:05:17 <smoke>	why bother
+Feb 07 20:05:20 <iDanoo>	you can do similar in vim
+Feb 07 20:05:21 <smoke>	fuck lisp
+Feb 07 20:05:24 <iDanoo>	with 1/10th the setup
+Feb 07 20:05:27 <smoke>	yep
+Feb 07 20:05:30 <smoke>	and no lisp
+Feb 07 20:05:32 <smoke>	XD
+Feb 07 20:05:33 <iDanoo>	just get a package manager
+Feb 07 20:05:34 <iDanoo>	hahahahah y eah
+Feb 07 20:05:49 <smoke>	I'll take vimscript over lisp any day
+Feb 07 20:05:52 <iDanoo>	yep!
+Feb 07 20:05:55 <iDanoo>	damn whats the one I used to use
+Feb 07 20:06:02 <smoke>	scheme?
+Feb 07 20:06:06 <iDanoo>	nope
+Feb 07 20:06:09 <iDanoo>	Vundle was one
+Feb 07 20:06:14 <smoke>	oh hell yea
+Feb 07 20:06:15 <iDanoo>	pretty simple
+Feb 07 20:06:18 <iDanoo>	heaps of support
+Feb 07 20:06:22 <smoke>	vim-plug is where its at these days
+Feb 07 20:06:24 <iDanoo>	oh yeah?
+Feb 07 20:06:33 <iDanoo>	Well I have a fresh vim after I installed 2017-12
+Feb 07 20:06:40 <iDanoo>	So might need to get back into it
+Feb 07 20:06:45 <smoke>	Check it out
+Feb 07 20:06:51 <smoke>	pluyg works just like vundle
+Feb 07 20:06:55 <iDanoo>	https://i.stack.imgur.com/i3iyY.gif
+Feb 07 20:07:00 <iDanoo>	and i'll print this out for my desk at work
+Feb 07 20:07:01 <iDanoo>	LOL
+Feb 07 20:07:12 <smoke>	hahaha
+Feb 07 20:07:16 <iDanoo>	I think once I memorise visual mode
+Feb 07 20:07:21 <iDanoo>	I'll be a lot more confident
+Feb 07 20:07:41 <smoke>	yea man, it takes a bit to actually get comfortable
+Feb 07 20:07:42 <iDanoo>	I just like being able to C&P things
+Feb 07 20:07:46 <smoke>	I use macros a shit ton
+Feb 07 20:07:48 <iDanoo>	I mean I can edit shit with zero issues
+Feb 07 20:07:49 <iDanoo>	ah nice
+Feb 07 20:08:00 <iDanoo>	omg
+Feb 07 20:08:02 <iDanoo>	I just saw
+Feb 07 20:08:03 <smoke>	you can set up vim to be a bit better with copy paste
+Feb 07 20:08:06 <iDanoo>	ctrl+v - block visual mode
+Feb 07 20:08:10 <iDanoo>	:D
+Feb 07 20:08:16 <smoke>	I swapped
+Feb 07 20:08:24 <smoke>	Ctrl+v is normal visual
+Feb 07 20:08:27 <smoke>	v is block
+Feb 07 20:08:31 <iDanoo>	ah sweet
+Feb 07 20:08:32 <smoke>	I use block faar more
+Feb 07 20:08:40 <iDanoo>	Yep I bet
+Feb 07 20:08:42 <smoke>	and shift v
+Feb 07 20:08:47 <smoke>	for whole lines
+Feb 07 20:08:51 <iDanoo>	wow
+Feb 07 20:08:57 <iDanoo>	I really need to get used to it
+Feb 07 20:08:57 <smoke>	way more than base visuall
+Feb 07 20:09:03 <iDanoo>	After I got people using arch
+Feb 07 20:09:04 <smoke>	yea
+Feb 07 20:09:11 <iDanoo>	sqamsqam and I started getting everyone on mech keyboards
+Feb 07 20:09:17 <smoke>	I dunno, once you get like three things down
+Feb 07 20:09:20 <iDanoo>	it's a wonderful sight at work
+Feb 07 20:09:25 <smoke>	every other editior just sucks dick
+Feb 07 20:09:27 <iDanoo>	yep
+Feb 07 20:09:33 <smoke>	Dude
+Feb 07 20:09:38 <iDanoo>	I would say navigation is one thing stopping me
+Feb 07 20:09:39 <smoke>	I love my keyboard
+Feb 07 20:09:46 <iDanoo>	Haha I've got a ducky TKL with mx blues
+Feb 07 20:09:54 <smoke>	Ohh nice
+Feb 07 20:10:01 <iDanoo>	and a full ducky shine 3 with browns at ho0me
+Feb 07 20:10:02 <smoke>	I rock the blues too :D
+Feb 07 20:10:04 <iDanoo>	but i love the blues
+Feb 07 20:10:07 <iDanoo>	hands down best
+Feb 07 20:10:07 <smoke>	clicky clicky
+Feb 07 20:10:09 <iDanoo>	yep
+Feb 07 20:10:12 <iDanoo>	someone had reds at work...
+Feb 07 20:10:17 <iDanoo>	I will never use reds again
+Feb 07 20:10:19 <iDanoo>	it was weird
+Feb 07 20:10:20 <smoke>	yea
+Feb 07 20:10:22 <smoke>	they are
+Feb 07 20:10:24 <iDanoo>	most of the guys have browns
+Feb 07 20:10:27 <smoke>	like zero feeback
+Feb 07 20:10:28 <iDanoo>	which are ok
+Feb 07 20:10:31 <iDanoo>	yeah
+Feb 07 20:10:34 <smoke>	browns are not bad
+Feb 07 20:10:37 <iDanoo>	I just love the clicky feedback of the blues
+Feb 07 20:10:39 <smoke>	better than reds for sure
+Feb 07 20:10:40 <iDanoo>	so satisfying
+Feb 07 20:10:41 <iDanoo>	yep
+Feb 07 20:10:43 <iDanoo>	haha sweet!
+Feb 07 20:10:44 <smoke>	yera agreed
+Feb 07 20:11:02 <iDanoo>	oh crap
+Feb 07 20:11:07 <iDanoo>	I gotta go water the mrs plants
+Feb 07 20:11:09 <iDanoo>	before they die
+Feb 07 20:11:12 <iDanoo>	brb
+Feb 07 20:11:14 <iDanoo>	hahahaha
+Feb 07 20:11:18 <smoke>	lol, cya
+Feb 07 20:12:06 <smoke>	I stole the spacekey for leader idea sfrom spacemacs though, that was the one truly good idea of it
+Feb 07 20:14:27 <iDanoo>	bacl!
+Feb 07 20:14:29 <iDanoo>	back
+Feb 07 20:14:31 <iDanoo>	yeah that's pretty nice
+Feb 07 20:14:35 <iDanoo>	how does that work in vim?
+Feb 07 20:14:38 <iDanoo>	instead of esc?
+Feb 07 20:14:59 <smoke>	No, I just use leader for a lot my keybinds
+Feb 07 20:15:03 <iDanoo>	ah cool
+Feb 07 20:15:08 <iDanoo>	I think I just need to get used to stock commands first
+Feb 07 20:15:12 <iDanoo>	then slowly add things to speed it up
+Feb 07 20:15:22 <smoke>	yep
+Feb 07 20:15:41 <smoke>	I dont really need much more than the default
+Feb 07 20:15:46 <iDanoo>	ok screw it
+Feb 07 20:15:47 <smoke>	there is a few things that bug me
+Feb 07 20:15:48 <iDanoo>	lets get my vim setup
+Feb 07 20:15:53 <iDanoo>	vim-plug?
+Feb 07 20:16:08 <smoke>	yea
+Feb 07 20:16:11 <smoke>	one sec
+Feb 07 20:18:20 <iDanoo>	ok got a few things setup already
+Feb 07 20:18:27 <iDanoo>	syntax highlighting, 4space tabs, vim-lug
+Feb 07 20:18:28 <iDanoo>	plug
+Feb 07 20:18:42 <smoke>	o god I hate tabs
+Feb 07 20:18:51 <smoke>	bane of all programmers right there
+Feb 07 20:18:56 <iDanoo>	yeah, 4 spaces for tab key ;)
+Feb 07 20:19:01 <smoke>	yea
+Feb 07 20:19:27 <iDanoo>	oh man, sqamsqam and I have been slowly migrating our codebase at work to be PSR-2 compliant
+Feb 07 20:19:30 <iDanoo>	ots
+Feb 07 20:19:37 <iDanoo>	it's nuts how bad some peoples styles are
+Feb 07 20:19:39 <smoke>	https://pastebin.com/cGfdTQHz
+Feb 07 20:19:54 <smoke>	here's some of my vimrc, the decent stuff anyhow
+Feb 07 20:20:00 <smoke>	I kinda gutten a bunch
+Feb 07 20:20:04 <iDanoo>	all good
+Feb 07 20:20:08 <iDanoo>	whats the diff with nvim/vim?
+Feb 07 20:20:16 <iDanoo>	oh fugitive! nice
+Feb 07 20:20:22 <smoke>	nvim is faster and 100% vim compatible
+Feb 07 20:20:30 <iDanoo>	should I go for that?
+Feb 07 20:20:38 <smoke>	plus theres a lot of asynch stuff for nvim
+Feb 07 20:20:42 <smoke>	I use it
+Feb 07 20:20:57 <smoke>	I've got my vimrc set up so it works with both
+Feb 07 20:21:03 <iDanoo>	cool
+Feb 07 20:21:05 <iDanoo>	installed
+Feb 07 20:21:05 <smoke>	pretty easy to do a check
+Feb 07 20:21:41 <smoke>	https://pastebin.com/xRDHTgGh
+Feb 07 20:21:47 <iDanoo>	I just haven't figured out buffers/tabs yet either
+Feb 07 20:21:59 <smoke>	heres what I use for completion and some other shit
+Feb 07 20:22:04 <iDanoo>	command! WQ wq
+Feb 07 20:22:05 <iDanoo>	command! Wq wq
+Feb 07 20:22:07 <iDanoo>	LOL
+Feb 07 20:22:09 <iDanoo>	THIS ALWAYS GETS ME
+Feb 07 20:22:10 <smoke>	yea
+Feb 07 20:22:14 <iDanoo>	hahahahaha fuck
+Feb 07 20:22:15 <smoke>	I have shift autism
+Feb 07 20:22:16 <iDanoo>	thats awesome
+Feb 07 20:22:19 <smoke>	so badly
+Feb 07 20:22:20 <iDanoo>	i have random capslock autism
+Feb 07 20:22:28 <smoke>	same with nop-ing Q
+Feb 07 20:22:32 <smoke>	fuck ex-mode
+Feb 07 20:22:35 <iDanoo>	oh god
+Feb 07 20:22:37 <iDanoo>	yeah
+Feb 07 20:22:38 <smoke>	so confusing
+Feb 07 20:22:47 <iDanoo>	I randomly get into record mode
+Feb 07 20:22:49 <iDanoo>	or whatever that is
+Feb 07 20:22:51 <iDanoo>	so :q
+Feb 07 20:22:53 <smoke>	never once used it and been like oh this is what its for
+Feb 07 20:22:53 <iDanoo>	:wq
+Feb 07 20:23:01 <smoke>	oh
+Feb 07 20:23:02 <iDanoo>	its just inception for vim
+Feb 07 20:23:05 <smoke>	you want thaty though
+Feb 07 20:23:07 <iDanoo>	it locks you in two layers deep
+Feb 07 20:23:09 <smoke>	q
+Feb 07 20:23:11 <iDanoo>	hahaha
+Feb 07 20:23:15 <smoke>	for macro recordeing
+Feb 07 20:23:18 <iDanoo>	ooooh
+Feb 07 20:23:20 <smoke>	yea
+Feb 07 20:23:24 <smoke>	its really good
+Feb 07 20:23:34 <smoke>	hold on, see If i can find a good example
+Feb 07 20:23:40 <iDanoo>	Whats the Tag thing?
+Feb 07 20:23:54 <smoke>	oh, ctags
+Feb 07 20:24:01 <iDanoo>	Hey is there a way to incr font size in st?
+Feb 07 20:24:04 <smoke>	it'll dump a tags file in the dir
+Feb 07 20:24:09 <smoke>	yep
+Feb 07 20:24:19 <iDanoo>	On the fly?
+Feb 07 20:24:22 <smoke>	Ctrl+shift+pgup/down
+Feb 07 20:24:26 <iDanoo>	shit
+Feb 07 20:24:29 <iDanoo>	you just made my day
+Feb 07 20:24:33 <iDanoo>	like five times over
+Feb 07 20:24:38 <smoke>	ctrl+shift+home resets
+Feb 07 20:24:40 <iDanoo>	I move IRC to laptop screen sometimes
+Feb 07 20:24:47 <iDanoo>	and 1080p on 14" ain't too big
+Feb 07 20:24:53 <smoke>	yea
+Feb 07 20:24:55 <iDanoo>	thats heaps better
+Feb 07 20:24:58 <smoke>	then everything is tiny
+Feb 07 20:25:00 <smoke>	hahaha
+Feb 07 20:25:02 <smoke>	Nice
+Feb 07 20:25:07 <iDanoo>	awesome
+Feb 07 20:25:12 <smoke>	you can also open st with a specified font
+Feb 07 20:25:12 <iDanoo>	I was used to shift +-
+Feb 07 20:25:20 <iDanoo>	oh god that reminds me
+Feb 07 20:25:27 <smoke>	[-f font]
+Feb 07 20:25:29 <iDanoo>	a client asked we put Comic Sans MS in our text editor
+Feb 07 20:25:33 <iDanoo>	at work
+Feb 07 20:25:39 <smoke>	wht
+Feb 07 20:25:42 <smoke>	WHYYYY
+Feb 07 20:25:44 <smoke>	LOL
+Feb 07 20:25:47 <iDanoo>	So they could print documents in comic sans
+Feb 07 20:25:50 <iDanoo>	sqamsqam where the f are you
+Feb 07 20:25:54 <iDanoo>	hahaha
+Feb 07 20:25:54 <smoke>	LOL
+Feb 07 20:25:56 <iDanoo>	yeah it was so bad
+Feb 07 20:25:58 <iDanoo>	hold up
+Feb 07 20:26:00 <iDanoo>	let me find it
+Feb 07 20:26:02 <smoke>	ok
+Feb 07 20:27:11 <iDanoo>	m
+Feb 07 20:27:19 <iDanoo>	https://imgur.com/a/USVQO
+Feb 07 20:27:23 <iDanoo>	check summary down the bottom
+Feb 07 20:27:41 <iDanoo>	biggest face palm
+Feb 07 20:28:22 <smoke>	https://drive.google.com/open?id=17QMuSf57L_aUdFF8hoKNi3jY5h35_uoI
+Feb 07 20:28:45 <iDanoo>	ok i need the lines and line number highlight
+Feb 07 20:28:52 <smoke>	jesus
+Feb 07 20:28:54 <iDanoo>	and that status bar omg
+Feb 07 20:29:09 <smoke>	Thats my shitty macro vid I made a bit ago
+Feb 07 20:29:13 <smoke>	one sec
+Feb 07 20:29:21 <smoke>	I'll just give you my whole vimrc lol
+Feb 07 20:29:24 <iDanoo>	hahaha oh god
+Feb 07 20:29:30 <smoke>	gh
+Feb 07 20:29:34 <smoke>	https://github.com/natemaia/my-dots/blob/master/home-configs/.resources/vim/init.vim
+Feb 07 20:29:42 <smoke>	you've been wrned
+Feb 07 20:29:44 <iDanoo>	ok i hate how weechat wraps
+Feb 07 20:29:45 <smoke>	lol
+Feb 07 20:29:48 <smoke>	same
+Feb 07 20:29:49 <iDanoo>	i can't copy the whole thing hahahaha
+Feb 07 20:29:55 <smoke>	LOL
+Feb 07 20:29:56 <iDanoo>	weechat has a cool url-server for that tho
+Feb 07 20:30:08 <iDanoo>	it basically puts a localhost:8080/abcd
+Feb 07 20:30:12 <iDanoo>	and you can click that
+Feb 07 20:30:12 <smoke>	I hate how st doesnt highlight urls
+Feb 07 20:30:20 <smoke>	not in st sadly
+Feb 07 20:30:23 <iDanoo>	ok I like that leader thing
+Feb 07 20:30:26 <smoke>	no url handling
+Feb 07 20:30:30 <smoke>	yea
+Feb 07 20:30:36 <iDanoo>	yeah but easier to copy one line than two with a huge nicklist gap
+Feb 07 20:30:38 <iDanoo>	hahaha
+Feb 07 20:30:47 <smoke>	true
+Feb 07 20:31:11 <iDanoo>	Ok time to steal some configs
+Feb 07 20:31:23 <smoke>	do note, some of the plugins are my own forks with shit I dont need removed and some other stuff added
+Feb 07 20:31:50 <iDanoo>	yeah I won't touch plugins just yet
+Feb 07 20:31:56 <smoke>	might be better for you to use the official ones but feel free to just use mine if it suits
+Feb 07 20:31:59 <iDanoo>	just getting the awesome script bits
+Feb 07 20:32:04 <smoke>	noice
+Feb 07 20:32:19 <smoke>	oh man
+Feb 07 20:32:26 <smoke>	you need that backup section
+Feb 07 20:32:31 <smoke>	fuckin love that
+Feb 07 20:32:39 <smoke>	you can close a file
+Feb 07 20:32:45 <smoke>	two days later come back
+Feb 07 20:32:54 <smoke>	and still have all your undo history
+Feb 07 20:32:58 <iDanoo>	oh shit
+Feb 07 20:32:58 <smoke>	lovely
+Feb 07 20:33:05 <iDanoo>	will that stop the .swp in the working dir?
+Feb 07 20:33:09 <smoke>	yea
+Feb 07 20:33:12 <iDanoo>	Because I have totally committed that a few times
+Feb 07 20:33:13 <iDanoo>	hahahaha
+Feb 07 20:33:15 <smoke>	i make a few dirs in .vim
+Feb 07 20:33:20 <smoke>	or .config/nvim
+Feb 07 20:33:24 <smoke>	for neovim
+Feb 07 20:33:31 <smoke>	my whole rc is automatic
+Feb 07 20:33:35 <iDanoo>	that is fucking beautiful
+Feb 07 20:33:40 <iDanoo>	omg
+Feb 07 20:33:43 <smoke>	ytou might have a few errors first bootup
+Feb 07 20:33:49 <smoke>	but after that it's seemless
+Feb 07 20:33:54 <iDanoo>	eh i did when I first loaded
+Feb 07 20:33:58 <iDanoo>	load again and it's good
+Feb 07 20:34:02 <smoke>	yea
+Feb 07 20:34:06 <smoke>	hard to avoid
+Feb 07 20:34:13 <smoke>	believe me i tried
+Feb 07 20:34:14 <smoke>	LOL
+Feb 07 20:34:26 <iDanoo>	hahaha
+Feb 07 20:34:28 <iDanoo>	it's all good
+Feb 07 20:34:34 <iDanoo>	a few seconds down from a few days
+Feb 07 20:34:36 <iDanoo>	ok
+Feb 07 20:34:38 <iDanoo>	let me try your full setup first...
+Feb 07 20:34:44 <smoke>	might wanna comment out the symaxcol=200
+Feb 07 20:34:53 <smoke>	if you work with al lot of long line files
+Feb 07 20:35:02 <iDanoo>	yeah...
+Feb 07 20:35:09 <iDanoo>	we have 80,000 line files
+Feb 07 20:35:13 <iDanoo>	:/
+Feb 07 20:35:16 <smoke>	no sorry
+Feb 07 20:35:19 <smoke>	lonf lines
+Feb 07 20:35:23 <smoke>	not long files
+Feb 07 20:35:23 <iDanoo>	OH
+Feb 07 20:35:24 <iDanoo>	lines
+Feb 07 20:35:26 <iDanoo>	my bad
+Feb 07 20:35:27 <smoke>	yea
+Feb 07 20:35:33 <smoke>	like past the 200th char
+Feb 07 20:35:42 <smoke>	it stops uising syntax highlightingh
+Feb 07 20:35:50 <smoke>	when I work with some json
+Feb 07 20:35:54 <smoke>	it gets gross
+Feb 07 20:36:09 <smoke>	and shit lags with one 3000 char long line
+Feb 07 20:36:15 <smoke>	so this helps
+Feb 07 20:36:25 <iDanoo>	LOL
+Feb 07 20:36:29 <iDanoo>	it copied some github stuff
+Feb 07 20:36:30 <smoke>	or js
+Feb 07 20:36:38 <smoke>	fuckin js web stuff man
+Feb 07 20:36:39 <iDanoo>	daniel@intersect ~/git/ezyvet (git)-[bleedingedge] % vim email_open_log.php
+Feb 07 20:36:41 <iDanoo>	Error detected while processing /home/daniel/.vimrc:
+Feb 07 20:36:43 <iDanoo>	line    1:
+Feb 07 20:36:45 <iDanoo>	E492: Not an editor command: Skip to content
+Feb 07 20:36:47 <iDanoo>	line    2:
+Feb 07 20:36:49 <iDanoo>	E492: Not an editor command: Features
+Feb 07 20:36:51 <iDanoo>	line    3:
+Feb 07 20:36:53 <iDanoo>	whoops
+Feb 07 20:36:55 <smoke>	hahaha
+Feb 07 20:37:14 <iDanoo>	hmm no line numbers D:
+Feb 07 20:37:23 <smoke>	you can symlink that file to both ~/.vimrc and ~/.config/nvim/init.vim
+Feb 07 20:37:29 <smoke>	yea
+Feb 07 20:37:34 <smoke>	add set number
+Feb 07 20:37:46 <iDanoo>	how do you highlight the current one?
+Feb 07 20:38:38 <smoke>	set cursorline
+Feb 07 20:38:46 <smoke>	Hmm
+Feb 07 20:38:54 <iDanoo>	hmm close
+Feb 07 20:38:58 <smoke>	most themes dont provide the proper settings
+Feb 07 20:39:05 <smoke>	you need both set number
+Feb 07 20:39:11 <smoke>	and set cursorline
+Feb 07 20:39:13 <iDanoo>	oh wow I love the highlighting on searches
+Feb 07 20:39:36 <smoke>	if you gar my theme, might make things easier
+Feb 07 20:39:40 <iDanoo>	yeah will do
+Feb 07 20:39:43 <iDanoo>	where do i put it?
+Feb 07 20:39:45 <smoke>	https://github.com/natemaia/my-dots/tree/master/home-configs/.resources/vim/colors
+Feb 07 20:39:53 <smoke>	symlink it to both
+Feb 07 20:40:00 <smoke>	~/.vim/colors
+Feb 07 20:40:09 <smoke>	~/.config/nvim/colors/
+Feb 07 20:40:25 <smoke>	call it TNE.vim and my rc should autoload it
+Feb 07 20:40:29 <smoke>	with the try catch
+Feb 07 20:40:59 <smoke>	lol
+Feb 07 20:41:09 <smoke>	nvm, I realized I havent psuhed that yet
+Feb 07 20:42:16 <iDanoo>	awesome
+Feb 07 20:42:16 <smoke>	https://github.com/natemaia/my-dots/tree/master/home-configs/.resources/vim
+Feb 07 20:42:22 <smoke>	I just did a fresh push
+Feb 07 20:42:52 <smoke>	I just have one big resource folder I symlink everything to where it's needed
+Feb 07 20:43:03 <smoke>	so bear with the naming etc
+Feb 07 20:43:23 <iDanoo>	all good!
+Feb 07 20:43:28 <iDanoo>	I just copy the data into vimrc for now
+Feb 07 20:43:45 <smoke>	sweet sweet
+Feb 07 20:44:09 <iDanoo>	Damn this'
+Feb 07 20:44:14 <iDanoo>	this'll keep me busy tomorrow
+Feb 07 20:44:19 <iDanoo>	ok how about file searching?
+Feb 07 20:44:20 <smoke>	hahah
+Feb 07 20:44:22 <smoke>	yea
+Feb 07 20:44:28 <smoke>	I use ctrlP
+Feb 07 20:44:33 <smoke>	space p
+Feb 07 20:44:49 <smoke>	scratch that
+Feb 07 20:44:53 <smoke>	Space ff
+Feb 07 20:45:01 <smoke>	space fd for dirs
+Feb 07 20:45:04 <iDanoo>	not an editor command CtrlP
+Feb 07 20:45:06 <iDanoo>	hahahahaha
+Feb 07 20:45:11 <smoke>	space fa for all
+Feb 07 20:45:16 <smoke>	ff is files
+Feb 07 20:45:27 <iDanoo>	not installed D:
+Feb 07 20:45:32 <smoke>	space qr reloads
+Feb 07 20:45:36 <iDanoo>	 qr:q
+Feb 07 20:45:38 <iDanoo>	oh
+Feb 07 20:45:40 <iDanoo>	oops
+Feb 07 20:45:56 <iDanoo>	not an editor command AirlineRefresh
+Feb 07 20:45:59 <smoke>	all of these are normal mode mappings obv
+Feb 07 20:46:00 <iDanoo>	am I missing something? lol
+Feb 07 20:46:16 <smoke>	perhaps
+Feb 07 20:46:30 <smoke>	try this, does Space+| split vert
+Feb 07 20:46:40 <smoke>	just to see if leader is working
+Feb 07 20:46:47 <iDanoo>	yep
+Feb 07 20:46:49 <iDanoo>	it works
+Feb 07 20:46:51 <iDanoo>	but can't call plugins
+Feb 07 20:46:53 <iDanoo>	hmm
+Feb 07 20:46:57 <smoke>	oh
+Feb 07 20:46:59 <smoke>	lol
+Feb 07 20:47:03 <smoke>	:PlugInstall
+Feb 07 20:47:12 <iDanoo>	hahahahaha
+Feb 07 20:47:13 <smoke>	try that real quick
+Feb 07 20:47:13 <iDanoo>	that helps
+Feb 07 20:47:15 <iDanoo>	oh shit
+Feb 07 20:47:17 <iDanoo>	yeah
+Feb 07 20:47:19 <iDanoo>	thats going crazy
+Feb 07 20:47:28 <iDanoo>	OK NOW IM SET
+Feb 07 20:47:30 <iDanoo>	WOW
+Feb 07 20:47:31 <smoke>	q closes the side buffer
+Feb 07 20:47:32 <iDanoo>	yep
+Feb 07 20:47:41 <iDanoo>	I'm happy with these binds
+Feb 07 20:47:41 <smoke>	D will show whats been updated
+Feb 07 20:47:53 <smoke>	I stole a lot from spacemacs
+Feb 07 20:47:56 <smoke>	XD
+Feb 07 20:47:57 <smoke>	hehe
+Feb 07 20:48:15 <smoke>	Most I dont fuck with too many default vim binds
+Feb 07 20:48:22 <iDanoo>	I'm glad
+Feb 07 20:48:23 <smoke>	a few though
+Feb 07 20:48:25 <iDanoo>	gonna make this easy for me ;)
+Feb 07 20:48:27 <smoke>	like Y
+Feb 07 20:48:31 <iDanoo>	hahaha wow if you open vim in a directory
+Feb 07 20:48:32 <smoke>	works like D
+Feb 07 20:48:33 <iDanoo>	cowsay!
+Feb 07 20:48:42 <smoke>	thats startify
+Feb 07 20:48:45 <iDanoo>	nice
+Feb 07 20:48:45 <smoke>	super handy
+Feb 07 20:48:51 <smoke>	one you edit some files
+Feb 07 20:49:00 <smoke>	it'll give you a recent list etc
+Feb 07 20:49:23 <smoke>	I honestly never use it though
+Feb 07 20:49:25 <smoke>	lol
+Feb 07 20:49:31 <iDanoo>	lol space ff takes awhile in our repo
+Feb 07 20:49:43 <smoke>	the first run it will
+Feb 07 20:49:50 <smoke>	sebsequent runs shouldnt
+Feb 07 20:50:08 <smoke>	Oh
+Feb 07 20:50:16 <smoke>	you may want to install the silver searcher
+Feb 07 20:50:20 <smoke>	aka AG
+Feb 07 20:50:25 <smoke>	its in the aurt
+Feb 07 20:50:33 <iDanoo>	waaaait a second
+Feb 07 20:50:38 <iDanoo>	IS THIS FUNCTION NAMES AUTOCOMPLETING?
+Feb 07 20:50:44 <smoke>	its a bit fasster than grep
+Feb 07 20:50:47 <smoke>	yea
+Feb 07 20:50:50 <iDanoo>	holy shit
+Feb 07 20:50:52 <smoke>	if you use ctags
+Feb 07 20:50:57 <smoke>	you can do so much
+Feb 07 20:51:02 <iDanoo>	yeah cause of the guy who uses spacemacs
+Feb 07 20:51:05 <iDanoo>	he committed his ctags file
+Feb 07 20:51:08 <smoke>	like jump to the file where something is defined
+Feb 07 20:51:24 <smoke>	try putting your cursor on a word
+Feb 07 20:51:25 <iDanoo>	oh cool
+Feb 07 20:51:29 <smoke>	then Space+fw
+Feb 07 20:51:33 <smoke>	find word
+Feb 07 20:51:40 <smoke>	it'll give ya a list
+Feb 07 20:51:45 <iDanoo>	oh coolfuck
+Feb 07 20:51:47 <iDanoo>	tahts awesome
+Feb 07 20:51:48 <smoke>	just using K
+Feb 07 20:51:56 <smoke>	will jump to definition
+Feb 07 20:52:02 <iDanoo>	Damn thats cool
+Feb 07 20:52:07 <smoke>	if it's defined somewhere vim can find
+Feb 07 20:52:16 <smoke>	thats kind where ctags comes in
+Feb 07 20:52:36 <smoke>	if you gen a tag file, all of it will be available in autocomplete and tags jumping
+Feb 07 20:52:58 <smoke>	I actually do use that
+Feb 07 20:53:03 <iDanoo>	Ok I'm totally sold on VIM
+Feb 07 20:53:06 <smoke>	some things in there nopt so muchg
+Feb 07 20:53:11 <smoke>	yea
+Feb 07 20:53:11 <iDanoo>	too bad you'll be sleeping when I'm at work
+Feb 07 20:53:13 <iDanoo>	hahaha
+Feb 07 20:53:18 <smoke>	after like three days of setup
+Feb 07 20:53:21 <smoke>	I was like wtf
+Feb 07 20:53:26 <smoke>	why did I resist
+Feb 07 20:53:29 <iDanoo>	.latest
+Feb 07 20:53:36 <iDanoo>	oh
+Feb 07 20:53:40 *	Minimo (~Minimo@unaffiliated/idanoo) has joined
+Feb 07 20:53:40 *	ChanServ gives channel operator status to Minimo
+Feb 07 20:53:43 <iDanoo>	.latest
+Feb 07 20:53:46 <Minimo>	(iDanoo) b'4.15.1'
+Feb 07 20:53:49 <smoke>	ayy
+Feb 07 20:53:53 <iDanoo>	latest kernel ;)
+Feb 07 20:53:56 <iDanoo>	pulls it from kernel.org haha
+Feb 07 20:53:57 <smoke>	Yea
+Feb 07 20:54:02 <smoke>	thats dope
+Feb 07 20:54:09 <iDanoo>	just couldn't get the formatting properly
+Feb 07 20:54:10 <iDanoo>	but eh
+Feb 07 20:54:17 <iDanoo>	I'm literally curling and grepping the number
+Feb 07 20:54:17 <smoke>	It's pretty close
+Feb 07 20:54:19 <iDanoo>	so not too bad
+Feb 07 20:54:21 <smoke>	I wonder
+Feb 07 20:54:25 <iDanoo>	It's python thats breaking it somewhere
+Feb 07 20:54:26 <smoke>	if you just stipped it
+Feb 07 20:54:32 <smoke>	stripped
+Feb 07 20:54:34 <iDanoo>	yeah probably
+Feb 07 20:54:59 <iDanoo>	so.. space ff is file search
+Feb 07 20:55:02 <iDanoo>	fd is directory
+Feb 07 20:55:08 <iDanoo>	got any binds for current file search?
+Feb 07 20:55:12 <iDanoo>	or is / fine :p
+Feb 07 20:55:19 <smoke>	what do you mean sorry
+Feb 07 20:55:22 <smoke>	oh yes
+Feb 07 20:55:24 <iDanoo>	like searching in current file
+Feb 07 20:55:31 <smoke>	yea use /
+Feb 07 20:55:41 <smoke>	or if you know its a definition just use K
+Feb 07 20:55:53 <smoke>	but for generic searches I use /
+Feb 07 20:55:57 <iDanoo>	So just K
+Feb 07 20:56:12 <iDanoo>	man: can't set the locale; make sure $LC_* and $LANG are correct
+Feb 07 20:56:14 <iDanoo>	uh oh
+Feb 07 20:56:15 FiSHLiM plugin unloaded
+Feb 07 20:56:15 Python interface unloaded
+**** ENDING LOGGING AT Wed Feb  7 20:56:15 2018
+
+**** BEGIN LOGGING AT Fri Feb  9 18:06:18 2018
+
+Feb 09 18:06:18 *	Now talking on #archlabslinux-team
+Feb 09 18:06:18 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 09 18:06:18 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 09 18:06:18 *	ChanServ gives channel operator status to dobbie
+**** ENDING LOGGING AT Fri Feb  9 21:04:57 2018
+
+**** BEGIN LOGGING AT Sat Feb 10 07:52:42 2018
+
+Feb 10 07:52:42 *	Now talking on #archlabslinux-team
+Feb 10 07:52:43 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 10 07:52:43 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 10 07:52:43 *	ChanServ gives channel operator status to dobbie
+**** ENDING LOGGING AT Sat Feb 10 07:53:51 2018
+
+**** BEGIN LOGGING AT Sat Feb 10 07:53:51 2018
+
+**** BEGIN LOGGING AT Sat Feb 10 10:45:51 2018
+
+Feb 10 10:45:51 *	Now talking on #archlabslinux-team
+Feb 10 10:45:51 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 10 10:45:51 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 10 10:45:52 *	ChanServ gives channel operator status to dobbie
+Feb 10 10:50:55 <iDanoo>	lol that guy with the heat issues
+Feb 10 10:50:57 <iDanoo>	is full of shit
+Feb 10 10:51:00 <iDanoo>	and has no idea what hes doing
+Feb 10 10:51:14 <dobbie>	Hey fellas, can you all email me at mattdobson2001@gmail.com wih your current email and your prefered name for the new upcoming AL emails
+Feb 10 10:51:19 <dobbie>	lol Yeah, agreed
+Feb 10 10:51:22 <iDanoo>	I switched to true OS bsd yesterday , I am waiting for good kernel suitable to my laptop , 3.8 - 4.14 heats my laptop … I dont like to use windows
+Feb 10 10:51:24 <iDanoo>	switch to UEFI and GPT hoping for better firmware integration with my hardware , doesnt help at all
+Feb 10 10:51:28 <iDanoo>	Like what the fuck is that?
+Feb 10 10:51:35 <iDanoo>	haha
+Feb 10 10:51:38 <dobbie>	A troll perhaps?
+Feb 10 10:51:43 <iDanoo>	yeah sounds like it
+Feb 10 10:51:48 <iDanoo>	or someone who has NO clue
+Feb 10 10:51:51 <dobbie>	LOL< fuck em
+Feb 10 10:52:11 <iDanoo>	I really wanted to /dev/null, but don't want to be a dick if he's genuine and just sucks at english/linux
+Feb 10 10:52:23 <iDanoo>	I have an idea, hold up
+Feb 10 10:52:29 <dobbie>	I am tempted too but I think it's his lack of english
+Feb 10 10:53:17 <iDanoo>	https://www.q4os.org/forum/viewtopic.php?id=2062
+Feb 10 10:53:19 <iDanoo>	HAHA
+Feb 10 10:53:52 <iDanoo>	Once again, he didn't answer any helpful questions
+Feb 10 10:53:56 <dobbie>	okay, lack of knowledge it is....
+Feb 10 10:53:57 <dobbie>	lol
+Feb 10 10:54:15 <iDanoo>	That was way too easy to find
+Feb 10 10:54:23 <dobbie>	just googled his username?
+Feb 10 10:54:29 <iDanoo>	yeah basically
+Feb 10 10:54:31 <iDanoo>	archlabs then q4os
+Feb 10 10:54:37 <iDanoo>	then some other random stuff unrelated
+Feb 10 10:54:42 <iDanoo>	looks like he just wants people to fix the issue for him
+Feb 10 10:54:48 <iDanoo>	and magically push a kernel fix specifically for him
+Feb 10 10:54:51 <dobbie>	He must be trying to find a solution by using other distros
+Feb 10 10:54:58 <iDanoo>	I bet it's just a blocked fan
+Feb 10 10:55:04 <iDanoo>	and MS underclocks to handle it
+Feb 10 10:55:06 <dobbie>	There is a much worse Help Vampire than thim
+Feb 10 10:55:22 <iDanoo>	I would put money on it that it's something like that ^
+Feb 10 10:55:23 <dobbie>	his name is TJ Wolf.....dumbest mother fucker I have ever encountered
+Feb 10 10:55:27 <iDanoo>	Oh god
+Feb 10 10:55:33 <iDanoo>	You can only sink so much time into someone
+Feb 10 10:55:36 <iDanoo>	before you lose your shit haha
+Feb 10 10:55:44 <dobbie>	+ he gets super angry when you don't help when he expects it
+Feb 10 10:56:39 <unix121>	@dobbie I mailed you , just use unix121 for me
+Feb 10 10:56:52 <dobbie>	Cheers Stav
+Feb 10 10:57:11 <avnsgt[m]>	What is the user name of the troll??
+Feb 10 10:58:14 <iDanoo>	ragilsatrio is the heat guy
+Feb 10 10:58:44 <iDanoo>	He like gets right into distros, then shits on them for heating up his computer, then swaps to another distro and does the same thing
+Feb 10 10:59:10 <avnsgt[m]>	Ok.. I have read a few of this posts, and answered one of them.
+Feb 10 10:59:11 <iDanoo>	`I will wait archlabs with better kernel .`
+Feb 10 10:59:24 <iDanoo>	Yeah cause our kernel is different.
+Feb 10 10:59:27 <iDanoo>	>_>
+Feb 10 11:00:38 <dobbie>	LOL
+Feb 10 11:00:47 <dobbie>	anyone else use the Zen kernel?
+Feb 10 11:01:12 <iDanoo>	nooope I just use whatever is on there now
+Feb 10 11:01:17 <iDanoo>	also just realised I used my work email to email you
+Feb 10 11:01:17 <unix121>	Hahaha that guy xD I called it like a week ago that this guy was a troll xD
+Feb 10 11:01:18 <iDanoo>	haha
+Feb 10 11:01:31 <dobbie>	hahaha
+Feb 10 11:01:48 <iDanoo>	hmm might get pizza for lunchb
+Feb 10 11:02:49 <iDanoo>	Lol completely off topic, but I moved out with my partner just over a month ago right
+Feb 10 11:02:55 <iDanoo>	finally finished getting everything like furniture/etc
+Feb 10 11:02:58 <dobbie>	yup
+Feb 10 11:02:59 <iDanoo>	payday is on the 20th
+Feb 10 11:03:03 <iDanoo>	$50 to last until then :D
+Feb 10 11:03:25 <iDanoo>	May have copmletely gone over the top in shopping
+Feb 10 11:03:26 <dobbie>	I know the feeling man, all to well.  Monthly pays can do that
+Feb 10 11:03:44 <sqamsqam>	i got $4 in the car and thats it lol
+Feb 10 11:03:45 <iDanoo>	Yeeep, I mean.. we earn well over enough to live comfortably
+Feb 10 11:03:57 <iDanoo>	Haha sqamsqam yeh man, $5 pizzahut pizza I think
+Feb 10 11:04:06 <iDanoo>	Will do me the weekend
+Feb 10 11:04:07 <iDanoo>	hahaha
+Feb 10 11:04:13 <iDanoo>	plus they just opened
+Feb 10 11:04:15 <iDanoo>	and they're around the corner
+Feb 10 11:04:34 <sqamsqam>	is there any Shens takeaways on the north shore?
+Feb 10 11:04:47 <sqamsqam>	cheap as fuck chinese and fish n chips
+Feb 10 11:04:55 <iDanoo>	nah only 2 out west
+Feb 10 11:05:09 <sqamsqam>	damn
+Feb 10 11:05:35 <sqamsqam>	its like $13 for more then enough fish and chips for 4 people
+Feb 10 11:05:41 <iDanoo>	shit haha
+Feb 10 11:06:11 <iDanoo>	Hmm Cheesy garlic or hot & spicy vege
+Feb 10 11:06:13 <iDanoo>	haha
+Feb 10 11:07:25 <iDanoo>	ok brb need to put clothes on to get pizza. :D
+Feb 10 11:08:39 <dobbie>	mmmm pizza
+Feb 10 11:09:43 <iDanoo>	today is a lazy day
+Feb 10 11:09:51 <iDanoo>	got the entire day to myself
+Feb 10 11:12:53 <dobbie>	sqamsqam: sent you that email mate
+Feb 10 11:12:59 <dobbie>	lucky bugger Dan
+Feb 10 11:13:26 <iDanoo>	thanks
+Feb 10 11:13:36 <iDanoo>	:D
+Feb 10 11:13:39 <iDanoo>	pizza makes it better
+Feb 10 11:13:45 <iDanoo>	Well mums watching my kid
+Feb 10 11:13:47 <iDanoo>	and gf is in usa
+Feb 10 11:13:49 <iDanoo>	so eh
+Feb 10 11:13:53 <iDanoo>	it's kinda lonely LOL
+Feb 10 11:13:57 <iDanoo>	I got a lot of alcohol though
+Feb 10 11:14:08 <iDanoo>	sqamsqam: meghans partner gave me a bottle of that monkey whiskey
+Feb 10 11:14:11 <iDanoo>	;)
+Feb 10 11:14:23 <sqamsqam>	nice
+Feb 10 11:14:53 <dobbie>	LOL
+Feb 10 11:15:08 <dobbie>	My wife is out tonight, looking forward to sitting back with my sons and relaxing
+Feb 10 11:28:01 <iDanoo>	back
+Feb 10 11:28:04 <iDanoo>	Nice!
+Feb 10 11:31:14 <dobbie>	with Pizza?
+Feb 10 11:31:35 <iDanoo>	Yesss
+Feb 10 11:31:38 <iDanoo>	So good
+Feb 10 11:31:48 <dobbie>	Man I am hungry now
+Feb 10 11:32:10 <iDanoo>	See, I much prefer hellspizza, but you can't beat a $5 pizza compared to like $19.50
+Feb 10 11:32:35 <sqamsqam>	what one did you get?
+Feb 10 11:32:48 <iDanoo>	hot & spicy vege
+Feb 10 11:32:50 <dobbie>	Yeah Hells is good
+Feb 10 11:41:16 <unix121>	Is there actually a place on eart that sells a full size pizza for $5?
+Feb 10 11:44:33 <iDanoo>	oh yeah
+Feb 10 11:44:38 <iDanoo>	this is NZ$5
+Feb 10 11:44:39 <unix121>	switch the 4th "if" with this:
+Feb 10 11:44:41 <iDanoo>	so like.. US$3 ?
+Feb 10 11:44:43 <unix121>	if wflag == 1 and flag1 == 1 and flag2 == 0 and c != '\\' and c != 'n':
+Feb 10 11:44:49 <iDanoo>	unix121: it's already working its ok
+Feb 10 11:44:51 <iDanoo>	.latest
+Feb 10 11:44:53 <iDanoo>	;)
+Feb 10 11:44:55 <iDanoo>	oh
+Feb 10 11:44:58 *	Minimo (~Minimo@unaffiliated/idanoo) has joined
+Feb 10 11:44:58 *	ChanServ gives channel operator status to Minimo
+Feb 10 11:44:59 <iDanoo>	.latest
+Feb 10 11:45:01 <Minimo>	(iDanoo) Latest linux kernel: 4.15.2
+Feb 10 11:53:19 <unix121>	@dobbie did you listen to the new Gnaw Their Tongues album?
+Feb 10 12:05:07 <sqamsqam>	dobbie: i have created the email accounts. everyone that i created an account for should have received an email
+Feb 10 12:07:42 <unix121>	I got my mail. Going to change the password.
+Feb 10 12:11:14 <avnsgt[m]>	Boot is more consistant.. Still some issues.
+Feb 10 12:13:10 <avnsgt[m]>	.latest
+Feb 10 12:13:12 <Minimo>	(avnsgt[m]) Latest linux kernel: 4.15.2
+Feb 10 12:13:55 <iDanoo>	lol sqamsqam Sunshine1
+Feb 10 12:13:59 <iDanoo>	#secure
+Feb 10 12:14:23 <unix121>	#hacked
+Feb 10 12:14:50 <avnsgt[m]>	Rick Sanchez insult bot
+Feb 10 12:14:52 <avnsgt[m]>	.bacon
+Feb 10 12:14:54 <unix121>	imagine someone SQLi this atm and finds out that everyone's code is sunshine1
+Feb 10 12:15:09 <sqamsqam>	haha
+Feb 10 12:15:23 <iDanoo>	D:
+Feb 10 12:15:48 <iDanoo>	sqamsqam: got it setup in rambox now
+Feb 10 12:15:50 <iDanoo>	yus
+Feb 10 12:16:12 <iDanoo>	crap I need to find another host separate to zoho
+Feb 10 12:16:20 <iDanoo>	since they dropped free imap/smtp on domain hosting
+Feb 10 12:16:23 <iDanoo>	I can't use thunderbird + php
+Feb 10 12:16:25 <iDanoo>	pgp
+Feb 10 12:17:04 <sqamsqam>	lol
+Feb 10 12:17:39 *	avnsgt[m] eats crispy bacon.
+Feb 10 12:18:34 <iDanoo>	niiiice
+Feb 10 12:19:01 <iDanoo>	hmm
+Feb 10 12:19:04 <iDanoo>	we could always host our own irc server
+Feb 10 12:19:06 <iDanoo>	haha
+Feb 10 12:19:15 <iDanoo>	nope, I take that back.
+Feb 10 12:19:19 <iDanoo>	Too much admin.
+Feb 10 12:20:22 <avnsgt[m]>	Why? Why not just migrate to a full on Riot and use Matrix.org?
+Feb 10 12:20:24 <iDanoo>	Although would be cool to get a cluster up
+Feb 10 12:20:40 <iDanoo>	Could setup a matrix server
+Feb 10 12:21:01 <iDanoo>	I just feel like IRC is much more supported
+Feb 10 12:21:05 <iDanoo>	it's got like 30 years on matrix
+Feb 10 12:21:07 <iDanoo>	haha
+Feb 10 12:21:39 <avnsgt[m]>	IRC does have 30 years on matrix, but you have to consider the entire user base.
+Feb 10 12:21:52 <iDanoo>	I think IRC still might just top matrix on that one..
+Feb 10 12:21:53 <iDanoo>	I'll check
+Feb 10 12:22:37 <iDanoo>	Hmmm
+Feb 10 12:22:39 <avnsgt[m]>	THe younger generations will be on slack/riot and others, older will be irc/xmpp.
+Feb 10 12:22:44 <iDanoo>	Yeah very true
+Feb 10 12:22:46 <iDanoo>	although
+Feb 10 12:22:57 <iDanoo>	I just don't want to introduce another damn chat thing
+Feb 10 12:23:10 <iDanoo>	Also with kiwiirc, irc is real easy to join in on
+Feb 10 12:23:46 <avnsgt[m]>	Just have to consider the overall target market..
+Feb 10 12:23:51 <iDanoo>	Yeah very true
+Feb 10 12:25:44 <avnsgt[m]>	Riot has a nice feature that lets  you bridge into IRC.. Connecting with the older generations, while still keeping with the younger crowd. THere might even be a way to merge the two rooms to one..
+Feb 10 12:26:20 <iDanoo>	Yeah maybe
+Feb 10 12:26:42 <avnsgt[m]>	No too sure, it would need some research, but depending on the APIs it may be possible.
+Feb 10 12:29:19 <avnsgt[m]>	Not*
+Feb 10 12:48:47 <iDanoo>	Linux intersect 4.15.2-2-ARCH #1 SMP PREEMPT Thu Feb 8 18:54:52 UTC 2018 x86_64 GNU/Linux
+Feb 10 12:48:50 <iDanoo>	there we go
+Feb 10 12:51:12 <unix121>	Gnoo
+Feb 10 12:59:57 <sqamsqam>	lol iDanoo ive been using a vpn ever since they asked for our mac addresses at work. i wonder what they want them for?
+Feb 10 13:00:49 <unix121>	Did they ask your mac of your personal computer? Isn't that like illegal? LOL
+Feb 10 13:02:59 <sqamsqam>	work provided laptop
+Feb 10 13:03:19 <sqamsqam>	i have no issue with it since can get by any filtering with a vpn
+Feb 10 13:03:28 <sqamsqam>	just curios to why they want it?
+Feb 10 13:03:33 <iDanoo>	yeah, they asked for everyones "Wifi Local Area COnnection MAC"
+Feb 10 13:03:39 <iDanoo>	and some other unrelated MAC
+Feb 10 13:03:41 <iDanoo>	was like.. wtf.
+Feb 10 13:03:48 <iDanoo>	Yeah I think it's data tracking and mapping them in Meraki
+Feb 10 13:03:57 <iDanoo>	but I use a random mac on boot
+Feb 10 13:03:59 <iDanoo>	so fuck em
+Feb 10 13:04:04 <iDanoo>	also PIA vpn
+Feb 10 13:07:10 <sqamsqam>	whats the point tho. devs will always be using a shit load of bw
+Feb 10 13:07:38 <sqamsqam>	like can easily do 50gb or more in a day just doing mu job
+Feb 10 13:13:19 <iDanoo>	lol yeah, 5gb on average per db pulled
+Feb 10 13:13:49 <iDanoo>	lol sqamsqam should script to pull the 100mb.zip file from speedtest, delete it, pull it, delete it
+Feb 10 13:13:55 <iDanoo>	just repeat. See if we can crack 1tb in a day
+Feb 10 13:14:06 <iDanoo>	even better, virtual eth with a new MAC
+Feb 10 13:14:09 <iDanoo>	;)
+Feb 10 13:14:36 <sqamsqam>	haha
+Feb 10 14:56:07 <dobbie>	sqamsqam: cheers for the emails
+Feb 10 14:57:22 <dobbie>	no email though....
+Feb 10 14:58:16 <dobbie>	scratch that.  Just found it
+Feb 10 15:03:38 <unix121>	:D
+Feb 10 15:25:25 <avnsgt[m]>	So, that was a truly new AL email?
+Feb 10 15:25:57 <dobbie>	Yup it is Larry
+Feb 10 15:26:43 <avnsgt[m]>	Cool.
+Feb 10 15:27:34 <avnsgt[m]>	Have to configure it sometime tomorrow.
+Feb 10 15:28:28 <avnsgt[m]>	dobbie: Who do you think will be the best person for doing the CSS side of the Knowledge Base?
+Feb 10 15:30:02 <dobbie>	avnsgt: Prob Sam and Dan
+Feb 10 15:31:16 <avnsgt[m]>	dobbie: I will need to give them access to work on it. So, we can have the KB look more like the rest of our ArchLABS products.
+Feb 10 15:34:26 <dobbie>	avnsgt: agreed
+Feb 10 15:37:47 <sqamsqam>	my github user is sqamsqam
+Feb 10 15:38:59 <dobbie>	adding you know
+Feb 10 15:39:00 <dobbie>	now
+Feb 10 15:39:35 <avnsgt[m]>	Yeah.. That is right.. I forgot, I gave you full adim right on the KB..
+Feb 10 16:08:42 <iDanoo>	https://github.com/iDanoo
+Feb 10 16:08:45 <iDanoo>	heeey I finally got my nickname
+Feb 10 16:08:48 <iDanoo>	was taken a few years ago
+Feb 10 16:09:59 <dobbie>	nice.
+Feb 10 16:10:16 <dobbie>	I'm surprised that Dobbie has been available everywhere so far
+Feb 10 16:10:32 <unix121>	dobbie is a free elf man
+Feb 10 16:10:46 <dobbie>	He is indeed
+Feb 10 16:10:49 <iDanoo>	gaaah zohomail stopped doing free imap/smtp
+Feb 10 16:10:54 <iDanoo>	but you get free domain email with 10 accounts
+Feb 10 16:11:11 <iDanoo>	I need to find something that does imap/smtp
+Feb 10 16:11:17 <iDanoo>	dont' really want to self host again unless necessary haha
+Feb 10 16:11:18 <iDanoo>	It
+Feb 10 16:14:21 <unix121>	Do you lose your commints if you change username on GitHUb?
+Feb 10 16:25:27 <dobbie>	sqamsqam: are you around?
+Feb 10 16:33:19 <iDanoo>	nah unix121 it just changes the links
+Feb 10 16:34:10 <sqamsqam>	dobbie: yo
+Feb 10 16:51:55 <dobbie>	Hey Sam, can you please take a look at the contact us on the webpage, I can't seem to get the emails from the site to work.
+Feb 10 16:52:15 <dobbie>	Also, tried changing my email from gmail to the new one, can't change that fucker either
+Feb 10 16:55:10 <sqamsqam>	kk
+Feb 10 16:55:34 <dobbie>	thanks man
+Feb 10 16:56:35 <sqamsqam>	email is showing for  me on the team page?
+Feb 10 17:00:51 <dobbie>	how about the contact us page?
+Feb 10 17:02:26 <sqamsqam>	dobbie: where do you want the contact form emails to go to
+Feb 10 17:03:03 <dobbie>	probably to me please
+Feb 10 17:03:24 <sqamsqam>	gmail or archlabs email?
+Feb 10 17:03:52 <dobbie>	archlabs please bruv
+**** ENDING LOGGING AT Sat Feb 10 17:09:10 2018
+
+**** BEGIN LOGGING AT Sat Feb 10 17:09:10 2018
+
+Feb 10 17:12:32 <sqamsqam>	dobbie: should be sorted
+Feb 10 17:12:41 <dobbie>	Sweet man, cheers
+Feb 10 17:16:51 <dobbie>	Maybe there is an issue with the plugin?  No mail is coming through.  I just a test email from the site, no arrival at my end
+Feb 10 17:24:40 *	unix121 has quit (Quit: WeeChat 2.0.1)
+Feb 10 17:30:03 <sqamsqam>	dobbie: i also removed the copywright stuff for wordpress and the theme
+Feb 10 17:30:07 <sqamsqam>	did it in code
+Feb 10 17:30:15 <sqamsqam>	the plugins you had were fucked
+Feb 10 17:30:27 <dobbie>	sweet, that was annoying me that I couldn't do it. 
+Feb 10 17:30:33 <dobbie>	Had a feeling they were
+Feb 10 17:31:37 <dobbie>	Nice that looks a whole lot tidier
+Feb 10 17:31:41 <sqamsqam>	aight im off for a bit
+Feb 10 17:31:46 <sqamsqam>	making food and having a "smke"
+Feb 10 17:31:51 <sqamsqam>	smoke*
+Feb 10 17:31:55 <dobbie>	Catch ya mate, I'm gonna try and sort this contact thing.
+Feb 10 17:31:57 <dobbie>	:D
+Feb 10 17:59:32 <dobbie>	This fucking contact shit....
+Feb 10 19:22:13 <sqamsqam>	back
+Feb 10 19:24:06 <dobbie>	hey mate
+Feb 10 19:24:21 <dobbie>	It's time for a glass of Johnny Walker and some Death metal :D
+Feb 10 19:26:28 <sqamsqam>	sounds like its going to be a big night
+Feb 10 19:26:47 <dobbie>	nope, I'm keeping the drinking to a minimum :D
+**** BEGIN LOGGING AT Sun Feb 11 09:07:30 2018
+
+Feb 11 09:07:30 *	Now talking on #archlabslinux-team
+Feb 11 09:07:30 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 11 09:07:30 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 11 09:07:31 *	ChanServ gives channel operator status to dobbie
+Feb 11 10:37:40 *	avnsgt[m] has quit (*.net *.split)
+Feb 11 10:37:41 *	Minimo has quit (*.net *.split)
+Feb 11 10:37:42 *	ChanServ has quit (*.net *.split)
+Feb 11 10:37:42 *	iDanoo has quit (*.net *.split)
+Feb 11 10:37:43 *	sqamsqam has quit (*.net *.split)
+Feb 11 10:37:44 *	unix121 has quit (*.net *.split)
+Feb 11 10:38:11 <dobbie>	oh bye everyone :)
+Feb 11 10:44:33 FiSHLiM plugin unloaded
+**** ENDING LOGGING AT Sun Feb 11 10:44:33 2018
+
+**** BEGIN LOGGING AT Sun Feb 11 12:02:26 2018
+
+Feb 11 12:02:26 *	Now talking on #archlabslinux-team
+Feb 11 12:02:26 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 11 12:02:26 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 11 12:02:26 *	ChanServ gives channel operator status to dobbie
+**** ENDING LOGGING AT Sun Feb 11 12:03:18 2018
+
+**** BEGIN LOGGING AT Sun Feb 11 12:03:18 2018
+
+**** ENDING LOGGING AT Sun Feb 11 14:30:39 2018
+
+**** BEGIN LOGGING AT Tue Feb 13 17:40:47 2018
+
+Feb 13 17:40:47 *	Now talking on #archlabslinux-team
+Feb 13 17:40:47 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 13 17:40:47 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 13 17:40:48 *	ChanServ gives channel operator status to dobbie
+**** ENDING LOGGING AT Tue Feb 13 19:29:30 2018
+
+**** BEGIN LOGGING AT Sat Feb 17 08:03:25 2018
+
+Feb 17 08:03:25 *	Now talking on #archlabslinux-team
+Feb 17 08:03:25 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 17 08:03:25 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 17 08:03:26 *	ChanServ gives channel operator status to dobbie
+Feb 17 11:57:37 *	unix121 has quit (Quit: WeeChat 2.0.1)
+Feb 17 12:23:25 <iDanoo>	^ was testing
+Feb 17 13:32:36 <iDanoo>	avnsgt[m], does ti say a command I have to run?
+Feb 17 13:32:58 <avnsgt[m]>	iDanoo: Bridge returned HTTP 500 Internal Server Error: Provided user is not in channel #archlabslinux.
+Feb 17 13:33:11 <iDanoo>	o.O
+Feb 17 13:33:32 <avnsgt[m]>	I am reading a github thread.. this might be due to my irc naming.
+Feb 17 13:33:58 <avnsgt[m]>	https://github.com/matrix-org/matrix-appservice-irc/issues/505
+Feb 17 13:36:20 <avnsgt[m]>	do you have /umode -R set?
+Feb 17 13:41:23 <iDanoo>	one sec
+**** ENDING LOGGING AT Sat Feb 17 14:31:43 2018
+
+**** BEGIN LOGGING AT Sat Feb 17 15:15:04 2018
+
+Feb 17 15:15:04 *	Now talking on #archlabslinux-team
+Feb 17 15:15:04 *	Topic for #archlabslinux-team is: Archlabs Linux - Team members
+Feb 17 15:15:04 *	Topic for #archlabslinux-team set by iDanoo!~idanoo@unaffiliated/idanoo (Tue Feb  6 16:39:08 2018)
+Feb 17 15:15:04 *	ChanServ gives channel operator status to dobbie

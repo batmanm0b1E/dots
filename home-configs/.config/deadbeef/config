@@ -52,21 +52,27 @@ filebrowser.showicons 1
 filebrowser.sidebar_width 220
 filebrowser.sort_treeview 1
 filebrowser.treelines 0
-filechooser.lastdir file:///run/media/dobbie/Music/J/Judas%20Priest
+filechooser.lastdir file:///run/media/dobbie/Music/G/Gnaw%20Their%20Tongues
 gtkui.action_separators 1
 gtkui.autoresize_columns 1
-gtkui.color.bar_background 11051 12336 15163
-gtkui.color.bar_foreground 33153 41634 48830
-gtkui.color.listview_column_text 11051 12336 15163
-gtkui.color.listview_cursor 11051 12336 15163
-gtkui.color.listview_even_row 57311 57825 59624
-gtkui.color.listview_group_text 11051 12336 15163
-gtkui.color.listview_odd_row 57311 57825 59624
-gtkui.color.listview_playing_text 11051 12336 15163
-gtkui.color.listview_selected_text 57311 57825 59624
-gtkui.color.listview_selection 11051 12336 15163
-gtkui.color.listview_text 11051 12336 15163
-gtkui.color.tabstrip_light 62965 63222 63479
+gtkui.color.bar_background 34952 35466 34181
+gtkui.color.bar_foreground 13107 13107 13107
+gtkui.color.listview_column_text 13107 13107 13107
+gtkui.color.listview_cursor 17476 17476 17476
+gtkui.color.listview_even_row 62965 62965 62965
+gtkui.color.listview_group_text 13107 13107 13107
+gtkui.color.listview_odd_row 62965 62965 62965
+gtkui.color.listview_playing_text 13107 13107 13107
+gtkui.color.listview_selected_text 62965 62965 62965
+gtkui.color.listview_selection 17476 17476 17476
+gtkui.color.listview_text 13107 13107 13107
+gtkui.color.tabstrip_base 62965 62965 62965
+gtkui.color.tabstrip_dark 13107 13107 13107
+gtkui.color.tabstrip_light 62965 62965 62965
+gtkui.color.tabstrip_mid 62965 62965 62965
+gtkui.color.tabstrip_playing_text 13107 13107 13107
+gtkui.color.tabstrip_selected_text 13107 13107 13107
+gtkui.color.tabstrip_text 13107 13107 13107
 gtkui.columns.playlist [{"title":"Track Number","id":"-1","format":"%tracknumber%","size":"162","align":"0","color_override":"0","color":"#ffd9d9d9"},{"title":"Title","id":"-1","format":"%title%","size":"538","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","size":"339","align":"0","color_override":"0","color":"#ff8fa1b3"},{"title":"Duração","id":"-1","format":"%length%","size":"69","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.columns.search [{"title":"Artista","id":"-1","format":"%artist%","size":"94","align":"0","color_override":"0","color":"#ff000000"},{"title":"Título","id":"-1","format":"%title%","size":"208","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.custom_tray_icon deadbeef_tray_icon
@@ -96,7 +102,7 @@ gtkui.selection_properties.show_headers 0
 gtkui.show_menu 0
 gtkui.sortby_fmt_v2 %artist% %year%
 gtkui.sortby_order 0
-gtkui.statusbar.visible 0
+gtkui.statusbar.visible 1
 gtkui.sync 0
 gtkui.tabscroll 0
 gtkui.tabstrip_embolden_playing 0
@@ -151,17 +157,17 @@ junk.enable_cp936_detection 1
 junk.enable_shift_jis_detection 1
 lastfm.disable_np 0
 lastfm.enable 1
-lastfm.login USERNAME
+lastfm.login Stillborn_Hate
 lastfm.mbid 0
-lastfm.password PASSWORD
+lastfm.password Sb9VDz{Vf!#U
 lastfm.prefer_album_artist 0
 lastfm.scrobbler_url http://post.audioscrobbler.com
 lastfm.submit_tiny_tracks 1
 mainwin.geometry.h 896
 mainwin.geometry.maximized 0
 mainwin.geometry.w 2003
-mainwin.geometry.x 4062
-mainwin.geometry.y 276
+mainwin.geometry.x 5640
+mainwin.geometry.y 188
 mp3.id3v1_encoding iso8859-1
 mp3.id3v2_version 3
 mp3.write_id3v1 1
@@ -170,21 +176,30 @@ musical_spectrum.alignment 2
 musical_spectrum.bar_delay 0
 musical_spectrum.bar_falloff -1
 musical_spectrum.bar_w 0
-musical_spectrum.color.background 11051 12336 15163
-musical_spectrum.color.gradient_00 57311 57825 59624
-musical_spectrum.color.gradient_01 33153 41634 48830
-musical_spectrum.color.gradient_02 11051 12336 15163
-musical_spectrum.color.gradient_03 14124 16947 23155
-musical_spectrum.color.gradient_04 12590 15140 20752
-musical_spectrum.color.gradient_05 11051 12336 15163
-musical_spectrum.color.gradient_06 0 0 0
+musical_spectrum.color.background 13107 13107 13107
+musical_spectrum.color.gradient_00 62965 62965 62965
+musical_spectrum.color.gradient_01 47802 48573 46774
+musical_spectrum.color.gradient_02 17476 9029 9029
+musical_spectrum.color.gradient_03 11796 9004 9004
+musical_spectrum.color.gradient_04 11822 13364 13878
+musical_spectrum.color.gradient_05 42816 31398 31398
+musical_spectrum.color.gradient_06 32112 12737 12737
+musical_spectrum.color.gradient_07 35825 16957 16957
+musical_spectrum.color.gradient_08 24684 11025 11025
+musical_spectrum.color.gradient_09 27087 13092 13092
+musical_spectrum.color.gradient_10 27306 16019 16019
+musical_spectrum.color.gradient_11 19442 12507 12507
+musical_spectrum.color.gradient_12 15728 12006 12006
+musical_spectrum.color.gradient_13 10048 8373 8373
+musical_spectrum.color.gradient_14 9830 8552 8552
+musical_spectrum.color.gradient_15 0 0 0
 musical_spectrum.color.hgrid 36751 41377 46003
 musical_spectrum.color.octave_grid 26214 26214 26214
 musical_spectrum.color.vgrid 57311 57825 59624
 musical_spectrum.db_range 120
 musical_spectrum.display_octaves_on_hover 0
 musical_spectrum.draw_style 0
-musical_spectrum.enable_bar_mode 1
+musical_spectrum.enable_bar_mode 0
 musical_spectrum.enable_hgrid 0
 musical_spectrum.enable_octave_grid 0
 musical_spectrum.enable_vgrid 0
@@ -193,7 +208,7 @@ musical_spectrum.fill_spectrum 1
 musical_spectrum.gaps 1
 musical_spectrum.gradient_orientation 0
 musical_spectrum.num_bars 100
-musical_spectrum.num_colors 3
+musical_spectrum.num_colors 2
 musical_spectrum.peak_delay 500
 musical_spectrum.peak_falloff 90
 musical_spectrum.refresh_interval 25
@@ -209,21 +224,21 @@ notify.format_title_tf %title%
 output_plugin ALSA output plugin
 playback.loop 0
 playback.order 0
-playback.volume -11.27165
-playlist.current 3
+playback.volume -14.27165
+playlist.current 7
 playlist.cursor.0 2090
 playlist.cursor.1 1592
 playlist.cursor.10 3
 playlist.cursor.11 5
-playlist.cursor.12 5
+playlist.cursor.12 501
 playlist.cursor.13 2643
 playlist.cursor.14 13
-playlist.cursor.2 1210
-playlist.cursor.3 10497
+playlist.cursor.2 5953
+playlist.cursor.3 0
 playlist.cursor.4 1051
 playlist.cursor.5 641
 playlist.cursor.6 811
-playlist.cursor.7 5
+playlist.cursor.7 1075
 playlist.cursor.8 10
 playlist.cursor.9 0
 playlist.pin.groups 1
@@ -231,15 +246,15 @@ playlist.scroll.0 72720
 playlist.scroll.1 58002
 playlist.scroll.10 0
 playlist.scroll.11 0
-playlist.scroll.12 0
+playlist.scroll.12 17637
 playlist.scroll.13 95120
 playlist.scroll.14 87
-playlist.scroll.2 29036
-playlist.scroll.3 391325
+playlist.scroll.2 502139
+playlist.scroll.3 0
 playlist.scroll.4 0
 playlist.scroll.5 24825
 playlist.scroll.6 0
-playlist.scroll.7 0
+playlist.scroll.7 38819
 playlist.scroll.8 0
 playlist.scroll.9 0
 playlist.scroll.cursorfollowplayback 1
@@ -268,9 +283,9 @@ prefwin.geometry.y 981
 replaygain_mode 2
 replaygain_scale 1
 resume.paused 1
-resume.playlist 3
-resume.position 7.2214293
-resume.track 10494
+resume.playlist 7
+resume.position 28.792865
+resume.track 1075
 resume_last_session 1
 rgscan.num_threads 0
 rgscan.target 89.0
@@ -316,32 +331,32 @@ vu_meter.peak_delay 500
 vu_meter.peak_falloff 90
 vu_meter.refresh_interval 25
 waveform.bg_alpha 65535
-waveform.bg_color_b 15163
-waveform.bg_color_g 12336
-waveform.bg_color_r 11051
+waveform.bg_color_b 13107
+waveform.bg_color_g 13107
+waveform.bg_color_r 13107
 waveform.border_width 0
 waveform.cache_enabled 1
 waveform.cursor_width 3
-waveform.display_rms 0
+waveform.display_rms 1
 waveform.display_ruler 0
 waveform.fg_alpha 65535
-waveform.fg_color_b 46003
-waveform.fg_color_g 41377
-waveform.fg_color_r 36751
+waveform.fg_color_b 62708
+waveform.fg_color_g 61423
+waveform.fg_color_r 60652
 waveform.fg_rms_alpha 65535
-waveform.fg_rms_color_b 59624
-waveform.fg_rms_color_g 57825
-waveform.fg_rms_color_r 57311
+waveform.fg_rms_color_b 17476
+waveform.fg_rms_color_g 17476
+waveform.fg_rms_color_r 17476
 waveform.fill_waveform 1
 waveform.font_size 18
 waveform.log_enabled 0
 waveform.max_file_length 180
 waveform.mix_to_mono 0
 waveform.num_samples 2048
-waveform.pb_alpha 54227
-waveform.pb_color_b 15163
-waveform.pb_color_g 12336
-waveform.pb_color_r 11051
+waveform.pb_alpha 52250
+waveform.pb_color_b 13107
+waveform.pb_color_g 13107
+waveform.pb_color_r 13107
 waveform.refresh_interval 33
 waveform.render_method 1
 waveform.scroll_enabled 1

@@ -1,0 +1,515 @@
+T 1518807861 18<27unix12118>	hola hola
+T 1518807869 20<dobbie>30	How is everyone?
+T 1518807877 18<27unix12118>	esta mucho good
+T 1518807893 18<27unix12118>	you?
+T 1518807895 20<dobbie>30	Good to hear
+T 1518807901 18<27unix12118>	*read
+T 1518807908 20<dobbie>30	smokeking: you around mate?
+T 1518807919 20<dobbie>30	I'm all good thanks, its the weekend
+T 1518807935 18<27unix12118>	the weekend esta mucho fucked up
+T 1518807938 18<27unix12118>	it's the carnival here
+T 1518807948 18<27unix12118>	loads of noice and drunken people on the streetz
+T 1518807976 20<dobbie>30	Yeah Art Deco weekend here, with two cruise ships in the port.  Its fucking mayhem , Napier population during this time basically doubles
+T 1518808038 18<27unix12118>	lol that's both good and bad :P
+T 1518808050 20<dobbie>30	Good for business, shit for everyone else
+T 1518808052 18<27unix12118>	but it means that you spend more time with the family , so
+T 1518808055 18<27unix12118>	it's always fine
+T 1518808056 20<dobbie>30	:)
+T 1518808065 18<27unix12118>	you working on weekends?
+T 1518808066 19<smokeking>	dobbie: Yes mate
+T 1518808082 20<dobbie>30	Not working here mate, only every 8th weekend for three hours
+T 1518808092 20<dobbie>30	smokeking: I'll try that ISO now
+T 1518808102 18<26smokeking18>	No rush duder
+T 1518808125 18<26smokeking18>	I'd just like to dump a release soonish
+T 1518808311 20<dobbie>30	all good man, did Dan get sorted? Are we having some EFI issues?
+T 1518808331 18<26smokeking18>	lol no it's just what it is
+T 1518808350 18<26smokeking18>	his bios combined with the type of setup he is using just = a bad time
+T 1518808369 20<dobbie>30	all sorted now?
+T 1518808379 18<26smokeking18>	Yea almost all of it
+T 1518808388 18<26smokeking18>	he just had to fiddle with the bios
+T 1518808403 20<dobbie>30	phew, I had a little chill up my spine when I read some of the convo lol
+T 1518808410 18<26smokeking18>	haha
+T 1518808432 20<dobbie>30	Shit now we are all here we can pretty much do away with Hangouts can't we?
+T 1518808463 18<26smokeking18>	yea
+T 1518808478 20<dobbie>30	WHats been happening anyway, Smoke?
+T 1518808576 18<26smokeking18>	Not too much man
+T 1518808595 18<26smokeking18>	workin on a bunch of scripts, pretty much same as always haha
+T 1518808608 20<dobbie>30	LOL, keeping busy I suppose
+T 1518808670 18<26smokeking18>	Yea
+T 1518808685 20<dobbie>30	DP made a new icon pack this time with a cheat sheet
+T 1518808689 18<26smokeking18>	Starting to look around for a job now sping is coming
+T 1518808695 18<26smokeking18>	Oh nice
+T 1518808710 20<dobbie>30	did he throw it your way?
+T 1518808716 18<26smokeking18>	icons like font icons or like icons icons
+T 1518808720 18<26smokeking18>	nah
+T 1518808735 18<26smokeking18>	I'm sure he'll hit me up eventually
+T 1518808744 20<dobbie>30	https://www.dropbox.com/s/sye2acv4j1hqp0y/finale.ttf?dl=0
+T 1518808748 20<dobbie>30	that's the fonts
+T 1518808754 20<dobbie>30	https://www.dropbox.com/s/ah3o9r3m35eqt76/cheatsheet.html?dl=0
+T 1518808760 20<dobbie>30	The cheatsheet is epic
+T 1518808846 18<26smokeking18>	Jesus, he's gotta be generating it, who in their right mind would write out this boring ass shit
+T 1518808861 18<26smokeking18>	Just endless divs
+T 1518808863 20<dobbie>30	Did you see this: https://github.com/ARCHLabs/Archlabs-User-Home/pull/42
+T 1518808880 20<dobbie>30	if he wrote it, I respect his patience
+T 1518808924 18<27unix12118>	lol that guy's Greek
+T 1518808928 18<27unix12118>	based on his name
+T 1518808937 20<dobbie>30	:) My uncle is Greek
+T 1518808993 18<27unix12118>	i fkn hate the Uni he is at
+T 1518809003 18<27unix12118>	we have the same one in my city
+T 1518809037 18<27unix12118>	they are basically Electrical engineers who have like 5 Computer Science total
+T 1518809049 18<26smokeking18>	hahaa
+T 1518809071 18<27unix12118>	and their Diploma is Electrical Engineering + Computer Engineering + Informatics
+T 1518809091 18<27unix12118>	So basically he has 40 less CS classes than my Uni
+T 1518809100 18<27unix12118>	and he gets a diploma with the same "rights"
+T 1518809124 18<27unix12118>	5 years - 5 classes in CS - All Python
+T 1518809141 18<27unix12118>	the TL;DR of the University in Athens
+T 1518809601 18<27unix12118>	oh i forgot the most rediculous of all
+T 1518809615 18<27unix12118>	they also have some rights of civil engineering
+T 1518809631 18<27unix12118>	they can basically design up to a 3-flat building
+T 1518809649 18<26smokeking18>	LOL
+T 1518809651 18<26smokeking18>	LOL
+T 1518809651 18<27unix12118>	hello-darkness-my-old-friend.gifv
+T 1518809660 18<27unix12118>	don't you have the there @smoke ?
+T 1518809675 18<26smokeking18>	whats this?
+T 1518809701 18<27unix12118>	when I worked at construction on the main employers was basically a guy with no Civil Engineering diploma, but an Electrical Engineer diploma
+T 1518809737 18<26smokeking18>	Ahh man theyre half retards here
+T 1518809762 18<26smokeking18>	that or their paid/ buddies with the dev
+T 1518809762 20<dobbie>30	smoke: same install error, its got to be my laptop  https://scrot.moe/image/68HfC
+T 1518809767 18<27unix12118>	they basically go to a uni with mediocre classes and 0 speciality and they have openings to 4 different work markets
+T 1518809806 18<27unix12118>	it's wornings
+T 1518809808 18<26smokeking18>	I'm confused
+T 1518809809 18<27unix12118>	warning*
+T 1518809812 18<26smokeking18>	Yea
+T 1518809821 18<26smokeking18>	why is it even popping the error flag
+T 1518809828 18<26smokeking18>	I see no error
+T 1518809835 18<26smokeking18>	ahh
+T 1518809837 18<26smokeking18>	LOLOLOL
+T 1518809845 20<dobbie>30	No idea and it is telling me the install is done
+T 1518809847 18<26smokeking18>	'no error reported'
+T 1518809851 20<dobbie>30	LOL
+T 1518809860 20<dobbie>30	Its got to be my hardware
+T 1518809860 18<26smokeking18>	Fuck me man
+T 1518809877 18<26smokeking18>	Nah it's not
+T 1518809891 20<dobbie>30	okay cool. Is it a driver issue?
+T 1518809900 18<26smokeking18>	and thats not even an error
+T 1518809908 18<26smokeking18>	nope, its just nothing
+T 1518809911 18<27unix12118>	@Nate , so there you have to be a licenced Civil Engineer to build a home right? (Like here)
+T 1518809921 18<27unix12118>	just ignore it Matt
+T 1518809922 18<26smokeking18>	ends where you are dude
+T 1518809929 18<26smokeking18>	Canada is a bigass empty place
+T 1518809940 18<26smokeking18>	Lots of places where they dont know, dont care
+T 1518809945 20<dobbie>30	I cant go any further with it once that message pops up
+T 1518809949 18<26smokeking18>	Yea
+T 1518809952 18<26smokeking18>	I know
+T 1518809955 18<26smokeking18>	I'll fix it
+T 1518809959 20<dobbie>30	oh cool
+T 1518809961 18<27unix12118>	Yeah, but if you want to build a home yourself, you have to pay a Civil Engineer to "design" it right?
+T 1518809973 18<26smokeking18>	not neccesarily
+T 1518809978 18<27unix12118>	lol woot
+T 1518809988 18<26smokeking18>	I sure as hit wouldnt unless I was required by law
+T 1518809989 18<27unix12118>	here you have to get one even if you want to build a garage or something
+T 1518809994 18<26smokeking18>	yea
+T 1518810002 18<26smokeking18>	Its like that in the major areas
+T 1518810005 18<26smokeking18>	obv
+T 1518810018 18<27unix12118>	i keep forgetting that you have different laws per state/area
+T 1518810019 18<26smokeking18>	but yea lots of people just dont
+T 1518810024 18<26smokeking18>	kinda
+T 1518810027 18<26smokeking18>	not just that
+T 1518810029 18<26smokeking18>	but man
+T 1518810042 18<26smokeking18>	they cant tell you what to do if they cant regulate it
+T 1518810053 18<26smokeking18>	like there is places here you could walk
+T 1518810055 18<26smokeking18>	and die
+T 1518810060 18<26smokeking18>	before seeing another human
+T 1518810068 18<27unix12118>	lol woot
+T 1518810082 18<27unix12118>	I've never thought how spread canada is
+T 1518810082 18<26smokeking18>	just endless emptiness
+T 1518810085 18<26smokeking18>	yea
+T 1518810093 18<27unix12118>	it seems big country but in terms of population it's not
+T 1518810101 18<26smokeking18>	like 80% of the country really inst policed in any way
+T 1518810121 18<26smokeking18>	like 50% of the country has no people anywheer near it
+T 1518810122 18<27unix12118>	that's why everyone comes there illegaly :P
+T 1518810127 18<26smokeking18>	lol
+T 1518810142 18<26smokeking18>	My dad had a warrant before I was born
+T 1518810145 18<27unix12118>	Norway is kinda the same, 90% of the population there is in the south side of the country
+T 1518810150 18<26smokeking18>	you just go into te bush
+T 1518810154 18<26smokeking18>	Yea
+T 1518810163 18<26smokeking18>	I legit just watched a vid about that
+T 1518810169 18<27unix12118>	lol
+T 1518810174 18<27unix12118>	warrant for what?
+T 1518810177 18<27unix12118>	i'm confused :P
+T 1518810183 18<26smokeking18>	arrest
+T 1518810185 18<26smokeking18>	lol
+T 1518810198 18<27unix12118>	hahaha lol
+T 1518810203 18<27unix12118>	that's kinda the way it works here as well
+T 1518810215 18<26smokeking18>	Yea
+T 1518810221 18<27unix12118>	in 2009 I was with my mother in the car behind a huge truck here at Patras
+T 1518810226 18<26smokeking18>	I imagine its like that everywhere
+T 1518810235 18<27unix12118>	outside of the port the light turns red and the cars stop
+T 1518810239 18<26smokeking18>	with varying degrees
+T 1518810247 18<27unix12118>	and out of nowhere 10 people come out of the bushes
+T 1518810254 18<26smokeking18>	Thats nut
+T 1518810256 18<26smokeking18>	nuts
+T 1518810257 18<27unix12118>	and start hanging from the truck to get out of the country
+T 1518810264 18<26smokeking18>	Hahaha
+T 1518810266 18<26smokeking18>	wtf
+T 1518810292 18<27unix12118>	have you ever seen a guy fitting in the space between a truck's tire and the bot of the cargo?
+T 1518810294 18<27unix12118>	cause I have
+T 1518810301 18<27unix12118>	we have a huge problem with illegals here
+T 1518810316 18<27unix12118>	basically every city near the sea has
+T 1518810331 18<27unix12118>	it's easy to come illegaly using passenger boats here
+T 1518810388 18<27unix12118>	me and a couple of friends went to Italy in the first years just like that
+T 1518810401 18<27unix12118>	we literally walk into a boat (the ones that take cars and people)
+T 1518810402 18<26smokeking18>	Hahaha
+T 1518810408 18<26smokeking18>	thats funny
+T 1518810415 18<27unix12118>	and in the morning we were in Italy
+T 1518810420 18<27unix12118>	we spend the day there and then came back
+T 1518810429 18<27unix12118>	no-one never asked us for tickets or ID
+T 1518810432 18<26smokeking18>	Europe is crazy to me
+T 1518810446 18<26smokeking18>	Thats awesome
+T 1518810458 18<27unix12118>	it's too common here, people do it all the time
+T 1518810469 18<27unix12118>	the port in my city is the main port if you want to get to italy
+T 1518810477 18<27unix12118>	and if you can't get for free
+T 1518810496 18<27unix12118>	you can pay literally any truck driver like 10$ to let you sit in the passenger sit with your friends
+T 1518810500 18<27unix12118>	while they load up the truck
+T 1518810507 18<27unix12118>	so that you don't have to pay a ticket
+T 1518810520 18<27unix12118>	cause the price for truck+people is the same as just truck
+T 1518810532 18<26smokeking18>	hahaha
+T 1518810538 18<26smokeking18>	so its just free money
+T 1518810544 18<27unix12118>	yeah man
+T 1518810547 18<26smokeking18>	nice
+T 1518810551 18<26smokeking18>	win win
+T 1518810555 18<27unix12118>	it's kinda awesome that you can travel without any passport here
+T 1518810563 18<26smokeking18>	Yea man
+T 1518810569 18<27unix12118>	if you have ID you can get to any country in Europe
+T 1518810570 18<26smokeking18>	I need a passport to go anywhere
+T 1518810581 18<26smokeking18>	not within canada obv
+T 1518810586 18<27unix12118>	Yeah I know, which is hard to get as well
+T 1518810588 18<26smokeking18>	but yea, leaving the border
+T 1518810593 18<26smokeking18>	yea man
+T 1518810613 18<27unix12118>	borders are imaginary :P
+T 1518810619 18<27unix12118>	you don't even have to jump the there :P
+T 1518810732 18<26smokeking18>	LOL
+T 1518810762 18<26smokeking18>	Can you imagine
+T 1518810770 18<26smokeking18>	A wall spanning the US canada border
+T 1518810776 18<26smokeking18>	Jesus
+T 1518810912 18<27unix12118>	that's kinda how it's here
+T 1518810920 18<27unix12118>	we have sea all around except the north
+T 1518810932 18<27unix12118>	and as far as I know from friend that went to army
+T 1518810952 18<27unix12118>	the borders are actual borders here on the north for the biggest part
+T 1518810963 18<27unix12118>	not a wall , but that meta-spiky thing
+T 1518810975 18<27unix12118>	on all the none-mountain areas
+T 1518811006 18<26smokeking18>	we just have the fact that we dont wanna be in maerica holding us here
+T 1518811019 18<26smokeking18>	:P
+T 1518811033 18<27unix12118>	americans don't want to be in canada as far as i know as well
+T 1518811041 18<27unix12118>	cause of the prices there :P
+T 1518811056 18<26smokeking18>	I dont think thats quite how conversion works
+T 1518811064 18<26smokeking18>	there money is worth a shitton here
+T 1518811071 18<26smokeking18>	their*
+T 1518811102 18<27unix12118>	murican money man
+T 1518811104 18<26smokeking18>	thats how we feel
+T 1518811107 18<26smokeking18>	go there
+T 1518811112 18<26smokeking18>	get your money halved
+T 1518811153 18<27unix12118>	oh i was expecting: go there, have your money halved, get shot, have your money stolen
+T 1518811158 18<26smokeking18>	Oh thats weird
+T 1518811166 18<26smokeking18>	I cant use uppercase
+T 1518811169 18<26smokeking18>	d
+T 1518811181 18<27unix12118>	THATS WEIRD
+T 1518811185 18<26smokeking18>	Feelsbadman
+T 1518811190 18<26smokeking18>	super
+T 1518811202 18<27unix12118>	keyboard fucked?
+T 1518811218 18<26smokeking18>	I was fuckin with stuff trying to get n's system figured
+T 1518811221 18<26smokeking18>	Nah
+T 1518811228 18<26smokeking18>	Just uppercase d
+T 1518811241 18<26smokeking18>	Something to do with the terminal surely
+T 1518811258 18<26smokeking18>	Just in weechat too
+T 1518811259 18<27unix12118>	you might have a bind with shift+d
+T 1518811260 18<26smokeking18>	LOL
+T 1518811272 18<26smokeking18>	Yea perhaps
+T 1518811277 18<26smokeking18>	No idea
+T 1518811291 18<26smokeking18>	with all the random zsh shit I was loading it's very possible
+T 1518811317 18<27unix12118>	believe it or not i started using zsh only like a year ago :P
+T 1518811420 18<26smokeking18>	Hah
+T 1518811430 18<26smokeking18>	Yea same
+T 1518811442 18<26smokeking18>	I dunno bash was always fine for me learning
+T 1518811465 18<26smokeking18>	I was never much of a terminal user before anyhow so it made zero difference to me
+T 1518811505 18<26smokeking18>	Theres a few things about zsh I really like and notice when I dont have them
+T 1518811550 18<26smokeking18>	case insensitive completion and incremental history search
+T 1518811585 18<27unix12118>	i like the awesome customization that it offers :P
+T 1518811820 18<26smokeking18>	Yea
+T 1518812541 18<26smokeking18>	Ok I fixed all the scripts to follow symlinks
+T 1518812556 18<27unix12118>	mhmmm nice man, nice
+T 1518812568 18<27unix12118>	i gotta find out who to create popup windows with polybar
+T 1518812586 18<27unix12118>	like a calendar pop-up when you click on the clock etc
+T 1518812589 18<27unix12118>	I've never done them before :p
+T 1518812620 18<26smokeking18>	You wanna map actions to the default modules?
+T 1518812661 18<26smokeking18>	The only way I've found so far is to wrap the label in an action or more
+T 1518812703 18<27unix12118>	i suspect that that's the only way to do it with polybar anyways :P
+T 1518812709 18<27unix12118>	so I guess I'll try that :P
+T 1518812752 18<26smokeking18>	Well if you use the script module or any custom module
+T 1518812761 18<26smokeking18>	there is actual settings for clicks
+T 1518812769 18<26smokeking18>	but the default modules there arent
+T 1518812789 18<26smokeking18>	so the only way around it is with the ability to wrap labels with commands
+T 1518812850 18<26smokeking18>	https://github.com/jaagr/polybar/wiki/Formatting
+T 1518812864 18<26smokeking18>	The formatting wiki page explains much better
+T 1518812880 18<26smokeking18>	%{A1:command:} clickable text %{A}
+T 1518812886 18<26smokeking18>	pretty simple
+T 1518812897 18<26smokeking18>	you can use A1-3
+T 1518812915 18<26smokeking18>	for mouse left, middle and right
+T 1518812944 18<26smokeking18>	Some modules cat use certain mouse actions though
+T 1518812956 18<26smokeking18>	eg. volume right click mutes
+T 1518812964 18<26smokeking18>	or whaever
+T 1518813151 18<27unix12118>	oh nice, I'm gonna get right into it
+T 1518813188 18<26smokeking18>	Main reason I do it is that the built in modules are much more efficient than scripts
+T 1518813287 18<27unix12118>	indeed :P
+T 1518813384 18<26smokeking18>	I wanted to do some kind of window buttons for open applications
+T 1518813393 18<26smokeking18>	But it gets messy quick
+T 1518813632 18<27unix12118>	you mean like a menu that comes from polybar?
+T 1518813893 18<26smokeking18>	nah
+T 1518813904 18<26smokeking18>	like a bunch of general font glyphs
+T 1518813965 18<27unix12118>	oh i get you
+T 1518813966 18<26smokeking18>	Like your average panel but it would all be done through text
+T 1518813969 18<26smokeking18>	yea
+T 1518813993 18<27unix12118>	mhmm
+T 1518814004 18<26smokeking18>	totally easy for one WM and a few select apps
+T 1518814028 18<26smokeking18>	but if you get into it soon the realization of how much BS there is to deal with
+T 1518814037 18<26smokeking18>	just not worth it
+T 1518814533 18<27unix12118>	yeap :P I dunno :P I like simple things :P
+T 1518814590 18<26smokeking18>	yo that
+T 1518815957 23*	mchasard (~mchasard@48.233.8.109.rev.sfr.net23) has joined
+T 1518815967 18<28mchasard18>	hi
+T 1518815977 20<dobbie>30	hello :D
+T 1518816006 18<27unix12118>	herro sir
+T 1518816018 18<28mchasard18>	whats the news about archlabs
+T 1518816035 20<dobbie>30	In what way?  Probably a new ISO some time soon
+T 1518816064 18<28mchasard18>	cool
+T 1518816071 18<27unix12118>	we have a new forum :P
+T 1518816079 18<27unix12118>	and torrents :P
+T 1518816087 18<27unix12118>	and a new irc channel :o
+T 1518816101 18<28mchasard18>	its not here ?
+T 1518816106 18<28mchasard18>	irc ?
+T 1518816131 20<dobbie>30	IRC, its waht we are using to communicate right now :D
+T 1518816172 18<27unix12118>	i'm just messing with you bro :)
+T 1518816234 18<27unix12118>	are you a forum member?
+T 1518816239 18<27unix12118>	I can't recal that username :P
+T 1518816274 18<28mchasard18>	not really
+T 1518816300 24*	mchasard has quit (Quit: Leaving)
+T 1518816351 18<27unix12118>	oh noooo, come baaaack
+T 1518816375 20<dobbie>30	Catch ya later :D
+T 1518816428 18<27unix12118>	see you later man
+T 1518816440 20<dobbie>30	oh I was talking to our departed guest :D
+T 1518816490 18<27unix12118>	Oh :P Silly me :P
+T 1518816495 20<dobbie>30	hehe
+T 1518816546 18<27unix12118>	that was kinda random :P
+T 1518816556 20<dobbie>30	Very random
+T 1518816561 18<27unix12118>	like those dudes in the street that are like "Hey what's the score of this game?"
+T 1518816649 20<dobbie>30	hahaha
+T 1518816690 18<27unix12118>	jesus, that noise today
+T 1518816701 18<27unix12118>	it's an endless stream of people screaming
+T 1518817680 20<dobbie>30	fuck that man
+T 1518817930 19<avnsgt[m]>	Dobbie is still awake?
+T 1518817973 20<dobbie>30	Yup, its 10:52am
+T 1518817978 20<dobbie>30	Saturday
+T 1518818094 18<27unix12118>	oh i live in the past
+T 1518818098 18<28avnsgt[m]18>	Damn the future
+T 1518818105 18<27unix12118>	I'm still on friday, for about 5 more minutes
+T 1518818117 20<dobbie>30	Ah nice.
+T 1518818145 18<29iDanoo18>	Morning
+T 1518818151 20<dobbie>30	Hey Dan
+T 1518818200 18<27unix12118>	Hello Mr. Daniel
+T 1518818299 18<29iDanoo18>	Soooo I couldn't get 2018.02 working
+T 1518818302 18<29iDanoo18>	installed 2017.12
+T 1518818308 20<dobbie>30	I couldn't either :D
+T 1518818310 20<dobbie>30	:(
+T 1518818321 18<29iDanoo18>	Looked like it wasn't copying the UEFI stuff over
+T 1518818349 18<29iDanoo18>	It added an entry but just wouldn't boot
+T 1518818373 18<28avnsgt[m]18>	I need a confirmation on a al-hello script bug.. it seems when you opt to install additional software, and select chrome for your browser, the script completes and only installs chrome.
+T 1518818379 18<29iDanoo18>	i fixed that yesterday
+T 1518818381 18<29iDanoo18>	fix got merged in
+T 1518818391 18<29iDanoo18>	:)
+T 1518818406 18<29iDanoo18>	https://github.com/ARCHLabs/Archlabs-Common/pull/3/commits/3bbfbe71b641c68f2e9abee093d97c3f8b9132e6 avnsgt[m]
+T 1518818461 18<28avnsgt[m]18>	Sweet.
+T 1518818488 20<dobbie>30	most excellent
+T 1518818503 18<29iDanoo18>	Yeah I was so confused when that happened avnsgt[m] haha
+T 1518819150 18<28avnsgt[m]18>	iDanoo: I like confirmation or reproducible results
+T 1518819197 18<29iDanoo18>	Yeah, I changed that var, tested and it worked, took it out and it failed again
+T 1518819350 18<28avnsgt[m]18>	Awesome.
+T 1518821857 24*	unix121 has quit (Quit: WeeChat 2.0.1)
+T 1518825704 18<28avnsgt[m]18>	iDanoo:  you still around?
+T 1518825710 18<29iDanoo18>	Yep
+T 1518825782 18<28avnsgt[m]18>	I want to try an bridge in a Riot.im room. Essentially merge the IRC room with Riot. What do you think?
+T 1518825984 18<29iDanoo18>	We can give it a go lol
+T 1518826044 18<28avnsgt[m]18>	To bridge the room in there are some bits of info needed,  or one must have chanops.
+T 1518826101 18<29iDanoo18>	Do you have a guide of what's needed?
+T 1518826116 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518826119 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518826132 18<29iDanoo18>	That didn't last long lol
+T 1518826133 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518826136 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518826183 18<28avnsgt[m]18>	It needs a key for the channel..
+T 1518826198 18<29iDanoo18>	huh
+T 1518826199 18<29iDanoo18>	a key lol
+T 1518826223 18<28avnsgt[m]18>	Yeah.. You get it from the ChanServ. But you need Ops to get the key.
+T 1518826273 18<29iDanoo18>	2 sec
+T 1518826308 18<29iDanoo18>	Uhhh you should only need a key for invite only rooms
+T 1518826311 18<29iDanoo18>	"Channel mode +/- k allows you to set or remove a secret key for a channel. Channels that have a key set cannot be joined without giving the key, unless the user is invited in. Users trying to join a channel that has a key set, without giving a key will receive following error message: "#SwiftChannel unable to join channel (need correct key)". Only halfops and above can set and remove this mode."
+T 1518826316 18<29iDanoo18>	Channel isn't set to +k
+T 1518826403 18<29iDanoo18>	Can't assign it flags cause MatrixBridge isn't registered lol
+T 1518826436 18<28avnsgt[m]18>	Hmm.. Then only the OP or IRC owner can bridge, maybe?
+T 1518826456 18<29iDanoo18>	Maybe.. How're you doing it?
+T 1518826468 18<28avnsgt[m]18>	I need to take closer look at some docs here.
+T 1518826498 18<28avnsgt[m]18>	You create a Riot Channel, and make it public, then add the IRC bridge.
+T 1518826527 22*	26iDanoo gives voice to 18smokeking
+T 1518826529 22*	26iDanoo gives voice to 18avnsgt[m]
+T 1518826531 22*	26iDanoo gives voice to 18sqamsqam
+T 1518826540 18<28avnsgt[m]18>	I have a list of names in the Chanpick that can accept the bridge.
+T 1518826542 18<29iDanoo18>	.g bridge riot and irc rooms
+T 1518826544 18<26Minimo18>	(iDanoo) https://opensource.com/article/17/5/introducing-riot-IRC -- IRC for the 21st Century: Introducing Riot | Opensource.com: "May 19, 2017 ... Matrix was built to integrate with IRC servers and other communication protocols, meaning you can use the Riot client as an IRC..."
+T 1518826586 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518826588 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518826592 18<29iDanoo18>	That seems like it's just for the bridge though
+T 1518826594 18<29iDanoo18>	not to merge rooms
+T 1518826598 18<29iDanoo18>	OH
+T 1518826601 18<29iDanoo18>	is that what you're trying to go?
+T 1518826604 18<29iDanoo18>	Just get the bridge up?
+T 1518826660 18<28avnsgt[m]18>	In a sense it merges the 2, in that the 2 share one space.
+T 1518826840 18<29iDanoo18>	Wow these docs aren't clear
+T 1518826846 18<29iDanoo18>	Googling brings up heaps of alternate methods
+T 1518826856 19<avnsgt[m]>	channop nicks that can accept the bridge are: iDanno, dobbie, Minimo, and ChanServ
+T 1518826893 18<28avnsgt[m]18>	What do these names all have in common?
+T 1518827312 18<28avnsgt[m]18>	I wonder if me being in the irc room is the issue.. maybe I need to leave before the bridge can enter.
+T 1518827371 24*	avnsgt[m] (avnsgtmatr@gateway/shell/matrix.org/x-fvupzamiholizuvo24) has left ("User left")
+T 1518827407 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827409 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827418 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827420 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827443 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827445 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827456 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827458 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827481 18<29iDanoo18>	:(
+T 1518827485 18<29iDanoo18>	I don't know why it'd be leaving
+T 1518827818 23*	avnsgt[m] (avnsgtmatr@gateway/shell/matrix.org/x-fvupzamiholizuvo23) has joined
+T 1518827864 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827867 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827878 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827880 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827916 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827918 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518827960 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518827962 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828075 18<29iDanoo18>	It makes no sense D:
+T 1518828196 18<28avnsgt[m]18>	No it doesn't and from what I have read, it has been channel owners only having this issue, when setting up a brand new channel with no one in them.
+T 1518828220 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828223 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828231 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828234 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828280 18<29iDanoo18>	Try a test channel maybe
+T 1518828288 18<29iDanoo18>	Ah maybe it joins and expects OP
+T 1518828293 18<29iDanoo18>	hold on try now?
+T 1518828305 18<28avnsgt[m]18>	k
+T 1518828385 18<28avnsgt[m]18>	Not showing yet.. might take a minute or two to propagate the system.
+T 1518828444 18<29iDanoo18>	Going to try OP as soon as it joins
+T 1518828444 18<29iDanoo18>	haha
+T 1518828492 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828492 22*	26iDanoo gives channel operator status to 18MatrixBridge
+T 1518828494 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828496 18<29iDanoo18>	Welp
+T 1518828497 18<29iDanoo18>	haha
+T 1518828504 18<29iDanoo18>	I tried
+T 1518828511 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828514 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828523 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828523 22*	26iDanoo gives channel operator status to 18MatrixBridge
+T 1518828526 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828545 23*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj23) has joined
+T 1518828545 22*	26iDanoo gives channel operator status to 18MatrixBridge
+T 1518828547 24*	MatrixBridge (matrixirc@gateway/shell/matrix.org/x-imxnaesbbwzuqvvj24) has left ("User left")
+T 1518828577 18<29iDanoo18>	THERE WE GO
+T 1518828580 18<29iDanoo18>	WHAT DID YOU DO
+T 1518828587 18<29iDanoo18>	<MatrixBridge> @avnsgt:matrix.org has requested to bridge 'archlabslinux' (https://matrix.to/#/!UxaLxVrgMFiXWUiHkc:matrix.org) with #archlabslinux on this IRC network. Respond with 'yes' or 'y' to allow, or simply ignore this message to disallow. You have 300 seconds from when this message was sent.
+T 1518828633 18<28avnsgt[m]18>	I added you and clicked multiple times
+T 1518828635 18<29iDanoo18>	hahahahahaha
+T 1518828677 18<28avnsgt[m]18>	You have to respond to the bridge request now
+T 1518828694 18<28avnsgt[m]18>	On the link in the channel.
+T 1518828762 18<28avnsgt[m]18>	yes
+T 1518828941 18<29iDanoo18>	I did :)
+T 1518828976 18<28avnsgt[m]18>	Now, I wonder why the rest of the irc channel doesn't appear yet?
+T 1518828991 18<28avnsgt[m]18>	Maybe it will take some time to update as everyone becomes active.
+T 1518828998 23*	test2wqdd[m] (test2wqddm@gateway/shell/matrix.org/x-vurbqwcuptmcspym23) has joined
+T 1518829000 18<29test2wqdd[m]18>	test
+T 1518829003 18<29iDanoo18>	well that worked
+T 1518829004 18<29iDanoo18>	yeah
+T 1518829052 18<29iDanoo18>	I think as people say stuff it'll populate
+T 1518829093 18<28avnsgt[m]18>	You can't see it on your end, but our RIot channel looks like the IRC, but with a little more funcitionality and our logo on it.
+T 1518829100 18<29iDanoo18>	I just joined as test2wqdd[m]
+T 1518829102 18<29iDanoo18>	I saw it
+T 1518829103 18<29iDanoo18>	It's nice :)
+T 1518829120 18<28avnsgt[m]18>	Ok
+T 1518829258 18<29iDanoo18>	Hmm wonder what else I need to setup on this laptop
+T 1518829289 18<28avnsgt[m]18>	Not sure.. DId you get a new one?
+T 1518829297 18<28avnsgt[m]18>	.8Ball Will our test fail?
+T 1518829298 18*	26Minimo shakes the magic 8 ball... Yes
+T 1518829592 18<29iDanoo18>	Hahahahaha
+T 1518829622 18<28avnsgt[m]18>	https://gph.is/2oCw9BM
+T 1518829812 18<29iDanoo18>	hahahaha
+T 1518831103 FiSHLiM plugin unloaded
+T 1518831103 Python interface unloaded
+T 1518832468 19*	Now talking on 22#archlabslinux
+T 1518832468 22*	Topic for 22#archlabslinux is: ArchLabs linux - https://forum.archlabslinux.com
+T 1518832468 22*	Topic for 22#archlabslinux set by 26iDanoo!~idanoo@unaffiliated/idanoo (24Tue Feb  6 12:11:42 2018)
+T 1518832506 >18NickServ<	identify ****
+T 1518832507 -18NickServ-	You are now identified for dobbie.
+T 1518832507 22*	26ChanServ gives channel operator status to 18dobbie
+T 1518832520 18<28avnsgt[m]18>	Just like that he is still here
+T 1518832524 24*	Dobbie03[m] (dobbie03ma@gateway/shell/matrix.org/x-hhthhwpumreykexd24) has left ("User left")
+T 1518832528 18<28avnsgt[m]18>	just on the IRC side.
+T 1518832549 20<dobbie>30	Just left the room in the riot app, and Dobbie clone is gone
+T 1518832576 FiSHLiM plugin unloaded
+T 1518832576 Python interface unloaded
+T 1518833036 19*	Now talking on 22#archlabslinux
+T 1518833036 22*	Topic for 22#archlabslinux is: ArchLabs linux - https://forum.archlabslinux.com
+T 1518833036 22*	Topic for 22#archlabslinux set by 26iDanoo!~idanoo@unaffiliated/idanoo (24Tue Feb  6 12:11:42 2018)
+T 1518833056 >18NickServ<	identify ****
+T 1518833056 -18NickServ-	You are now identified for dobbie.
+T 1518833056 22*	26ChanServ gives channel operator status to 18dobbie
+T 1518833139 20<dobbie>30	okay weechat didn't work out
+T 1518833164 18<29iDanoo18>	haha yeah
+T 1518833171 18<29iDanoo18>	hexchat is definitely solid
+T 1518833178 20<dobbie>30	LOL it brought back too many bad memories.
+T 1518833191 20<dobbie>30	Is there any way to auto join the team room?
+T 1518833213 18<28avnsgt[m]18>	Hexchat makes IRC easy.
+T 1518833214 18<29iDanoo18>	Uhhh yeah
+T 1518833223 18<29iDanoo18>	Hexchat there's 'auto join last channels' or something
+T 1518833242 20<dobbie>30	I join this room okay but I have to manually join the team one.  Can we auto identify too?
+T 1518833261 18<28avnsgt[m]18>	Yep.. you sure can.
+T 1518833329 18<28avnsgt[m]18>	If Hexchat doesn't support auto ident, then it not worth the time it takes to install.
+T 1518833338 20<dobbie>30	ah
+T 1518833373 18<28avnsgt[m]18>	I can even do auto ident using Riot.
+T 1518833549 18*	28avnsgt[m] balls up hexchat, and places it in the recycle bin.
+T 1518833591 18<28avnsgt[m]18>	.8Ball Is Riot better than Hexchat?
+T 1518833591 18*	26Minimo shakes the magic 8 ball... Outlook good
+T 1518833604 18<29iDanoo18>	.8ball But IRC is far better yes?
+T 1518833604 18*	26Minimo shakes the magic 8 ball... Very doubtful
+T 1518833608 18<29iDanoo18>	Hahahaha
+T 1518833611 18<29iDanoo18>	.8ball IRC wins?
+T 1518833611 18*	26Minimo shakes the magic 8 ball... One would be wise to think so
+T 1518833617 18<29iDanoo18>	Too vague >_>
+T 1518833686 20<dobbie>30	I think I got the auto identify working, one momento
+T 1518833689 FiSHLiM plugin unloaded
+T 1518833689 Python interface unloaded
+T 1518833704 19*	Now talking on 22#archlabslinux
+T 1518833704 22*	Topic for 22#archlabslinux is: ArchLabs linux - https://forum.archlabslinux.com
+T 1518833704 22*	Topic for 22#archlabslinux set by 26iDanoo!~idanoo@unaffiliated/idanoo (24Tue Feb  6 12:11:42 2018)
+T 1518833704 22*	26ChanServ gives channel operator status to 18dobbie
+T 1518833711 20<dobbie>30	Yay
+T 1518833717 20<dobbie>30	Easy as.
+T 1518833717 18<28avnsgt[m]18>	.8Ball Will IRC ever reach its End of Life?
+T 1518833718 18*	26Minimo shakes the magic 8 ball... You may rely on it
+T 1518833822 18<29iDanoo18>	Ha
+T 1518833832 22*	26iDanoo has kicked 18test2wqdd[m] from 22#archlabslinux (24test2wqdd[m])
+T 1518833837 18<29iDanoo18>	(that was me testing earlier)
+T 1518833849 20<dobbie>30	lol
+T 1518833885 18<28avnsgt[m]18>	lol
+T 1518834040 19<avnsgt[m]>	There I trimmed out Dobbie's ghost.
+T 1518834053 20<dobbie>30	It wasn't showing over here
+T 1518834295 18<28avnsgt[m]18>	I have made the room public. Give it some time, and see if we pick up any additional members.
