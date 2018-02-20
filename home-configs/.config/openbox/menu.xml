@@ -2,6 +2,7 @@
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
 		<separator label="A R C H L A B S" />
+		<menu id="applications-menu" label="all apps">
 			<menu id="access-menu" label="Run">
 			<item label="Run...">
 			<action name="Execute">
@@ -209,7 +210,30 @@
 					</item>
 					</menu>
 				</menu>
-					<separator/>
+			</menu>
+				<separator/>
+				<item label="web">
+			<action name="Execute">
+				<execute>firefox-developer-edition</execute>
+			</action>
+		</item>
+		<item label="music">
+			<action name="Execute">
+				<execute>deadbeef</execute>
+			</action>
+		</item>
+		<item label="editor">
+			<action name="Execute">
+				<execute>subl3</execute>
+			</action>
+		</item>
+		<item label="chat">
+			<action name="Execute">
+				<execute>hexchat</execute>
+			</action>
+		</item>
+			<separator/>
+					<menu id="openbox-menu" label="openbox">
 					<item label="Lock...">
 			<action name="Execute">
 				<execute>i3lock-fancy -p</execute>
@@ -221,4 +245,5 @@
       </action>
     </item>
 	  </menu>
+	</menu>
 </openbox_menu>

@@ -35,18 +35,18 @@ o W-S-Right       	DirectionalCycleWindows
 o W-S-Left        	DirectionalCycleWindows
 o W-S-Up          	DirectionalCycleWindows
 o W-S-Down        	DirectionalCycleWindows
-x A-F1            	rofi -combi-modi window,drun -show combi -modi combi
+x A-F1            	rofi -show drun
 x A-F2            	rofi-launcher
 x A-F3            	dmenu_run -i -nb '#2B303B' -nf '#81A2BE' -sb '#81A2BE' -sf '#191919' -fn 'Pilcrow:pixelsize=24'
 x F9              	skippy-xd --toggle-window-picker
 x W-f             	thunar
-x W-t             	urxvt
+x W-t             	st
 x W-C-t           	termite
 x W-w             	firefox-developer-edition
 x W-S-r           	~/.config/polybar/launch.sh --reload
-x W-l             	i3lock-fancy -g
-x W-e             	geany
-x W-m             	audacious
+x W-l             	i3lock-fancy -pg
+x W-e             	subl3
+x W-m             	deadbeef
 x W-h             	urxvt -T 'htop task manager' -e htop
 x W-v             	pavucontrol
 x XF86AudioMute   	amixer -D pulse set Master toggle
@@ -67,3 +67,5 @@ o W-A-Right       	UnmaximizeFull
 o A-r             	Resize
 o A-m             	Move
 x C-S-Escape      	xfce4-taskmanager
+x C-S-r           	openbox --restart
+x A-S-r           	openbox --reconfigure

@@ -63,7 +63,7 @@ xscreensaver -no-splash &
 #xfce4-panel &
 #(sleep 2; plank) &
 tint2 &
-(sleep 5; polybar -r ob-bar) &
+#(sleep 5; polybar -r ob-bar) &
 #(sleep 1; $HOME/.config/polybar/polybar.sh) &
 
 ##Applets and Other Things
@@ -73,7 +73,7 @@ tint2 &
 g610-led -a 90 &
 (sleep 3; clipit) &
 #(sleep 2; greenclip daemon) &
-#(sleep 2; volumeicon) &
+(sleep 2; volumeicon) &
 #(sleep 2; volti) &
 #(sleep 5; trayer --edge bottom --align right --heighttype pixel --height 40  --SetDockType true --widthtype request --expand true --alpha 255 --transparent true) &
 
@@ -81,7 +81,7 @@ g610-led -a 90 &
 (sleep 2; skippy-xd --config $HOME/.config/skippy-xd/skippy-xd.rc --start-daemon) &
 
 ##Conky
-#(sleep 2s && al-conky-session --autostart) &
+(sleep 2s && al-conky-session --autostart) &
 
 ## set mouse accelleration scale is a fraction slower=1/2, none=0/0, faster=2/1..etc.
 xset m 0 0 &
@@ -90,6 +90,7 @@ xset m 0 0 &
 
 # let super key alone open rofi
 ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
 
 # Desktop Window Snapping
 #opensnap --daemon -c /etc/opensnap
